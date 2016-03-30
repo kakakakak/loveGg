@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>DataStax sqoop import from MySQL to Cassandra - can&#39;t access imported data - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="DataStax sqoop import from MySQL to Cassandra - can&#39;t access imported data" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I import data from MySQL to Cassandra with this command
+
+dse sqoop import --connect jdbc:mysql://localhost:3306/store --username root --table products --cassandra-keyspace store --cassandra-column-..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=e5852343f40d"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;DataStax sqoop import from MySQL to Cassandra - can&#39;t access imported data&#39;" href="/feeds/question/21339805">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:2,shownCommentCount:2,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:21339805});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '21339805');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452540655,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"feb94ac237bf4560673eb2216871336d","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c28ffc75f822","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"9ede90d3ed16","js/full.en.js":"033d573c35db","js/wmd.en.js":"47ccdaf392cb","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"20bcb42b710b","js/tageditornew.en.js":"a71ee27852ba","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"ae29b9441b40","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"c251bbc879d8","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"03a7725d4a79","js/keyboard-shortcuts.en.js":"0e582d41820b","js/external-editor.en.js":"cea2f1a9cb30","js/external-editor.en.js":"cea2f1a9cb30","js/snippet-javascript.en.js":"a787fb64bef0","js/snippet-javascript-codemirror.en.js":"569e93559c76"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f21339805%2fdatastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f21339805%2fdatastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f21339805%2fdatastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f21339805%2fdatastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f21339805%2fdatastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data" class="question-hyperlink">DataStax sqoop import from MySQL to Cassandra - can&#39;t access imported data</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="21339805"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk2143190627",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk2143190627">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21339805">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I import data from MySQL to Cassandra with this command</p>
+
+<pre><code>dse sqoop import --connect jdbc:mysql://localhost:3306/store --username root --table products --cassandra-keyspace store --cassandra-column-family products --split-by id --cassandra-row-key id --cassandra-thrift-host localhost --cassandra-create-schema --direct --verbose
+</code></pre>
+
+<p>output:</p>
+
+<pre><code>14/01/24 00:35:09 DEBUG tool.BaseSqoopTool: Enabled debug logging.
+14/01/24 00:35:09 DEBUG sqoop.ConnFactory: Loaded manager factory: com.cloudera.sqoop.manager.DefaultManagerFactory
+14/01/24 00:35:09 DEBUG sqoop.ConnFactory: Trying ManagerFactory: com.cloudera.sqoop.manager.DefaultManagerFactory
+14/01/24 00:35:09 DEBUG manager.DefaultManagerFactory: Trying with scheme: jdbc:mysql:
+14/01/24 00:35:09 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+14/01/24 00:35:09 DEBUG sqoop.ConnFactory: Instantiated ConnManager org.apache.sqoop.manager.DirectMySQLManager@b70a8
+14/01/24 00:35:09 INFO tool.CodeGenTool: Beginning code generation
+14/01/24 00:35:09 DEBUG manager.SqlManager: No connection paramenters specified. Using regular API for making connection.
+14/01/24 00:35:10 DEBUG manager.SqlManager: Using fetchSize for next query: -2147483648
+14/01/24 00:35:10 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `products` AS t LIMIT 1
+14/01/24 00:35:10 DEBUG orm.ClassWriter: selected columns:
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   id
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field1
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field2
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field3
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field4
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field5
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field6
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field7
+14/01/24 00:35:10 DEBUG orm.ClassWriter:   field8
+14/01/24 00:35:10 DEBUG manager.SqlManager: Using fetchSize for next query: -2147483648
+14/01/24 00:35:10 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `products` AS t LIMIT 1
+14/01/24 00:35:11 DEBUG orm.ClassWriter: Writing source file: /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/products.java
+14/01/24 00:35:11 DEBUG orm.ClassWriter: Table name: products
+14/01/24 00:35:11 DEBUG orm.ClassWriter: Columns: id:4, field1:12, field2:12, field3:4, field4:3, field5:3, field6:93, field7:93, field8:12, 
+14/01/24 00:35:11 DEBUG orm.ClassWriter: sourceFilename is products.java
+14/01/24 00:35:11 DEBUG orm.CompilationManager: Found existing /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/
+14/01/24 00:35:11 INFO orm.CompilationManager: HADOOP_HOME is /usr/share/dse/hadoop/bin/..
+14/01/24 00:35:11 DEBUG orm.CompilationManager: Adding source file: /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/products.java
+14/01/24 00:35:11 DEBUG orm.CompilationManager: Invoking javac with args:
+14/01/24 00:35:11 DEBUG orm.CompilationManager:   -sourcepath
+14/01/24 00:35:11 DEBUG orm.CompilationManager:   /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/
+14/01/24 00:35:11 DEBUG orm.CompilationManager:   -d
+14/01/24 00:35:11 DEBUG orm.CompilationManager:   /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/
+14/01/24 00:35:11 DEBUG orm.CompilationManager:   -classpath
+14/01/24 00:35:11 DEBUG orm.CompilationManager:   /etc/dse/hadoop:/usr/lib/jvm/jdk1.7.0/lib/tools.jar:/usr/share/dse/hadoop/bin/..:/usr/share/dse/hadoop/bin/../hadoop-core-*.jar:/usr/share/dse/hadoop/bin/../lib/ant-1.6.5.jar:/usr/share/dse/hadoop/bin/../lib/automaton-1.11-8.jar:/usr/share/dse/hadoop/bin/../lib/commons-beanutils-1.7.0.jar:/usr/share/dse/hadoop/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/share/dse/hadoop/bin/../lib/commons-cli-1.2.jar:/usr/share/dse/hadoop/bin/../lib/commons-codec-1.4.jar:/usr/share/dse/hadoop/bin/../lib/commons-collections-3.2.1.jar:/usr/share/dse/hadoop/bin/../lib/commons-configuration-1.6.jar:/usr/share/dse/hadoop/bin/../lib/commons-digester-1.8.jar:/usr/share/dse/hadoop/bin/../lib/commons-el-1.0.jar:/usr/share/dse/hadoop/bin/../lib/commons-httpclient-3.0.1.jar:/usr/share/dse/hadoop/bin/../lib/commons-lang-2.4.jar:/usr/share/dse/hadoop/bin/../lib/commons-logging-1.1.1.jar:/usr/share/dse/hadoop/bin/../lib/commons-math-2.1.jar:/usr/share/dse/hadoop/bin/../lib/commons-net-1.4.1.jar:/usr/share/dse/hadoop/bin/../lib/core-3.1.1.jar:/usr/share/dse/hadoop/bin/../lib/ftplet-api-1.0.0.jar:/usr/share/dse/hadoop/bin/../lib/ftpserver-core-1.0.0.jar:/usr/share/dse/hadoop/bin/../lib/ftpserver-deprecated-1.0.0-M2.jar:/usr/share/dse/hadoop/bin/../lib/hadoop-core-1.0.4.9.jar:/usr/share/dse/hadoop/bin/../lib/hadoop-examples-1.0.4.9.jar:/usr/share/dse/hadoop/bin/../lib/hadoop-fairscheduler-1.0.4.9.jar:/usr/share/dse/hadoop/bin/../lib/hadoop-streaming-1.0.4.9.jar:/usr/share/dse/hadoop/bin/../lib/hadoop-test-1.0.4.9.jar:/usr/share/dse/hadoop/bin/../lib/hadoop-tools-1.0.4.9.jar:/usr/share/dse/hadoop/bin/../lib/hamcrest-core-1.3.jar:/usr/share/dse/hadoop/bin/../lib/hsqldb-1.8.0.10.jar:/usr/share/dse/hadoop/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/share/dse/hadoop/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/share/dse/hadoop/bin/../lib/jasper-compiler-5.5.12.jar:/usr/share/dse/hadoop/bin/../lib/jasper-runtime-5.5.12.jar:/usr/share/dse/hadoop/bin/../lib/jets3t-0.7.1.jar:/usr/share/dse/hadoop/bin/../lib/jetty-6.1.26.jar:/usr/share/dse/hadoop/bin/../lib/jetty-util-6.1.26.jar:/usr/share/dse/hadoop/bin/../lib/jsp-2.1-6.1.14.jar:/usr/share/dse/hadoop/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/share/dse/hadoop/bin/../lib/junit-4.11.jar:/usr/share/dse/hadoop/bin/../lib/kfs-0.3.jar:/usr/share/dse/hadoop/bin/../lib/mina-core-2.0.0-M5.jar:/usr/share/dse/hadoop/bin/../lib/mockito-all-1.8.4.jar:/usr/share/dse/hadoop/bin/../lib/oro-2.0.8.jar:/usr/share/dse/hadoop/bin/../lib/servlet-api-2.5-20081211.jar:/usr/share/dse/hadoop/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/share/dse/hadoop/bin/../lib/snappy-java-1.0.5.jar:/usr/share/dse/hadoop/bin/../lib/xmlenc-0.52.jar:/usr/share/dse/hadoop/bin/../lib/jsp-2.1/*.jar:/etc/dse/hive:/etc/dse/cassandra:/usr/share/dse/sqoop/conf::/usr/share/dse/sqoop/lib/commons-io-1.4.jar:/usr/share/dse/sqoop/lib/mysql-connector-java-5.1.27-bin.jar:/usr/share/dse/sqoop/sqoop-1.4.2.12.1.jar::/usr/share/dse/hadoop:/etc/dse/hadoop:/usr/share/dse/hadoop/lib/ant-1.6.5.jar:/usr/share/dse/hadoop/lib/automaton-1.11-8.jar:/usr/share/dse/hadoop/lib/commons-beanutils-1.7.0.jar:/usr/share/dse/hadoop/lib/commons-beanutils-core-1.8.0.jar:/usr/share/dse/hadoop/lib/commons-cli-1.2.jar:/usr/share/dse/hadoop/lib/commons-codec-1.4.jar:/usr/share/dse/hadoop/lib/commons-collections-3.2.1.jar:/usr/share/dse/hadoop/lib/commons-configuration-1.6.jar:/usr/share/dse/hadoop/lib/commons-digester-1.8.jar:/usr/share/dse/hadoop/lib/commons-el-1.0.jar:/usr/share/dse/hadoop/lib/commons-httpclient-3.0.1.jar:/usr/share/dse/hadoop/lib/commons-lang-2.4.jar:/usr/share/dse/hadoop/lib/commons-logging-1.1.1.jar:/usr/share/dse/hadoop/lib/commons-math-2.1.jar:/usr/share/dse/hadoop/lib/commons-net-1.4.1.jar:/usr/share/dse/hadoop/lib/core-3.1.1.jar:/usr/share/dse/hadoop/lib/ftplet-api-1.0.0.jar:/usr/share/dse/hadoop/lib/ftpserver-core-1.0.0.jar:/usr/share/dse/hadoop/lib/ftpserver-deprecated-1.0.0-M2.jar:/usr/share/dse/hadoop/lib/hadoop-core-1.0.4.9.jar:/usr/share/dse/hadoop/lib/hadoop-examples-1.0.4.9.jar:/usr/share/dse/hadoop/lib/hadoop-fairscheduler-1.0.4.9.jar:/usr/share/dse/hadoop/lib/hadoop-streaming-1.0.4.9.jar:/usr/share/dse/hadoop/lib/hadoop-test-1.0.4.9.jar:/usr/share/dse/hadoop/lib/hadoop-tools-1.0.4.9.jar:/usr/share/dse/hadoop/lib/hamcrest-core-1.3.jar:/usr/share/dse/hadoop/lib/hsqldb-1.8.0.10.jar:/usr/share/dse/hadoop/lib/jackson-core-asl-1.8.8.jar:/usr/share/dse/hadoop/lib/jackson-mapper-asl-1.8.8.jar:/usr/share/dse/hadoop/lib/jasper-compiler-5.5.12.jar:/usr/share/dse/hadoop/lib/jasper-runtime-5.5.12.jar:/usr/share/dse/hadoop/lib/jets3t-0.7.1.jar:/usr/share/dse/hadoop/lib/jetty-6.1.26.jar:/usr/share/dse/hadoop/lib/jetty-util-6.1.26.jar:/usr/share/dse/hadoop/lib/jsp-2.1-6.1.14.jar:/usr/share/dse/hadoop/lib/jsp-api-2.1-6.1.14.jar:/usr/share/dse/hadoop/lib/junit-4.11.jar:/usr/share/dse/hadoop/lib/kfs-0.3.jar:/usr/share/dse/hadoop/lib/mina-core-2.0.0-M5.jar:/usr/share/dse/hadoop/lib/mockito-all-1.8.4.jar:/usr/share/dse/hadoop/lib/oro-2.0.8.jar:/usr/share/dse/hadoop/lib/servlet-api-2.5-20081211.jar:/usr/share/dse/hadoop/lib/servlet-api-2.5-6.1.14.jar:/usr/share/dse/hadoop/lib/snappy-java-1.0.5.jar:/usr/share/dse/hadoop/lib/xmlenc-0.52.jar::/usr/share/dse/dse-3.2.4-1.jar:/usr/share/dse/dse.jar:/usr/share/java/jna.jar:/usr/share/dse/cassandra/lib/jamm-0.2.5.jar:/usr/share/dse/hadoop/bin/../lib/hadoop-core-1.0.4.9.jar:/usr/share/dse/sqoop/sqoop-1.4.2.12.1.jar
+Note: /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/products.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+14/01/24 00:35:13 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/products.jar
+14/01/24 00:35:13 DEBUG orm.CompilationManager: Scanning for .class files in directory: /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40
+14/01/24 00:35:13 DEBUG orm.CompilationManager: Got classfile: /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/products.class -&gt; products.class
+14/01/24 00:35:13 DEBUG orm.CompilationManager: Finished writing jar file /tmp/sqoop-trushkevich/compile/74c507cb09d4e91fa55f8e59b3be3a40/products.jar
+14/01/24 00:35:13 INFO manager.DirectMySQLManager: Beginning mysqldump fast path import
+14/01/24 00:35:13 INFO mapreduce.ImportJobBase: Beginning import of products
+14/01/24 00:35:14 DEBUG mapreduce.MySQLDumpImportJob: Using InputFormat: class org.apache.sqoop.mapreduce.MySQLDumpInputFormat
+14/01/24 00:35:14 DEBUG mapreduce.JobBase: Adding to job classpath: file:/usr/share/dse/sqoop/sqoop-1.4.2.12.1.jar
+14/01/24 00:35:14 DEBUG mapreduce.JobBase: Adding to job classpath: file:/usr/share/dse/sqoop/lib/mysql-connector-java-5.1.27-bin.jar
+14/01/24 00:35:14 DEBUG mapreduce.JobBase: Adding to job classpath: file:/usr/share/dse/sqoop/sqoop-1.4.2.12.1.jar
+14/01/24 00:35:14 DEBUG mapreduce.JobBase: Adding to job classpath: file:/usr/share/dse/sqoop/sqoop-1.4.2.12.1.jar
+14/01/24 00:35:14 DEBUG mapreduce.JobBase: Adding to job classpath: file:/usr/share/dse/sqoop/lib/commons-io-1.4.jar
+14/01/24 00:35:14 DEBUG mapreduce.JobBase: Adding to job classpath: file:/usr/share/dse/sqoop/lib/mysql-connector-java-5.1.27-bin.jar
+14/01/24 00:35:17 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+14/01/24 00:35:18 INFO db.DataDrivenDBInputFormat: BoundingValsQuery: SELECT MIN(`id`), MAX(`id`) FROM products
+14/01/24 00:35:18 DEBUG db.IntegerSplitter: Splits: [                           1 to                        2,502] into 4 parts
+14/01/24 00:35:18 DEBUG db.IntegerSplitter:                            1
+14/01/24 00:35:18 DEBUG db.IntegerSplitter:                          627
+14/01/24 00:35:18 DEBUG db.IntegerSplitter:                        1,252
+14/01/24 00:35:18 DEBUG db.IntegerSplitter:                        1,877
+14/01/24 00:35:18 DEBUG db.IntegerSplitter:                        2,502
+14/01/24 00:35:18 INFO mapred.JobClient: Running job: job_201401240014_0001
+14/01/24 00:35:19 INFO mapred.JobClient:  map 0% reduce 0%
+14/01/24 00:35:38 INFO mapred.JobClient:  map 25% reduce 0%
+14/01/24 00:35:41 INFO mapred.JobClient:  map 50% reduce 0%
+14/01/24 00:35:44 INFO mapred.JobClient:  map 75% reduce 0%
+14/01/24 00:35:48 INFO mapred.JobClient:  map 100% reduce 0%
+14/01/24 00:35:51 INFO mapred.JobClient: Job complete: job_201401240014_0001
+14/01/24 00:35:51 INFO mapred.JobClient: Counters: 18
+14/01/24 00:35:51 INFO mapred.JobClient:   Job Counters 
+14/01/24 00:35:51 INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=28283
+14/01/24 00:35:51 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+14/01/24 00:35:51 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+14/01/24 00:35:51 INFO mapred.JobClient:     Launched map tasks=4
+14/01/24 00:35:51 INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=0
+14/01/24 00:35:51 INFO mapred.JobClient:   File Output Format Counters 
+14/01/24 00:35:51 INFO mapred.JobClient:     Bytes Written=448479
+14/01/24 00:35:51 INFO mapred.JobClient:   FileSystemCounters
+14/01/24 00:35:51 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=88900
+14/01/24 00:35:51 INFO mapred.JobClient:     CFS_BYTES_WRITTEN=448479
+14/01/24 00:35:51 INFO mapred.JobClient:     CFS_BYTES_READ=412
+14/01/24 00:35:51 INFO mapred.JobClient:   File Input Format Counters 
+14/01/24 00:35:51 INFO mapred.JobClient:     Bytes Read=0
+14/01/24 00:35:51 INFO mapred.JobClient:   Map-Reduce Framework
+14/01/24 00:35:51 INFO mapred.JobClient:     Map input records=4
+14/01/24 00:35:51 INFO mapred.JobClient:     Physical memory (bytes) snapshot=427155456
+14/01/24 00:35:51 INFO mapred.JobClient:     Spilled Records=0
+14/01/24 00:35:51 INFO mapred.JobClient:     CPU time spent (ms)=1940
+14/01/24 00:35:51 INFO mapred.JobClient:     Total committed heap usage (bytes)=235208704
+14/01/24 00:35:52 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=2165760000
+14/01/24 00:35:52 INFO mapred.JobClient:     Map output records=2501
+14/01/24 00:35:52 INFO mapred.JobClient:     SPLIT_RAW_BYTES=412
+14/01/24 00:35:52 INFO mapreduce.ImportJobBase: Transferred 0 bytes in 37.7612 seconds (0 bytes/sec)
+14/01/24 00:35:52 INFO mapreduce.ImportJobBase: Retrieved 2501 records.
+</code></pre>
+
+<p>So that seems to look good. But. I can not find imported data. I can see this by inspecting hdfs:</p>
+
+<p><code>dse hadoop fs -ls</code> shows:</p>
+
+<pre><code>drwxrwxrwx   - trushkevich trushkevich          0 2014-01-24 00:35 /user/trushkevich/products
+</code></pre>
+
+<p><code>dse hadoop fs -ls /user/trushkevich/products</code> shows:</p>
+
+<pre><code>-rwxrwxrwx   1 trushkevich trushkevich          0 2014-01-24 00:35 /user/trushkevich/products/_SUCCESS
+drwxrwxrwx   - trushkevich trushkevich          0 2014-01-24 00:35 /user/trushkevich/products/_logs
+-rwxrwxrwx   1 trushkevich trushkevich     111628 2014-01-24 00:35 /user/trushkevich/products/part-m-00000
+-rwxrwxrwx   1 trushkevich trushkevich     111858 2014-01-24 00:35 /user/trushkevich/products/part-m-00001
+-rwxrwxrwx   1 trushkevich trushkevich     112363 2014-01-24 00:35 /user/trushkevich/products/part-m-00002
+-rwxrwxrwx   1 trushkevich trushkevich     112630 2014-01-24 00:35 /user/trushkevich/products/part-m-00003
+</code></pre>
+
+<p>However when I try to find the data using CQL I get these results:</p>
+
+<pre><code>cqlsh&gt; use store;
+Bad Request: Keyspace 'store' does not exist
+
+cqlsh&gt; describe keyspaces;
+
+HiveMetaStore  system      cfs_archive  OpsCenter    
+dse_security   dse_system  cfs          system_traces
+</code></pre>
+
+<p>The same keyspaces are in DSE DevCenter in top right corner.</p>
+
+<p>Here are my software versions if that helps:</p>
+
+<pre><code>$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 12.04.4 LTS
+Release:    12.04
+Codename:   precise
+
+$ java -version
+java version "1.6.0_27"
+OpenJDK Runtime Environment (IcedTea6 1.12.6) (6b27-1.12.6-1ubuntu0.12.04.4)
+OpenJDK Server VM (build 20.0-b12, mixed mode)
+
+$ dse -v
+3.2.4
+</code></pre>
+
+<p>Does anyone know how to solve this problem?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/mysql" class="post-tag" title="show questions tagged &#39;mysql&#39;" rel="tag">mysql</a> <a href="/questions/tagged/cassandra" class="post-tag" title="show questions tagged &#39;cassandra&#39;" rel="tag">cassandra</a> <a href="/questions/tagged/sqoop" class="post-tag" title="show questions tagged &#39;sqoop&#39;" rel="tag">sqoop</a> <a href="/questions/tagged/datastax-enterprise" class="post-tag" title="show questions tagged &#39;datastax-enterprise&#39;" rel="tag">datastax-enterprise</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/21339805" title="short permalink to this question" class="short-link" id="link-post-21339805">share</a><span class="lsep">|</span><a href="/posts/21339805/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/21339805/revisions" title="show all edits to this post">edited <span title="2014-01-27 19:44:37Z" class="relativetime">Jan 27 '14 at 19:44</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2014-01-24 18:28:37Z" class="relativetime">Jan 24 '14 at 18:28</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1478058/trushkevich"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/7fdc2fbe6012548e09c652be112f9a1b?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1478058/trushkevich">trushkevich</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,642</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21339805" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-32298642" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Do your userlogs/job&lt;x&gt;/attempt&lt;x&gt; show anything that could be failing? Also, does it work if you don&#39;t use --direct?</span>
+                    &ndash;&nbsp;<a href="/users/1837823/mikea"
+                       title="2939 reputation"
+                       class="comment-user">mikea</a>
+                <span class="comment-date" dir="ltr"><span title="2014-01-28 16:24:00Z" class="relativetime-clean">Jan 28 '14 at 16:24</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-32356859" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Great, thanks! Omitting <code>--direct</code> did work (fyi without it there were no errors in <code>userlogs</code>). This message from sqoop <code>WARN manager.MySQLManager: This transfer can be faster! Use the --direct</code> was so promising... :-) By the way there is an interesting thing - without <code>--direct</code> sqoop import throws an error <code>FATAL - 2014-01-30 00:09:15.938; org.apache.hadoop.mapred.Child; Error running child : java.lang.UnsupportedClassVersionError: products : Unsupported major.minor version 51.0</code> so I had to upgrade java to OpenJDK7. Add your answer so I could accept it as the correct one.</span>
+                    &ndash;&nbsp;<a href="/users/1478058/trushkevich"
+                       title="1642 reputation"
+                       class="comment-user owner">trushkevich</a>
+                <span class="comment-date" dir="ltr"><span title="2014-01-29 22:18:19Z" class="relativetime-clean">Jan 29 '14 at 22:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21339805" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/21339805/datastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="21453407"></a>
+<div id="answer-21453407" class="answer accepted-answer" data-answerid="21453407"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21453407">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If you run it without --direct it should work</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/21453407" title="short permalink to this answer" class="short-link" id="link-post-21453407">share</a><span class="lsep">|</span><a href="/posts/21453407/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-01-30 10:09:52Z" class="relativetime">Jan 30 '14 at 10:09</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1837823/mikea"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/2f80792d86cb08d7a729869f1ed3698c?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1837823/mikea">mikea</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,939</span><span title="7 silver badges"><span class="badge2"></span><span class="badgecount">7</span></span><span title="20 bronze badges"><span class="badge3"></span><span class="badgecount">20</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21453407" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-33724300" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I tried the sqoop-demo but the cassandra table generated has only one column compared to 8 rows from the csv/mysql.  A direct export results in a correct cfs://localhost import, but the hive/datastax documentation doesn&#39;t tell, how to access the data either in hive or in cassandra. :/</span>
+                    &ndash;&nbsp;<a href="/users/418693/arman"
+                       title="179 reputation"
+                       class="comment-user">Arman</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-06 00:31:11Z" class="relativetime-clean">Mar 6 '14 at 0:31</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21453407" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/21339805/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="21339805" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="feb94ac237bf4560673eb2216871336d">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f21339805%2fdatastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                                    
+                                var $window = $(window),
+                                    onScroll = function(e) {
+                                        var $elem = $('.new-login-left'),
+                                            docViewTop = $window.scrollTop(),
+                                            docViewBottom = docViewTop + $window.height(),
+                                            elemTop = $elem.offset().top,
+                                            elemBottom = elemTop + $elem.height();							
+                                        if ((docViewTop < elemTop) && (docViewBottom > elemBottom))  {
+                                            StackExchange.using('gps', function() { StackExchange.gps.track('embedded_signup_form.view', { location: 'question_page' }); });
+                                            $window.unbind('scroll', onScroll);
+                                        }
+                                    };
+                                $window.on('scroll', onScroll);
+                                    
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f21339805%2fdatastax-sqoop-import-from-mysql-to-cassandra-cant-access-imported-data%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/mysql" class="post-tag" title="show questions tagged &#39;mysql&#39;" rel="tag">mysql</a> <a href="/questions/tagged/cassandra" class="post-tag" title="show questions tagged &#39;cassandra&#39;" rel="tag">cassandra</a> <a href="/questions/tagged/sqoop" class="post-tag" title="show questions tagged &#39;sqoop&#39;" rel="tag">sqoop</a> <a href="/questions/tagged/datastax-enterprise" class="post-tag" title="show questions tagged &#39;datastax-enterprise&#39;" rel="tag">datastax-enterprise</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-01-24 18:28:37Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>935 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-01-30 10:09:52Z">1 year ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk361758967",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk361758967">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/18848122" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/18848122/data-not-getting-imported-to-cassandra-using-sqoop-from-mysql" class="question-hyperlink">Data not getting Imported to Cassandra using Sqoop from MySql</a>
+</div>
+<div class="spacer">
+<a href="/q/18876520" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/18876520/unable-to-export-data-from-cassandra-to-mysql" class="question-hyperlink">Unable to export data from Cassandra to MySql</a>
+</div>
+<div class="spacer">
+<a href="/q/21009430" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/21009430/error-in-sqoop-connecting-with-mysql" class="question-hyperlink">error in sqoop connecting with mysql</a>
+</div>
+<div class="spacer">
+<a href="/q/23470918" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/23470918/free-form-query-import-to-cassandra-from-mysql-using-sqoop" class="question-hyperlink">Free form query import to Cassandra from MySQL using Sqoop</a>
+</div>
+<div class="spacer">
+<a href="/q/23634403" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/23634403/dse-sqoop-cant-import-date-sql-server-to-cassandra-table" class="question-hyperlink">DSE sqoop can&#39;t import date sql server to cassandra table</a>
+</div>
+<div class="spacer">
+<a href="/q/26656255" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/26656255/unable-to-import-data-from-vertica-to-cassandra-using-sqoop" class="question-hyperlink">Unable to import data from Vertica to Cassandra using Sqoop</a>
+</div>
+<div class="spacer">
+<a href="/q/26711450" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/26711450/sqoop-import-failing-with-max-block-location-exceeded-for-split" class="question-hyperlink">Sqoop import failing with : Max block location exceeded for split</a>
+</div>
+<div class="spacer">
+<a href="/q/30611877" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/30611877/error-while-trying-to-import-data-from-mysql-to-cassandra-using-sqoop" class="question-hyperlink">Error while trying to import data from mysql to cassandra using sqoop</a>
+</div>
+<div class="spacer">
+<a href="/q/30908529" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/30908529/dse-4-7-sqoop-cql-export-export-from-cassandra-to-redshift" class="question-hyperlink">DSE 4.7 sqoop cql-export export from Cassandra to Redshift</a>
+</div>
+<div class="spacer">
+<a href="/q/30946941" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/30946941/sqoop-import-db2-to-dse-cassandra" class="question-hyperlink">Sqoop import DB2 to DSE Cassandra</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287064/auto-linebreaking-in-underset" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Auto-linebreaking in underset
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/43592/what-is-the-meaning-of-the-osic-suffix-on-a-metal-e-g-cobaltosic-oxide" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the meaning of the &quot;-osic&quot; suffix on a metal (e.g., cobaltosic oxide)?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/286874/given-a-list-of-primes-how-can-i-plot-%cf%80x" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Given a list of primes, how can I plot π(x)?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/40989/help-for-the-first-time-keyboard-player-in-a-band" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Help for the first time keyboard player in a band
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299005/what-is-worse-than-mediocre" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is worse than &quot;mediocre&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/298945/is-there-an-english-word-to-describe-a-group-of-refrain-words-composed-of-two-sy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there an English word to describe a group of refrain words composed of two syllable e.g. pera-pera, meaning fluently, iki-iki meaning vividly?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34720244/is-there-a-technical-reason-for-not-allowing-a-using-declaration-to-make-a-funct" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a technical reason for not allowing a using declaration to make a function name accessible under a different name?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46109/looking-for-name-of-movie-about-the-president-landing-via-parachute-in-a-forest" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Looking for name of movie about the president landing via parachute in a forest
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/88938/one-big-sign-up-button-or-3" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    One big sign up button or 3
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78507/now-were-only-a-nip-and-tuck-away" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Now we&#39;re only a nip and tuck away
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/254625/bash-extract-text-between-three-single-quotes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Bash: Extract text between three single quotes
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/61153/does-the-uk-visa-system-discriminate-against-muslims" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does the UK visa system discriminate against Muslims?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-philosophy" title="Philosophy Stack Exchange"></div><a href="http://philosophy.stackexchange.com/questions/31422/occams-razor-vs-less-simple-yet-viable-alternatives" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:265 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Occam&#39;s razor vs. less simple yet viable alternatives
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/32904/given-an-indestructible-material-used-for-armor-what-are-ways-to-explain-tha" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Given an &quot;indestructible&quot; material used for armor - what are ways to explain that material not being used as a weapon as well?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33040/multiple-dna-one-creature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Multiple DNA, one creature
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-writers" title="Writers Stack Exchange"></div><a href="http://writers.stackexchange.com/questions/20399/where-to-draw-the-line-between-fantasy-and-reality-in-a-story" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where to draw the line between fantasy and reality in a story?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/60475/how-do-exit-interviews-benefit-the-company" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do exit interviews benefit the company?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34723842/whats-is-the-difference-between-array-ofn-arrayn-and-array-n" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s is the difference between Array.of(n) , Array(n) and array = [n]?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/125896/reattaching-mdf-files-recovered-from-raid-5" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Reattaching MDF files recovered from RAID 5
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/210640/adding-a-gap-to-a-core-for-an-inductor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Adding a gap to a core for an inductor
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-drupal" title="Drupal Answers"></div><a href="http://drupal.stackexchange.com/questions/186410/how-to-reorder-nodes-in-drupal-7-using-drag-and-drop-feature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:220 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to reorder nodes in Drupal 7 using Drag and Drop feature?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114475/what-was-c-3po-talking-about-when-he-said-that-s-funny-the-damage-doesn-t-loo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What was C-3PO talking about when he said, “That’s funny, the damage doesn’t look as bad from out here.”
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114442/what-is-the-first-work-to-feature-a-planet-that-is-one-city" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the first work to feature a planet that is one city?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/24254/after-a-crash-for-how-long-is-the-airport-closed" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    After a crash, for how long is the airport closed?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/21339805" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/21339805/ivc/dd64');});
+</script>
+<noscript>
+    <div><img src="/posts/21339805/ivc/dd64" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-sql</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3157
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('mysql,cassandra,sqoop,datastax-enterprise');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|mysql|cassandra|sqoop|datastax-enterprise|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

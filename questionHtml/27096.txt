@@ -1,0 +1,3656 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>language agnostic - Concurrency vs Parallelism - What is the difference? - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Concurrency vs Parallelism - What is the difference?" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Concurrency vs Parallelism -  What is the difference? Any examples
+" />
+    <meta property="og:url" content="http://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference/24684037"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference/24684037" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=2ad47c1cbf74"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=e67f9bfa3488">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Concurrency vs Parallelism - What is the difference?&#39;" href="/feeds/question/1050222">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference/24684037" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference/24684037" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference/24684037">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:1050222});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '1050222');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452632585,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"8003426aae9135a28c330cb68d32266c","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"3f9ee2d99b7b","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"f5db443c1ac0","js/wmd.en.js":"b7209bb18569","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"54b998574be9","js/tageditor.en.js":"bce25cab66ee","js/tageditornew.en.js":"da1a6faf4b1a","js/inline-tag-editing.en.js":"7e793ad8611c","js/revisions.en.js":"6aca57a6c709","js/review.en.js":"775aea04d276","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"38881ac6b6fc","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"95207368686a","js/keyboard-shortcuts.en.js":"cd362c7762a7","js/external-editor.en.js":"1c46403ac90b","js/external-editor.en.js":"1c46403ac90b","js/snippet-javascript.en.js":"f590e314ee2d","js/snippet-javascript-codemirror.en.js":"ed6ec2d2099d"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1050222%2fconcurrency-vs-parallelism-what-is-the-difference%2f24684037" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1050222%2fconcurrency-vs-parallelism-what-is-the-difference%2f24684037" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1050222%2fconcurrency-vs-parallelism-what-is-the-difference%2f24684037" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1050222%2fconcurrency-vs-parallelism-what-is-the-difference%2f24684037" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1050222%2fconcurrency-vs-parallelism-what-is-the-difference%2f24684037" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/1050222/concurrency-vs-parallelism-what-is-the-difference" class="question-hyperlink">Concurrency vs Parallelism - What is the difference?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="1050222"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk807983475",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk807983475">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1050222">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">386</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>221</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>Concurrency vs Parallelism -  What is the difference? Any examples</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/language-agnostic" class="post-tag" title="show questions tagged &#39;language-agnostic&#39;" rel="tag">language-agnostic</a> <a href="/questions/tagged/concurrency" class="post-tag" title="show questions tagged &#39;concurrency&#39;" rel="tag">concurrency</a> <a href="/questions/tagged/parallel-processing" class="post-tag" title="show questions tagged &#39;parallel-processing&#39;" rel="tag">parallel-processing</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/1050222" title="short permalink to this question" class="short-link" id="link-post-1050222">share</a><span class="lsep">|</span><a href="/posts/1050222/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2009-06-26 17:18:02Z" class="relativetime">Jun 26 '09 at 17:18</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/30917/stackunderflow"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ea8de58412eb5dbd6b61ac19e0e7e79f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/30917/stackunderflow">StackUnderflow</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">5,803</span><span title="10 gold badges"><span class="badge1"></span><span class="badgecount">10</span></span><span title="39 silver badges"><span class="badge2"></span><span class="badgecount">39</span></span><span title="66 bronze badges"><span class="badge3"></span><span class="badgecount">66</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1050222" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1050222" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								19 Answers
+                                <span style="display:none;" itemprop="answerCount">19</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/1050222/concurrency-vs-parallelism-what-is-the-difference?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/1050222/concurrency-vs-parallelism-what-is-the-difference?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/1050222/concurrency-vs-parallelism-what-is-the-difference?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="1050257"></a>
+<div id="answer-1050257" class="answer accepted-answer" data-answerid="1050257"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1050257">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">474</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><strong>Concurrency</strong> is when two or more tasks can start, run, and complete in overlapping time periods.  It doesn't necessarily mean they'll ever both be running at the same instant.  Eg. multitasking on a single-core machine.</p>
+
+<p><strong>Parallelism</strong> is when tasks literally run at the same time, eg. on a multicore processor.</p>
+
+<p>Quoting <a href="http://docs.oracle.com/cd/E19455-01/806-5257/6je9h032b/index.html">Sun's <em>Multithreaded Programming Guide</em></a>:</p>
+
+<ul>
+<li><p>Concurrency: A condition that exists when at least two threads are making progress. A more generalized form of parallelism that can include time-slicing as a form of virtual parallelism.</p></li>
+<li><p>Parallelism: A condition that arises when at least two threads are executing simultaneously.</p></li>
+</ul>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1050257" title="short permalink to this answer" class="short-link" id="link-post-1050257">share</a><span class="lsep">|</span><a href="/posts/1050257/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/1050257/revisions" title="show all edits to this post">edited <span title="2015-11-09 14:34:48Z" class="relativetime">Nov 9 '15 at 14:34</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/5147646/alex-booker"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/363361e45f7631449119f8897267a271?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/5147646/alex-booker">Alex Booker</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,379</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="20 bronze badges"><span class="badge3"></span><span class="badgecount">20</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-06-26 17:24:20Z" class="relativetime">Jun 26 '09 at 17:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/21886/richiehindle"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/38750c50c11e6054c2123073b17b18fc?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/21886/richiehindle">RichieHindle</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 128245" dir="ltr">128k</span><span title="29 gold badges"><span class="badge1"></span><span class="badgecount">29</span></span><span title="239 silver badges"><span class="badge2"></span><span class="badgecount">239</span></span><span title="319 bronze badges"><span class="badge3"></span><span class="badgecount">319</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1050257" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="6"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-6335086" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">70</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I like this answer, but I&#39;d perhaps go further and characterise concurrency as a property of a program or system (and parallelism as the run-time behaviour of executing multiple tasks at the same time).</span>
+                    &ndash;&nbsp;<a href="/users/4332/adrian-mouat"
+                       title="14204 reputation"
+                       class="comment-user">Adrian Mouat</a>
+                <span class="comment-date" dir="ltr"><span title="2011-04-06 15:52:52Z" class="relativetime-clean">Apr 6 '11 at 15:52</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-7414594" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">System Threads vs Green Threads    <a href="http://en.wikipedia.org/wiki/Green_threads" rel="nofollow">en.wikipedia.org/wiki/Green_threads</a></span>
+                    &ndash;&nbsp;<a href="/users/5965/scott-markwell"
+                       title="826 reputation"
+                       class="comment-user">Scott Markwell</a>
+                <span class="comment-date" dir="ltr"><span title="2011-06-14 00:59:40Z" class="relativetime-clean">Jun 14 '11 at 0:59</span></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-9338864" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">11</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I like Adrian Mouat&#39;s comment very much. See also this excellent explanation: <a href="http://www.haskell.org/haskellwiki/Parallelism_vs._Concurrency" rel="nofollow">haskell.org/haskellwiki/Parallelism_vs._Concurrency</a></span>
+                    &ndash;&nbsp;<a href="/users/176841/jberryman"
+                       title="8187 reputation"
+                       class="comment-user">jberryman</a>
+                <span class="comment-date" dir="ltr"><span title="2011-10-07 02:25:21Z" class="relativetime-clean">Oct 7 '11 at 2:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-29465907" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Raj: Correct, parallelism (in the sense of multithreading) is not possible with single core processors.</span>
+                    &ndash;&nbsp;<a href="/users/21886/richiehindle"
+                       title="128245 reputation"
+                       class="comment-user">RichieHindle</a>
+                <span class="comment-date" dir="ltr"><span title="2013-11-06 16:58:30Z" class="relativetime-clean">Nov 6 '13 at 16:58</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-30548817" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">If Sequential and Parallel were both values in an enumeration, what would the name of that enumeration be?</span>
+                    &ndash;&nbsp;<a href="/users/1045881/toddmo"
+                       title="2600 reputation"
+                       class="comment-user">toddmo</a>
+                <span class="comment-date" dir="ltr"><span title="2013-12-07 22:25:50Z" class="relativetime-clean">Dec 7 '13 at 22:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1050257" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>6</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk2022884235",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk2022884235">
+            </div>
+  
+<a name="12034706"></a>
+<div id="answer-12034706" class="answer" data-answerid="12034706"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="12034706">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">138</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I like Rob Pike's talk: Concurrency is not Parallelism (it's better!)
+<a href="http://concur.rspace.googlecode.com/hg/talk/concur.html#landing-slide">(slides)</a>
+<a href="http://vimeo.com/49718712">(talk)</a></p>
+
+<p>Rob usually talks about Go and usually addresses the question of Concurrency vs Parallelism in a visual and intuitive explanation! Here is a short summary:</p>
+
+<p><strong>Task:</strong> Let's burn a pile of obsolete language manuals! One at a time!</p>
+
+<p><img src="http://i.stack.imgur.com/C37MJ.jpg" alt="Task"></p>
+
+<p><strong>Concurrency:</strong> There are many concurrently decompositions of the task! One example:</p>
+
+<p><img src="http://i.stack.imgur.com/w4HUK.jpg" alt="Gophers"></p>
+
+<p><strong>Parallelism:</strong> The previous configuration occurs in parallel if there are at least 2 gophers working at the same time or not.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/12034706" title="short permalink to this answer" class="short-link" id="link-post-12034706">share</a><span class="lsep">|</span><a href="/posts/12034706/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/12034706/revisions" title="show all edits to this post">edited <span title="2013-07-29 12:41:18Z" class="relativetime">Jul 29 '13 at 12:41</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2012-08-20 08:52:04Z" class="relativetime">Aug 20 '12 at 8:52</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1447332/asfer"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/5b7b087b6a24f00468b63e48fc760d45?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1447332/asfer">asfer</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,696</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="13 bronze badges"><span class="badge3"></span><span class="badgecount">13</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-12034706" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-26133832" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">For the video, see <a href="https://blog.heroku.com/archives/2013/2/24/concurrency_is_not_parallelism" rel="nofollow">blog.heroku.com/archives/2013/2/24/&hellip;</a></span>
+                    &ndash;&nbsp;<a href="/users/817277/pramod"
+                       title="2566 reputation"
+                       class="comment-user">Pramod</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-27 01:54:58Z" class="relativetime-clean">Jul 27 '13 at 1:54</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-51656249" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Sorry, had to downvote it for the &quot;it&#39;s better&quot; bit. The correct answer is that it&#39;s different. Concurrency is a part of the problem. Parallelism is a part of the solution.</span>
+                    &ndash;&nbsp;<a href="/users/46571/eduardo-le%c3%b3n"
+                       title="6675 reputation"
+                       class="comment-user">Eduardo Le&#243;n</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-07 02:18:02Z" class="relativetime-clean">Aug 7 '15 at 2:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-51693094" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@EduardoLe&#243;n You obviously did not check the name of the talk. Concurrency is not a problem, it is just a way to think on a problem/task.</span>
+                    &ndash;&nbsp;<a href="/users/1447332/asfer"
+                       title="1696 reputation"
+                       class="comment-user">asfer</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-07 22:58:49Z" class="relativetime-clean">Aug 7 '15 at 22:58</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-51693636" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@asfer Concurrency is a part of the structure of the problem. By the way, don&#39;t conflate &quot;concurrency&quot; (the problem) with &quot;concurrency control&quot; (a solution, often used together with parallelism).</span>
+                    &ndash;&nbsp;<a href="/users/46571/eduardo-le%c3%b3n"
+                       title="6675 reputation"
+                       class="comment-user">Eduardo Le&#243;n</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-07 23:30:37Z" class="relativetime-clean">Aug 7 '15 at 23:30</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-51693860" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@EduardoLe&#243;n Care to share where is the problem of downloading a file by pieces so it can be interleaved with a status of completion on the same core?</span>
+                    &ndash;&nbsp;<a href="/users/1447332/asfer"
+                       title="1696 reputation"
+                       class="comment-user">asfer</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-07 23:47:44Z" class="relativetime-clean">Aug 7 '15 at 23:47</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-12034706" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="13226948"></a>
+<div id="answer-13226948" class="answer" data-answerid="13226948"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="13226948">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">61</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>To add onto what others have said:</p>
+
+<p>Concurrency is like having a juggler juggle many balls. Regardless of how it seems, the juggler is only  catching/throwing one ball at a time. Parallelism is having multiple jugglers juggle balls simultaneously.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/13226948" title="short permalink to this answer" class="short-link" id="link-post-13226948">share</a><span class="lsep">|</span><a href="/posts/13226948/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-11-05 06:21:17Z" class="relativetime">Nov 5 '12 at 6:21</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1345239/thomas-t"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/66c7fdb9bb66a4346ede5dde80b6028e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1345239/thomas-t">Thomas T</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">844</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-13226948" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-45241951" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;m gonna be picky, but If you are juggling with a  pair number of balls, you can have two balls at the same time (depending on how you juggling).</span>
+                    &ndash;&nbsp;<a href="/users/1660683/thebugfinder"
+                       title="262 reputation"
+                       class="comment-user">thebugfinder</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-11 15:13:57Z" class="relativetime-clean">Feb 11 '15 at 15:13</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-46004351" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">12</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@thebugfinder, To make sure there is no more room for error in Thomas&#39; example.  Concurrency is like a person juggling with only 1 hand.  Regardless of how it seems the person is only holding at most one ball at a time.  Parallelism is when the juggler uses both hands.</span>
+                    &ndash;&nbsp;<a href="/users/1177198/bigtunacan"
+                       title="1838 reputation"
+                       class="comment-user">bigtunacan</a>
+                <span class="comment-date" dir="ltr"><span title="2015-03-05 05:00:18Z" class="relativetime-clean">Mar 5 '15 at 5:00</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-46004487" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">what i actually meant to say with &quot;pair number of balls&quot; was &quot;even number of balls&quot;</span>
+                    &ndash;&nbsp;<a href="/users/1660683/thebugfinder"
+                       title="262 reputation"
+                       class="comment-user">thebugfinder</a>
+                <span class="comment-date" dir="ltr"><span title="2015-03-05 05:08:00Z" class="relativetime-clean">Mar 5 '15 at 5:08</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-48298961" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Very clever answer.  I can definitely see thebugfinder&#39;s point, but I like this answer a lot if one action at a time is taken into account and agreed upon.</span>
+                    &ndash;&nbsp;<a href="/users/2006048/b-k"
+                       title="4665 reputation"
+                       class="comment-user">B.K.</a>
+                <span class="comment-date" dir="ltr"><span title="2015-05-07 06:19:15Z" class="relativetime-clean">May 7 '15 at 6:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-13226948" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="24684037"></a>
+<div id="answer-24684037" class="answer" data-answerid="24684037"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="24684037">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">51</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Confusion exists because dictionary meanings of both these words are almost the same:</p>
+
+<ul>
+<li><strong>Concurrent</strong>: existing, happening, or done at the same time(dictionary.com)</li>
+<li><strong>Parallel</strong>: very similar and often happening at the same time(merriam webster).</li>
+</ul>
+
+<p>Yet the way they are used in computer science and programming are quite different.
+Here is my interpretation:</p>
+
+<ul>
+<li><strong>Concurrency</strong>: Interruptability</li>
+<li><strong>Parallelism</strong>: Independentability</li>
+</ul>
+
+<p>So what do I mean by above definitions?
+I will clarify with a real world analogy. Let's say you have to get done 2 very important tasks in one day</p>
+
+<ol>
+<li>Get a passport</li>
+<li>Get a presentation done</li>
+</ol>
+
+<p>Now problem is task-1 requires you to goto an extremely bureaucratic government office that makes you wait for 4 hours in a line to get your passport. Whereas task-2 is required to be done for your office and it is a critical one. Both of these have to be finished on a specific day.</p>
+
+<p><strong>Case-1: Sequential Execution</strong>
+Ordinarily, you will drive to passport office for 2 hours, wait in the line for 4 hours, get the task done, drive back two hours, go home, stay away 5 more hours and get presentation done. </p>
+
+<p><strong>Case-2: Concurrent Execution:</strong>
+But you are smart. You plan ahead. What you do is, you carry a laptop with you, and while waiting in the line, you start working on your presentation. This way, once you get back at home, you just need to work one extra hour instead of 5 more hours. In this case, both the tasks are done by you, just in pieces. You interrupted the passport task while waiting in the line and worked on presentation. Whereas when your number was called, you interrupted presentation task and switched to passport task. The saving in time was essentially possible due to interruptability of both the tasks. Concurrency, IMO, should be taken as "isolation" in ACID properties of a database.Two database transactions satisfy isolation requirement if you perform sub-transactions in each in any interleaved way and the final result is same as if the two tasks were done serially. Remember, that for both the passport and presentation tasks, you are the sole executioner.</p>
+
+<p><strong>Case-3: Parallel Execution</strong>
+Now since you are such a smart fella, obviously you are a higher up and you have got an assistant. Now before you leave to do passport task, you call him and tell him to prepare first draft of the presentation. You spend your entire day and finish passport task, come back and see your mails and you find the presentation draft. He has done a pretty solid job and with some edits in 2 more hours, you finalize it. Now since, your assistant is just as smart as you, he was able to work on it independently without a need to ask you for constant clarifications. Thus, the due to the independentability of the tasks, they were performed in the same time by two different executioners.</p>
+
+<p>Still with me? Alright ..</p>
+
+<p><strong>Case-4: Concurrent But Not Parallel</strong>
+Remember your passport task where you have to wait in the line?
+In this case, notice that since it is <strong>your</strong> passport, your assistant cannot wait in the line for you. Thus, the passport tasks has interruptability (you can stop it while waiting in the line and resume it later when your number is called), but no independentability(your assistant cannot wait in your stead).</p>
+
+<p><strong>Case-5: Parallel But Not Concurrent</strong>
+Say, the government office has a security check to enter the premises. Here, you have to take off all electronic devices and submit them to the officers which you only get back after finishing your task. In this, case, the passport task is neither independent nor interruptible. Even if you are waiting in the line, you cannot work on something else because you do not have necessary equipment. Similarly, say the presentation is so highly mathematical in nature that you require 100% concentration for at least 5 hours. You cannot do it while waiting in line for passport task even if you have your laptop with you. In this case, the presentation task is independent(either you or your assistant can put 5 hours of focused effort), but not interruptible.</p>
+
+<p><strong>Case-6: Concurrent and Parallel Execution</strong>
+Now say that in addition to assigning an assistant to the presentation, you also carry a laptop with you to passport task. While waiting in the line, you see that assistant has created first 10 slides in a shared deck. You send comments out to him, correcting him. Thus, now when you get back at home, instead of investing 2 hours to finalize the draft, you just need 15 minutes. This was possible because presentation task has independentability(either one of you can do it) and interruptability(you can stop it and resume it later). So you concurrently executed both the task and only executed presentation task in parallel.</p>
+
+<p>Lets say, that the government office is corrupt in addition to being overly bureaucratic. Thus, you can enter it, show your identification, start waiting in line for your number to be called, give some money to the guard and make someone else hold your position in the line, sneak out, come back before your number is called and resume it.</p>
+
+<p>In this case, you can perform both the passport and presentation tasks concurrently and in parallel. You can sneak out and your position is held by your assistant. Both of you can work on the presentation etc. </p>
+
+<p><strong>Back to Computer Science:</strong>
+In computing world, one of often sees case-1, for example interrupt processing.</p>
+
+<p>Case-2 when there is only one processor but all executing tasks have wait times due to I/O.</p>
+
+<p>Case-3 is often seen when we are talking about map-reduce or hadoop clusters.</p>
+
+<p>I think case-4 is rare, it rarely happens that a task is concurrent but not parallel. But it could happen because say your task requires access to a special computational chip which can be accessed through only processor-1. Thus, even if processor-2 is free and processor-1 is performing some other task, the special computation task cannot proceed on processor-2.</p>
+
+<p>Case-5, is also rare but not as rare as case-4. A non-concurrent code can be a critical region protected by mutexes. Once it is started, it has to completely execute. However, two different critical regions can progress simultaneously on two different processors.</p>
+
+<p>Case-6: IMO, most of the times when we are talking about parallel or concurrent programming, we are basically talking about this last case-6 of mix and match of both parallel and concurrent executions.</p>
+
+<p><strong>Concurrency and Go:</strong>
+If you see why Rob Pike is saying concurrency is better, you have to understand that the reason is, you have a really long task in which there are multiple waiting periods where you wait for some external operations like file read, network download. In his lecture, all he is saying is that, just break this long sequential task such that you can do something useful while you wait. That is why he talks about different organizations with various gophers.
+Now the strength of Go comes from making this breaking really easy with "go" keyword and channels. Also there is excellent underlying support in the runtime to schedule these goroutines.</p>
+
+<p>But essentially, is concurrency better that parallelism?</p>
+
+<p>Are apples preferred more than oranges?</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/24684037" title="short permalink to this answer" class="short-link" id="link-post-24684037">share</a><span class="lsep">|</span><a href="/posts/24684037/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-07-10 18:44:38Z" class="relativetime">Jul 10 '14 at 18:44</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/41889/methos"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/032c4570e48b03285f5aa71754e36edb?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/41889/methos">Methos</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,158</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="29 silver badges"><span class="badge2"></span><span class="badgecount">29</span></span><span title="38 bronze badges"><span class="badge3"></span><span class="badgecount">38</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-24684037" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-24684037" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="4176558"></a>
+<div id="answer-4176558" class="answer" data-answerid="4176558"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="4176558">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">23</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><strong>Concurrency:</strong> If two or more problems are solved by a single processor.
+<img src="http://i.stack.imgur.com/OdYWr.gif" alt="alt text"></p>
+
+<p><strong>Parallelism:</strong> If one problem is solved by multiple processors.</p>
+
+<p><img src="http://i.stack.imgur.com/RRF1J.gif" alt="alt text"></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/4176558" title="short permalink to this answer" class="short-link" id="link-post-4176558">share</a><span class="lsep">|</span><a href="/posts/4176558/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-11-14 07:12:41Z" class="relativetime">Nov 14 '10 at 7:12</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/277734/rajendra-kumar-uppal"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/562e9ccf9e43c6b1244ad1e63dbf0244?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/277734/rajendra-kumar-uppal">Rajendra Kumar Uppal</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">5,003</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="36 silver badges"><span class="badge2"></span><span class="badgecount">36</span></span><span title="48 bronze badges"><span class="badge3"></span><span class="badgecount">48</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4176558" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-6334894" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">32</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;d disagree with this - a program designed to be concurrent may or may not be run in parallel; concurrency is more an attribute of a program, parallelism may occur when it executes.</span>
+                    &ndash;&nbsp;<a href="/users/4332/adrian-mouat"
+                       title="14204 reputation"
+                       class="comment-user">Adrian Mouat</a>
+                <span class="comment-date" dir="ltr"><span title="2011-04-06 15:43:59Z" class="relativetime-clean">Apr 6 '11 at 15:43</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4176558" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1050250"></a>
+<div id="answer-1050250" class="answer" data-answerid="1050250"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1050250">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">19</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>concurency: 
+  multiple execution flows with the potential to share resources</p>
+
+<p>Ex:
+  two threads competing for a I/O port. </p>
+
+<p>paralelism: 
+  splitting a problem in multiple similar chunks.</p>
+
+<p>Ex:
+  parsing a big file by running two processes on every half of the file.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1050250" title="short permalink to this answer" class="short-link" id="link-post-1050250">share</a><span class="lsep">|</span><a href="/posts/1050250/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1050250/revisions" title="show all edits to this post">edited <span title="2012-08-07 16:17:26Z" class="relativetime">Aug 7 '12 at 16:17</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-06-26 17:23:33Z" class="relativetime">Jun 26 '09 at 17:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/106463/mihai-toader"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/267d0378337d50a981132a408797fd81?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/106463/mihai-toader">Mihai Toader</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">8,021</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="27 bronze badges"><span class="badge3"></span><span class="badgecount">27</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1050250" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1050250" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1050302"></a>
+<div id="answer-1050302" class="answer" data-answerid="1050302"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1050302">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">14</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>They solve different problems.  Concurrency solves the problem of having scarce CPU resources and many tasks.  So, you create threads or independent paths of execution through code in order to share time on the scarce resource.  Up until recently, concurrency has dominated the discussion because of CPU availability.</p>
+
+<p>Parallelism solves the problem of finding enough tasks and appropriate tasks (ones that can be split apart correctly) and distributing them over plentiful CPU resources.  Parallelism has always been around of course, but it's coming to the forefront because multi-core processors are so cheap.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1050302" title="short permalink to this answer" class="short-link" id="link-post-1050302">share</a><span class="lsep">|</span><a href="/posts/1050302/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-06-26 17:36:19Z" class="relativetime">Jun 26 '09 at 17:36</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/86473/jp-alioto"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/4b4f6c773b0fc5997b76e736fef9330c?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/86473/jp-alioto">JP Alioto</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 36430" dir="ltr">36.4k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="60 silver badges"><span class="badge2"></span><span class="badgecount">60</span></span><span title="97 bronze badges"><span class="badge3"></span><span class="badgecount">97</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1050302" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1050302" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="29796033"></a>
+<div id="answer-29796033" class="answer" data-answerid="29796033"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="29796033">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">12</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I will try to explain with a interesting and easy to understand example. :)</p>
+
+<p><strong>Assume</strong> that a organization organizes a chess tournament where 10 players (<strong>with equal chess playing skills</strong>) will challenge a <strong>professional champion</strong> chess player. And since chess is 1:1 game thus organizers have to conduct 10 games in time efficient manner so that they can finish the whole event as quickly as possible.</p>
+
+<p>Hopefully following scenarios will easily describe multiple ways of conducting these 10 games:</p>
+
+<p><strong>1) SERIAL</strong> - lets say that the professional plays with each person one by one i.e. starts and finishes the game with one person and then starts the next game with next person and so on. In other words, they decided to conduct the games sequentially. So if one game takes 10 mins to complete then 10 games will take 100 mins, also assume that transition from one game to other takes 6 secs then for 10 games it will be 54 secs (approx. 1 min).</p>
+
+<p>so the whole event will approximately complete in 101 mins (<strong>WORST APPROACH</strong>)</p>
+
+<p><strong>2) CONCURRENT</strong> - lets say that professional plays his turn and moves on to next player so all 10 players are playing simultaneously but the professional player is not with two person at a time, he plays his turn and moves on to next person. Now assume professional player takes 6 sec to play his turn and also transition time of professional player b/w two players is 6 sec so total transition time to get back to first player will be 1min (10x6sec). Therefore, by the time he is back to first person with, whom event was started, 2mins have passed (10xtime_per_turn_by_champion + 10xtransition_time=2mins)</p>
+
+<p>Assuming that all player take 45sec to complete their turn so based on 10mins per game from SERIAL event the no. of rounds before a game finishes should 600/(45+6) = 11 rounds (approx)</p>
+
+<p>So the whole event will approximately complete in 11xtime_per_turn_by_player_&amp;_champion + 11xtransition_time_across_10_players = 11x51 + 11x60sec= 561 + 660 = 1221sec = 20.35mins (approximately)</p>
+
+<p>SEE THE IMPROVEMENT from 101 mins to 20.35 mins (<strong>BETTER APPROACH</strong>)</p>
+
+<p><strong>3) PARALLEL</strong> - lets say organizers get some extra funds and thus decided to invite <strong>two professional champion player</strong> (both equally capable) and divided the set of same 10 players (challengers) in two group of 5 each and assigned them to two champion i.e. one group each. Now the event is progressing in parallel in these two sets i.e. at least two players (one in each group) are playing against the two professional players in their respective group.</p>
+
+<p>However within the group the professional player with take one player at a time (i.e. sequentially) so without any calculation you can easily deduce that whole event will approximately complete in 101/2=50.5mins to complete</p>
+
+<p>SEE THE IMPROVEMENT from 101 mins to 50.5 mins (<strong>GOOD APPROACH</strong>)</p>
+
+<p><strong>4) CONCURRENT + PARALLEL</strong> - In above scenario, lets say that the two champion player will play concurrently (read 2nd point) with the 5 players in their respective groups so now games across groups are running in parallel but within group they are running concurrently.</p>
+
+<p>So the games in one group will approximately complete in 11xtime_per_turn_by_player_&amp;_champion + 11xtransition_time_across_5_players = 11x51 + 11x30 = 600 + 330 = 930sec = 15.5mins (approximately)</p>
+
+<p>So the whole event (involving two such parallel running group) will approximately complete in 15.5mins</p>
+
+<p>SEE THE IMPROVEMENT from 101 mins to 15.5 mins (<strong>BEST APPROACH</strong>)</p>
+
+<p><strong>NOTE:</strong> in above scenario if you replace 10 players with 10 similar jobs and two professional player with a two CPU cores then again the following ordering will remain true:</p>
+
+<p>SERIAL > PARALLEL > CONCURRENT > CONCURRENT+PARALLEL</p>
+
+<p>(NOTE: this order might change for other scenarios as this ordering highly depends on inter-dependency of jobs, communication needs b/w jobs and transition overhead b/w jobs)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/29796033" title="short permalink to this answer" class="short-link" id="link-post-29796033">share</a><span class="lsep">|</span><a href="/posts/29796033/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/29796033/revisions" title="show all edits to this post">edited <span title="2015-04-22 12:23:33Z" class="relativetime">Apr 22 '15 at 12:23</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-04-22 11:24:44Z" class="relativetime">Apr 22 '15 at 11:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/416369/sactiw"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a62fe70596b17d431234e25a95965875?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/416369/sactiw">sactiw</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 12356" dir="ltr">12.4k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="21 silver badges"><span class="badge2"></span><span class="badgecount">21</span></span><span title="21 bronze badges"><span class="badge3"></span><span class="badgecount">21</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-29796033" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-56761802" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Great explanation. There&#39;s one addition. Concurrent model for the 2nd case (when a professional player moves b/w players) will get improvement only if player do his turn in 45 seconds. In other words, we should have I/O waiting in the whole process. If a regular player can turn in less than 45 seconds (5 or may be 10 seconds) the improvement will be less.  Thus, if we haven&#39;t I/O waiting time in our work, concurrency will be roughly the same as a serial execution.</span>
+                    &ndash;&nbsp;<a href="/users/825563/psylone"
+                       title="1650 reputation"
+                       class="comment-user">Psylone</a>
+                <span class="comment-date" dir="ltr"><span title="2015-12-29 11:52:16Z" class="relativetime-clean">Dec 29 '15 at 11:52</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-29796033" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="28184146"></a>
+<div id="answer-28184146" class="answer" data-answerid="28184146"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="28184146">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">11</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Simple example:</p>
+
+<p>Concurrent is: "Two queues accessing one ATM machine"</p>
+
+<p>Parallel is: "Two queues and two ATM machines"</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/28184146" title="short permalink to this answer" class="short-link" id="link-post-28184146">share</a><span class="lsep">|</span><a href="/posts/28184146/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-01-28 03:29:43Z" class="relativetime">Jan 28 '15 at 3:29</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/4501242/saurabh-pakhare"><div class="gravatar-wrapper-32"><img src="https://graph.facebook.com/100000634300976/picture?type=large" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/4501242/saurabh-pakhare">Saurabh Pakhare</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">121</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-28184146" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-28184146" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="30761061"></a>
+<div id="answer-30761061" class="answer" data-answerid="30761061"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="30761061">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Say you have a program that has two threads. The program can run in two ways:</p>
+
+<pre><code>Concurrency                 Concurrency + parallelism
+ ___                         ___ ___
+|th1|                       |th1|th2|
+|   |                       |   |___|
+|___|___                    |   |___
+    |th2|                   |___|th2|
+ ___|___|                    ___|___|
+|th1|                       |th1|
+|___|___                    |   |___
+    |th2|                   |   |th2|
+</code></pre>
+
+<p>In both cases we have concurrency from the mere fact that we have more than one thread running.</p>
+
+<p>If we ran this program on a computer with a single CPU core, the OS would be switching between the two threads, allowing one thread to run at a time.</p>
+
+<p>If we ran this program on a computer with a multi-core CPU then we would be able to run the two threads in <strong>parallel</strong> - side by side at the same time instance (second diagram).</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/30761061" title="short permalink to this answer" class="short-link" id="link-post-30761061">share</a><span class="lsep">|</span><a href="/posts/30761061/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/30761061/revisions" title="show all edits to this post">edited <span title="2015-12-12 10:37:56Z" class="relativetime">Dec 12 '15 at 10:37</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-06-10 15:39:57Z" class="relativetime">Jun 10 '15 at 15:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/474563/pithikos"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3f27430d3d162c443506778a01a24dc2?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/474563/pithikos">Pithikos</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,573</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="31 silver badges"><span class="badge2"></span><span class="badgecount">31</span></span><span title="57 bronze badges"><span class="badge3"></span><span class="badgecount">57</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-30761061" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-30761061" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18728710"></a>
+<div id="answer-18728710" class="answer" data-answerid="18728710"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18728710">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Think of it as servicing queues where server can only serve the 1st job in a queue.</p>
+
+<p>1 server , 1 job queue (with 5 jobs) -> no concurrency, no parallelism (Only one job is being serviced to completion, the next job in the queue has to wait till the serviced job is done and there is no other server to service it)</p>
+
+<p>1 server, 2 or more different queues (with 5 jobs per queue) -> concurrency (since server is sharing time with all the 1st jobs in queues, equally or weighted) , still no parallelism since at any instant, there is one and only job being serviced.</p>
+
+<p>2 or more servers , one Queue -> parallelism ( 2 jobs done at the same instant) but no concurrency ( server is not sharing time, the 3rd job has to wait till one of the server completes.)</p>
+
+<p>2 or more servers, 2 or more different queues -> concurrency and parallelism</p>
+
+<p>In other words, concurrency is sharing time to complete a job, it MAY take up the same time to complete its job but at least it gets started early. Important thing is , jobs can be sliced into smaller jobs, which allows interleaving.</p>
+
+<p>Parallelism is achieved with just more CPUs , servers, people etc that run in  parallel.</p>
+
+<p>Keep in mind, if the resources are shared, pure parallelism cannot be achieved, but this is where concurrency would have it's best practical use, taking up another job that doesn't need that resource. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18728710" title="short permalink to this answer" class="short-link" id="link-post-18728710">share</a><span class="lsep">|</span><a href="/posts/18728710/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-10 21:03:03Z" class="relativetime">Sep 10 '13 at 21:03</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2766549/rahul"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/61fd3d3347a0fcecd296e3e3925c1053?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2766549/rahul">Rahul</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">61</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18728710" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18728710" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="16181893"></a>
+<div id="answer-16181893" class="answer" data-answerid="16181893"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16181893">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><strong>Concurrency</strong> => When multiple tasks performed simultaneously with shared resources.</p>
+
+<p><strong>Parallel</strong> => when single task divided into multiple simple independent tasks which can be performed simultaneously. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/16181893" title="short permalink to this answer" class="short-link" id="link-post-16181893">share</a><span class="lsep">|</span><a href="/posts/16181893/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/16181893/revisions" title="show all edits to this post">edited <span title="2013-04-24 01:52:35Z" class="relativetime">Apr 24 '13 at 1:52</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/33204/slm"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/6a61a40ee46871d39e99835351e178ef?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/33204/slm">slm</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,762</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="39 silver badges"><span class="badge2"></span><span class="badgecount">39</span></span><span title="45 bronze badges"><span class="badge3"></span><span class="badgecount">45</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-04-24 01:29:52Z" class="relativetime">Apr 24 '13 at 1:29</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1331887/muhammad-bilal"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a06cc8ed3241187ee5283b1cf30f8f96?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1331887/muhammad-bilal">Muhammad Bilal</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">41</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16181893" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-34771484" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">How would you describe a single-core processor system that multi-tasks (time slices) to give the appearance of overlapping processing? When concurrency is defined as execution in overlapping time periods it includes this processing. You have described simultaneous execution which excludes it under your definition of concurrency.</span>
+                    &ndash;&nbsp;<a href="/users/746754/acarlon"
+                       title="6754 reputation"
+                       class="comment-user">acarlon</a>
+                <span class="comment-date" dir="ltr"><span title="2014-04-02 05:26:03Z" class="relativetime-clean">Apr 2 '14 at 5:26</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16181893" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="22672448"></a>
+<div id="answer-22672448" class="answer" data-answerid="22672448"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="22672448">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I'm going to offer an answer that conflicts a bit with some of the popular answers here.  In my opinion, concurrency is a general term that includes parallelism.  <em>Concurrency</em> applies to any situation where distinct tasks or units of work overlap in time.  <em>Parallelism</em> applies more specifically to situations where distinct units of work are evaluated/executed at the same physical time.  The raison d'etre of parallelism is speeding up software that can benefit from multiple physical compute resources.  The other major concept that fits under concurrency is interactivity.  <em>Interactivity</em> applies when the overlapping of tasks is observable from the outside world.  The raison d'etre of interactivity is making software that is responsive to real-world entities like users, network peers, hardware peripherals, etc.</p>
+
+<p>Parallelism and interactivity are almost entirely independent dimension of concurrency.  For a particular project developers might care about either, both or neither.  They tend to get conflated, not least because the abomination that is threads gives a reasonably convenient primitive to do both.</p>
+
+<p><strong>A little more detail about parallelism</strong>:</p>
+
+<p>Parallelism exists at very small scales (e.g. instruction-level parallelism in processors), medium scales (e.g. multicore processors) and large scales (e.g. high-performance computing clusters).  Pressure on software developers to expose more thread-level parallelism has increased in recent years, because of the growth of multicore processors.  Parallelism is intimately connected to the notion of <em>dependence</em>.  Dependences limit the extent to which parallelism can be achieved; two tasks cannot be executed in parallel if one depends on the other (Ignoring speculation).</p>
+
+<p>There are lots of patterns and frameworks that programmers use to express parallelism: pipelines, task pools, aggregate operations on data structures ("parallel arrays").</p>
+
+<p><strong>A little more detail about interactivity</strong>:</p>
+
+<p>The most basic and common way to do interactivity is with events (i.e. an event loop and handlers/callbacks).  For simple tasks events are great.  Trying to do more complex tasks with events gets into stack ripping (a.k.a. callback hell; a.k.a. control inversion).  When you get fed up with events you can try more exotic things like generators, coroutines (a.k.a. Async/Await), or cooperative threads.</p>
+
+<p>For the love of reliable software, please don't use threads if what you're going for is interactivity.</p>
+
+<p><strong>Curmudgeonliness</strong></p>
+
+<p>I dislike Rob Pike's "concurrency is not parallelism; it's better" slogan.  Concurrency is neither better nor worse than parallelism.  Concurrency includes interactivity which cannot be compared in a better/worse sort of way with parallelism.  It's like saying "control flow is better than data".</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/22672448" title="short permalink to this answer" class="short-link" id="link-post-22672448">share</a><span class="lsep">|</span><a href="/posts/22672448/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-03-26 20:33:29Z" class="relativetime">Mar 26 '14 at 20:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2347809/ben-ylvisaker"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8d5b2fe7f2173b6ebfe4ea9dd799769a?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2347809/ben-ylvisaker">Ben Ylvisaker</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">361</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22672448" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-22672448" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="16242211"></a>
+<div id="answer-16242211" class="answer" data-answerid="16242211"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16242211">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>In electronics <em>serial</em> and <em>parallel</em> represent a type of static topology, determining the actual behaviour of the circuit. When there is no concurrency, <strong>parallelism is deterministic</strong>.</p>
+
+<p>In order to describe dynamic, <em>time-related phenomena</em>, we use the terms <em>sequential</em> and <em>concurrent</em>. For example, a certain outcome may be obtained via a certain <em>sequence</em> of tasks (eg. a recipe). When we are talking with someone, we are producing a sequence of words. However, in reality, many other processes occur in the same moment, and thus, <em>concur</em> to the actual result of a certain action. If a lot of people is talking at the same time, concurrent talks may interfere with our sequence, but the outcomes of this interference are not known in advance. <strong>Concurrency introduces indeterminacy</strong>.</p>
+
+<p>The serial/parallel and sequential/concurrent characterization are orthogonal. An example of this is in digital communication. In a <em>serial adapter</em>, a digital message is temporally (i.e. <em>sequentially</em>) distributed along the same communication line (eg. one wire). In a <em>parallel adapter</em>, this is divided also on parallel communication lines (eg. many wires), and then reconstructed on the receiving end. </p>
+
+<p>Let us image a game, with 9 children. If we dispose them as a chain, give a message at the first and receive it at the end, we would have a serial communication. More words compose the message, consisting in a sequence of communication unities.</p>
+
+<pre><code>I like ice-cream so much. &gt; X &gt; X &gt; X &gt; X &gt; X &gt; X &gt; X &gt; X &gt; X &gt; ....
+</code></pre>
+
+<p>This is a <strong>sequential process</strong> reproduced on a <strong>serial infrastructure</strong>.</p>
+
+<p>Now, let us image to divide the children in groups of 3. We divide the phrase in three parts, give the first to the child of the line at our left, the second to the center line's child, etc.</p>
+
+<pre><code>I like ice-cream so much. &gt; I like    &gt; X &gt; X &gt; X &gt; .... &gt; ....
+                          &gt; ice-cream &gt; X &gt; X &gt; X &gt; ....
+                          &gt; so much   &gt; X &gt; X &gt; X &gt; ....
+</code></pre>
+
+<p>This is a <strong>sequential process</strong> reproduced on a <strong>parallel infrastructure</strong> (still partially serialized although).</p>
+
+<p>In both cases, supposing there is a perfect communication between the children, the result is <em>determined</em> in advance.</p>
+
+<p>If there are other persons that talk to the first child at the same time as you, then we will have <strong>concurrent processes</strong>. We do no know which process will be considered by the infrastructure, so the final outcome is <em>non-determined</em> in advance.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/16242211" title="short permalink to this answer" class="short-link" id="link-post-16242211">share</a><span class="lsep">|</span><a href="/posts/16242211/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/16242211/revisions" title="show all edits to this post">edited <span title="2013-04-27 09:17:02Z" class="relativetime">Apr 27 '13 at 9:17</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-04-26 17:40:11Z" class="relativetime">Apr 26 '13 at 17:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2323060/s1l3n0"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c586f1a97f2b9f6cee6093ee2b94d5a8?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2323060/s1l3n0">s1l3n0</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">51</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16242211" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-34771385" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1 Interesting. In computing  one definition, as per the currently accepted answer concurrent means execution in overlapping time periods, not necessarily simultaneously (which would be parallel). In electronics how do you describe circuits that are designed to give the appearance of things happening at the same time, but are just switching very quickly. To continue your ice-cream analogy: I like ice-cream so much &gt; child A1 I like &gt; child B1 ice-cream &gt; child C1 so much &gt; child A2 I like &gt; child B2 ice-cream &lt; child C2 so much...</span>
+                    &ndash;&nbsp;<a href="/users/746754/acarlon"
+                       title="6754 reputation"
+                       class="comment-user">acarlon</a>
+                <span class="comment-date" dir="ltr"><span title="2014-04-02 05:21:57Z" class="relativetime-clean">Apr 2 '14 at 5:21</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16242211" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="21819828"></a>
+<div id="answer-21819828" class="answer" data-answerid="21819828"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21819828">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Great, let me take an scenario to show what I understand.
+suppose there're 3 kids named: A, B, C. A and B talk, C listen.
+For A and B, they are parallel:
+A: I am A.
+B: I am B.</p>
+
+<p>But for C, his brain must take the concurrent process to listen A and B, it maybe:
+I am I A am B.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/21819828" title="short permalink to this answer" class="short-link" id="link-post-21819828">share</a><span class="lsep">|</span><a href="/posts/21819828/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-02-17 02:42:23Z" class="relativetime">Feb 17 '14 at 2:42</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1926158/mannnnerd"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/f0b3ac625601302cb91acac8707a8ad4?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1926158/mannnnerd">mannnnerd</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">31</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21819828" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21819828" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="27483453"></a>
+<div id="answer-27483453" class="answer" data-answerid="27483453"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="27483453">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Concurrency simple means more than one tasks are running (not necessary in parallel). For example assumer we have 3 tasks then at any moment of time: more than one may be running or all may be running at same time.</p>
+
+<p>Parallelism mean they are literally running in parallel. So in that case all three must be running at same time.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/27483453" title="short permalink to this answer" class="short-link" id="link-post-27483453">share</a><span class="lsep">|</span><a href="/posts/27483453/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-12-15 11:53:15Z" class="relativetime">Dec 15 '14 at 11:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1216775/akhil-mittal"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/1UFRy.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1216775/akhil-mittal">akhil_mittal</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,545</span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-27483453" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-27483453" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="31009604"></a>
+<div id="answer-31009604" class="answer" data-answerid="31009604"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="31009604">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Concurrency is the generalized form of parallelism. For example parallel program can also be called concurrent but reverse is not true.</p>
+
+<ol>
+<li><p>Concurrent execution is possible on single processor (multiple threads, managed by scheduler or thread-pool)</p></li>
+<li><p>Parallel execution is not possible on single processor but on multiple processors. (One process per processor)</p></li>
+<li><p>Distributed computing is also a related topic and it can also be called concurrent computing but reverse is not true, like parallelism.</p></li>
+</ol>
+
+<p>For details read this research paper
+<a href="http://babel.ls.fi.upm.es/teaching/concurrencia/material/concepts_and_notations.pdf" rel="nofollow">Concepts of Concurrent Programming</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/31009604" title="short permalink to this answer" class="short-link" id="link-post-31009604">share</a><span class="lsep">|</span><a href="/posts/31009604/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-06-23 17:33:18Z" class="relativetime">Jun 23 '15 at 17:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/4774371/penguin"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/t96yb.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/4774371/penguin">penguin</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">904</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="16 bronze badges"><span class="badge3"></span><span class="badgecount">16</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-31009604" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-31009604" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="31343562"></a>
+<div id="answer-31343562" class="answer" data-answerid="31343562"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="31343562">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Pike's notion of "concurrency" is an intentional design and implementation decision.  A concurrent-capable program design may or may not exhibit behavioral "parallelism"; it depends upon the runtime environment.</p>
+
+<p>You don't want parallelism exhibited by a program that wasn't designed for concurrency.  :-)  But to the extent that it's a net gain for the relevant factors (power consumption, performance, etc.), you want a maximally-concurrent design so that the host system can parallelize its execution when possible.</p>
+
+<p>Pike's Go programming language illustrates this in the extreme: his functions are all threads that can run correctly concurrently, i.e. calling a function always creates a thread that will run in parallel with the caller if the system is capable of it.  An application with hundreds or even thousands of threads is perfectly ordinary in his world. (I'm no Go expert, that's just my take on it.)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/31343562" title="short permalink to this answer" class="short-link" id="link-post-31343562">share</a><span class="lsep">|</span><a href="/posts/31343562/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-07-10 14:37:39Z" class="relativetime">Jul 10 '15 at 14:37</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/5103280/bgat"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/34242b14757d6c5b144ecf26fa9c614a?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/5103280/bgat">bgat</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-31343562" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-31343562" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="34366652"></a>
+<div id="answer-34366652" class="answer" data-answerid="34366652"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="34366652">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Just by consulting the dictionary, you can see that concurrent (from latin) means to run together, converge, agree; ergo there is a need to synchronize because there is competition on the same resources. Parallel (from greek) means to duplicate on the side; ergo to do the same thing at the same time.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/34366652" title="short permalink to this answer" class="short-link" id="link-post-34366652">share</a><span class="lsep">|</span><a href="/posts/34366652/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-12-19 02:30:42Z" class="relativetime">Dec 19 '15 at 2:30</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/612533/rocket441"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/988b89afd75a6959f117103b409701ab?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/612533/rocket441">rocket441</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">111</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-34366652" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-34366652" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/1050222/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="1050222" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="8003426aae9135a28c330cb68d32266c">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1050222%2fconcurrency-vs-parallelism-what-is-the-difference%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f1050222%2fconcurrency-vs-parallelism-what-is-the-difference%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/language-agnostic" class="post-tag" title="show questions tagged &#39;language-agnostic&#39;" rel="tag">language-agnostic</a> <a href="/questions/tagged/concurrency" class="post-tag" title="show questions tagged &#39;concurrency&#39;" rel="tag">concurrency</a> <a href="/questions/tagged/parallel-processing" class="post-tag" title="show questions tagged &#39;parallel-processing&#39;" rel="tag">parallel-processing</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2009-06-26 17:18:02Z"><b>6 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>74450 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-12-19 02:30:42Z">24 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">Stack Exchange Year in Review 2015</a>
+                </div>
+                <br class="cbt" />
+            </div>
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 8 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk700836321",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk700836321">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/79923" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted extra-large">4535</div>
+	</a>
+	<a href="/questions/79923/what-and-where-are-the-stack-and-heap" class="question-hyperlink">What and where are the stack and heap?</a>
+</div><div class="spacer">
+	<a href="/q/1897993" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">147</div>
+	</a>
+	<a href="/questions/1897993/difference-between-concurrent-programming-and-parallel-programming" class="question-hyperlink">Difference between concurrent programming and parallel programming</a>
+</div><div class="spacer">
+	<a href="/q/14795145" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">125</div>
+	</a>
+	<a href="/questions/14795145/how-the-single-threaded-non-blocking-io-model-works-in-node-js" class="question-hyperlink">How the single threaded non blocking IO model works in Node.js</a>
+</div><div class="spacer">
+	<a href="/q/10489298" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">55</div>
+	</a>
+	<a href="/questions/10489298/redis-is-single-threaded-then-how-does-it-do-concurrent-i-o" class="question-hyperlink">Redis is single-threaded, then how does it do concurrent I/O?</a>
+</div><div class="spacer">
+	<a href="/q/1934715" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">24</div>
+	</a>
+	<a href="/questions/1934715/difference-between-a-coroutine-and-a-thread" class="question-hyperlink">Difference between a &ldquo;coroutine&rdquo; and a &ldquo;thread&rdquo;?</a>
+</div><div class="spacer">
+	<a href="/q/4844637" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">35</div>
+	</a>
+	<a href="/questions/4844637/what-is-the-difference-between-concurrency-parallelism-and-asynchronous-methods" class="question-hyperlink">What is the difference between concurrency, parallelism and asynchronous methods?</a>
+</div><div class="spacer">
+	<a href="/q/25098066" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">25</div>
+	</a>
+	<a href="/questions/25098066/what-is-callback-hell-and-how-and-why-rx-solves-it" class="question-hyperlink">What is &ldquo;callback hell&rdquo; and how and why RX solves it?</a>
+</div><div class="spacer">
+	<a href="/q/3066392" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">7</div>
+	</a>
+	<a href="/questions/3066392/can-ruby-fibers-be-concurrent" class="question-hyperlink">Can Ruby Fibers be Concurrent?</a>
+</div><div class="spacer">
+	<a href="/q/11835046" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/11835046/multithreading-and-multicore-differences" class="question-hyperlink">Multithreading and multicore differences</a>
+</div><div class="spacer">
+	<a href="/q/31378197" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">11</div>
+	</a>
+	<a href="/questions/31378197/where-to-use-concurrency-when-calling-an-api" class="question-hyperlink">Where to use concurrency when calling an API</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/1050222">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/79923" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted extra-large">4535
+    </div>
+</a><a href="/questions/79923/what-and-where-are-the-stack-and-heap" class="question-hyperlink">What and where are the stack and heap?</a>
+</div>
+<div class="spacer">
+<a href="/q/541344" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/541344/what-challenges-promote-the-use-of-parallel-concurrent-architectures" class="question-hyperlink">What challenges promote the use of parallel/concurrent architectures?</a>
+</div>
+<div class="spacer">
+<a href="/q/672180" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">5
+    </div>
+</a><a href="/questions/672180/what-are-some-hints-that-an-algorithm-should-parallelized" class="question-hyperlink">What are some hints that an algorithm should parallelized?</a>
+</div>
+<div class="spacer">
+<a href="/q/1897993" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">147
+    </div>
+</a><a href="/questions/1897993/difference-between-concurrent-programming-and-parallel-programming" class="question-hyperlink">Difference between concurrent programming and parallel programming</a>
+</div>
+<div class="spacer">
+<a href="/q/2025411" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/2025411/parallel-and-concurrent-programming" class="question-hyperlink">Parallel and Concurrent Programming</a>
+</div>
+<div class="spacer">
+<a href="/q/3028577" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/3028577/parallel-java-libraries" class="question-hyperlink">parallel java libraries</a>
+</div>
+<div class="spacer">
+<a href="/q/4844637" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">35
+    </div>
+</a><a href="/questions/4844637/what-is-the-difference-between-concurrency-parallelism-and-asynchronous-methods" class="question-hyperlink">What is the difference between concurrency, parallelism and asynchronous methods?</a>
+</div>
+<div class="spacer">
+<a href="/q/11700953" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">11
+    </div>
+</a><a href="/questions/11700953/concurrency-is-not-parallelism" class="question-hyperlink">Concurrency is not Parallelism?</a>
+</div>
+<div class="spacer">
+<a href="/q/14130266" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">18
+    </div>
+</a><a href="/questions/14130266/is-there-a-difference-between-concurrency-and-parallelism-in-java" class="question-hyperlink">Is there a difference between concurrency and parallelism in java?</a>
+</div>
+<div class="spacer">
+<a href="/q/19951050" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/19951050/concurrency-parallelism-combinations" class="question-hyperlink">Concurrency/Parallelism combinations</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/72968/the-pc-claims-to-know-an-npc-they-just-met-how-should-i-react-as-the-dm" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The PC claims to know an NPC they just met, how should I react as the DM?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103889/how-to-extract-the-elments-which-the-require-the-second-elements-to-be-the-small" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to extract the elments which the require the second elements to be the smallest?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/116556/deleting-rows-from-a-spreadsheet-where-column-c-is-blank" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Deleting rows from a spreadsheet where Column C is blank
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61502/accused-of-cheating-on-masters-final-afraid-that-appeal-will-bring-retaliation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Accused of cheating on masters final; afraid that appeal will bring retaliation (ruining PhD applications)
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/254868/use-md5sum-to-verify-file-in-a-script" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Use md5sum to verify file in a script
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/65366/how-can-i-know-what-fonts-a-website-is-using" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I know what fonts a website is using?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33147/if-people-had-magic-powers-how-would-it-affect-slavery" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If people had magic powers, how would it affect slavery?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/254906/split-a-string-into-path-and-application" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    split a string into path and application
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61523/how-to-diagnose-problems-in-a-paper-rejected-in-pre-review" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to diagnose problems in a paper rejected in pre-review?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299005/what-is-worse-than-mediocre" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is worse than &quot;mediocre&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33112/pew-pew-lasers-what-would-directed-energy-weapons-actually-sound-like" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Pew Pew Lasers! What would directed energy weapons actually sound like?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110258/users-calling-and-telling-us-their-passwords" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Users calling and telling us their passwords
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251625/if-you-use-the-bobblehead-stand-or-magazine-racks-do-i-assume-correctly-that-the" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If you use the bobblehead stand or magazine racks do I assume correctly that they still work for you?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/81944/how-to-prevent-mold-in-stored-joint-compound" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to prevent mold in stored joint compound
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1605183/if-squaring-a-number-means-multiplying-that-number-with-itself-then-shouldnt-ta" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If squaring a number means multiplying that number with itself then shouldn&#39;t taking square root of a number mean to divide a number by itself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114650/did-kylo-ren-ever-actually-start-training-with-snoke" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Did Kylo Ren ever actually start training with Snoke?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gamedev" title="Game Development Stack Exchange"></div><a href="http://gamedev.stackexchange.com/questions/114706/how-to-design-a-leaderboard-where-lower-is-better" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:53 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to design a leaderboard where lower is better?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69250/format-the-reputation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Format the reputation
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34741218/string-startswith-not-working-with-asian-languages" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    String.StartsWith not working with asian languages?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-earthscience" title="Earth Science Stack Exchange"></div><a href="http://earthscience.stackexchange.com/questions/7212/why-is-the-pond-in-my-backyard-not-frozen-when-it-is-5f-outside" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:553 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the pond in my backyard not frozen when it is 5&#176;F outside?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="http://space.stackexchange.com/questions/13482/whats-salvageable-from-a-dead-satellite" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s salvageable from a dead satellite?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299041/idiom-for-making-fun-of-something-people-are-ashamed-of" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Idiom for making fun of something people are ashamed of?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/25296/the-bringer-of-change-ill-make-you-miss-your-ex" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The bringer of change - I&#39;ll make you miss your Ex!
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251614/what-exactly-is-the-masamune-sword" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What exactly is the Masamune sword?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/1050222" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/1050222/ivc/8914');});
+</script>
+<noscript>
+    <div><img src="/posts/1050222/ivc/8914" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.12.3166
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('language-agnostic,concurrency,parallel-processing');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|language-agnostic|concurrency|parallel-processing|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

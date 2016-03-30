@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>date - Extract the data in quarters using Pig - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Extract the data in quarters using Pig" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I am new to Pig using -
+
+Pig 0.12
+Hadoop 1.2.1
+
+I am working on a dataset as per the Programming Pig book and downloaded the data set NYSE daily. The table looks like this -
+
+daily: {exchange: " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/22695780/extract-the-data-in-quarters-using-pig"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/22695780/extract-the-data-in-quarters-using-pig" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=e5852343f40d"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Extract the data in quarters using Pig&#39;" href="/feeds/question/22695780">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/22695780/extract-the-data-in-quarters-using-pig" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/22695780/extract-the-data-in-quarters-using-pig" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/22695780/extract-the-data-in-quarters-using-pig">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:5,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:22695780});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '22695780');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452538505,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"c82e9ba6da5583e8fcc07891e4726864","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c28ffc75f822","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"9ede90d3ed16","js/full.en.js":"033d573c35db","js/wmd.en.js":"47ccdaf392cb","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"20bcb42b710b","js/tageditornew.en.js":"a71ee27852ba","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"ae29b9441b40","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"c251bbc879d8","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"03a7725d4a79","js/keyboard-shortcuts.en.js":"0e582d41820b","js/external-editor.en.js":"cea2f1a9cb30","js/external-editor.en.js":"cea2f1a9cb30","js/snippet-javascript.en.js":"a787fb64bef0","js/snippet-javascript-codemirror.en.js":"569e93559c76"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22695780%2fextract-the-data-in-quarters-using-pig" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22695780%2fextract-the-data-in-quarters-using-pig" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22695780%2fextract-the-data-in-quarters-using-pig" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22695780%2fextract-the-data-in-quarters-using-pig" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22695780%2fextract-the-data-in-quarters-using-pig" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/22695780/extract-the-data-in-quarters-using-pig" class="question-hyperlink">Extract the data in quarters using Pig</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="22695780"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1070366513",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1070366513">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="22695780">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I am new to Pig using -</p>
+
+<p>Pig 0.12
+Hadoop 1.2.1</p>
+
+<p>I am working on a dataset as per the Programming Pig book and downloaded the data set NYSE daily. The table looks like this -</p>
+
+<pre><code>daily: {exchange: chararray,symbol: chararray,date: chararray,open: float,high: float,low: float,close: float,volume: float,adj_close: float}
+</code></pre>
+
+<p>Here is what I am trying to achieve -</p>
+
+<p>1) Fetch all the data from the last quarter, process it and present a report with the performance of the share in that particular time period. </p>
+
+<p>Here is what I did and now stuck -</p>
+
+<pre><code>daily = load 'NYSE_daily.txt' using PigStorage(',') as (exchange:chararray, symbol:chararray, date:chararray, open:float, high:float , low:float, close:float, volume:float, adj_close:float);
+qtr_filter = FILTER daily by date &gt;= '2009-10-01' and date &lt;= '2009-12-31';
+qtr_grp = group qtr_filter by date;
+</code></pre>
+
+<p>When I dump the records the result is like this -</p>
+
+<pre><code>2009-10-01  {(NYSE,APL,2009-10-01,7.27,7.28,6.96,7.01,532000.0,7.01),(NYSE,AVB,2009-10-01,72.38,72.45,68.46,68.49,2408800.0,67.78),(NYSE,AOB,2009-10-01,4.83,4.86,4.67,4.69,1705800.0,4.69),(NYSE,AXE,2009-10-01,40.0,40.0,38.75,38.98,304200.0,38.98),(NYSE,ACN,2009-10-01,37.04,37.5,36.39,36.53,6463200.0,35.83),(NYSE,ALG,2009-10-01,15.68,16.14,15.5,15.63,15500.0,15.52),(NYSE,ALX,2009-10-01,295.42,295.42,288.8,292.01,10000.0,292.01),(NYSE,AES,2009-10-01,14.77,14.83,13.83,13.83,8785300.0,13.83),(NYSE,AEH,2009-10-01,16.5,16.67,16.39,16.65,74500.0,16.28),(NYSE,ADS,2009-10-01,62.24,62.25,59.04,59.75,1068500.0,59.75),(NYSE,AKT,2009-10-01,7.32,7.6,7.23,7.4,25700.0,6.96),(NYSE,AMP,2009-10-01,35.79,37.72,35.79,36.97,8959200.0,36.79),(NYSE,ALC,2009-10-01,20.5,20.64,20.22,20.25,58400.0,20.25),(NYSE,ALEX,2009-10-01,32.0,32.53,31.45,31.52,183700.0,31.17),(NYSE,AMN,2009-10-01,69.34,70.22,66.32,68.0,143700.0,67.4),(NYSE,ATR,2009-10-01,37.11,37.13,36.39,36.42,209300.0,36.12),(NYSE,AGL,2009-10-01,35.28,35.28,34.47,34.74,326400.0,34.32),(NYSE,AKF,2009-10-01,7.41,7.59,7.3,7.44,19500.0,7.0),(NYSE,ALE,2009-10-01,33.44,33.73,33.23,33.23,149300.0,32.8),(NYSE,ASP,2009-10-01,11.21,11.21,11.17,11.17,1300.0,10.78),(NYSE,APF,2009-10-01,14.63,14.63,14.38,14.38,107300.0,14.12),(NYSE,ARW,2009-10-01,28.15,28.23,27.18,27.2,1081600.0,27.2),(NYSE,AZZ,2009-10-01,39.78,40.32,39.13,39.33,88500.0,39.01),(NYSE,AAV,2009-10-01,7.03,7.03,6.6,6.6,929800.0,6.6),(NYSE,ARP,2009-10-01,9.52,9.56,9.29,9.34,381100.0,9.34),(NYSE,AU,2009-10-01,40.39,40.43,38.61,38.73,4189100.0,38.73),(NYSE,AB,2009-10-01,27.16,27.72,25.76,25.84,507400.0,25.2),(NYSE,AKP,2009-10-01,13.35,13.43,13.35,13.42,20100.0,13.04),(NYSE,AIT,2009-10-01,21.15,21.17,20.24,20.27,289500.0,20.13),(NYSE,AXL,2009-10-01,7.08,7.15,6.59,6.71,3636900.0,6.71),(NYSE,ALY,2009-10-01,4.35,4.38,4.05,4.05,574700.0,4.05),(NYSE,AYN,2009-10-01,13.55,13.55,13.5,13.53,1400.0,13.19),(NYSE,ANW,2009-10-01,22.12,22.4,20.99,21.19,406100.0,21.18),(NYSE,AEL,2009-10-01,6.95,7.08,6.42,6.43,373900.0,6.36),(NYSE,AI,2009-10-01,0.49,0.49,0.47,0.48,39100.0,9.6),(NYSE,AWK,2009-10-01,19.99,19.99,19.68,19.77,617000.0,19.57),(NYSE,AMX,2009-10-01,43.2,43.98,42.19,42.38,4418300.0,42.38),(NYSE,ATV,2009-10-01,4.25,5.5,4.19,5.34,579700.0,5.34),(NYSE,AVX,2009-10-01,11.9,11.9,11.44,11.44,165700.0,11.4),(NYSE,AMR,2009-10-01,7.8,7.8,7.21,7.23,2.13386E7,7.23),(NYSE,AGN,2009-10-01,56.8,56.89,55.91,55.95,1398700.0,55.9),(NYSE,APC,2009-10-01,62.44,62.74,59.92,60.01,5462500.0,59.92),(NYSE,ABR,2009-10-01,2.8,2.89,2.57,2.89,292100.0,2.89),(NYSE,AM,2009-10-01,22.05,22.4,21.87,22.08,1268800.0,21.96),(NYSE,ALL,2009-10-01,30.7,31.41,30.38,30.4,7865900.0,30.19),(NYSE,ABM,2009-10-01,20.91,21.0,20.13,20.2,160700.0,19.94),(NYSE,ACM,2009-10-01,27.11,27.32,26.63,26.65,1176000.0,26.65),(NYSE,ACC,2009-10-01,26.77,26.79,25.68,26.11,990000.0,25.78),(NYSE,AF,2009-10-01,10.99,11.23,10.82,10.87,2040000.0,10.73),(NYSE,ALQ,2009-10-01,25.6,25.7,25.51,25.7,7500.0,24.98),(NYSE,ABT,2009-10-01,49.46,49.75,48.62,48.68,1.08364E7,47.94),(NYSE,ACO,2009-10-01,22.8,22.8,21.33,21.35,87000.0,21.22),(NYSE,ABK,2009-10-01,1.69,1.7,1.5,1.5,1.72808E7,1.5),(NYSE,AXA,2009-10-01,27.05,27.1,25.98,26.07,908600.0,26.07),(NYSE,ACH,2009-10-01,26.92,27.39,26.36,26.42,778900.0,26.42),(NYSE,AVD,2009-10-01,8.3,8.32,8.1,8.21,99700.0,8.21),(NYSE,AED,2009-10-01,16.73,16.74,16.43,16.66,53300.0,16.28),(NYSE,ACI,2009-10-01,21.95,22.08,20.91,20.98,5887900.0,20.89),(NYSE,ARD,2009-10-01,35.36,35.38,33.01,33.04,576500.0,33.04),(NYSE,ACS,2009-10-01,54.21,54.39,52.45,52.75,4667000.0,52.75),(NYSE,ALK,2009-10-01,26.75,26.75,25.44,25.47,473100.0,25.47),(NYSE,AFC,2009-10-01,13.08,13.23,13.08,13.11,14700.0,12.78),(NYSE,AWF,2009-10-01,12.65,12.65,12.52,12.55,226300.0,12.1),(NYSE,AVA,2009-10-01,20.1,20.4,20.07,20.21,282800.0,20.01),(NYSE,ADM,2009-10-01,29.05,29.21,28.68,28.86,5216800.0,28.73),(NYSE,AHL,2009-10-01,26.55,26.68,26.16,26.2,801100.0,26.05),(NYSE,AEV,2009-10-01,17.68,17.68,17.19,17.43,63800.0,17.02),(NYSE,AHS,2009-10-01,9.49,9.49,9.15,9.18,96600.0,9.18),(NYSE,AUO,2009-10-01,9.63,9.71,9.41,9.44,5082700.0,9.44),(NYSE,ACE,2009-10-01,53.36,54.48,53.36,53.75,3016000.0,53.42),(NYSE,AWC,2009-10-01,6.3,6.32,6.07,6.07,472000.0,6.07),(NYSE,ANN,2009-10-01,15.68,15.82,14.68,14.72,3289400.0,14.72),(NYSE,AFE,2009-10-01,22.06,22.5,22.06,22.5,3200.0,21.65),(NYSE,AEG,2009-10-01,8.42,8.43,8.01,8.03,592100.0,8.03),(NYSE,ATE,2009-10-01,26.17,26.26,25.6,25.68,34800.0,25.68),(NYSE,ABVT,2009-10-01,48.76,48.76,46.86,47.82,143200.0,47.82),(NYSE,ART,2009-10-01,26.25,26.38,25.34,25.35,722200.0,25.29),(NYSE,AEF,2009-10-01,18.46,18.48,18.2,18.4,162000.0,17.98),(NYSE,APH,2009-10-01,37.67,37.77,36.01,36.03,1450700.0,36.02),(NYSE,ABX,2009-10-01,38.1,38.1,36.08,36.18,1.26265E7,36.01),(NYSE,AWI,2009-10-01,33.83,34.68,33.83,34.17,711800.0,34.17),(NYSE,ACF,2009-10-01,15.79,15.84,15.0,15.02,1587100.0,15.02),(NYSE,ARM,2009-10-01,7.74,7.86,7.27,7.27,1797300.0,7.27),(NYSE,ASF,2009-10-01,26.2,26.34,25.01,25.11,150700.0,24.97),(NYSE,AYE,2009-10-01,26.41,26.48,25.61,25.63,2245600.0,25.46),(NYSE,APB,2009-10-01,9.51,9.56,9.41,9.44,34200.0,9.44),(NYSE,ATO,2009-10-01,28.18,28.5,27.71,27.78,404700.0,27.45),(NYSE,AEP,2009-10-01,31.24,31.24,30.75,30.85,4101900.0,30.08),(NYSE,AIN,2009-10-01,19.25,19.25,18.54,18.55,132100.0,18.45),(NYSE,APU,2009-10-01,36.69,36.69,35.0,35.05,120400.0,33.86),(NYSE,AVK,2009-10-01,14.8,14.8,14.58,14.6,77500.0,14.24),(NYSE,ARO,2009-10-01,43.16,43.25,41.23,42.02,3005600.0,42.02),(NYSE,AVP,2009-10-01,33.84,33.85,32.61,32.62,5395600.0,32.43),(NYSE,AMB,2009-10-01,22.66,22.74,21.18,21.22,4351100.0,20.99),(NYSE,AIZ,2009-10-01,31.9,32.14,30.9,30.94,762000.0,30.79),(NYSE,ASR,2009-10-01,42.73,43.64,41.58,41.78,84500.0,41.78),(NYSE,AAP,2009-10-01,39.25,39.25,37.79,37.94,2916800.0,37.89),(NYSE,ALV,2009-10-01,33.31,33.34,31.89,32.15,927000.0,32.15),(NYSE,AJG,2009-10-01,24.39,24.54,23.86,23.89,727600.0,23.55),(NYSE,AHC,2009-10-01,3.17,3.31,3.05,3.26,127100.0,3.26),(NYSE,ANH,2009-10-01,7.89,7.93,7.76,7.81,2468400.0,7.23),(NYSE,AMG,2009-10-01,64.71,64.71,62.0,62.0,546300.0,62.0),(NYSE,ADX,2009-10-01,9.75,9.75,9.53,9.54,152200.0,9.26),(NYSE,AVF,2009-10-01,14.3,14.34,13.75,13.95,208400.0,13.53),(NYSE,ALD,2009-10-01,3.05,3.06,2.89,2.9,1621100.0,2.9),(NYSE,ARK,2009-10-01,3.42,3.43,3.4,3.41,118500.0,3.31),(NYSE,AYR,2009-10-01,9.56,9.58,9.15,9.17,333700.0,9.07),(NYSE,AIR,2009-10-01,21.89,21.94,21.43,21.43,280000.0,21.43),(NYSE,ANF,2009-10-01,32.68,32.83,31.62,31.7,3680100.0,31.56),(NYSE,ASA,2009-10-01,75.16,75.6,73.81,74.34,85900.0,73.17),(NYSE,AIB,2009-10-01,9.59,9.62,8.84,8.93,1819900.0,8.93),(NYSE,AET,2009-10-01,27.77,28.38,27.54,27.58,6353700.0,27.54),(NYSE,ARE,2009-10-01,54.61,54.61,51.98,52.9,1984500.0,52.62),(NYSE,ABB,2009-10-01,19.85,19.89,19.44,19.46,2500900.0,19.46),(NYSE,AER,2009-10-01,8.96,9.08,8.51,8.54,513500.0,8.54),(NYSE,AP,2009-10-01,26.5,27.02,26.34,26.52,21400.0,26.21),(NYSE,AOS,2009-10-01,38.09,38.17,36.98,37.03,134100.0,36.69),(NYSE,AIG,2009-10-01,43.57,43.68,40.15,40.9,2.68266E7,40.9),(NYSE,AHD,2009-10-01,3.75,3.79,3.5,3.5,192100.0,3.5),(NYSE,AWR,2009-10-01,36.12,36.23,35.54,35.56,43500.0,35.29),(NYSE,AOD,2009-10-01,8.95,8.96,8.6,8.76,994300.0,8.31),(NYSE,AWH,2009-10-01,48.21,48.99,47.16,47.19,234600.0,46.99),(NYSE,AMT,2009-10-01,35.55,35.95,35.23,35.38,5025100.0,35.38),(NYSE,ATK,2009-10-01,77.76,78.69,76.57,76.64,407400.0,76.64),(NYSE,AEE,2009-10-01,25.28,25.37,24.75,24.8,2502000.0,24.45),(NYSE,ABG,2009-10-01,12.47,12.54,12.15,12.31,283300.0,12.31),(NYSE,AYI,2009-10-01,32.13,32.3,31.12,31.16,438600.0,30.94),(NYSE,ALZ,2009-10-01,25.34,25.39,25.24,25.28,8400.0,24.91),(NYSE,AME,2009-10-01,34.87,34.87,33.88,34.33,534700.0,34.27),(NYSE,ABV,2009-10-01,84.09,84.35,81.59,83.26,1063300.0,82.18),(NYSE,ASI,2009-10-01,15.98,16.0,14.88,14.88,21500.0,14.88),(NYSE,AUY,2009-10-01,10.8,10.8,10.05,10.12,1.79389E7,10.11),(NYSE,ACL,2009-10-01,138.85,139.63,136.25,137.28,501500.0,137.28),(NYSE,AFF,2009-10-01,11.82,12.14,11.77,12.02,90700.0,11.65),(NYSE,AAI,2009-10-01,6.24,6.24,5.75,5.78,2156400.0,5.78),(NYSE,AA,2009-10-01,13.36,13.62,12.9,12.92,5.17794E7,12.86),(NYSE,ANR,2009-10-01,34.84,35.03,33.67,33.8,2619200.0,33.8),(NYSE,ADI,2009-10-01,27.57,27.7,26.57,26.57,5957300.0,26.4),(NYSE,ADP,2009-10-01,39.17,39.4,38.73,38.95,3938300.0,38.64),(NYSE,ALF,2009-10-01,25.02,25.1,25.0,25.0,7800.0,24.65),(NYSE,ASH,2009-10-01,42.8,42.85,40.01,40.19,1623900.0,40.11),(NYSE,ATW,2009-10-01,35.02,35.3,33.64,33.64,1125400.0,33.64),(NYSE,AEA,2009-10-01,5.56,5.67,5.36,5.5,351800.0,5.44),(NYSE,AAN,2009-10-01,26.11,26.82,25.81,26.6,908900.0,26.58),(NYSE,ABC,2009-10-01,22.36,22.49,21.85,22.03,3969500.0,21.96),(NYSE,AXP,2009-10-01,33.85,33.89,32.42,32.46,1.51684E7,32.32),(NYSE,ATT,2009-10-01,26.76,26.79,26.5,26.59,109900.0,25.8),(NYSE,ATU,2009-10-01,16.02,16.13,15.6,15.99,1102100.0,15.99),(NYSE,AVY,2009-10-01,35.92,35.99,34.58,34.73,1641600.0,34.55),(NYSE,ACV,2009-10-01,27.76,27.79,27.22,27.25,479800.0,27.17),(NYSE,ALM,2009-10-01,26.14,26.24,26.01,26.12,11900.0,25.75),(NYSE,ARI,2009-10-01,18.2,18.29,18.12,18.15,726800.0,18.15),(NYSE,AEM,2009-10-01,68.0,68.03,63.96,64.19,4531400.0,64.19),(NYSE,AGO,2009-10-01,19.43,19.47,18.21,18.23,1140000.0,18.2),(NYSE,AN,2009-10-01,17.83,18.06,17.25,17.4,3297600.0,17.4),(NYSE,ARJ,2009-10-01,29.75,30.17,29.22,29.52,128500.0,29.31),(NYSE,APD,2009-10-01,77.67,77.8,75.4,75.4,1814200.0,74.99),(NYSE,ARG,2009-10-01,48.39,48.39,46.53,46.86,1203300.0,46.68),(NYSE,AKR,2009-10-01,14.99,15.05,14.09,14.17,564000.0,14.02),(NYSE,AIQ,2009-10-01,5.62,5.67,5.5,5.56,229600.0,5.56),(NYSE,AGU,2009-10-01,49.79,49.91,47.57,47.68,2013600.0,47.64),(NYSE,AFN,2009-10-01,1.19,1.25,1.05,1.11,1183400.0,1.11),(NYSE,AIV,2009-10-01,14.67,14.7,13.92,13.95,4725200.0,13.77),(NYSE,AKS,2009-10-01,19.63,19.92,18.31,18.34,1.07827E7,18.29),(NYSE,AGM,2009-10-01,7.44,7.45,7.09,7.11,190500.0,7.05),(NYSE,AEB,2009-10-01,14.51,14.8,14.35,14.38,40700.0,14.14),(NYSE,APA,2009-10-01,91.49,92.03,89.35,89.6,4646400.0,89.35),(NYSE,ALU,2009-10-01,4.39,4.4,4.17,4.2,1.11352E7,4.2),(NYSE,ABD,2009-10-01,7.2,7.28,6.88,6.89,453400.0,6.89),(NYSE,AZN,2009-10-01,44.8,44.81,43.94,43.96,1708000.0,42.36),(NYSE,ABA,2009-10-01,26.26,26.27,26.15,26.27,13700.0,25.88),(NYSE,AMD,2009-10-01,5.62,5.65,5.27,5.39,4.27595E7,5.39),(NYSE,AHT,2009-10-01,3.45,3.53,3.32,3.32,1049100.0,3.32),(NYSE,APX,2009-10-01,8.66,8.66,8.59,8.66,20800.0,8.46),(NYSE,AVT,2009-10-01,25.97,26.0,25.08,25.12,1280700.0,25.12),(NYSE,ASG,2009-10-01,3.13,3.13,3.09,3.09,91300.0,3.03),(NYSE,ACG,2009-10-01,8.29,8.3,8.26,8.27,355900.0,8.03),(NYSE,ALB,2009-10-01,34.41,34.44,32.53,32.56,870100.0,32.45),(NYSE,AGC,2009-10-01,7.69,7.83,7.69,7.77,187600.0,7.52),(NYSE,AON,2009-10-01,40.82,41.45,40.58,40.74,2827200.0,40.43),(NYSE,AFB,2009-10-01,13.75,13.85,13.7,13.7,62400.0,13.32),(NYSE,AEC,2009-10-01,9.53,10.1,9.51,9.67,120800.0,9.36),(NYSE,AXR,2009-10-01,13.33,13.37,12.77,13.06,15500.0,13.06),(NYSE,AEO,2009-10-01,16.69,16.74,16.01,16.14,8349200.0,15.95),(NYSE,ATI,2009-10-01,34.93,34.93,33.2,33.28,3021700.0,33.12),(NYSE,ARL,2009-10-01,11.48,11.48,11.3,11.3,2000.0,11.3),(NYSE,AWP,2009-10-01,6.3,6.3,6.0,6.1,452400.0,5.98),(NYSE,AOI,2009-10-01,4.45,4.49,4.37,4.41,520700.0,4.41),(NYSE,AGD,2009-10-01,9.58,9.58,9.1,9.11,114200.0,8.72),(NYSE,AAR,2009-10-01,18.19,18.3,18.01,18.1,15700.0,17.22),(NYSE,ARB,2009-10-01,20.49,21.79,20.33,20.87,813700.0,20.77),(NYSE,AZO,2009-10-01,145.77,147.06,144.13,145.62,1380100.0,145.62),(NYSE,ALJ,2009-10-01,9.84,9.88,9.52,9.53,99400.0,9.48),(NYSE,ADY,2009-10-01,28.22,28.22,27.0,27.08,159000.0,27.08),(NYSE,AGP,2009-10-01,22.13,22.4,21.93,22.1,615200.0,22.1),(NYSE,AGCO,2009-10-01,27.38,27.59,26.06,26.15,2082600.0,26.15),(NYSE,AFG,2009-10-01,25.41,25.48,24.81,24.86,642400.0,24.6),(NYSE,ADC,2009-10-01,22.73,22.73,21.38,21.48,75200.0,21.04),(NYSE,ASX,2009-10-01,3.98,4.12,3.95,4.01,848600.0,4.01),(NYSE,AFL,2009-10-01,42.44,42.75,40.55,40.71,5442900.0,40.45),(NYSE,AXS,2009-10-01,30.11,30.4,29.63,29.69,1356200.0,29.47)}
+2009-10-02  {(NYSE,AAV,2009-10-02,6.42,6.42,6.12,6.35,1151100.0,6.35),(NYSE,AEP,2009-10-02,30.72,30.78,30.33,30.37,3248600.0,29.61),(NYSE,AAN,2009-10-02,26.28,26.81,26.25,26.36,345100.0,26.34),(NYSE,ATO,2009-10-02,27.7,27.93,27.45,27.68,557100.0,27.35),(NYSE,ATW,2009-10-02,33.0,33.18,32.06,32.69,992100.0,32.69),(NYSE,ALK,2009-10-02,25.2,26.25,25.2,25.81,386700.0,25.81),(NYSE,AGC,2009-10-02,7.69,7.77,7.61,7.7,157700.0,7.45),(NYSE,AME,2009-10-02,34.16,34.34,33.29,33.33,592200.0,33.28),(NYSE,ACS,2009-10-02,51.96,52.42,51.5,52.0,3755700.0,52.0),(NYSE,ALJ,2009-10-02,9.26,9.78,9.25,9.59,80500.0,9.54),(NYSE,AYE,2009-10-02,25.36,25.6,25.07,25.4,1774300.0,25.23),(NYSE,APB,2009-10-02,9.33,9.37,9.11,9.35,28600.0,9.35),(NYSE,ASF,2009-10-02,24.91,25.28,24.73,24.91,93900.0,24.77),(NYSE,AKF,2009-10-02,7.4,7.4,7.3,7.35,6800.0,6.92),(NYSE,APH,2009-10-02,35.75,35.91,35.16,35.47,1214600.0,35.46),(NYSE,ARD,2009-10-02,32.42,33.25,32.25,32.76,511300.0,32.76),(NYSE,ALF,2009-10-02,25.01,25.08,25.0,25.0,5900.0,24.65),(NYSE,ARM,2009-10-02,7.22,7.24,6.84,6.85,2772800.0,6.85),(NYSE,ARL,2009-10-02,11.18,11.2,11.05,11.05,2000.0,11.05),(NYSE,ALB,2009-10-02,32.05,32.37,31.6,31.76,999200.0,31.65),(NYSE,ACF,2009-10-02,14.75,15.35,14.71,14.97,1222400.0,14.97),(NYSE,AWI,2009-10-02,34.39,34.39,33.32,33.4,480000.0,33.4),(NYSE,AVX,2009-10-02,11.42,11.48,11.22,11.24,110000.0,11.2),(NYSE,ALZ,2009-10-02,25.28,25.34,25.21,25.29,5800.0,24.92),(NYSE,AFC,2009-10-02,13.08,13.25,12.95,13.12,12500.0,12.79),(NYSE,AGO,2009-10-02,17.88,18.48,17.84,18.15,1891300.0,18.12),(NYSE,ABX,2009-10-02,35.9,36.9,35.71,36.1,1.54785E7,35.93),(NYSE,AEF,2009-10-02,18.25,18.25,17.73,18.1,104100.0,17.68),(NYSE,ALY,2009-10-02,4.0,4.3,3.85,4.15,748700.0,4.15),(NYSE,ACN,2009-10-02,37.11,38.24,36.9,37.5,1.13156E7,36.79),(NYSE,ALE,2009-10-02,33.07,33.33,32.75,32.96,156400.0,32.53),(NYSE,ART,2009-10-02,24.77,25.38,24.05,25.29,1172800.0,25.23),(NYSE,ABVT,2009-10-02,47.35,48.41,47.35,47.67,53100.0,47.67),(NYSE,ACM,2009-10-02,26.52,26.89,26.25,26.33,784200.0,26.33),(NYSE,AWF,2009-10-02,12.51,12.52,12.28,12.4,306400.0,11.95),(NYSE,ABG,2009-10-02,12.18,12.45,11.91,12.29,233800.0,12.29),(NYSE,AZZ,2009-10-02,38.72,39.33,38.44,38.54,71100.0,38.23),(NYSE,AWK,2009-10-02,19.73,19.73,19.11,19.53,1489600.0,19.33),(NYSE,ADM,2009-10-02,28.72,28.78,27.66,28.43,3855200.0,28.31),(NYSE,ATE,2009-10-02,25.32,25.41,25.11,25.25,11000.0,25.25),(NYSE,ATI,2009-10-02,32.5,34.04,31.8,33.67,2625300.0,33.51),(NYSE,ANW,2009-10-02,20.91,21.27,20.74,20.95,250900.0,20.94),(NYSE,ASP,2009-10-02,11.06,11.18,11.06,11.18,600.0,10.79),(NYSE,ABT,2009-10-02,48.41,50.0,48.41,49.84,1.28174E7,49.08),(NYSE,AVA,2009-10-02,20.06,20.21,19.79,20.05,286200.0,19.85),(NYSE,ATV,2009-10-02,5.33,5.33,4.8,5.33,124300.0,5.33),(NYSE,AEG,2009-10-02,7.58,8.1,7.53,7.85,708400.0,7.85),(NYSE,AEO,2009-10-02,16.04,16.33,15.91,16.07,4927900.0,15.88),(NYSE,AFE,2009-10-02,22.5,23.45,22.21,23.42,9600.0,22.54),(NYSE,ANN,2009-10-02,14.42,14.86,14.02,14.61,2619900.0,14.61),(NYSE,AMD,2009-10-02,5.22,5.45,5.05,5.31,3.18218E7,5.31),(NYSE,AHL,2009-10-02,26.23,27.17,26.07,26.98,853100.0,26.83),(NYSE,ASH,2009-10-02,39.45,39.45,37.94,38.22,2263600.0,38.14),(NYSE,AWC,2009-10-02,5.82,6.05,5.8,5.98,279600.0,5.98),(NYSE,APF,2009-10-02,14.2,14.3,14.15,14.26,38300.0,14.0),(NYSE,ACE,2009-10-02,53.24,54.0,52.92,53.76,1822100.0,53.43),(NYSE,AMX,2009-10-02,41.7,42.92,41.46,42.63,5094000.0,42.63),(NYSE,AEV,2009-10-02,17.07,17.18,16.52,17.09,80900.0,16.69),(NYSE,AN,2009-10-02,17.16,17.41,16.68,17.25,3844600.0,17.25),(NYSE,ARW,2009-10-02,27.0,27.21,26.72,26.86,736900.0,26.86),(NYSE,AIT,2009-10-02,20.0,20.14,19.65,19.68,220300.0,19.54),(NYSE,AEE,2009-10-02,24.73,24.74,24.27,24.52,2098800.0,24.17),(NYSE,ATU,2009-10-02,15.78,15.87,15.05,15.12,988600.0,15.12),(NYSE,AUO,2009-10-02,9.37,9.5,9.32,9.45,6802000.0,9.45),(NYSE,AHS,2009-10-02,9.84,9.89,9.48,9.6,366300.0,9.6),(NYSE,AGCO,2009-10-02,26.06,26.84,25.77,26.54,1972300.0,26.54),(NYSE,ABC,2009-10-02,21.9,21.92,21.57,21.62,2450900.0,21.55),(NYSE,ATK,2009-10-02,76.21,76.8,75.45,75.77,441000.0,75.77),(NYSE,AES,2009-10-02,13.69,13.94,13.41,13.78,6396300.0,13.78),(NYSE,ATT,2009-10-02,26.5,26.72,26.4,26.41,135900.0,25.62),(NYSE,ARJ,2009-10-02,29.08,29.8,28.86,29.62,87900.0,29.41),(NYSE,AM,2009-10-02,21.77,21.92,21.11,21.49,1183400.0,21.37),(NYSE,AMT,2009-10-02,35.09,36.13,35.03,35.65,3937900.0,35.65),(NYSE,APD,2009-10-02,74.7,76.33,73.76,75.53,1767000.0,75.12),(NYSE,AEA,2009-10-02,5.4,5.55,5.3,5.51,279200.0,5.45),(NYSE,ASG,2009-10-02,3.08,3.1,3.05,3.07,38300.0,3.01),(NYSE,APX,2009-10-02,8.67,8.69,8.63,8.68,26100.0,8.48),(NYSE,AWH,2009-10-02,47.02,47.02,46.22,46.8,457300.0,46.6),(NYSE,AB,2009-10-02,25.45,25.89,24.4,24.52,829400.0,23.91),(NYSE,AOD,2009-10-02,8.7,8.7,8.17,8.41,1924600.0,7.98),(NYSE,ALM,2009-10-02,26.12,26.19,25.25,26.1,28600.0,25.73),(NYSE,ARG,2009-10-02,46.25,47.89,46.04,47.3,1072900.0,47.12),(NYSE,AFG,2009-10-02,24.6,25.03,24.45,24.69,500900.0,24.43),(NYSE,AFL,2009-10-02,40.08,41.52,39.82,41.1,4043500.0,40.84),(NYSE,AEH,2009-10-02,16.45,16.53,15.97,16.51,78700.0,16.14),(NYSE,AEL,2009-10-02,6.31,6.51,6.1,6.46,346200.0,6.39),(NYSE,AOB,2009-10-02,4.62,4.73,4.6,4.71,758700.0,4.71),(NYSE,AVY,2009-10-02,32.87,34.09,32.87,33.95,2066900.0,33.77),(NYSE,AKR,2009-10-02,13.85,14.48,13.47,14.14,323900.0,13.99),(NYSE,AXP,2009-10-02,31.95,33.23,31.69,32.49,1.22155E7,32.35),(NYSE,AWR,2009-10-02,35.37,35.7,35.13,35.32,45900.0,35.06),(NYSE,AHD,2009-10-02,3.38,3.44,3.35,3.41,101100.0,3.41),(NYSE,AU,2009-10-02,38.21,39.99,38.05,38.8,3646300.0,38.8),(NYSE,ABM,2009-10-02,20.06,20.34,20.06,20.18,87400.0,19.92),(NYSE,AIG,2009-10-02,39.05,43.33,36.86,43.08,4.70581E7,43.08),(NYSE,AFB,2009-10-02,13.78,13.85,13.75,13.85,34900.0,13.47),(NYSE,AOS,2009-10-02,36.78,37.62,36.67,36.94,195600.0,36.6),(NYSE,AYI,2009-10-02,30.77,31.29,30.56,30.98,227100.0,30.76),(NYSE,ADS,2009-10-02,58.56,59.75,58.56,58.9,873000.0,58.9),(NYSE,ADI,2009-10-02,26.43,26.87,26.22,26.26,4945400.0,26.09),(NYSE,AIQ,2009-10-02,5.5,5.78,5.45,5.71,323000.0,5.71),(NYSE,AER,2009-10-02,8.41,8.56,7.97,8.29,798600.0,8.29),(NYSE,ABA,2009-10-02,26.09,26.26,26.08,26.2,5500.0,25.81),(NYSE,AZO,2009-10-02,144.21,147.32,143.82,146.05,1132100.0,146.05),(NYSE,AGU,2009-10-02,46.82,47.48,45.98,46.88,1603500.0,46.84),(NYSE,ADP,2009-10-02,38.89,39.35,38.55,38.79,4463900.0,38.48),(NYSE,ALL,2009-10-02,29.97,31.25,29.79,30.76,5149400.0,30.55),(NYSE,ABB,2009-10-02,19.13,19.48,19.12,19.42,3371100.0,19.42),(NYSE,ARE,2009-10-02,52.16,53.48,51.35,51.8,1145300.0,51.53),(NYSE,AP,2009-10-02,26.5,27.18,26.42,26.51,33300.0,26.2),(NYSE,ALQ,2009-10-02,25.79,26.88,25.67,26.88,10800.0,26.13),(NYSE,ACO,2009-10-02,21.0,21.19,20.69,20.94,95100.0,20.81),(NYSE,AXR,2009-10-02,12.88,13.12,12.75,13.0,4100.0,13.0),(NYSE,AET,2009-10-02,27.33,27.5,26.5,26.73,6237500.0,26.69),(NYSE,AF,2009-10-02,10.71,10.93,10.34,10.8,852300.0,10.66),(NYSE,AFN,2009-10-02,1.06,1.11,1.0,1.07,993300.0,1.07),(NYSE,ARB,2009-10-02,20.73,21.26,20.5,21.22,317500.0,21.12),(NYSE,AIB,2009-10-02,8.28,8.8,8.09,8.6,2198900.0,8.6),(NYSE,AKT,2009-10-02,7.32,7.44,7.21,7.26,9900.0,6.83),(NYSE,AXL,2009-10-02,6.35,6.62,6.05,6.34,4804200.0,6.34),(NYSE,AIV,2009-10-02,13.7,14.52,13.5,14.09,3908300.0,13.9),(NYSE,ADY,2009-10-02,27.25,27.99,26.35,27.65,166000.0,27.65),(NYSE,AIR,2009-10-02,21.31,22.1,21.15,21.95,729700.0,21.95),(NYSE,ASA,2009-10-02,72.56,74.55,72.25,73.25,65400.0,72.1),(NYSE,ABK,2009-10-02,1.45,1.57,1.41,1.51,1.68154E7,1.51),(NYSE,AA,2009-10-02,12.6,13.1,12.51,12.82,3.44803E7,12.76),(NYSE,ABD,2009-10-02,6.67,6.86,6.26,6.48,402100.0,6.48),(NYSE,ANF,2009-10-02,31.1,31.65,30.52,30.62,4255500.0,30.48),(NYSE,ABR,2009-10-02,2.73,2.8,2.61,2.76,226800.0,2.76),(NYSE,AEC,2009-10-02,9.53,9.6,9.15,9.44,80100.0,9.14),(NYSE,ANR,2009-10-02,33.03,34.38,32.62,33.98,3532500.0,33.98),(NYSE,AKS,2009-10-02,17.88,18.51,17.57,18.05,1.22142E7,18.0),(NYSE,ADC,2009-10-02,21.12,21.63,20.99,21.01,53800.0,20.58),(NYSE,AAI,2009-10-02,5.65,6.24,5.65,6.05,3113400.0,6.05),(NYSE,AGM,2009-10-02,7.06,7.22,6.71,7.03,168800.0,6.97),(NYSE,ASX,2009-10-02,3.87,3.99,3.8,3.91,2124300.0,3.91),(NYSE,AMP,2009-10-02,36.23,37.8,36.12,36.43,5499100.0,36.25),(NYSE,AYR,2009-10-02,9.14,9.3,8.79,9.05,239500.0,8.96),(NYSE,AFF,2009-10-02,11.78,12.09,11.45,11.9,109400.0,11.54),(NYSE,AVB,2009-10-02,67.71,70.38,67.13,67.99,1544700.0,67.29),(NYSE,ACL,2009-10-02,136.0,137.71,135.67,136.28,465900.0,136.28),(NYSE,ARK,2009-10-02,3.37,3.4,3.29,3.39,193300.0,3.29),(NYSE,AGD,2009-10-02,8.78,9.18,8.5,8.83,247600.0,8.45),(NYSE,AWP,2009-10-02,6.0,6.0,5.81,5.94,542800.0,5.83),(NYSE,ACC,2009-10-02,25.74,27.03,25.62,25.99,1093900.0,25.67),(NYSE,AEB,2009-10-02,14.3,14.3,13.88,14.14,68200.0,13.9),(NYSE,ALD,2009-10-02,2.87,2.98,2.75,2.84,1761200.0,2.84),(NYSE,AVF,2009-10-02,13.72,14.24,13.36,14.07,216400.0,13.65),(NYSE,APC,2009-10-02,58.99,60.06,58.17,59.73,5469800.0,59.64),(NYSE,AON,2009-10-02,40.43,40.74,40.29,40.35,2464200.0,40.05),(NYSE,ADX,2009-10-02,9.41,9.55,9.41,9.47,151800.0,9.19),(NYSE,ALC,2009-10-02,19.94,20.26,19.75,19.94,25200.0,19.94),(NYSE,AMG,2009-10-02,61.57,63.08,61.0,61.27,334300.0,61.27),(NYSE,APA,2009-10-02,88.51,90.9,88.06,89.95,3884400.0,89.7),(NYSE,AXE,2009-10-02,38.77,38.89,38.22,38.5,296800.0,38.5),(NYSE,AHC,2009-10-02,3.17,3.29,3.05,3.28,140200.0,3.28),(NYSE,AKP,2009-10-02,13.45,13.45,13.4,13.45,6000.0,13.07),(NYSE,AXA,2009-10-02,25.76,26.37,25.65,26.23,591600.0,26.23),(NYSE,ALU,2009-10-02,4.08,4.32,4.07,4.19,1.55884E7,4.19),(NYSE,AZN,2009-10-02,43.49,44.05,43.46,43.64,1660700.0,42.05),(NYSE,ARI,2009-10-02,18.23,18.41,18.15,18.3,238900.0,18.3),(NYSE,AGP,2009-10-02,21.87,22.24,21.78,22.0,727100.0,22.0),(NYSE,AJG,2009-10-02,23.74,23.88,23.62,23.72,687800.0,23.39),(NYSE,AAR,2009-10-02,18.01,18.16,17.96,18.03,11100.0,17.16),(NYSE,ALX,2009-10-02,290.07,295.98,290.0,290.58,8600.0,290.58),(NYSE,AUY,2009-10-02,10.04,10.48,9.98,10.05,1.68956E7,10.04),(NYSE,ALV,2009-10-02,31.72,32.0,31.03,31.08,1059100.0,31.08),(NYSE,APL,2009-10-02,6.9,7.11,6.66,6.98,670300.0,6.98),(NYSE,AI,2009-10-02,0.46,0.47,0.44,0.45,74400.0,9.0),(NYSE,AAP,2009-10-02,37.67,38.2,37.4,37.48,2629300.0,37.43),(NYSE,ANH,2009-10-02,7.75,7.97,7.75,7.92,2162800.0,7.34),(NYSE,ASI,2009-10-02,14.72,15.1,14.52,14.64,14800.0,14.64),(NYSE,ALEX,2009-10-02,31.15,31.64,30.33,30.39,220700.0,30.05),(NYSE,ASR,2009-10-02,41.35,42.17,41.27,41.9,35300.0,41.9),(NYSE,ALG,2009-10-02,15.47,15.96,15.47,15.51,25700.0,15.4),(NYSE,ACG,2009-10-02,8.27,8.3,8.27,8.29,359700.0,8.05),(NYSE,ACV,2009-10-02,27.13,27.77,27.11,27.48,549000.0,27.4),(NYSE,AIZ,2009-10-02,30.46,31.32,30.05,30.85,1078900.0,30.7),(NYSE,AMB,2009-10-02,20.86,22.08,20.71,21.21,3832900.0,20.98),(NYSE,AGN,2009-10-02,55.4,55.79,54.25,54.96,2549600.0,54.91),(NYSE,AHT,2009-10-02,3.26,3.38,3.08,3.27,810400.0,3.27),(NYSE,ACH,2009-10-02,25.91,26.38,25.73,26.14,722900.0,26.14),(NYSE,ARP,2009-10-02,9.25,9.49,9.25,9.36,258100.0,9.36),(NYSE,AVP,2009-10-02,32.49,32.94,32.01,32.61,4477800.0,32.42),(NYSE,AVD,2009-10-02,8.15,8.45,8.11,8.35,88900.0,8.35),(NYSE,AMN,2009-10-02,67.2,70.0,66.52,67.81,108000.0,67.21),(NYSE,ARO,2009-10-02,41.27,42.3,41.07,41.83,1399600.0,41.83),(NYSE,AYN,2009-10-02,13.54,13.64,13.53,13.64,5200.0,13.29),(NYSE,ATR,2009-10-02,36.05,36.46,36.03,36.12,115700.0,35.82),(NYSE,AVK,2009-10-02,14.4,14.45,14.33,14.38,56400.0,14.03),(NYSE,AEM,2009-10-02,63.55,66.44,63.2,63.87,4638900.0,63.87),(NYSE,ACI,2009-10-02,20.36,21.22,20.07,20.49,6741800.0,20.41),(NYSE,AXS,2009-10-02,29.41,30.17,29.25,29.99,1053600.0,29.77),(NYSE,AED,2009-10-02,16.48,16.6,16.03,16.6,58400.0,16.22),(NYSE,ABV,2009-10-02,81.53,84.41,81.28,84.16,1034700.0,83.07),(NYSE,AMR,2009-10-02,6.98,7.5,6.9,7.46,2.22154E7,7.46),(NYSE,APU,2009-10-02,35.05,35.16,34.62,34.79,118400.0,33.61),(NYSE,AOI,2009-10-02,4.35,4.56,4.32,4.52,691500.0,4.52),(NYSE,AGL,2009-10-02,34.59,34.92,34.11,34.84,368600.0,34.42),(NYSE,AVT,2009-10-02,24.8,25.03,24.49,24.53,910300.0,24.53),(NYSE,AIN,2009-10-02,18.55,18.85,17.49,18.33,207800.0,18.23)}
+</code></pre>
+
+<p>However the desired output required is for 1 quarter only which I am unable to do.</p>
+
+<p>Any help is much appreciated.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/date" class="post-tag" title="show questions tagged &#39;date&#39;" rel="tag">date</a> <a href="/questions/tagged/hadoop" class="post-tag" title="show questions tagged &#39;hadoop&#39;" rel="tag">hadoop</a> <a href="/questions/tagged/apache-pig" class="post-tag" title="show questions tagged &#39;apache-pig&#39;" rel="tag">apache-pig</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/22695780" title="short permalink to this question" class="short-link" id="link-post-22695780">share</a><span class="lsep">|</span><a href="/posts/22695780/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/22695780/revisions" title="show all edits to this post">edited <span title="2014-03-28 17:14:40Z" class="relativetime">Mar 28 '14 at 17:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2014-03-27 18:07:21Z" class="relativetime">Mar 27 '14 at 18:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3400094/rajnish-g"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ef11e6a1968a2c167496f08ff131b7a6?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3400094/rajnish-g">Rajnish G</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">137</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22695780" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-34665607" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I am a little unclear on what the problem is here.  Do you want each row of your output to be for one stock only representing that stock for the quarter that you want? Do you want each row only to be the single stock, or do you also want one row per stock per quarter?</span>
+                    &ndash;&nbsp;<a href="/users/540284/robthewolf"
+                       title="3781 reputation"
+                       class="comment-user">robthewolf</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-30 11:44:55Z" class="relativetime-clean">Mar 30 '14 at 11:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34674528" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">What I need to do is get all the data for a quarter including everything that is stock, exchange, price etc.</span>
+                    &ndash;&nbsp;<a href="/users/3400094/rajnish-g"
+                       title="137 reputation"
+                       class="comment-user owner">Rajnish G</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-30 18:59:29Z" class="relativetime-clean">Mar 30 '14 at 18:59</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34684216" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">That is not helpful. Do you want one row of output per quarter.  Do you want one row of output with just one quarter and all the data.  Do you want one row per stock that contains all the data for all days in the quarter.  Please be as specific as possible then I can help you.</span>
+                    &ndash;&nbsp;<a href="/users/540284/robthewolf"
+                       title="3781 reputation"
+                       class="comment-user">robthewolf</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-31 04:34:25Z" class="relativetime-clean">Mar 31 '14 at 4:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34688725" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Sorry for being not so specific - One row of output with just one quarter and all the data for that quarter. Please see the desired output which is required - NYSE,AEA,2010-01-08,4.42,4.42,4.21,4.24,205500,4.24 NYSE,AEA,2010-02-05,4.42,4.54,4.22,4.41,194300,4.41 NYSE,AEA,2010-03-04,4.55,4.69,4.39,4.42,233800,4.42 - This data is for once quarter which I need. Hope this helps.</span>
+                    &ndash;&nbsp;<a href="/users/3400094/rajnish-g"
+                       title="137 reputation"
+                       class="comment-user owner">Rajnish G</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-31 07:48:17Z" class="relativetime-clean">Mar 31 '14 at 7:48</span></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34688883" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Correction - Sorry for being not so specific - One row per stock that contains all the data for all days in the specific quarter. Please see the desired output which is required - NYSE,AEA,2010-01-08,4.42,4.42,4.21,4.24,205500,4.24 NYSE,AEA,2010-02-05,4.42,4.54,4.22,4.41,194300,4.41 NYSE,AEA,2010-03-04,4.55,4.69,4.39,4.42,233800,4.42 - This data is for once quarter which I need. Hope this helps.</span>
+                    &ndash;&nbsp;<a href="/users/3400094/rajnish-g"
+                       title="137 reputation"
+                       class="comment-user owner">Rajnish G</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-31 07:54:16Z" class="relativetime-clean">Mar 31 '14 at 7:54</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-22695780" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/22695780/extract-the-data-in-quarters-using-pig?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/22695780/extract-the-data-in-quarters-using-pig?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/22695780/extract-the-data-in-quarters-using-pig?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="22762270"></a>
+<div id="answer-22762270" class="answer accepted-answer" data-answerid="22762270"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="22762270">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I think what you want to do is this: </p>
+
+<pre><code>daily = load 'NYSE_daily.txt' using PigStorage(',') as (exchange:chararray, symbol:chararray, date:chararray, open:float, high:float , low:float, close:float, volume:float, adj_close:float);
+qtr_filter = FILTER daily by date &gt;= '2009-10-01' and date &lt;= '2009-12-31';
+grouped_by_stock = group qtr_filter by symbol;
+</code></pre>
+
+<p>each line of your output will be for 1 stock symbol and will contain all the daily data for that symbol.  It will not be ordered though so if you want to use that data in order must order it first.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/22762270" title="short permalink to this answer" class="short-link" id="link-post-22762270">share</a><span class="lsep">|</span><a href="/posts/22762270/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-03-31 13:03:07Z" class="relativetime">Mar 31 '14 at 13:03</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/540284/robthewolf"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/f6e4cef447d4ba96e7f4bc51073ebcad?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/540284/robthewolf">robthewolf</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">3,781</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="16 silver badges"><span class="badge2"></span><span class="badgecount">16</span></span><span title="23 bronze badges"><span class="badge3"></span><span class="badgecount">23</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22762270" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-34711188" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks I think I got it now thanks for all your help</span>
+                    &ndash;&nbsp;<a href="/users/3400094/rajnish-g"
+                       title="137 reputation"
+                       class="comment-user owner">Rajnish G</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-31 17:51:52Z" class="relativetime-clean">Mar 31 '14 at 17:51</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34746611" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I was thinking that while executing the script can I pass the parameters I have been trying to incorporate 2 variables to accept the start and end date of the quarter however, unable to do that. Any thoughts.</span>
+                    &ndash;&nbsp;<a href="/users/3400094/rajnish-g"
+                       title="137 reputation"
+                       class="comment-user owner">Rajnish G</a>
+                <span class="comment-date" dir="ltr"><span title="2014-04-01 14:16:29Z" class="relativetime-clean">Apr 1 '14 at 14:16</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34775247" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">you appear to be asking another question.  If so ask another question, the comments is not the place to do it</span>
+                    &ndash;&nbsp;<a href="/users/540284/robthewolf"
+                       title="3781 reputation"
+                       class="comment-user">robthewolf</a>
+                <span class="comment-date" dir="ltr"><span title="2014-04-02 07:34:05Z" class="relativetime-clean">Apr 2 '14 at 7:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-22762270" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/22695780/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="22695780" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="c82e9ba6da5583e8fcc07891e4726864">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22695780%2fextract-the-data-in-quarters-using-pig%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f22695780%2fextract-the-data-in-quarters-using-pig%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/date" class="post-tag" title="show questions tagged &#39;date&#39;" rel="tag">date</a> <a href="/questions/tagged/hadoop" class="post-tag" title="show questions tagged &#39;hadoop&#39;" rel="tag">hadoop</a> <a href="/questions/tagged/apache-pig" class="post-tag" title="show questions tagged &#39;apache-pig&#39;" rel="tag">apache-pig</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-03-27 18:07:21Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>80 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-03-31 13:03:07Z">1 year ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk782239387",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk782239387">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/3356259" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes large">190
+    </div>
+</a><a href="/questions/3356259/difference-between-pig-and-hive-why-have-both" class="question-hyperlink">Difference between Pig and Hive? Why have both?</a>
+</div>
+<div class="spacer">
+<a href="/q/12423399" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">9
+    </div>
+</a><a href="/questions/12423399/define-tuple-datas-in-the-pig-script" class="question-hyperlink">Define tuple datas in the pig script</a>
+</div>
+<div class="spacer">
+<a href="/q/19512638" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/19512638/extract-part-of-field-in-pig" class="question-hyperlink">extract part of field in pig</a>
+</div>
+<div class="spacer">
+<a href="/q/21300612" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">9
+    </div>
+</a><a href="/questions/21300612/error-in-pig-while-loading-data" class="question-hyperlink">Error in pig while loading data</a>
+</div>
+<div class="spacer">
+<a href="/q/23064819" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/23064819/need-the-user-to-select-enter-quarter-to-get-the-desired-output-in-pig-0-12-0" class="question-hyperlink">Need the user to select / enter quarter to get the desired output in PIG-0.12.0</a>
+</div>
+<div class="spacer">
+<a href="/q/25557792" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/25557792/extracting-from-a-line-in-pig" class="question-hyperlink">Extracting from a line in Pig</a>
+</div>
+<div class="spacer">
+<a href="/q/26777499" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/26777499/how-to-convert-utc-time-to-ist-using-pig" class="question-hyperlink">how to convert UTC time to IST using pig</a>
+</div>
+<div class="spacer">
+<a href="/q/28094932" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/28094932/how-to-add-business-days-in-pig-apache-hadoop" class="question-hyperlink">How to add business days in PIG APACHE HADOOP</a>
+</div>
+<div class="spacer">
+<a href="/q/28672470" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/28672470/pig-reading-data-as-databytearray" class="question-hyperlink">Pig reading data as databytearray</a>
+</div>
+<div class="spacer">
+<a href="/q/34170695" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/34170695/pig-flatten-data-bags" class="question-hyperlink">Pig - Flatten data bags</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69127/convert-salesforce-15-character-id-to-18-character" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Convert Salesforce 15-character ID to 18-character
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114475/what-was-c-3po-talking-about-when-he-said-that-s-funny-the-damage-doesn-t-loo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What was C-3PO talking about when he said, “That’s funny, the damage doesn’t look as bad from out here.”
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/24514/what-possible-causes-for-the-check-engine-light-can-i-check-for-myself" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What possible causes for the &quot;check engine&quot; light can I check for myself?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299052/is-puppy-a-synonym-of-dog" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is puppy a synonym of dog?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/24531/cheap-tyres-on-rear-of-car" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Cheap tyres on rear of car?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110172/why-would-security-cover-things-like-natural-disasters" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why would security cover things like natural disasters?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/57931/are-lottery-tickets-ever-a-wise-investment-provided-the-jackpot-is-large-enough" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are lottery tickets ever a wise investment provided the jackpot is large enough?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69049/flip-it-flop-it-mean-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Flip It, Flop It, Mean It
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/125886/check-if-a-user-exists-in-a-sql-server-database" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Check if a user exists in a SQL Server database
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-reverseengineering" title="Reverse Engineering Stack Exchange"></div><a href="http://reverseengineering.stackexchange.com/questions/11743/unable-to-break-at-driverentry-of-malicious-driver" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:489 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Unable to break at DriverEntry of malicious Driver
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1608168/random-solving-of-a-rubik-cube" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Random solving of a Rubik cube .
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103829/extracting-color-options-from-barchart" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Extracting Color Options from BarChart
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/104881/possible-to-use-runas-in-apex-trigger" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible to use runAs in Apex Trigger?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114442/what-is-the-first-work-to-feature-a-planet-that-is-one-city" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the first work to feature a planet that is one city?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228579/does-quantum-mechanics-play-a-role-in-the-brain" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does quantum mechanics play a role in the brain?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-networkengineering" title="Network Engineering Stack Exchange"></div><a href="http://networkengineering.stackexchange.com/questions/25841/routing-loopback-using-ospf" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:496 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Routing loopback using OSPF
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-arduino" title="Arduino Stack Exchange"></div><a href="http://arduino.stackexchange.com/questions/19447/controlling-an-led-using-transistor-tl188" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:540 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Controlling an LED using transistor (TL188)
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114412/why-does-binary-exist" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does Binary exist?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78475/a-large-vase-lays-is-laid-in-the-corner-of-our-front-hallway" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A large vase (lays / is laid) in the corner of our front hallway
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-raspberrypi" title="Raspberry Pi Stack Exchange"></div><a href="http://raspberrypi.stackexchange.com/questions/40928/do-you-have-to-use-sdformatter-before-installing-noobs" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:447 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do You HAVE To Use SDFormatter Before Installing NOOBS?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114438/was-sidious-already-making-the-death-star-by-the-end-of-rots" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Was Sidious already making the Death Star by the end of RotS?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110258/users-calling-and-telling-us-their-passwords" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Users calling and telling us their passwords
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1605183/if-squaring-a-number-means-multiplying-that-number-with-itself-then-shouldnt-ta" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If squaring a number means multiplying that number with itself then shouldn&#39;t taking square root of a number mean to divide a number by itself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110141/how-to-know-whether-a-textfile-has-been-edited-or-tampered-with" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to know whether a textfile has been edited or tampered with?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/22695780" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/22695780/ivc/1ce5');});
+</script>
+<noscript>
+    <div><img src="/posts/22695780/ivc/1ce5" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3157
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('date,hadoop,apache-pig');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|date|hadoop|apache-pig|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

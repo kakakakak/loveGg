@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>ruby on rails - Log Data Analytics : Choice of Database - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Log Data Analytics : Choice of Database" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I am getting Log Data from various web applications in the following format:
+
+Session    Timestamp    Event                Parameters
+1          1            Started Session      
+1          2     ..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/23544604/log-data-analytics-choice-of-database"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/23544604/log-data-analytics-choice-of-database" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=2ad47c1cbf74"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/23544604/log-data-analytics-choice-of-database" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/23544604/log-data-analytics-choice-of-database" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/23544604/log-data-analytics-choice-of-database">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:8,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:23544604});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '23544604');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452577606,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"c82e9ba6da5583e8fcc07891e4726864","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"89e086192993","js/moderator.en.js":"7b2687f4cf30","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"a5e983bd7490","js/wmd.en.js":"bdc36644892f","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"a24a0049a77a","js/tageditornew.en.js":"53847fa72831","js/inline-tag-editing.en.js":"314cfb72355b","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"abdba91a2e50","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"5faa9f5da067","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"3874cd280138","js/keyboard-shortcuts.en.js":"2ee500392c30","js/external-editor.en.js":"cf58cc6630ef","js/external-editor.en.js":"cf58cc6630ef","js/snippet-javascript.en.js":"f590e314ee2d","js/snippet-javascript-codemirror.en.js":"20797e12ebbb"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f23544604%2flog-data-analytics-choice-of-database" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f23544604%2flog-data-analytics-choice-of-database" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f23544604%2flog-data-analytics-choice-of-database" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f23544604%2flog-data-analytics-choice-of-database" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f23544604%2flog-data-analytics-choice-of-database" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/23544604/log-data-analytics-choice-of-database" class="question-hyperlink">Log Data Analytics : Choice of Database [closed]</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="23544604"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1934228192",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1934228192">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="23544604">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>2</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I am getting Log Data from various web applications in the following format:</p>
+
+<pre><code>Session    Timestamp    Event                Parameters
+1          1            Started Session      
+1          2            Logged In            Username:"user1"
+2          3            Started Session
+1          3            Started Challenge    title:"Challenge 1", level:"2"
+2          4            Logged In            Username:"user2"
+</code></pre>
+
+<p>Now, a person wants to carry out analytics on this log data (And would like to receive it as a JSON blob after appropriate transformations). For example, he may want to receive a JSON blob where the Log Data is grouped by <code>Session</code> and <code>TimeFromSessionStart</code> and <code>CountOfEvents</code> are added before the data is sent so that he can carry out meaningful analysis. Here I should return:</p>
+
+<pre><code>[
+  {
+    "session":1,"CountOfEvents":3,"Actions":[{"TimeFromSessionStart":0,"Event":"Session Started"}, {"TimeFromSessionStart":1, "Event":"Logged In", "Username":"user1"}, {"TimeFromSessionStart":2, "Event":"Startd Challenge", "title":"Challenge 1", "level":"2" }]
+  },
+  { 
+    "session":2, "CountOfEvents":2,"Actions":[{"TimeFromSessionStart":0,"Event":"Session     Started"}, {"TimeFromSessionStart":2, "Event":"Logged In", "Username":"user2"}] 
+  }
+]
+</code></pre>
+
+<p>Here, <code>TimeFromSessionStart</code>, <code>CountOfEvents</code> etc. [Let's call it synthetic additional data] will not be hard coded and I will make a web interface to allow the person to decide what kind of synthetic data he requires in the JSON blob. I would like to provide a good amount of flexibility to the person to decide what kind of synthetic data he wants in the JSON blob.</p>
+
+<p>I am expecting the database to store around 1 Million rows and carry out transformations in a reasonable amount of time.</p>
+
+<p>My question is regarding choice of Database. What will be the relative advantages and disadvantages of using SQL Database such as PostgreSQL v/s using NoSQL Database such as MongoDB. From whatever I have read till now, I think that NoSQL may not be able to provide enough flexibility of adding additional synthetic data. On the other hand, I may face issues of flexibility in data representation if I use SQL Database.</p>
+
+<p>I think the storage requirement for both MongoDB and PostgreSQL will be comparable since I will have to build similar indices (probably!) in both situations to speed up querying.</p>
+
+<p>If I use PostgreSQL, I can store the data in the following manner:
+<code>Session</code> and <code>Event</code> can be <code>string</code>, <code>Timestamp</code> can be <code>date</code> and <code>Parameters</code> can be <code>hstore</code>(key value pairs available in PostgreSQL). After that, I can use SQL queries to compute the synthetic (or additional) data, store it temporarily in variables in a Rails Application (which will interact with PostgreSQL database and act as interface for the person who wants the JSON blob) and create JSON blob from it.</p>
+
+<p>Another possible approach is to use MongoDB for storing the log data and use <a href="https://github.com/mongoid/mongoid" rel="nofollow">Mongoid</a> as an interface with Rails application if I can get enough flexibility of adding additional synthetic data for analytics and some performance/storage improvements over PostgreSQL. But, in this case, I am not clear of what will be the best way to store log data in MongoDB. Also, I read that MongoDB will be somewhat slower than PostgreSQL and is mainly meant to run in background.</p>
+
+<p><em>Edit:</em>
+From whatever I have read in the past few days, Apache Hadoop seems to be a good choice as well because of it's greater speed over MongoDB (being multi-threaded).</p>
+
+<p><strong>Edit:</strong>
+I am not asking for opinions and would like to know the specific advantages or disadvantages of using a particular approach. Therefore, I don't think that the question is opinion based.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/ruby-on-rails" class="post-tag" title="show questions tagged &#39;ruby-on-rails&#39;" rel="tag">ruby-on-rails</a> <a href="/questions/tagged/mongodb" class="post-tag" title="show questions tagged &#39;mongodb&#39;" rel="tag">mongodb</a> <a href="/questions/tagged/postgresql" class="post-tag" title="show questions tagged &#39;postgresql&#39;" rel="tag">postgresql</a> <a href="/questions/tagged/mapreduce" class="post-tag" title="show questions tagged &#39;mapreduce&#39;" rel="tag">mapreduce</a> <a href="/questions/tagged/relational-database" class="post-tag" title="show questions tagged &#39;relational-database&#39;" rel="tag">relational-database</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/23544604" title="short permalink to this question" class="short-link" id="link-post-23544604">share</a><span class="lsep">|</span><a href="/posts/23544604/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/23544604/revisions" title="show all edits to this post">edited <span title="2014-05-21 05:22:58Z" class="relativetime">May 21 '14 at 5:22</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2014-05-08 14:23:30Z" class="relativetime">May 8 '14 at 14:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2352321/peeyush"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/eea941932c427b85f670349134b434bd?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2352321/peeyush">Peeyush</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,081</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="28 bronze badges"><span class="badge3"></span><span class="badgecount">28</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                    <tr>
+            <td class="special-status" colspan="2">
+                <div class="question-status">
+        <h2>                    <b>closed</b> as primarily opinion-based by <a href="/users/426671/bluefeet">bluefeet</a><span class="mod-flair" title="moderator">&#9830;</span> <span dir="ltr"><span title="2014-05-20 19:24:07Z" class="relativetime">May 20 '14 at 19:24</span></span>
+</h2>
+        <p>Many good questions generate some degree of opinion based on expert experience, but answers to this question   will tend to be almost entirely based on opinions, rather than facts, references, or specific expertise.<span class="close-status-suffix">If this question can be reworded to fit the rules in the <a href="/help/closed-questions">help center</a>, please <a href="/posts/23544604/edit">edit the question</a>.</span></p>
+    </div>
+            </td>
+        </tr>
+    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-23544604" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="3"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-36266203" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">not everything you&#39;ve read is accurate. MongoDB is neither single-threaded nor is it meant to run in &quot;background&quot;.</span>
+                    &ndash;&nbsp;<a href="/users/431012/asya-kamsky"
+                       title="23225 reputation"
+                       class="comment-user">Asya Kamsky</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-13 00:22:46Z" class="relativetime-clean">May 13 '14 at 0:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-36266789" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@AsyaKamsky I read that <code>MongoDB: The Definitive Guide</code> says that <code>The price of using MapReduce is speed: group is not particularly speedy, but MapReduce is slower and is not supposed to be used in “real time.” You run MapReduce as a background job, it creates a collection of results, and then you can query that collection in real time.</code></span>
+                    &ndash;&nbsp;<a href="/users/2352321/peeyush"
+                       title="1081 reputation"
+                       class="comment-user owner">Peeyush</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-13 01:07:46Z" class="relativetime-clean">May 13 '14 at 1:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-36267992" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">MongoDB is a lot more than MapReduce, in fact, MR is a somewhat marginal feature of it, you should not even be using map-reduce - you should use aggregation framework which runs on the server (not in JS) and is an order of magnitude faster than map-reduce.</span>
+                    &ndash;&nbsp;<a href="/users/431012/asya-kamsky"
+                       title="23225 reputation"
+                       class="comment-user">Asya Kamsky</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-13 02:32:49Z" class="relativetime-clean">May 13 '14 at 2:32</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-36268055" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">you said you get log data from various applications, but you don&#39;t show application id anywhere in your examples.  do you expect for queries to be across all applications, or just for specific ones or ???</span>
+                    &ndash;&nbsp;<a href="/users/431012/asya-kamsky"
+                       title="23225 reputation"
+                       class="comment-user">Asya Kamsky</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-13 02:36:21Z" class="relativetime-clean">May 13 '14 at 2:36</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-36269517" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Yes, the queries will be across all applications (Also, I can add an application id if required without much problem). I don&#39;t know how I should store the log data if I use MongoDB. I mean, how should the <code>Parameters</code> be represented so that they can be partially indexed later on to increase query speed for certain types of queries [Eg. those concerned with username]? Also are there any disadvantages of MongoDB compared to PostgreSQL for my use case?</span>
+                    &ndash;&nbsp;<a href="/users/2352321/peeyush"
+                       title="1081 reputation"
+                       class="comment-user owner">Peeyush</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-13 04:21:18Z" class="relativetime-clean">May 13 '14 at 4:21</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-23544604" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>3</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								3 Answers
+                                <span style="display:none;" itemprop="answerCount">3</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/23544604/log-data-analytics-choice-of-database?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/23544604/log-data-analytics-choice-of-database?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/23544604/log-data-analytics-choice-of-database?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="23595790"></a>
+<div id="answer-23595790" class="answer" data-answerid="23595790"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="23595790">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You should check out logstash / kibana from elasticsearch.  The primary use case for that stack is collecting log data, storing it, analyzing it.  </p>
+
+<p><a href="http://www.elasticsearch.org/overview/logstash/" rel="nofollow">http://www.elasticsearch.org/overview/logstash/</a><br>
+<a href="http://www.elasticsearch.org/videos/kibana-logstash/" rel="nofollow">http://www.elasticsearch.org/videos/kibana-logstash/</a>  </p>
+
+<p>Mongo is a good choice too if you are looking at building it all yourself, but I think you could find that the products from elasticsearch very well could solve your needs and allow the integration you need.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/23595790" title="short permalink to this answer" class="short-link" id="link-post-23595790">share</a><span class="lsep">|</span><a href="/posts/23595790/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-05-11 17:33:18Z" class="relativetime">May 11 '14 at 17:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3323779/mhoglan"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/wThO8.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3323779/mhoglan">mhoglan</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">371</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-23595790" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-36453535" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Highly recommend something like logstash and using the time saved to add other features like graphs. ( <a href="http://graphite.wikidot.com/" rel="nofollow">graphite.wikidot.com</a> or <a href="http://grafana.org/" rel="nofollow">grafana.org</a>)</span>
+                    &ndash;&nbsp;<a href="/users/1602316/chris-gunawardena"
+                       title="2420 reputation"
+                       class="comment-user">Chris Gunawardena</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-18 04:12:25Z" class="relativetime-clean">May 18 '14 at 4:12</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-23595790" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk940661684",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk940661684">
+            </div>
+  
+<a name="23636776"></a>
+<div id="answer-23636776" class="answer" data-answerid="23636776"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="23636776">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+<div class="bounty-award-container"><span class="bounty-award" title="This answer has been awarded bounties worth 100 reputation by Peeyush">+100</span></div>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>MongoDB is well suited to your task and its document storage is more flexible than the rigid SQL table structure.
+Below, please find a working test using Mongoid
+that demonstrates comprehension of your log data input,
+easy storage as documents in a MongoDB collection,
+and analytics using MongoDB's aggregation framework.
+I've chosen to put the parameters in a sub-document.
+This matches your sample input table more closely and simplifies the pipeline.
+The resulting JSON is slightly modified,
+but all of the specified calculations, data, and grouping is present.
+I've added a test for an index on parameter Username that demonstrates an index on a subdoc field.
+This is adequate for specific fields that you want to index,
+but a completely general index can't be done on keys, you would have to restructure to values.</p>
+
+<p>I hope that this helps and that you like it.</p>
+
+<p>test/unit/log_data_test.rb</p>
+
+<pre><code>require 'test_helper'
+require 'json'
+require 'pp'
+
+class LogDataTest &lt; ActiveSupport::TestCase
+  def setup
+    LogData.delete_all
+    @log_data_analysis_pipeline = [
+        {'$group' =&gt; {
+            '_id' =&gt; '$session',
+            'session' =&gt; {'$first' =&gt; '$session'},
+            'CountOfEvents' =&gt; {'$sum' =&gt; 1},
+            'timestamp0' =&gt; {'$first' =&gt; '$timestamp'},
+            'Actions' =&gt; {
+                '$push' =&gt; {
+                    'timestamp' =&gt; '$timestamp',
+                    'event' =&gt; '$event',
+                    'parameters' =&gt; '$parameters'}}}},
+        {'$project' =&gt; {
+            '_id' =&gt; 0,
+            'session' =&gt; '$session',
+            'CountOfEvents' =&gt; '$CountOfEvents',
+            'Actions' =&gt; {
+                '$map' =&gt; { 'input' =&gt; "$Actions", 'as' =&gt; 'action',
+                            'in' =&gt; {
+                                'TimeFromSessionStart' =&gt; {
+                                    '$subtract' =&gt; ['$$action.timestamp', '$timestamp0']},
+                                'event' =&gt; '$$action.event',
+                                'parameters' =&gt; '$$action.parameters'
+                            }}}}
+        }
+    ]
+    @key_names = %w(session timestamp event parameters)
+    @log_data = &lt;&lt;-EOT.gsub(/^\s+/, '').split(/\n/)
+    1          1            Started Session
+    1          2            Logged In            Username:"user1"
+    2          3            Started Session
+    1          3            Started Challenge    title:"Challenge 1", level:"2"
+    2          4            Logged In            Username:"user2"
+    EOT
+    docs = @log_data.collect{|line| line_to_doc(line)}
+    LogData.create(docs)
+    assert_equal(docs.size, LogData.count)
+    puts
+  end
+  def line_to_doc(line)
+    doc = Hash[*@key_names.zip(line.split(/  +/)).flatten]
+    doc['session'] = doc['session'].to_i
+    doc['timestamp'] = doc['timestamp'].to_i
+    doc['parameters'] = eval("{#{doc['parameters']}}") if doc['parameters']
+    doc
+  end
+  test "versions" do
+    puts "Mongoid version: #{Mongoid::VERSION}\nMoped version: #{Moped::VERSION}"
+    puts "MongoDB version: #{LogData.collection.database.command({:buildinfo =&gt; 1})['version']}"
+  end
+  test "log data analytics" do
+    pp LogData.all.to_a
+    result = LogData.collection.aggregate(@log_data_analysis_pipeline)
+    json = &lt;&lt;-EOT
+        [
+            {
+                "session":1,"CountOfEvents":3,"Actions":[{"TimeFromSessionStart":0,"Event":"Session Started"}, {"TimeFromSessionStart":1, "Event":"Logged In", "Username":"user1"}, {"TimeFromSessionStart":2, "Event":"Started Challenge", "title":"Challenge 1", "level":"2" }]
+            },
+            {
+                "session":2, "CountOfEvents":2,"Actions":[{"TimeFromSessionStart":0,"Event":"Session Started"}, {"TimeFromSessionStart":2, "Event":"Logged In", "Username":"user2"}]
+            }
+        ]
+    EOT
+    puts JSON.pretty_generate(result)
+  end
+  test "explain" do
+    LogData.collection.indexes.create('parameters.Username' =&gt; 1)
+    pp LogData.collection.find({'parameters.Username' =&gt; 'user2'}).to_a
+    pp LogData.collection.find({'parameters.Username' =&gt; 'user2'}).explain['cursor']
+  end
+end
+</code></pre>
+
+<p>app/models/log_data.rb</p>
+
+<pre><code>class LogData
+  include Mongoid::Document
+  field :session, type: Integer
+  field :timestamp, type: Integer
+  field :event, type: String
+  field :parameters, type: Hash
+end
+</code></pre>
+
+<p>$ rake test</p>
+
+<pre><code>Run options: 
+
+# Running tests:
+
+[1/3] LogDataTest#test_explain
+[{"_id"=&gt;"537258257f11ba8f03000005",
+  "session"=&gt;2,
+  "timestamp"=&gt;4,
+  "event"=&gt;"Logged In",
+  "parameters"=&gt;{"Username"=&gt;"user2"}}]
+"BtreeCursor parameters.Username_1"
+[2/3] LogDataTest#test_log_data_analytics      
+[#&lt;LogData _id: 537258257f11ba8f03000006, session: 1, timestamp: 1, event: "Started Session", parameters: nil&gt;,
+ #&lt;LogData _id: 537258257f11ba8f03000007, session: 1, timestamp: 2, event: "Logged In", parameters: {"Username"=&gt;"user1"}&gt;,
+ #&lt;LogData _id: 537258257f11ba8f03000008, session: 2, timestamp: 3, event: "Started Session", parameters: nil&gt;,
+ #&lt;LogData _id: 537258257f11ba8f03000009, session: 1, timestamp: 3, event: "Started Challenge", parameters: {"title"=&gt;"Challenge 1", "level"=&gt;"2"}&gt;,
+ #&lt;LogData _id: 537258257f11ba8f0300000a, session: 2, timestamp: 4, event: "Logged In", parameters: {"Username"=&gt;"user2"}&gt;]
+[
+  {
+    "session": 2,
+    "CountOfEvents": 2,
+    "Actions": [
+      {
+        "TimeFromSessionStart": 0,
+        "event": "Started Session",
+        "parameters": null
+      },
+      {
+        "TimeFromSessionStart": 1,
+        "event": "Logged In",
+        "parameters": {
+          "Username": "user2"
+        }
+      }
+    ]
+  },
+  {
+    "session": 1,
+    "CountOfEvents": 3,
+    "Actions": [
+      {
+        "TimeFromSessionStart": 0,
+        "event": "Started Session",
+        "parameters": null
+      },
+      {
+        "TimeFromSessionStart": 1,
+        "event": "Logged In",
+        "parameters": {
+          "Username": "user1"
+        }
+      },
+      {
+        "TimeFromSessionStart": 2,
+        "event": "Started Challenge",
+        "parameters": {
+          "title": "Challenge 1",
+          "level": "2"
+        }
+      }
+    ]
+  }
+]
+[3/3] LogDataTest#test_versions                           
+Mongoid version: 3.1.6
+Moped version: 1.5.2
+MongoDB version: 2.6.1
+Finished tests in 0.083465s, 35.9432 tests/s, 35.9432 assertions/s.
+3 tests, 3 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/23636776" title="short permalink to this answer" class="short-link" id="link-post-23636776">share</a><span class="lsep">|</span><a href="/posts/23636776/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/23636776/revisions" title="show all edits to this post">edited <span title="2014-05-13 17:52:47Z" class="relativetime">May 13 '14 at 17:52</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-05-13 16:28:34Z" class="relativetime">May 13 '14 at 16:28</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1316225/gary-murakami"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/EUHPB.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1316225/gary-murakami">Gary Murakami</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,932</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="19 bronze badges"><span class="badge3"></span><span class="badgecount">19</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-23636776" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-36474697" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Sorry for the late reply and thanks very much for the detailed answer. I still have a doubt. You seem to have hard coded <code>CountOfEvents</code> and <code>TimeFromSessionStart</code> but I want more flexibility over the synthetic additional data to be added. For eg. what if the person wants count of specific event in output. Eg. count of <code>Started Challenge</code> or he wants number of events performed out of <code>Started Challenge</code>, <code>Changed Gravity</code>. I was thinking of making functions which act as templates, accept parameters, compute the synthetic data. Later, the synthetic data may be used to form the JSON blob.</span>
+                    &ndash;&nbsp;<a href="/users/2352321/peeyush"
+                       title="1081 reputation"
+                       class="comment-user owner">Peeyush</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-19 03:07:01Z" class="relativetime-clean">May 19 '14 at 3:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-36474785" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Is PostgreSQL better in this scenario or would MongoDB be still better for this case? With MongoDB, I can use Mongoid for querying however I suspect that PostgreSQL will probably be faster with such queries (with most of them being aggregation based). Any advice/opinion on this would be great. Anyways, I will still give you the bounty because your answer seems to most detailed and helpful and it must have taken a lot of effort!</span>
+                    &ndash;&nbsp;<a href="/users/2352321/peeyush"
+                       title="1081 reputation"
+                       class="comment-user owner">Peeyush</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-19 03:12:55Z" class="relativetime-clean">May 19 '14 at 3:12</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-23636776" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="23572088"></a>
+<div id="answer-23572088" class="answer" data-answerid="23572088"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="23572088">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>MongoDB is an ideal database for this.</p>
+
+<ol>
+<li><p>Create a collection for your raw log data.</p></li>
+<li><p>Use one of Mongo's powerful aggregation tools, and output the aggregated data to another collection (or multiple output collections, if you want different buckets or views of the raw data)</p></li>
+</ol>
+
+<p>You can either do the agg offline, with a set of pre-determined possibilities that users can pull from, or do it on demand/ad hoc, if you can tolerate some latency in your response.</p>
+
+<p><a href="http://docs.mongodb.org/manual/aggregation/" rel="nofollow">http://docs.mongodb.org/manual/aggregation/</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/23572088" title="short permalink to this answer" class="short-link" id="link-post-23572088">share</a><span class="lsep">|</span><a href="/posts/23572088/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-05-09 19:01:37Z" class="relativetime">May 9 '14 at 19:01</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/20588/keeth"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d306d80f0941006700a4a052aba8e3e7?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/20588/keeth">Keeth</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">944</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="10 silver badges"><span class="badge2"></span><span class="badgecount">10</span></span><span title="19 bronze badges"><span class="badge3"></span><span class="badgecount">19</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-23572088" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-36266827" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hi, How should I store the log data in MongoDB. I mean, how should the <code>Parameters</code> be represented so that they can be partially indexed later on to increase query speed for certain types of queries?</span>
+                    &ndash;&nbsp;<a href="/users/2352321/peeyush"
+                       title="1081 reputation"
+                       class="comment-user owner">Peeyush</a>
+                <span class="comment-date" dir="ltr"><span title="2014-05-13 01:10:42Z" class="relativetime-clean">May 13 '14 at 1:10</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-23572088" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+				
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/ruby-on-rails" class="post-tag" title="show questions tagged &#39;ruby-on-rails&#39;" rel="tag">ruby-on-rails</a> <a href="/questions/tagged/mongodb" class="post-tag" title="show questions tagged &#39;mongodb&#39;" rel="tag">mongodb</a> <a href="/questions/tagged/postgresql" class="post-tag" title="show questions tagged &#39;postgresql&#39;" rel="tag">postgresql</a> <a href="/questions/tagged/mapreduce" class="post-tag" title="show questions tagged &#39;mapreduce&#39;" rel="tag">mapreduce</a> <a href="/questions/tagged/relational-database" class="post-tag" title="show questions tagged &#39;relational-database&#39;" rel="tag">relational-database</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-05-08 14:23:30Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>488 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-05-21 05:22:58Z">1 year ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1706305609",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1706305609">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/5594458" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">10</div>
+	</a>
+	<a href="/questions/5594458/which-database-to-choose-cassandra-mongodb-for-storing-and-querying-event" class="question-hyperlink">Which database to choose (Cassandra, MongoDB, ?) for storing and querying event / log / metrics data?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/712626" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/712626/database-for-analytics" class="question-hyperlink">database for analytics</a>
+</div>
+<div class="spacer">
+<a href="/q/8849571" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/8849571/relational-to-nosql-database" class="question-hyperlink">Relational to NoSQL Database</a>
+</div>
+<div class="spacer">
+<a href="/q/9851101" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/9851101/database-choice-for-stock-data" class="question-hyperlink">Database choice for stock data</a>
+</div>
+<div class="spacer">
+<a href="/q/13449943" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/13449943/log-viewing-utility-database-choice" class="question-hyperlink">Log viewing utility database choice</a>
+</div>
+<div class="spacer">
+<a href="/q/25939845" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/25939845/database-design-for-log-data-evaluation" class="question-hyperlink">Database design for log data evaluation</a>
+</div>
+<div class="spacer">
+<a href="/q/26633635" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/26633635/using-relational-database" class="question-hyperlink">Using Relational Database</a>
+</div>
+<div class="spacer">
+<a href="/q/27248291" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/27248291/application-event-logging-for-statistics" class="question-hyperlink">Application event logging for statistics</a>
+</div>
+<div class="spacer">
+<a href="/q/28373915" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/28373915/structured-logging-in-a-relational-database" class="question-hyperlink">Structured Logging in a relational database</a>
+</div>
+<div class="spacer">
+<a href="/q/28960272" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/28960272/mongodb-data-modelling-indexes-and-pk" class="question-hyperlink">MongoDB data modelling - Indexes and PK</a>
+</div>
+<div class="spacer">
+<a href="/q/29998621" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/29998621/description-of-postgresql-database-tables-installed-on-a-particular-computer" class="question-hyperlink">Description of PostgreSQL database tables installed on a particular computer</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61502/help-accused-of-cheating-on-masters-final-backed-into-a-corner" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Help! Accused of cheating on masters final; backed into a corner
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-raspberrypi" title="Raspberry Pi Stack Exchange"></div><a href="http://raspberrypi.stackexchange.com/questions/40947/re-configure-raspberry-pi-as-if-it-was-new" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:447 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Re-configure Raspberry Pi as if it was new
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/307063/why-does-git-pull-perform-a-merge-instead-of-a-rebase-by-default" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does git pull perform a merge instead of a rebase by default?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-earthscience" title="Earth Science Stack Exchange"></div><a href="http://earthscience.stackexchange.com/questions/7212/why-is-the-pond-in-my-backyard-not-frozen-when-it-is-5f-outside" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:553 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the pond in my backyard not frozen when it is 5&#176;F outside?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/116406/body-mass-index-calculator" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Body Mass Index Calculator
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/72968/the-pc-claims-to-know-an-npc-they-just-met-how-should-i-react-as-the-dm" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The PC claims to know an NPC they just met, how should I react as the DM?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299052/is-puppy-a-synonym-of-dog" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is puppy a synonym of dog?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-lifehacks" title="Lifehacks Stack Exchange"></div><a href="http://lifehacks.stackexchange.com/questions/10622/how-can-i-eat-my-bagel-when-i-lack-a-knife-to-cut-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:593 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I eat my bagel when I lack a knife to cut it?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/116469/print-the-n-longest-lines-in-a-file" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Print the N longest lines in a file
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228837/why-things-get-dry-meaning-from-water" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why things get dry (meaning from water)?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/61221/getting-a-us-minor-passport-when-you-cant-find-one-parent" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Getting a US minor passport when you can&#39;t find one parent
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-judaism" title="Mi Yodeya"></div><a href="http://judaism.stackexchange.com/questions/67166/why-do-many-non-orthodox-jews-come-to-shul-regularly-only-after-a-parents-death" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:248 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do many non-Orthodox Jews come to shul regularly only after a parent&#39;s death?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287153/what-packages-are-no-longer-necessary-after-tex-live-2015-kernel-update" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What packages are no longer necessary after TeX Live 2015 kernel update?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/65299/open-source-software-capable-of-open-sketch-files" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Open source software capable of open Sketch files
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299164/is-english-the-only-language-that-always-capitalizes-i" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is English the only language that always capitalizes &quot;I&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/57931/are-lottery-tickets-ever-a-wise-investment-provided-the-jackpot-is-large-enough" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are lottery tickets ever a wise investment provided the jackpot is large enough?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78507/now-were-only-a-nip-and-tuck-away" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Now we&#39;re only a nip and tuck away
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46109/looking-for-name-of-movie-about-the-president-landing-via-parachute-in-a-forest" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Looking for name of movie about the president landing via parachute in a forest
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33066/why-are-monasteries-so-remote" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are monasteries so remote?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251478/how-important-is-it-to-upgrade-ship-weapons-in-mass-effect-2" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How important is it to upgrade ship weapons in Mass Effect 2?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1024672/is-it-possible-to-create-firewall-that-only-allows-legitimate-webserver-traffic" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible to create firewall that only allows legitimate webserver traffic on port 443 and not any other service?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69208/choose-the-powerball-numbers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Choose The Powerball Numbers!
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-japanese" title="Japanese Language Stack Exchange"></div><a href="http://japanese.stackexchange.com/questions/30365/particle-between-city-and-prefecture" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:257 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Particle between city and prefecture?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251541/wheres-the-bobblehead-stand" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Wheres the bobblehead stand!
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+		<script>
+StackExchange.ready(function(){$.get('/posts/23544604/ivc/1c26');});
+</script>
+<noscript>
+    <div><img src="/posts/23544604/ivc/1c26" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-sql</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3159
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('ruby-on-rails,mongodb,postgresql,mapreduce,relational-database');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|ruby-on-rails|mongodb|postgresql|mapreduce|relational-database|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

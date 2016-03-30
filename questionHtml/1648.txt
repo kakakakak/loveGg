@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>java - IO Exception while running K-means clustering using mahout and hadoop jar - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="IO Exception while running K-means clustering using mahout and hadoop jar" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I am trying to run a clustering program using Mahout.Following is my java code which I am using
+
+package com;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar/16828448"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar/16828448" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=e5852343f40d"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar/16828448" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar/16828448" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar/16828448">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:16827944});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '16827944');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452537985,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"feb94ac237bf4560673eb2216871336d","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c28ffc75f822","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"9ede90d3ed16","js/full.en.js":"033d573c35db","js/wmd.en.js":"47ccdaf392cb","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"20bcb42b710b","js/tageditornew.en.js":"a71ee27852ba","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"ae29b9441b40","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"c251bbc879d8","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"03a7725d4a79","js/keyboard-shortcuts.en.js":"0e582d41820b","js/external-editor.en.js":"cea2f1a9cb30","js/external-editor.en.js":"cea2f1a9cb30","js/snippet-javascript.en.js":"a787fb64bef0","js/snippet-javascript-codemirror.en.js":"569e93559c76"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f16827944%2fio-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar%2f16828448" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f16827944%2fio-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar%2f16828448" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f16827944%2fio-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar%2f16828448" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f16827944%2fio-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar%2f16828448" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f16827944%2fio-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar%2f16828448" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar" class="question-hyperlink">IO Exception while running K-means clustering using mahout and hadoop jar [closed]</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="16827944"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1016508799",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1016508799">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16827944">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I am trying to run a clustering program using Mahout.Following is my java code which I am using</p>
+
+<pre><code>package com;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.SequenceFile;
+import org.apache.hadoop.io.Text;
+import org.apache.mahout.clustering.WeightedVectorWritable;
+import org.apache.mahout.clustering.kmeans.Cluster;
+import org.apache.mahout.clustering.kmeans.KMeansDriver;
+import org.apache.mahout.common.distance.EuclideanDistanceMeasure;
+import org.apache.mahout.math.RandomAccessSparseVector;
+import org.apache.mahout.math.Vector;
+import org.apache.mahout.math.VectorWritable;
+
+public class ClusteringDemo {
+
+    public static final double[][] points = { { 1, 1 }, { 2, 1 }, { 1, 2 },
+            { 2, 2 }, { 3, 3 }, { 8, 8 }, { 9, 8 }, { 8, 9 }, { 9, 9 } };
+
+    public static void writePointsToFile(List&lt;Vector&gt; points, String fileName,
+            FileSystem fs, Configuration conf) throws IOException {
+        Path path = new Path(fileName);
+        SequenceFile.Writer writer = new SequenceFile.Writer(fs, conf, path,
+                LongWritable.class, VectorWritable.class);
+        long recNum = 0;
+        VectorWritable vec = new VectorWritable();
+        for (Vector point : points) {
+            vec.set(point);
+            writer.append(new LongWritable(recNum++), vec);
+        }
+        writer.close();
+    }
+
+    public static List&lt;Vector&gt; getPoints(double[][] raw) {
+        List&lt;Vector&gt; points = new ArrayList&lt;Vector&gt;();
+        for (int i = 0; i &lt; raw.length; i++) {
+            double[] fr = raw[i];
+            Vector vec = new RandomAccessSparseVector(fr.length);
+            vec.assign(fr);
+            points.add(vec);
+        }
+        return points;
+    }
+
+    public static void main(String args[]) throws Exception {
+        int k = 3;
+        List&lt;Vector&gt; vectors = getPoints(points);
+        File testData = new File("/home/vishal/testdata");
+        if (!testData.exists()) {
+            testData.mkdir();
+        }
+        testData = new File("/home/vishal/testdata/points");
+        if (!testData.exists()) {
+            testData.mkdir();
+        }
+        Configuration conf = new Configuration();
+        FileSystem fs = FileSystem.get(conf);
+        writePointsToFile(vectors, "/home/vishal/testdata/points/file1", fs,
+                conf);
+
+        Path path = new Path("/home/vishal/testdata/clusters/part-00000");
+        SequenceFile.Writer writer = new SequenceFile.Writer(fs, conf, path,
+                Text.class, Cluster.class);
+        for (int i = 0; i &lt; k; i++) {
+            Vector vec = vectors.get(i);
+            Cluster cluster = new Cluster(vec, i,
+                    new EuclideanDistanceMeasure());
+            writer.append(new Text(cluster.getIdentifier()), cluster);
+
+        }
+        writer.close();
+        KMeansDriver.run(conf, new Path("/home/vishal/testdata/points"),
+                new Path("/home/vishal/testdata/clusters"), new Path(
+                        "/home/vishal/output"), new EuclideanDistanceMeasure(),
+                0.001, 10, true, false);
+
+        SequenceFile.Reader reader = new SequenceFile.Reader(fs, new Path(
+                "/home/vishal/output/" + Cluster.CLUSTERED_POINTS_DIR
+                        + "/part-m-00000"), conf);
+        IntWritable key = new IntWritable();
+        WeightedVectorWritable value = new WeightedVectorWritable();
+        while (reader.next(key, value)) {
+            System.out.println(value.toString() + " belongs to cluster "
+                    + key.toString());
+        }
+        reader.close();
+
+    }
+
+}
+</code></pre>
+
+<p>But when i run it ,it starts executing normally but at the end gives me an error..
+Following is stack trace which I am getting when I am running it.</p>
+
+<pre><code>13/05/30 09:49:22 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+13/05/30 09:49:22 INFO kmeans.KMeansDriver: Input: /home/vishal/testdata/points Clusters In: /home/vishal/testdata/clusters Out: /home/vishal/output Distance: org.apache.mahout.common.distance.EuclideanDistanceMeasure
+13/05/30 09:49:22 INFO kmeans.KMeansDriver: convergence: 0.0010 max Iterations: 10 num Reduce Tasks: org.apache.mahout.math.VectorWritable Input Vectors: {}
+13/05/30 09:49:22 INFO kmeans.KMeansDriver: K-Means Iteration 1
+13/05/30 09:49:22 INFO common.HadoopUtil: Deleting /home/vishal/output/clusters-1
+13/05/30 09:49:23 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+13/05/30 09:49:23 INFO input.FileInputFormat: Total input paths to process : 1
+13/05/30 09:49:23 INFO mapred.JobClient: Running job: job_local_0001
+13/05/30 09:49:23 INFO util.ProcessTree: setsid exited with exit code 0
+13/05/30 09:49:23 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@15fc40c
+13/05/30 09:49:23 INFO mapred.MapTask: io.sort.mb = 100
+13/05/30 09:49:23 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/05/30 09:49:23 INFO mapred.MapTask: record buffer = 262144/327680
+13/05/30 09:49:23 INFO mapred.MapTask: Starting flush of map output
+13/05/30 09:49:23 INFO mapred.MapTask: Finished spill 0
+13/05/30 09:49:23 INFO mapred.Task: Task:attempt_local_0001_m_000000_0 is done. And is in the process of commiting
+13/05/30 09:49:24 INFO mapred.JobClient:  map 0% reduce 0%
+13/05/30 09:49:26 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:26 INFO mapred.Task: Task 'attempt_local_0001_m_000000_0' done.
+13/05/30 09:49:26 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@15ed659
+13/05/30 09:49:26 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:26 INFO mapred.Merger: Merging 1 sorted segments
+13/05/30 09:49:26 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 185 bytes
+13/05/30 09:49:26 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:26 INFO mapred.Task: Task:attempt_local_0001_r_000000_0 is done. And is in the process of commiting
+13/05/30 09:49:26 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:26 INFO mapred.Task: Task attempt_local_0001_r_000000_0 is allowed to commit now
+13/05/30 09:49:26 INFO output.FileOutputCommitter: Saved output of task 'attempt_local_0001_r_000000_0' to /home/vishal/output/clusters-1
+13/05/30 09:49:27 INFO mapred.JobClient:  map 100% reduce 0%
+13/05/30 09:49:29 INFO mapred.LocalJobRunner: reduce &gt; reduce
+13/05/30 09:49:29 INFO mapred.Task: Task 'attempt_local_0001_r_000000_0' done.
+13/05/30 09:49:30 INFO mapred.JobClient:  map 100% reduce 100%
+13/05/30 09:49:30 INFO mapred.JobClient: Job complete: job_local_0001
+13/05/30 09:49:30 INFO mapred.JobClient: Counters: 21
+13/05/30 09:49:30 INFO mapred.JobClient:   File Output Format Counters 
+13/05/30 09:49:30 INFO mapred.JobClient:     Bytes Written=474
+13/05/30 09:49:30 INFO mapred.JobClient:   Clustering
+13/05/30 09:49:30 INFO mapred.JobClient:     Converged Clusters=1
+13/05/30 09:49:30 INFO mapred.JobClient:   FileSystemCounters
+13/05/30 09:49:30 INFO mapred.JobClient:     FILE_BYTES_READ=3328461
+13/05/30 09:49:30 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=3422872
+13/05/30 09:49:30 INFO mapred.JobClient:   File Input Format Counters 
+13/05/30 09:49:30 INFO mapred.JobClient:     Bytes Read=443
+13/05/30 09:49:30 INFO mapred.JobClient:   Map-Reduce Framework
+13/05/30 09:49:30 INFO mapred.JobClient:     Map output materialized bytes=189
+13/05/30 09:49:30 INFO mapred.JobClient:     Map input records=9
+13/05/30 09:49:30 INFO mapred.JobClient:     Reduce shuffle bytes=0
+13/05/30 09:49:30 INFO mapred.JobClient:     Spilled Records=6
+13/05/30 09:49:30 INFO mapred.JobClient:     Map output bytes=531
+13/05/30 09:49:30 INFO mapred.JobClient:     Total committed heap usage (bytes)=325713920
+13/05/30 09:49:30 INFO mapred.JobClient:     CPU time spent (ms)=0
+13/05/30 09:49:30 INFO mapred.JobClient:     SPLIT_RAW_BYTES=104
+13/05/30 09:49:30 INFO mapred.JobClient:     Combine input records=9
+13/05/30 09:49:30 INFO mapred.JobClient:     Reduce input records=3
+13/05/30 09:49:30 INFO mapred.JobClient:     Reduce input groups=3
+13/05/30 09:49:30 INFO mapred.JobClient:     Combine output records=3
+13/05/30 09:49:30 INFO mapred.JobClient:     Physical memory (bytes) snapshot=0
+13/05/30 09:49:30 INFO mapred.JobClient:     Reduce output records=3
+13/05/30 09:49:30 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=0
+13/05/30 09:49:30 INFO mapred.JobClient:     Map output records=9
+13/05/30 09:49:30 INFO kmeans.KMeansDriver: K-Means Iteration 2
+13/05/30 09:49:30 INFO common.HadoopUtil: Deleting /home/vishal/output/clusters-2
+13/05/30 09:49:30 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+13/05/30 09:49:30 INFO input.FileInputFormat: Total input paths to process : 1
+13/05/30 09:49:30 INFO mapred.JobClient: Running job: job_local_0002
+13/05/30 09:49:30 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@13f136e
+13/05/30 09:49:30 INFO mapred.MapTask: io.sort.mb = 100
+13/05/30 09:49:30 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/05/30 09:49:30 INFO mapred.MapTask: record buffer = 262144/327680
+13/05/30 09:49:30 INFO mapred.MapTask: Starting flush of map output
+13/05/30 09:49:30 INFO mapred.MapTask: Finished spill 0
+13/05/30 09:49:30 INFO mapred.Task: Task:attempt_local_0002_m_000000_0 is done. And is in the process of commiting
+13/05/30 09:49:31 INFO mapred.JobClient:  map 0% reduce 0%
+13/05/30 09:49:33 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:33 INFO mapred.Task: Task 'attempt_local_0002_m_000000_0' done.
+13/05/30 09:49:33 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@d6b059
+13/05/30 09:49:33 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:33 INFO mapred.Merger: Merging 1 sorted segments
+13/05/30 09:49:33 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 124 bytes
+13/05/30 09:49:33 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:33 INFO mapred.Task: Task:attempt_local_0002_r_000000_0 is done. And is in the process of commiting
+13/05/30 09:49:33 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:33 INFO mapred.Task: Task attempt_local_0002_r_000000_0 is allowed to commit now
+13/05/30 09:49:33 INFO output.FileOutputCommitter: Saved output of task 'attempt_local_0002_r_000000_0' to /home/vishal/output/clusters-2
+13/05/30 09:49:34 INFO mapred.JobClient:  map 100% reduce 0%
+13/05/30 09:49:36 INFO mapred.LocalJobRunner: reduce &gt; reduce
+13/05/30 09:49:36 INFO mapred.Task: Task 'attempt_local_0002_r_000000_0' done.
+13/05/30 09:49:37 INFO mapred.JobClient:  map 100% reduce 100%
+13/05/30 09:49:37 INFO mapred.JobClient: Job complete: job_local_0002
+13/05/30 09:49:37 INFO mapred.JobClient: Counters: 20
+13/05/30 09:49:37 INFO mapred.JobClient:   File Output Format Counters 
+13/05/30 09:49:37 INFO mapred.JobClient:     Bytes Written=364
+13/05/30 09:49:37 INFO mapred.JobClient:   FileSystemCounters
+13/05/30 09:49:37 INFO mapred.JobClient:     FILE_BYTES_READ=6658544
+13/05/30 09:49:37 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=6844248
+13/05/30 09:49:37 INFO mapred.JobClient:   File Input Format Counters 
+13/05/30 09:49:37 INFO mapred.JobClient:     Bytes Read=443
+13/05/30 09:49:37 INFO mapred.JobClient:   Map-Reduce Framework
+13/05/30 09:49:37 INFO mapred.JobClient:     Map output materialized bytes=128
+13/05/30 09:49:37 INFO mapred.JobClient:     Map input records=9
+13/05/30 09:49:37 INFO mapred.JobClient:     Reduce shuffle bytes=0
+13/05/30 09:49:37 INFO mapred.JobClient:     Spilled Records=4
+13/05/30 09:49:37 INFO mapred.JobClient:     Map output bytes=531
+13/05/30 09:49:37 INFO mapred.JobClient:     Total committed heap usage (bytes)=525074432
+13/05/30 09:49:37 INFO mapred.JobClient:     CPU time spent (ms)=0
+13/05/30 09:49:37 INFO mapred.JobClient:     SPLIT_RAW_BYTES=104
+13/05/30 09:49:37 INFO mapred.JobClient:     Combine input records=9
+13/05/30 09:49:37 INFO mapred.JobClient:     Reduce input records=2
+13/05/30 09:49:37 INFO mapred.JobClient:     Reduce input groups=2
+13/05/30 09:49:37 INFO mapred.JobClient:     Combine output records=2
+13/05/30 09:49:37 INFO mapred.JobClient:     Physical memory (bytes) snapshot=0
+13/05/30 09:49:37 INFO mapred.JobClient:     Reduce output records=2
+13/05/30 09:49:37 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=0
+13/05/30 09:49:37 INFO mapred.JobClient:     Map output records=9
+13/05/30 09:49:37 INFO kmeans.KMeansDriver: K-Means Iteration 3
+13/05/30 09:49:37 INFO common.HadoopUtil: Deleting /home/vishal/output/clusters-3
+13/05/30 09:49:37 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+13/05/30 09:49:37 INFO input.FileInputFormat: Total input paths to process : 1
+13/05/30 09:49:37 INFO mapred.JobClient: Running job: job_local_0003
+13/05/30 09:49:37 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@988707
+13/05/30 09:49:37 INFO mapred.MapTask: io.sort.mb = 100
+13/05/30 09:49:37 INFO mapred.MapTask: data buffer = 79691776/99614720
+13/05/30 09:49:37 INFO mapred.MapTask: record buffer = 262144/327680
+13/05/30 09:49:37 INFO mapred.MapTask: Starting flush of map output
+13/05/30 09:49:37 INFO mapred.MapTask: Finished spill 0
+13/05/30 09:49:37 INFO mapred.Task: Task:attempt_local_0003_m_000000_0 is done. And is in the process of commiting
+13/05/30 09:49:38 INFO mapred.JobClient:  map 0% reduce 0%
+13/05/30 09:49:40 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:40 INFO mapred.Task: Task 'attempt_local_0003_m_000000_0' done.
+13/05/30 09:49:40 INFO mapred.Task:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@6214f5
+13/05/30 09:49:40 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:40 INFO mapred.Merger: Merging 1 sorted segments
+13/05/30 09:49:40 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 124 bytes
+13/05/30 09:49:40 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:40 INFO mapred.Task: Task:attempt_local_0003_r_000000_0 is done. And is in the process of commiting
+13/05/30 09:49:40 INFO mapred.LocalJobRunner: 
+13/05/30 09:49:40 INFO mapred.Task: Task attempt_local_0003_r_000000_0 is allowed to commit now
+13/05/30 09:49:40 INFO output.FileOutputCommitter: Saved output of task 'attempt_local_0003_r_000000_0' to /home/vishal/output/clusters-3
+13/05/30 09:49:41 INFO mapred.JobClient:  map 100% reduce 0%
+13/05/30 09:49:43 INFO mapred.LocalJobRunner: reduce &gt; reduce
+13/05/30 09:49:43 INFO mapred.Task: Task 'attempt_local_0003_r_000000_0' done.
+13/05/30 09:49:44 INFO mapred.JobClient:  map 100% reduce 100%
+13/05/30 09:49:44 INFO mapred.JobClient: Job complete: job_local_0003
+13/05/30 09:49:44 INFO mapred.JobClient: Counters: 21
+13/05/30 09:49:44 INFO mapred.JobClient:   File Output Format Counters 
+13/05/30 09:49:44 INFO mapred.JobClient:     Bytes Written=364
+13/05/30 09:49:44 INFO mapred.JobClient:   Clustering
+13/05/30 09:49:44 INFO mapred.JobClient:     Converged Clusters=2
+13/05/30 09:49:44 INFO mapred.JobClient:   FileSystemCounters
+13/05/30 09:49:44 INFO mapred.JobClient:     FILE_BYTES_READ=9988052
+13/05/30 09:49:44 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=10265506
+13/05/30 09:49:44 INFO mapred.JobClient:   File Input Format Counters 
+13/05/30 09:49:44 INFO mapred.JobClient:     Bytes Read=443
+13/05/30 09:49:44 INFO mapred.JobClient:   Map-Reduce Framework
+13/05/30 09:49:44 INFO mapred.JobClient:     Map output materialized bytes=128
+13/05/30 09:49:44 INFO mapred.JobClient:     Map input records=9
+13/05/30 09:49:44 INFO mapred.JobClient:     Reduce shuffle bytes=0
+13/05/30 09:49:44 INFO mapred.JobClient:     Spilled Records=4
+13/05/30 09:49:44 INFO mapred.JobClient:     Map output bytes=531
+13/05/30 09:49:44 INFO mapred.JobClient:     Total committed heap usage (bytes)=724434944
+13/05/30 09:49:44 INFO mapred.JobClient:     CPU time spent (ms)=0
+13/05/30 09:49:44 INFO mapred.JobClient:     SPLIT_RAW_BYTES=104
+13/05/30 09:49:44 INFO mapred.JobClient:     Combine input records=9
+13/05/30 09:49:44 INFO mapred.JobClient:     Reduce input records=2
+13/05/30 09:49:44 INFO mapred.JobClient:     Reduce input groups=2
+13/05/30 09:49:44 INFO mapred.JobClient:     Combine output records=2
+13/05/30 09:49:44 INFO mapred.JobClient:     Physical memory (bytes) snapshot=0
+13/05/30 09:49:44 INFO mapred.JobClient:     Reduce output records=2
+13/05/30 09:49:44 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=0
+13/05/30 09:49:44 INFO mapred.JobClient:     Map output records=9
+Exception in thread "main" java.io.IOException: Target /home/vishal/output/clusters-3-final/clusters-3 is a directory
+    at org.apache.hadoop.fs.FileUtil.checkDest(FileUtil.java:359)
+    at org.apache.hadoop.fs.FileUtil.checkDest(FileUtil.java:361)
+    at org.apache.hadoop.fs.FileUtil.copy(FileUtil.java:211)
+    at org.apache.hadoop.fs.FileUtil.copy(FileUtil.java:163)
+    at org.apache.hadoop.fs.RawLocalFileSystem.rename(RawLocalFileSystem.java:287)
+    at org.apache.hadoop.fs.ChecksumFileSystem.rename(ChecksumFileSystem.java:425)
+    at org.apache.mahout.clustering.kmeans.KMeansDriver.buildClustersMR(KMeansDriver.java:322)
+    at org.apache.mahout.clustering.kmeans.KMeansDriver.buildClusters(KMeansDriver.java:239)
+    at org.apache.mahout.clustering.kmeans.KMeansDriver.run(KMeansDriver.java:154)
+    at com.ClusteringDemo.main(ClusteringDemo.java:80)
+</code></pre>
+
+<p>What can be the reason ??</p>
+
+<p>Thanks</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/hadoop" class="post-tag" title="show questions tagged &#39;hadoop&#39;" rel="tag">hadoop</a> <a href="/questions/tagged/cluster-analysis" class="post-tag" title="show questions tagged &#39;cluster-analysis&#39;" rel="tag">cluster-analysis</a> <a href="/questions/tagged/mahout" class="post-tag" title="show questions tagged &#39;mahout&#39;" rel="tag">mahout</a> <a href="/questions/tagged/k-means" class="post-tag" title="show questions tagged &#39;k-means&#39;" rel="tag">k-means</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/16827944" title="short permalink to this question" class="short-link" id="link-post-16827944">share</a><span class="lsep">|</span><a href="/posts/16827944/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-05-30 04:28:59Z" class="relativetime">May 30 '13 at 4:28</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2427532/the-good-the-bad-the-ugly"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8618ef633892406fff085c73e33aedd7?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2427532/the-good-the-bad-the-ugly">The good the bad the ugly</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">75</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="14 bronze badges"><span class="badge3"></span><span class="badgecount">14</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                    <tr>
+            <td class="special-status" colspan="2">
+                <div class="question-status">
+        <h2>                    <b>closed</b> as too localized by <a href="/users/1060350/anony-mousse">Anony-Mousse</a>, <a href="/users/545127/raedwald">Raedwald</a>, <a href="/users/2046372/cairnarvon">Cairnarvon</a>, <a href="/users/1308066/vishal">Vishal</a>, <a href="/users/3834/graviton">Graviton</a> <span dir="ltr"><span title="2013-05-31 03:53:41Z" class="relativetime">May 31 '13 at 3:53</span></span>
+</h2>
+        <p>This question is unlikely to help any future visitors; it is only relevant to a small geographic area, a specific moment in time,   or an extraordinarily narrow situation that is not generally applicable to the worldwide audience of the internet. For help making   this question more broadly applicable, <a href="http://stackoverflow.com/help/reopen-questions">visit the help center</a>.<span class="close-status-suffix">If this question can be reworded to fit the rules in the <a href="/help/closed-questions">help center</a>, please <a href="/posts/16827944/edit">edit the question</a>.</span></p>
+    </div>
+            </td>
+        </tr>
+    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16827944" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-24271268" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You really need to <b>start reading the error messages</b>. Obviously a directory exists than is not supposed to exist.</span>
+                    &ndash;&nbsp;<a href="/users/1060350/anony-mousse"
+                       title="34660 reputation"
+                       class="comment-user">Anony-Mousse</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-30 10:34:51Z" class="relativetime-clean">May 30 '13 at 10:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16827944" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/16827944/io-exception-while-running-k-means-clustering-using-mahout-and-hadoop-jar?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="16828448"></a>
+<div id="answer-16828448" class="answer accepted-answer" data-answerid="16828448"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="16828448">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Here is what <code>KMeansDriver</code> is trying to do:</p>
+
+<pre><code>Path finalClustersIn = new Path(output, AbstractCluster.CLUSTERS_DIR + (iteration-1) + "-final");
+FileSystem.get(conf).rename(new Path(output, AbstractCluster.CLUSTERS_DIR + (iteration-1)), finalClustersIn);
+</code></pre>
+
+<p>As you can see, it has converged after 3 iterations and is trying to merge the result of the 3rd iteration in directory <strong>clusters-3</strong> into <strong>clusters-3-final</strong> to show it is finished.</p>
+
+<p>Now the <code>rename</code> method of <code>FileSystem</code> does a check before actually renaming to ensure it's not trying to rename to a directory that already exists. And as a matter of fact it looks like you already have this directory <strong>clusters-3-final</strong>, probably from a previous run.</p>
+
+<p>Removing this directory should fix your issue, you can do it via command-line with:</p>
+
+<pre><code>hadoop fs -rmr /home/vishal/output/clusters-3-final
+</code></pre>
+
+<p>Or since it looks like you're running your job in local mode:</p>
+
+<pre><code>rm -rf /home/vishal/output/clusters-3-final
+</code></pre>
+
+<p>To avoid this kind of issues, I would recommend using a unique output directory everytime you run your analysis, you could for example take the current date and append it to the filename of your output <code>Path</code>, for example using <code>System.currentTimeMillis()</code>.</p>
+
+<p><strong>EDIT</strong>: For your second issue about:</p>
+
+<pre><code>Exception in thread "main" java.io.IOException: wrong value class: 0.0: null is not class org.apache.mahout.clustering.WeightedPropertyVectorWritable at org.apache.hadoop.io.SequenceFile$Reader.next(SequenceFile.java:1932) at com.ClusteringDemo.main(ClusteringDemo.java:90)
+</code></pre>
+
+<p>you are actually suffering from a conflict between Mahout versions because older Mahout versions used <code>WeightedVectorWritable</code> while more recent ones use <code>WeightedPropertyVectorWritable</code>. To fix it, simply change the declaration of your <code>value</code> variable from:</p>
+
+<pre><code>WeightedVectorWritable value = new WeightedVectorWritable();
+</code></pre>
+
+<p>to:</p>
+
+<pre><code>WeightedPropertyVectorWritable value = new WeightedPropertyVectorWritable();
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/16828448" title="short permalink to this answer" class="short-link" id="link-post-16828448">share</a><span class="lsep">|</span><a href="/posts/16828448/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/16828448/revisions" title="show all edits to this post">edited <span title="2013-05-30 07:10:35Z" class="relativetime">May 30 '13 at 7:10</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-05-30 05:17:01Z" class="relativetime">May 30 '13 at 5:17</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1332690/charles-menguy"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/0b4f9f4b1d7072ae18d9dc3a9bf0ac7a?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1332690/charles-menguy">Charles Menguy</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 17648" dir="ltr">17.6k</span><span title="11 gold badges"><span class="badge1"></span><span class="badgecount">11</span></span><span title="52 silver badges"><span class="badge2"></span><span class="badgecount">52</span></span><span title="84 bronze badges"><span class="badge3"></span><span class="badgecount">84</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16828448" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="4"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-24263283" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hi Charles............Thanks .But what I understood from your explanation is that  it is due to the presence of directory that the program is terminating at the point of third cluster..   So I deleted the directory and ran the code again..           But still the same problem prevails.............I think I have done something else which is not required ...Is it so?....Actually I am just beginner in this regard.       So thats why the confusion?  Thanks</span>
+                    &ndash;&nbsp;<a href="/users/2427532/the-good-the-bad-the-ugly"
+                       title="75 reputation"
+                       class="comment-user owner">The good the bad the ugly</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-30 05:48:49Z" class="relativetime-clean">May 30 '13 at 5:48</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24263444" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Actually it looks like you&#39;re running your job in local mode, can you remove this directory on your local disk and try again?</span>
+                    &ndash;&nbsp;<a href="/users/1332690/charles-menguy"
+                       title="17648 reputation"
+                       class="comment-user">Charles Menguy</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-30 05:57:39Z" class="relativetime-clean">May 30 '13 at 5:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24263947" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks Got it&gt;but now its thwoing the following exception;;;</span>
+                    &ndash;&nbsp;<a href="/users/2427532/the-good-the-bad-the-ugly"
+                       title="75 reputation"
+                       class="comment-user owner">The good the bad the ugly</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-30 06:21:44Z" class="relativetime-clean">May 30 '13 at 6:21</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24264060" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Exception in thread &quot;main&quot; java.io.IOException: wrong value class: 0.0: null is not class org.apache.mahout.clustering.WeightedPropertyVectorWritable 	at org.apache.hadoop.io.SequenceFile$Reader.next(SequenceFile.java:1932) 	at com.ClusteringDemo.main(ClusteringDemo.java:90)</span>
+                    &ndash;&nbsp;<a href="/users/2427532/the-good-the-bad-the-ugly"
+                       title="75 reputation"
+                       class="comment-user owner">The good the bad the ugly</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-30 06:26:21Z" class="relativetime-clean">May 30 '13 at 6:26</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24264434" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It&#39;s better now your K-Means job finishes successfully, you are just having issues reading the output. Can you check if `/home/vishal/output/clusteredPoints/part-m-00000&quot; exists?</span>
+                    &ndash;&nbsp;<a href="/users/1332690/charles-menguy"
+                       title="17648 reputation"
+                       class="comment-user">Charles Menguy</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-30 06:41:27Z" class="relativetime-clean">May 30 '13 at 6:41</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16828448" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>4</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+				
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/hadoop" class="post-tag" title="show questions tagged &#39;hadoop&#39;" rel="tag">hadoop</a> <a href="/questions/tagged/cluster-analysis" class="post-tag" title="show questions tagged &#39;cluster-analysis&#39;" rel="tag">cluster-analysis</a> <a href="/questions/tagged/mahout" class="post-tag" title="show questions tagged &#39;mahout&#39;" rel="tag">mahout</a> <a href="/questions/tagged/k-means" class="post-tag" title="show questions tagged &#39;k-means&#39;" rel="tag">k-means</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-05-30 04:28:59Z"><b>2 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>1250 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2013-05-30 07:10:35Z">2 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1449417113",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1449417113">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/5676370" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">6
+    </div>
+</a><a href="/questions/5676370/deploying-mahout-on-hadoop-cluster" class="question-hyperlink">Deploying Mahout on hadoop cluster</a>
+</div>
+<div class="spacer">
+<a href="/q/7853741" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/7853741/exception-thrown-while-running-k-means-clustering-using-mahout" class="question-hyperlink">Exception thrown while running K-means clustering using Mahout</a>
+</div>
+<div class="spacer">
+<a href="/q/11161372" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/11161372/how-to-successfully-run-kmeans-clustering-using-mahout-esp-get-human-readable" class="question-hyperlink">How to successfully run kmeans clustering using Mahout (esp. get human-readable output)</a>
+</div>
+<div class="spacer">
+<a href="/q/12390229" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/12390229/running-mahout-kmeans-on-hadoop-multi-node-cluster" class="question-hyperlink">Running mahout kmeans on hadoop multi node cluster</a>
+</div>
+<div class="spacer">
+<a href="/q/16113102" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/16113102/how-to-run-large-mahout-fuzzy-kmeans-clustering-without-running-out-of-memory" class="question-hyperlink">How to run large Mahout fuzzy kmeans clustering without running out of memory?</a>
+</div>
+<div class="spacer">
+<a href="/q/16932988" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-1
+    </div>
+</a><a href="/questions/16932988/vector-class-doesnt-exist-in-mahout-core-0-7-cdh4-2-1-jar-not-able-to-run-sim" class="question-hyperlink">Vector.class doesn&#39;t exist in Mahout-core 0.7 -cdh4.2.1 jar, not able to run SimpleKMeansClustering Example</a>
+</div>
+<div class="spacer">
+<a href="/q/16958295" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/16958295/class-not-found-exception-in-kmeanclustering-mahout" class="question-hyperlink">Class Not Found Exception in KMeanClustering--Mahout</a>
+</div>
+<div class="spacer">
+<a href="/q/17008795" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/17008795/how-to-run-kmean-clustering-from-mahout-in-action" class="question-hyperlink">How to run Kmean Clustering from Mahout in Action?</a>
+</div>
+<div class="spacer">
+<a href="/q/22879019" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/22879019/need-suggestions-regarding-k-means-text-clustering-in-mahout-0-9" class="question-hyperlink">Need suggestions regarding K-Means text clustering in Mahout 0.9</a>
+</div>
+<div class="spacer">
+<a href="/q/23033049" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-1
+    </div>
+</a><a href="/questions/23033049/mahout-clustering-with-one-dim-k-means" class="question-hyperlink">Mahout Clustering with one dim K-means</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33040/multiple-dna-one-creature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Multiple DNA, one creature
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/228132/a-converse-to-cartan-hadamard-theorem" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A Converse to Cartan–Hadamard theorem?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="http://apple.stackexchange.com/questions/222936/how-do-i-take-a-screenshot-in-ios-without-hitting-the-home-button-and-the-power" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I take a screenshot in iOS without hitting the Home Button and the Power Button?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/254625/bash-extract-text-between-three-single-quotes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Bash: Extract text between three single quotes
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-drupal" title="Drupal Answers"></div><a href="http://drupal.stackexchange.com/questions/186410/how-to-reorder-nodes-in-drupal-7-using-drag-and-drop-feature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:220 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to reorder nodes in Drupal 7 using Drag and Drop feature?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dsp" title="Signal Processing Stack Exchange"></div><a href="http://dsp.stackexchange.com/questions/28221/the-need-for-phase-wrapping" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:295 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The need for phase wrapping?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114442/what-is-the-first-work-to-feature-a-planet-that-is-one-city" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the first work to feature a planet that is one city?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299041/what-would-be-the-idiom-for-the-following-sentence" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would be the idiom for the following sentence?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/298945/is-there-an-english-word-to-describe-a-group-of-refrain-words-composed-of-two-sy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there an English word to describe a group of refrain words composed of two syllable e.g. pera-pera, meaning fluently, iki-iki meaning vividly?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78475/a-large-vase-lays-is-laid-in-the-corner-of-our-front-hallway" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A large vase (lays / is laid) in the corner of our front hallway
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287064/auto-linebreaking-in-underset" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Auto-linebreaking in underset
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/748228/how-do-vpn-servers-clients-avoid-routing-their-own-remote-connection-packets-thr" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do VPN servers/clients avoid routing their own remote connection packets through themself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/32904/given-an-indestructible-material-used-for-armor-what-are-ways-to-explain-tha" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Given an &quot;indestructible&quot; material used for armor - what are ways to explain that material not being used as a weapon as well?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/24514/what-possible-causes-for-the-check-engine-light-can-i-check-for-myself" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What possible causes for the &quot;check engine&quot; light can I check for myself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228786/how-does-the-particle-in-the-double-slit-experiment-interacts-with-the-slits" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does the particle in the double slit experiment interacts with the slits?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/72974/dd-5e-spell-preparation-casting-confusion" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    D&amp;D 5e spell preparation/casting confusion?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34723842/whats-is-the-difference-between-array-ofn-arrayn-and-array-n" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s is the difference between Array.of(n) , Array(n) and array = [n]?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34720244/is-there-a-technical-reason-for-not-allowing-a-using-declaration-to-make-a-funct" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a technical reason for not allowing a using declaration to make a function name accessible under a different name?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61425/what-are-the-implications-of-the-whole-class-failing-an-exam" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What are the implications of the whole class failing an exam?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69121/surrounded-countries" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Surrounded Countries
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tridion" title="Tridion Stack Exchange"></div><a href="http://tridion.stackexchange.com/questions/13640/httpdeployer-not-publishing-to-azure-file-storage" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:485 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    HttpDeployer not publishing to Azure file storage
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-crypto" title="Cryptography Stack Exchange"></div><a href="http://crypto.stackexchange.com/questions/31857/periodic-one-way-function" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:281 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Periodic One Way Function
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/40989/help-for-the-first-time-keyboard-player-in-a-band" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Help for the first time keyboard player in a band
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/116406/body-mass-index-calculator" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Body Mass Index Calculator
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+		<script>
+StackExchange.ready(function(){$.get('/posts/16827944/ivc/dc24');});
+</script>
+<noscript>
+    <div><img src="/posts/16827944/ivc/dc24" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3157
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('java,hadoop,cluster-analysis,mahout,k-means');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|java|hadoop|cluster-analysis|mahout|k-means|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

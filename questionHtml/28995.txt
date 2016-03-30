@@ -1,0 +1,2838 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>import - Quickly reading very large tables as dataframes in R - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Quickly reading very large tables as dataframes in R" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have very large tables (30 million rows) that I would like to load as a dataframes in R.  read.table() has a lot of convenient features, but it seems like there is a lot of logic in the implement..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r/1729861"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r/1729861" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=8be8ff05c90c"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=e67f9bfa3488">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Quickly reading very large tables as dataframes in R&#39;" href="/feeds/question/1727772">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r/1729861" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r/1729861" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r/1729861">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:1727772});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '1727772');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452639130,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"c82e9ba6da5583e8fcc07891e4726864","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"1750d7783db0","js/moderator.en.js":"9473d953df60","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"5bb841502813","js/wmd.en.js":"d725c4fade0a","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"f58b9bbdda52","js/tageditor.en.js":"c56016b68262","js/tageditornew.en.js":"a7cff53691da","js/inline-tag-editing.en.js":"33c4ccd9bf9f","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"13dd6d49dd1e","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"27ead32e3cf5","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"9973d183bb8f","js/keyboard-shortcuts.en.js":"f4df1d9e6e4d","js/external-editor.en.js":"9327339c2328","js/external-editor.en.js":"9327339c2328","js/snippet-javascript.en.js":"433470c8fb5e","js/snippet-javascript-codemirror.en.js":"7f3b96fdf7b3"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1727772%2fquickly-reading-very-large-tables-as-dataframes-in-r%2f1729861" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1727772%2fquickly-reading-very-large-tables-as-dataframes-in-r%2f1729861" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1727772%2fquickly-reading-very-large-tables-as-dataframes-in-r%2f1729861" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1727772%2fquickly-reading-very-large-tables-as-dataframes-in-r%2f1729861" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1727772%2fquickly-reading-very-large-tables-as-dataframes-in-r%2f1729861" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r" class="question-hyperlink">Quickly reading very large tables as dataframes in R</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="1727772"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1354646598",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1354646598">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1727772">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">286</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>292</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have very large tables (30 million rows) that I would like to load as a dataframes in R.  <code>read.table()</code> has a lot of convenient features, but it seems like there is a lot of logic in the implementation that would slow things down.  In my case, I am assuming I know the types of the columns ahead of time, the table does not contain any column headers or row names, and does not have any pathological characters that I have to worry about.</p>
+
+<p>I know that reading in a table as a list using <code>scan()</code> can be quite fast, e.g.:</p>
+
+<pre><code>datalist &lt;- scan('myfile',sep='\t',list(url='',popularity=0,mintime=0,maxtime=0)))
+</code></pre>
+
+<p>But some of my attempts to convert this to a dataframe appear to decrease the performance of the above by a factor of 6:</p>
+
+<pre><code>df &lt;- as.data.frame(scan('myfile',sep='\t',list(url='',popularity=0,mintime=0,maxtime=0))))
+</code></pre>
+
+<p>Is there a better way of doing this?  Or quite possibly completely different approach to the problem?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/r" class="post-tag" title="show questions tagged &#39;r&#39;" rel="tag">r</a> <a href="/questions/tagged/import" class="post-tag" title="show questions tagged &#39;import&#39;" rel="tag">import</a> <a href="/questions/tagged/data.frame" class="post-tag" title="show questions tagged &#39;data.frame&#39;" rel="tag">data.frame</a> <a href="/questions/tagged/r-faq" class="post-tag" title="show questions tagged &#39;r-faq&#39;" rel="tag">r-faq</a> <a href="/questions/tagged/read-data" class="post-tag" title="show questions tagged &#39;read-data&#39;" rel="tag">read-data</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/1727772" title="short permalink to this question" class="short-link" id="link-post-1727772">share</a><span class="lsep">|</span><a href="/posts/1727772/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1727772/revisions" title="show all edits to this post">edited <span title="2014-12-05 13:06:50Z" class="relativetime">Dec 5 '14 at 13:06</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1812322/bonifacio2"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ab68ec41682314f87def370d3ddbac1f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1812322/bonifacio2">Bonifacio2</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,220</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2009-11-13 07:53:33Z" class="relativetime">Nov 13 '09 at 7:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/162436/eytan"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/5d23c8b52fd981d7aafc76d9287e339c?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/162436/eytan">eytan</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,692</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1727772" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1727772" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								9 Answers
+                                <span style="display:none;" itemprop="answerCount">9</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/1727772/quickly-reading-very-large-tables-as-dataframes-in-r?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="1728422"></a>
+<div id="answer-1728422" class="answer accepted-answer" data-answerid="1728422"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1728422">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">181</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><strong>An update, several years later</strong></p>
+
+<p>This answer is old, and R has moved on.  Tweaking <a href="http://www.inside-r.org/r-doc/utils/read.table"><code>read.table</code></a> to run a bit faster has precious little benefit.  Your options are:</p>
+
+<ol>
+<li><p>Using <a href="http://www.inside-r.org/packages/cran/data.table/docs/fread"><code>fread</code></a> in <a href="http://cran.r-project.org/web/packages/data.table/index.html"><code>data.table</code></a> for importing data from CVS/tab-delimited files directly into R. See <a href="http://stackoverflow.com/a/15058684/134830">mnel's answer</a>.</p></li>
+<li><p>Using <code>read_table</code> in <a href="http://cran.r-project.org/web/packages/readr/"><code>readr</code></a> (on CRAN from April 2015).  This works much like <code>fread</code> above.  The README in the link explains the difference between the two functions (<code>readr</code> currently claims to be "1.5-2x slower" than <code>data.table::fread</code>).</p></li>
+<li><p>Trying to store as much data as you can in databases rather than flat files.  (As well as being a better permanent storage medium, data is passed to and from R in a binary format, which is faster.) <a href="http://www.inside-r.org/packages/cran/sqldf/docs/read.csv.sql"><code>read.csv.sql</code></a> in the <a href="http://cran.r-project.org/web/packages/sqldf/index.html"><code>sqldf</code></a> package, as described in <a href="http://stackoverflow.com/a/1820610/134830">JD Long's answer</a>, imports data into a temporary SQLite database and then reads it into R.  See also: the <a href="http://cran.r-project.org/web/packages/RODBC/"><code>RODBC</code></a> package, and the reverse depends section of the <a href="http://cran.r-project.org/web/packages/DBI/"><code>DBI</code> package</a> page. <a href="http://cran.r-project.org/web/packages/MonetDB.R/index.html"><code>MonetDB.R</code></a> gives you a data type that pretends to be a data frame but is really a MonetDB underneath, increasing performance.  Import data with its <a href="http://www.inside-r.org/packages/cran/MonetDB.R/docs/monetdb.read.csv"><code>monetdb.read.csv</code></a> function.  <a href="http://cran.r-project.org/web/packages/dplyr/index.html"><code>dplyr</code></a> allows you to work directly with data stored in several types of database.</p></li>
+<li><p>Storing data in binary formats can also be useful for improving performance.  Use <code>saveRDS</code>/<code>readRDS</code> (see below), or the <a href="http://www.bioconductor.org/packages/release/bioc/html/rhdf5.html"><code>rhdf5</code></a> package for HDF5 format.</p></li>
+</ol>
+
+<hr>
+
+<p><strong>The original answer</strong></p>
+
+<p>There are a couple of simple things to try, whether you use read.table or scan.</p>
+
+<ol>
+<li><p>Set <code>nrows</code>=<em>the number of records in your data</em> (<code>nmax</code> in <code>scan</code>).</p></li>
+<li><p>Make sure that <code>comment.char=""</code> to turn off interpretation of comments.</p></li>
+<li><p>Explicitly define the classes of each column using <code>colClasses</code> in <code>read.table</code>.</p></li>
+<li><p>Setting <code>multi.line=FALSE</code> may also improve performance in scan.</p></li>
+</ol>
+
+<p>If none of these thing work, then use one of the <a href="http://cran.r-project.org/web/views/HighPerformanceComputing.html">profiling packages</a> to determine which lines are slowing things down.  Perhaps you can write a cut down version of <code>read.table</code> based on the results.</p>
+
+<p>The other alternative is filtering your data before you read it into R.</p>
+
+<p>Or, if the problem is that you have to read it in regularly, then use these methods to read the data in once, then save the data frame as a binary blob with <del><a href="http://www.inside-r.org/r-doc/base/save"><code>save</code></a></del> <a href="http://www.inside-r.org/r-doc/base/saveRDS"><code>saveRDS</code></a>, then next time you can retrieve it faster with <del><a href="http://www.inside-r.org/r-doc/base/load"><code>load</code></a></del> <code>readRDS</code>.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1728422" title="short permalink to this answer" class="short-link" id="link-post-1728422">share</a><span class="lsep">|</span><a href="/posts/1728422/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1728422/revisions" title="show all edits to this post">edited <span title="2015-04-13 13:54:08Z" class="relativetime">Apr 13 '15 at 13:54</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/190277/ben-bolker"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/dcf9672c1893e4b7c5d86ca1bc2bf88f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/190277/ben-bolker">Ben Bolker</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 79293" dir="ltr">79.3k</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="113 silver badges"><span class="badge2"></span><span class="badgecount">113</span></span><span title="191 bronze badges"><span class="badge3"></span><span class="badgecount">191</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-11-13 10:35:05Z" class="relativetime">Nov 13 '09 at 10:35</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/134830/richie-cotton"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/KGJax.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/134830/richie-cotton">Richie Cotton</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 49372" dir="ltr">49.4k</span><span title="12 gold badges"><span class="badge1"></span><span class="badgecount">12</span></span><span title="100 silver badges"><span class="badge2"></span><span class="badgecount">100</span></span><span title="199 bronze badges"><span class="badge3"></span><span class="badgecount">199</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1728422" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1613362" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks for the tips Richie.  I did a little testing, and it seems that the performance gains with using the nrow and colClasses options for read.table are quite modest.  For example, reading a ~7M row table takes 78s without the options, and 67s with the options. (note: the table has 1 character column, 4 integer columns, and I read using comment.char=&#39;&#39; and stringsAsFactors=FALSE).  Using save() and load() when possible is a great tip - once stored with save(), that same table takes only 12s to load.</span>
+                    &ndash;&nbsp;<a href="/users/162436/eytan"
+                       title="1692 reputation"
+                       class="comment-user owner">eytan</a>
+                <span class="comment-date" dir="ltr"><span title="2009-11-14 06:00:59Z" class="relativetime-clean">Nov 14 '09 at 6:00</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1728422" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1382173274",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1382173274">
+            </div>
+  
+<a name="1820610"></a>
+<div id="answer-1820610" class="answer" data-answerid="1820610"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1820610">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">203</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I didn't see this question initially and asked a similar question a few days later. I am going to take my previous question down, but I thought I'd add an answer here to explain how I used <code>sqldf()</code> to do this.</p>
+
+<p>There's been <a href="https://stat.ethz.ch/pipermail/r-help/2007-August/138315.html">little bit of discussion</a> as to the best way to import 2GB or more of text data into an R data frame. Yesterday I wrote a <a href="http://www.cerebralmastication.com/?p=416">blog post</a> about using <code>sqldf()</code> to import the data into SQLite as a staging area, and then sucking it from SQLite into R. This works really well for me. I was able to pull in 2GB (3 columns, 40mm rows) of data in &lt; 5 minutes. By contrast, the <code>read.csv</code> command ran all night and never completed. </p>
+
+<p>Here's my test code:</p>
+
+<p>Set up the test data:</p>
+
+<pre><code>bigdf &lt;- data.frame(dim=sample(letters, replace=T, 4e7), fact1=rnorm(4e7), fact2=rnorm(4e7, 20, 50))
+write.csv(bigdf, 'bigdf.csv', quote = F)
+</code></pre>
+
+<p>I restarted R before running the following import routine:</p>
+
+<pre><code>library(sqldf)
+f &lt;- file("bigdf.csv")
+system.time(bigdf &lt;- sqldf("select * from f", dbname = tempfile(), file.format = list(header = T, row.names = F)))
+</code></pre>
+
+<p>I let the following line run all night but it never completed:</p>
+
+<pre><code>system.time(big.df &lt;- read.csv('bigdf.csv'))
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1820610" title="short permalink to this answer" class="short-link" id="link-post-1820610">share</a><span class="lsep">|</span><a href="/posts/1820610/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/1820610/revisions" title="show all edits to this post">edited <span title="2011-11-21 21:36:20Z" class="relativetime">Nov 21 '11 at 21:36</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/770019/bnjmn"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e6661db0fdf10d493033c0ff9f3fd4d8?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/770019/bnjmn">bnjmn</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,763</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="16 silver badges"><span class="badge2"></span><span class="badgecount">16</span></span><span title="40 bronze badges"><span class="badge3"></span><span class="badgecount">40</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-11-30 15:48:11Z" class="relativetime">Nov 30 '09 at 15:48</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/37751/jd-long"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/GiarY.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/37751/jd-long">JD Long</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 25973" dir="ltr">26k</span><span title="30 gold badges"><span class="badge1"></span><span class="badgecount">30</span></span><span title="119 silver badges"><span class="badge2"></span><span class="badgecount">119</span></span><span title="210 bronze badges"><span class="badge3"></span><span class="badgecount">210</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1820610" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="5"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2059252" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">16</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">JD, you deserve a medal for this answer.  Too many folks have banged their heads against this issue for too long.</span>
+                    &ndash;&nbsp;<a href="/users/2002705/medriscoll"
+                       title="7399 reputation"
+                       class="comment-user">medriscoll</a>
+                <span class="comment-date" dir="ltr"><span title="2010-01-23 01:30:54Z" class="relativetime-clean">Jan 23 '10 at 1:30</span></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-4046244" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">8</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">See also <code>read.csv.sql</code></span>
+                    &ndash;&nbsp;<a href="/users/269476/james"
+                       title="34238 reputation"
+                       class="comment-user">James</a>
+                <span class="comment-date" dir="ltr"><span title="2010-09-28 15:00:38Z" class="relativetime-clean">Sep 28 '10 at 15:00</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22208778" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hi. How woul you use it as an input for other packages such as zoo, designed to be used with all data simultenously?</span>
+                    &ndash;&nbsp;<a href="/users/425895/skan"
+                       title="1105 reputation"
+                       class="comment-user">skan</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-27 01:15:24Z" class="relativetime-clean">Mar 27 '13 at 1:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22406407" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@skan the end object is a data frame. So you have to convert it to a zoo object in order to use it with zoo. Look at the examples in the zoo docs for illustrations.</span>
+                    &ndash;&nbsp;<a href="/users/37751/jd-long"
+                       title="25973 reputation"
+                       class="comment-user">JD Long</a>
+                <span class="comment-date" dir="ltr"><span title="2013-04-02 12:48:23Z" class="relativetime-clean">Apr 2 '13 at 12:48</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-56941793" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@what m is thousand so mm is thousand thousand, or million. I probably should have capitalized it as MM. But I find that just about any million abbreviation can be confusing to someone if you have a diverse enough audience. In my attempt to be overly verbose, I&#39;m sorry that I made it more confusing!   <a href="http://www.accountingcoach.com/blog/what-does-m-and-mm-stand-for" rel="nofollow">accountingcoach.com/blog/what-does-m-and-mm-stand-for</a></span>
+                    &ndash;&nbsp;<a href="/users/37751/jd-long"
+                       title="25973 reputation"
+                       class="comment-user">JD Long</a>
+                <span class="comment-date" dir="ltr"><span title="2016-01-04 19:13:30Z" class="relativetime-clean">Jan 4 at 19:13</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1820610" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>5</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="15058684"></a>
+<div id="answer-15058684" class="answer" data-answerid="15058684"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="15058684">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">188</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Here is an example that utilizes <code>fread</code> from <code>data.table</code> 1.8.7</p>
+
+<p>The examples come from the help page to <code>fread</code>, with the timings on my windows XP Core 2 duo E8400.</p>
+
+<pre><code>library(data.table)
+# Demo speedup
+n=1e6
+DT = data.table( a=sample(1:1000,n,replace=TRUE),
+                 b=sample(1:1000,n,replace=TRUE),
+                 c=rnorm(n),
+                 d=sample(c("foo","bar","baz","qux","quux"),n,replace=TRUE),
+                 e=rnorm(n),
+                 f=sample(1:1000,n,replace=TRUE) )
+DT[2,b:=NA_integer_]
+DT[4,c:=NA_real_]
+DT[3,d:=NA_character_]
+DT[5,d:=""]
+DT[2,e:=+Inf]
+DT[3,e:=-Inf]
+</code></pre>
+
+<h1>standard read.table</h1>
+
+<pre><code>write.table(DT,"test.csv",sep=",",row.names=FALSE,quote=FALSE)
+cat("File size (MB):",round(file.info("test.csv")$size/1024^2),"\n")    
+## File size (MB): 51 
+
+system.time(DF1 &lt;- read.csv("test.csv",stringsAsFactors=FALSE))        
+##    user  system elapsed 
+##   24.71    0.15   25.42
+# second run will be faster
+system.time(DF1 &lt;- read.csv("test.csv",stringsAsFactors=FALSE))        
+##    user  system elapsed 
+##   17.85    0.07   17.98
+</code></pre>
+
+<h1>optimized read.table</h1>
+
+<pre><code>system.time(DF2 &lt;- read.table("test.csv",header=TRUE,sep=",",quote="",  
+                          stringsAsFactors=FALSE,comment.char="",nrows=n,                   
+                          colClasses=c("integer","integer","numeric",                        
+                                       "character","numeric","integer")))
+
+
+##    user  system elapsed 
+##   10.20    0.03   10.32
+</code></pre>
+
+<h1>fread</h1>
+
+<pre><code>require(data.table)
+system.time(DT &lt;- fread("test.csv"))                                  
+ ##    user  system elapsed 
+##    3.12    0.01    3.22
+</code></pre>
+
+<h1>sqldf</h1>
+
+<pre><code>require(sqldf)
+
+system.time(SQLDF &lt;- read.csv.sql("test.csv",dbname=NULL))             
+
+##    user  system elapsed 
+##   12.49    0.09   12.69
+
+# sqldf as on SO
+
+f &lt;- file("test.csv")
+system.time(SQLf &lt;- sqldf("select * from f", dbname = tempfile(), file.format = list(header = T, row.names = F)))
+
+##    user  system elapsed 
+##   10.21    0.47   10.73
+</code></pre>
+
+<h1>ff / ffdf</h1>
+
+<pre><code> require(ff)
+
+ system.time(FFDF &lt;- read.csv.ffdf(file="test.csv",nrows=n))   
+ ##    user  system elapsed 
+ ##   10.85    0.10   10.99
+</code></pre>
+
+<h1>In summary:</h1>
+
+<pre><code>##    user  system elapsed  Method
+##   24.71    0.15   25.42  read.csv (first time)
+##   17.85    0.07   17.98  read.csv (second time)
+##   10.20    0.03   10.32  Optimized read.table
+##    3.12    0.01    3.22  fread
+##   12.49    0.09   12.69  sqldf
+##   10.21    0.47   10.73  sqldf on SO
+##   10.85    0.10   10.99  ffdf
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/15058684" title="short permalink to this answer" class="short-link" id="link-post-15058684">share</a><span class="lsep">|</span><a href="/posts/15058684/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/15058684/revisions" title="show all edits to this post">edited <span title="2013-02-25 01:56:36Z" class="relativetime">Feb 25 '13 at 1:56</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/903061/gregor"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/f3e99c9d92544618ac5fb74e4bd5f51b?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/903061/gregor">Gregor</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 20283" dir="ltr">20.3k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="31 silver badges"><span class="badge2"></span><span class="badgecount">31</span></span><span title="67 bronze badges"><span class="badge3"></span><span class="badgecount">67</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-02-25 01:07:39Z" class="relativetime">Feb 25 '13 at 1:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1385941/mnel"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/506d1c51192be184eea0d612f7255bd0?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1385941/mnel">mnel</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 61227" dir="ltr">61.2k</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="125 silver badges"><span class="badge2"></span><span class="badgecount">125</span></span><span title="151 bronze badges"><span class="badge3"></span><span class="badgecount">151</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15058684" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27664848" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">21</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Great answer, and the benchmarking holds in other contexts.  Just read in a 4GB file in well under a minute with <code>fread</code>.  Had tried reading it in with the base R functions and it took about 15 hours.</span>
+                    &ndash;&nbsp;<a href="/users/636656/ari-b-friedman"
+                       title="32387 reputation"
+                       class="comment-user">Ari B. Friedman</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-12 13:55:19Z" class="relativetime-clean">Sep 12 '13 at 13:55</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-46413061" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">my benchmark suggest even greater speed advantages for read.csv in data.table.  note that data.table is not standard R, but (sadly) &quot;just&quot; nicely shared by its creators on CRAN.  it is not even deemed standard enough to make the common R package list, much less qualify as a replacement for data frames.  it has a lot of advantages, but also some very counterintuitive aspects.  you may want to use as.data.frame(fread.csv(&quot;test.csv&quot;)) with the package to get back into the standard R data frame world.</span>
+                    &ndash;&nbsp;<a href="/users/1539216/ivo-welch"
+                       title="502 reputation"
+                       class="comment-user">ivo Welch</a>
+                <span class="comment-date" dir="ltr"><span title="2015-03-17 02:31:32Z" class="relativetime-clean">Mar 17 '15 at 2:31</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-51713970" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@ivoWelch you can use <code>fread(&quot;test.csv&quot;, data.table=FALSE)</code></span>
+                    &ndash;&nbsp;<a href="/users/2490497/jangorecki"
+                       title="3514 reputation"
+                       class="comment-user">jangorecki</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-08 23:15:43Z" class="relativetime-clean">Aug 8 '15 at 23:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-56086902" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@mnel could you please re-run the benchmark and include <code>readr</code>?</span>
+                    &ndash;&nbsp;<a href="/users/2490497/jangorecki"
+                       title="3514 reputation"
+                       class="comment-user">jangorecki</a>
+                <span class="comment-date" dir="ltr"><span title="2015-12-09 02:33:44Z" class="relativetime-clean">Dec 9 '15 at 2:33</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-15058684" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="13965103"></a>
+<div id="answer-13965103" class="answer" data-answerid="13965103"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="13965103">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">54</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Strangely, no one answered the bottom part of the question for years even though this is an important one -- <code>data.frame</code>s are simply lists with the right attributes, so if you have large data you don't want to use <code>as.data.frame</code> or similar for a list. It's much faster to simply "turn" a list into a data frame in-place:</p>
+
+<pre><code>attr(df, "row.names") &lt;- .set_row_names(length(df[[1]]))
+class(df) &lt;- "data.frame"
+</code></pre>
+
+<p>This makes no copy of the data so it's immediate (unlike all other methods). It assumes that you have already set <code>names()</code> on the list accordingly.</p>
+
+<p>[As for loading large data into R -- personally, I dump them by column into binary files and use <code>readBin()</code> - that is by far the fastest method (other than mmapping) and is only limited by the disk speed. Parsing ASCII files is inherently slow (even in C) compared to binary data.]</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/13965103" title="short permalink to this answer" class="short-link" id="link-post-13965103">share</a><span class="lsep">|</span><a href="/posts/13965103/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/13965103/revisions" title="show all edits to this post">edited <span title="2013-02-24 21:42:54Z" class="relativetime">Feb 24 '13 at 21:42</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-12-20 04:01:40Z" class="relativetime">Dec 20 '12 at 4:01</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1031175/simon-urbanek"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/fa88dc59066d04564f359d23a79d3ae7?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1031175/simon-urbanek">Simon Urbanek</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">9,580</span><span title="25 silver badges"><span class="badge2"></span><span class="badgecount">25</span></span><span title="33 bronze badges"><span class="badge3"></span><span class="badgecount">33</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-13965103" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-19265271" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Using <code>tracmem</code> suggests that <code>attr&lt;-</code> and <code>class&lt;-</code> make copies internally. <code>bit::setattr</code> or <code>data.table::setattr</code> will not.</span>
+                    &ndash;&nbsp;<a href="/users/1385941/mnel"
+                       title="61227 reputation"
+                       class="comment-user">mnel</a>
+                <span class="comment-date" dir="ltr"><span title="2012-12-20 04:20:32Z" class="relativetime-clean">Dec 20 '12 at 4:20</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-19265422" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Maybe you used the wrong order? There is no copy if you use <code>df=scan(...); names(df)=...; attr...; class...</code> - see <code>tracemem()</code> (tested in R 2.15.2)</span>
+                    &ndash;&nbsp;<a href="/users/1031175/simon-urbanek"
+                       title="9580 reputation"
+                       class="comment-user">Simon Urbanek</a>
+                <span class="comment-date" dir="ltr"><span title="2012-12-20 04:31:18Z" class="relativetime-clean">Dec 20 '12 at 4:31</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-19265653" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Odd. I could have sworn I managed to replicate my copying..... But not again.</span>
+                    &ndash;&nbsp;<a href="/users/1385941/mnel"
+                       title="61227 reputation"
+                       class="comment-user">mnel</a>
+                <span class="comment-date" dir="ltr"><span title="2012-12-20 04:49:19Z" class="relativetime-clean">Dec 20 '12 at 4:49</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-13965103" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1729861"></a>
+<div id="answer-1729861" class="answer" data-answerid="1729861"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1729861">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">26</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This was previously <a href="http://markmail.org/message/zeew2gr2x77cglcv#query:r-project%20quickly%20read%20large%20file+page:1+mid:bovcytjhdkzmefru+state:results">asked on <b>R-Help</b></a>, so that's worth reviewing.</p>
+
+<p>One suggestion there was to use <code>readChar()</code> and then do string manipulation on the result with <code>strsplit()</code> and <code>substr()</code>.  You can see the logic involved in readChar is much less than read.table.</p>
+
+<p>I don't know if memory is an issue here, but you might also <a href="http://cran.r-project.org/web/packages/HadoopStreaming/index.html">want to take a look at the <b>HadoopStreaming</b> package</a>.  This <a href="http://en.wikipedia.org/wiki/Hadoop">uses Hadoop</a>, which is a MapReduce framework designed for dealing with large data sets.  For this, you would use the hsTableReader function.  This is an example (but it has a learning curve to learn Hadoop):</p>
+
+<pre><code>str &lt;- "key1\t3.9\nkey1\t8.9\nkey1\t1.2\nkey1\t3.9\nkey1\t8.9\nkey1\t1.2\nkey2\t9.9\nkey2\"
+cat(str)
+cols = list(key='',val=0)
+con &lt;- textConnection(str, open = "r")
+hsTableReader(con,cols,chunkSize=6,FUN=print,ignoreKey=TRUE)
+close(con)
+</code></pre>
+
+<p>The basic idea here is to break the data import into chunks.  You could even go so far as to use one of the parallel frameworks (e.g. snow) and run the data import in parallel by segmenting the file, but most likely for large data sets that won't help since you will run into memory constraints, which is why map-reduce is a better approach.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1729861" title="short permalink to this answer" class="short-link" id="link-post-1729861">share</a><span class="lsep">|</span><a href="/posts/1729861/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/1729861/revisions" title="show all edits to this post">edited <span title="2011-10-11 09:34:14Z" class="relativetime">Oct 11 '11 at 9:34</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/322912/roman-lu%c5%a1trik"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/ao2Pm.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/322912/roman-lu%c5%a1trik">Roman Luštrik</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 28794" dir="ltr">28.8k</span><span title="11 gold badges"><span class="badge1"></span><span class="badgecount">11</span></span><span title="63 silver badges"><span class="badge2"></span><span class="badgecount">63</span></span><span title="108 bronze badges"><span class="badge3"></span><span class="badgecount">108</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-11-13 15:18:57Z" class="relativetime">Nov 13 '09 at 15:18</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/163053/shane"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/0cee97ffd90277bf4ac753331d50af60?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/163053/shane">Shane</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 52893" dir="ltr">52.9k</span><span title="16 gold badges"><span class="badge1"></span><span class="badgecount">16</span></span><span title="148 silver badges"><span class="badge2"></span><span class="badgecount">148</span></span><span title="187 bronze badges"><span class="badge3"></span><span class="badgecount">187</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1729861" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1611259" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I just did a quick test and readChar does seem to be much faster than even readLines for some inexplicable reason. However, it is still slow as sin compared to a simple C test. At the simple task of reading 100 megs, R is about 5 - 10x slower than C</span>
+                    &ndash;&nbsp;<a href="/users/158065/jonathan-chang"
+                       title="8667 reputation"
+                       class="comment-user">Jonathan Chang</a>
+                <span class="comment-date" dir="ltr"><span title="2009-11-13 20:12:53Z" class="relativetime-clean">Nov 13 '09 at 20:12</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2059230" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Bringing Hadoop to bear here is like bringing a cannon to a knife fight.</span>
+                    &ndash;&nbsp;<a href="/users/2002705/medriscoll"
+                       title="7399 reputation"
+                       class="comment-user">medriscoll</a>
+                <span class="comment-date" dir="ltr"><span title="2010-01-23 01:27:18Z" class="relativetime-clean">Jan 23 '10 at 1:27</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2059262" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Don&#39;t understand your point.  The point of Hadoop is to handle very large data, which is what the question was about.</span>
+                    &ndash;&nbsp;<a href="/users/163053/shane"
+                       title="52893 reputation"
+                       class="comment-user">Shane</a>
+                <span class="comment-date" dir="ltr"><span title="2010-01-23 01:33:45Z" class="relativetime-clean">Jan 23 '10 at 1:33</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-21440969" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Despite the name, hsTableReader doesn&#39;t have anything to do with Hadoop per se, it&#39;s for processing large data in pieces.  It reads from con, a chunk of rows at a time, and passes each chunk as a data.frame to FUN for processing. With ignoreKey=FALSE, it does some extra grouping by key (the entry in the first column), which is relevant to Map/Reduce approaches.</span>
+                    &ndash;&nbsp;<a href="/users/978974/davidr"
+                       title="338 reputation"
+                       class="comment-user">DavidR</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-04 22:46:56Z" class="relativetime-clean">Mar 4 '13 at 22:46</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22208786" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hi. How would you use this Hadoop data as an input for other packages such as zoo, designed to be used with all data simultenously?</span>
+                    &ndash;&nbsp;<a href="/users/425895/skan"
+                       title="1105 reputation"
+                       class="comment-user">skan</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-27 01:15:56Z" class="relativetime-clean">Mar 27 '13 at 1:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1729861" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1728378"></a>
+<div id="answer-1728378" class="answer" data-answerid="1728378"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1728378">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">16</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A different approach to the problem could be to use the <a href="http://code.google.com/p/sqldf/">sqldf</a> package. See in particular the Example 6. File input.</p>
+
+<p>HIH</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1728378" title="short permalink to this answer" class="short-link" id="link-post-1728378">share</a><span class="lsep">|</span><a href="/posts/1728378/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-11-13 10:25:04Z" class="relativetime">Nov 13 '09 at 10:25</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/143591/paolo"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e0e14ef7a965dcdd4dd362bcd7d3e894?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/143591/paolo">Paolo</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,856</span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="16 bronze badges"><span class="badge3"></span><span class="badgecount">16</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1728378" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2059237" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">On the right track, but JD Long&#39;s answer below provides the code to do it.</span>
+                    &ndash;&nbsp;<a href="/users/2002705/medriscoll"
+                       title="7399 reputation"
+                       class="comment-user">medriscoll</a>
+                <span class="comment-date" dir="ltr"><span title="2010-01-23 01:28:24Z" class="relativetime-clean">Jan 23 '10 at 1:28</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1728378" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="20271729"></a>
+<div id="answer-20271729" class="answer" data-answerid="20271729"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="20271729">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A minor additional points worth mentioning. If you have a very large file you can on the fly calculate the number of rows (if no header) using (where <code>bedGraph</code> is the name of your file in your working directory):</p>
+
+<pre><code>&gt;numRow=as.integer(system(paste("wc -l", bedGraph, "| sed 's/[^0-9.]*\\([0-9.]*\\).*/\\1/'"), intern=T))
+</code></pre>
+
+<p>You can then use that either in <code>read.csv</code> , <code>read.table</code> ...</p>
+
+<pre><code>&gt;system.time((BG=read.table(bedGraph, nrows=numRow, col.names=c('chr', 'start', 'end', 'score'),colClasses=c('character', rep('integer',3)))))
+   user  system elapsed 
+ 25.877   0.887  26.752 
+&gt;object.size(BG)
+203949432 bytes
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/20271729" title="short permalink to this answer" class="short-link" id="link-post-20271729">share</a><span class="lsep">|</span><a href="/posts/20271729/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-11-28 17:20:55Z" class="relativetime">Nov 28 '13 at 17:20</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1527403/stephen-henderson"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/wmOYS.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1527403/stephen-henderson">Stephen Henderson</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,031</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="23 bronze badges"><span class="badge3"></span><span class="badgecount">23</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20271729" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-20271729" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="25451357"></a>
+<div id="answer-25451357" class="answer" data-answerid="25451357"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="25451357">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Often times I think it is just good practice to keep larger databases inside a database (e.g. Postgres). I don't use anything too much larger than (nrow * ncol) ncell = 10M, which is pretty small; but I often find I want R to create and hold memory intensive graphs only while I query from multiple databases. In the future of 32 GB laptops, some of these types of memory problems will disappear. But the allure of using a database to hold the data and then using R's memory for the resulting query results and graphs still may be useful. Some advantages are: </p>
+
+<p>(1) The data stays loaded in your database. You simply reconnect in pgadmin to the databases you want when you turn your laptop back on.</p>
+
+<p>(2) It is true R can do many more nifty statistical and graphing operations than SQL. But I think SQL is better designed to query large amounts of data than R.</p>
+
+<pre><code># Looking at Voter/Registrant Age by Decade
+
+library(RPostgreSQL);library(lattice)
+
+con &lt;- dbConnect(PostgreSQL(), user= "postgres", password="password",
+                 port="2345", host="localhost", dbname="WC2014_08_01_2014")
+
+Decade_BD_1980_42 &lt;- dbGetQuery(con,"Select PrecinctID,Count(PrecinctID),extract(DECADE from Birthdate) from voterdb where extract(DECADE from Birthdate)::numeric &gt; 198 and PrecinctID in (Select * from LD42) Group By PrecinctID,date_part Order by Count DESC;")
+
+Decade_RD_1980_42 &lt;- dbGetQuery(con,"Select PrecinctID,Count(PrecinctID),extract(DECADE from RegistrationDate) from voterdb where extract(DECADE from RegistrationDate)::numeric &gt; 198 and PrecinctID in (Select * from LD42) Group By PrecinctID,date_part Order by Count DESC;")
+
+with(Decade_BD_1980_42,(barchart(~count | as.factor(precinctid))));
+mtext("42LD Birthdays later than 1980 by Precinct",side=1,line=0)
+
+with(Decade_RD_1980_42,(barchart(~count | as.factor(precinctid))));
+mtext("42LD Registration Dates later than 1980 by Precinct",side=1,line=0)
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/25451357" title="short permalink to this answer" class="short-link" id="link-post-25451357">share</a><span class="lsep">|</span><a href="/posts/25451357/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/25451357/revisions" title="show all edits to this post">edited <span title="2014-08-24 15:54:25Z" class="relativetime">Aug 24 '14 at 15:54</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1855677/42"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/SASvH.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1855677/42">42-</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 144667" dir="ltr">145k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="112 silver badges"><span class="badge2"></span><span class="badgecount">112</span></span><span title="225 bronze badges"><span class="badge3"></span><span class="badgecount">225</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-08-22 16:13:43Z" class="relativetime">Aug 22 '14 at 16:13</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/305675/rferrisx"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c1d86ea86472919a63699b1af47b5778?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/305675/rferrisx">rferrisx</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">123</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25451357" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25451357" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="29714278"></a>
+<div id="answer-29714278" class="answer" data-answerid="29714278"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="29714278">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">-2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Instead of the conventional read.table I feel fread is a faster function. 
+Specifying additional attributes like select only the required columns, specifying colclasses and string as factors will reduce the time take to import the file.</p>
+
+<pre><code>data_frame &lt;- fread("filename.csv",sep=",",header=FALSE,stringsAsFactors=FALSE,select=c(1,4,5,6,7),colClasses=c("as.numeric","as.character","as.numeric","as.Date","as.Factor"))
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/29714278" title="short permalink to this answer" class="short-link" id="link-post-29714278">share</a><span class="lsep">|</span><a href="/posts/29714278/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-04-18 07:22:01Z" class="relativetime">Apr 18 '15 at 7:22</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1981787/aayush-agrawal"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/40e6278672af0fd0d6edbbd9bc6d265e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1981787/aayush-agrawal">Aayush Agrawal</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">70</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-29714278" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-47575389" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>fread</code> is included in plenty of the answers above. Did you really feel it was necessary to add it again?</span>
+                    &ndash;&nbsp;<a href="/users/2372064/mrflick"
+                       title="66726 reputation"
+                       class="comment-user">MrFlick</a>
+                <span class="comment-date" dir="ltr"><span title="2015-04-18 17:23:30Z" class="relativetime-clean">Apr 18 '15 at 17:23</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-29714278" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/1727772/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="1727772" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="c82e9ba6da5583e8fcc07891e4726864">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1727772%2fquickly-reading-very-large-tables-as-dataframes-in-r%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f1727772%2fquickly-reading-very-large-tables-as-dataframes-in-r%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/r" class="post-tag" title="show questions tagged &#39;r&#39;" rel="tag">r</a> <a href="/questions/tagged/import" class="post-tag" title="show questions tagged &#39;import&#39;" rel="tag">import</a> <a href="/questions/tagged/data.frame" class="post-tag" title="show questions tagged &#39;data.frame&#39;" rel="tag">data.frame</a> <a href="/questions/tagged/r-faq" class="post-tag" title="show questions tagged &#39;r-faq&#39;" rel="tag">r-faq</a> <a href="/questions/tagged/read-data" class="post-tag" title="show questions tagged &#39;read-data&#39;" rel="tag">read-data</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2009-11-13 07:53:33Z"><b>6 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>83189 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-04-18 07:22:01Z">8 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">Stack Exchange Year in Review 2015</a>
+                </div>
+                <br class="cbt" />
+            </div>
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 8 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk2129556894",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk2129556894">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/3968073" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/3968073/how-to-read-large-dataset-in-r" class="question-hyperlink">How to read large dataset in R</a>
+</div><div class="spacer">
+	<a href="/q/24872681" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="/questions/24872681/quick-way-to-read-a-large-flat-file-into-r-as-numeric" class="question-hyperlink">quick way to read a large flat file into r as.numeric</a>
+</div><div class="spacer">
+	<a href="/q/24104445" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/24104445/subsetting-a-large-txt-file-before-reading-it-into-the-variable-in-r" class="question-hyperlink">subsetting a large txt file before reading it into the variable in R</a>
+</div><div class="spacer">
+	<a href="/q/24948685" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="/questions/24948685/how-to-load-big-data-in-r" class="question-hyperlink">How to load big data in R?</a>
+</div><div class="spacer">
+	<a href="/q/21660715" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/21660715/load-large-datasets-into-data-frame" class="question-hyperlink">Load large datasets into data frame</a>
+</div><div class="spacer">
+	<a href="/q/21883922" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/21883922/long-time-needed-to-read-data-from-a-csv-file" class="question-hyperlink">Long time needed to read data from a csv file</a>
+</div><div class="spacer">
+	<a href="/q/19430431" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/19430431/reading-big-matrix-of-integers-fast" class="question-hyperlink">Reading big matrix of integers fast</a>
+</div><div class="spacer">
+	<a href="/q/31887230" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">-3</div>
+	</a>
+	<a href="/questions/31887230/what-is-the-fastest-way-and-fastest-format-for-loading-large-data-sets-into-r" class="question-hyperlink">What is the fastest way and fastest format for loading large data sets into R</a>
+</div><div class="spacer">
+	<a href="/q/24431405" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/24431405/loading-large-training-data-with-r" class="question-hyperlink">Loading large training data with R</a>
+</div><div class="spacer">
+	<a href="/q/21220704" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/21220704/how-to-read-1-5gb-csv-file-into-r-in-a-more-efficient-and-rapid-way" class="question-hyperlink">How to read 1.5GB .csv file into R in a more efficient and rapid way?</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/1727772">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/1296646" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">643
+    </div>
+</a><a href="/questions/1296646/how-to-sort-a-dataframe-by-columns" class="question-hyperlink">How to sort a dataframe by column(s)?</a>
+</div>
+<div class="spacer">
+<a href="/q/6262236" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/6262236/r-how-to-read-in-a-series-of-txt-files-to-r-as-csv-but-firstly-delete-the-first" class="question-hyperlink">R: how to read in a series of txt files to R as csv but firstly delete the first three lines of the txt files</a>
+</div>
+<div class="spacer">
+<a href="/q/8273313" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">96
+    </div>
+</a><a href="/questions/8273313/random-rows-in-dataframe-in-r" class="question-hyperlink">Random rows in dataframe in R</a>
+</div>
+<div class="spacer">
+<a href="/q/9424311" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">15
+    </div>
+</a><a href="/questions/9424311/how-to-get-mean-median-and-other-statistics-over-entire-matrix-array-or-dataf" class="question-hyperlink">How to get mean, median, and other statistics over entire matrix, array or dataframe?</a>
+</div>
+<div class="spacer">
+<a href="/q/18425268" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/18425268/reading-unequal-size-variables-from-text-file-as-dataframe-in-r" class="question-hyperlink">Reading unequal size variables from text file as dataframe in R</a>
+</div>
+<div class="spacer">
+<a href="/q/18575404" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-4
+    </div>
+</a><a href="/questions/18575404/multiple-dataframes-for-large-data" class="question-hyperlink">Multiple dataframes for large data</a>
+</div>
+<div class="spacer">
+<a href="/q/19346066" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">6
+    </div>
+</a><a href="/questions/19346066/r-re-arrange-dataframe-some-rows-to-columns" class="question-hyperlink">R re-arrange dataframe: some rows to columns</a>
+</div>
+<div class="spacer">
+<a href="/q/20004810" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">-2
+    </div>
+</a><a href="/questions/20004810/how-to-read-a-part-of-excel-file-into-data-frame-r" class="question-hyperlink">How to read a part of excel file into data frame r?</a>
+</div>
+<div class="spacer">
+<a href="/q/22735224" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/22735224/how-can-i-import-r-dataframes-into-pandas" class="question-hyperlink">How can I import R dataframes into Pandas?</a>
+</div>
+<div class="spacer">
+<a href="/q/32043622" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/32043622/how-to-read-large-sas-data-in-r" class="question-hyperlink">How to read large SAS data in R</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/24275/what-makes-a-visual-approach-quicker-than-an-ils-approach" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What makes a visual approach quicker than an ILS approach?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/81954/should-i-leave-outlet-covers-on-or-off-for-electrical-inspector" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I leave outlet covers on or off for electrical inspector?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33048/what-would-an-earth-with-no-timezones-be-like" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would an Earth with no timezones be like?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110379/how-to-securely-counter-users-from-adding-a-single-digit-to-their-old-password-u" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to securely counter users from adding a single digit to their old password upon creating a new one?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/61240/cheapest-destination-for-a-white-christmas-starting-from-sydney" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Cheapest destination for a white Christmas starting from Sydney?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46163/why-did-tywin-laninster-never-try-to-become-a-king" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why did Tywin Laninster never try to become a king?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1025105/how-to-delete-a-keyboard-input-option-in-windows-10" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to delete a keyboard input option in Windows 10
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-lifehacks" title="Lifehacks Stack Exchange"></div><a href="http://lifehacks.stackexchange.com/questions/10660/how-to-rid-steelware-of-metallic-taste" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:593 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to rid steelware of metallic taste
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/126030/possible-benefits-of-storing-data-as-string-instead-of-columns" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible benefits of storing data as string instead of columns
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287303/printing-letters-or-words-for-posting-on-walls" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Printing letters or words for posting on walls
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33145/what-happens-if-money-vanishes-if-not-spent" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What happens if money vanishes if not spent?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110258/users-calling-and-telling-us-their-passwords" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Users calling and telling us their passwords
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/60542/why-do-interviewers-ask-leadership-questions-even-for-follower-positions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do interviewers ask leadership questions even for &quot;follower&quot; positions?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114605/why-is-vader-suddenly-a-terrible-fighter-in-return-of-the-jedi" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is Vader suddenly a terrible fighter in Return of the Jedi?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-sharepoint" title="SharePoint Stack Exchange"></div><a href="http://sharepoint.stackexchange.com/questions/166816/sharepoint-2013-show-ribbon-to-admin-only" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:232 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Sharepoint 2013 - show ribbon to admin only
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/116556/deleting-rows-from-a-spreadsheet-where-column-c-is-blank" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Deleting rows from a spreadsheet where Column C is blank
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/229076/can-vinyl-lps-store-audio-above-20khz-and-can-it-be-played-back" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can vinyl LPs store audio above 20kHz and can it be played back?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69121/surrounded-countries" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Surrounded Countries
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110357/is-it-possible-for-my-password-to-have-more-than-one-password-combination" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible for my password to have more than one password combination?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33112/pew-pew-lasers-what-would-directed-energy-weapons-actually-sound-like" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Pew Pew Lasers! What would directed energy weapons actually sound like?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1605183/if-squaring-a-number-means-multiplying-that-number-with-itself-then-shouldnt-ta" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If squaring a number means multiplying that number with itself then shouldn&#39;t taking square root of a number mean to divide a number by itself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-photo" title="Photography Stack Exchange"></div><a href="http://photo.stackexchange.com/questions/72730/what-is-the-difference-between-color-and-tones" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:61 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the difference between &quot;color&quot; and &quot;tones&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103889/how-to-extract-the-elments-which-the-require-the-second-elements-to-be-the-small" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to extract the elments which the require the second elements to be the smallest?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287267/how-can-i-test-the-value-of-two-counters" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I test the value of two counters?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/1727772" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/1727772/ivc/1c15');});
+</script>
+<noscript>
+    <div><img src="/posts/1727772/ivc/1c15" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-r</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.12.3167
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('r,import,data.frame,r-faq,read-data');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|r|import|data.frame|r-faq|read-data|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

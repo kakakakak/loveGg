@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>Unable to create Hbase table from hive with Hive version 1.1.0 HBase version 0.94.8 and hadoop version 2.7.0 - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Unable to create Hbase table from hive with Hive version 1.1.0 HBase version 0.94.8 and hadoop version 2.7.0" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Unable to create Hbase table from hive with Hive version 1.1.0 HBase version 0.94.8 and hadoop version 2.7.0
+
+
+
+hive (default)&amp;gt; CREATE TABLE test_hive_hbase(eid int, ename string, esal double)..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9/32691174"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9/32691174" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=2ad47c1cbf74"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=e67f9bfa3488">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Unable to create Hbase table from hive with Hive version 1.1.0 HBase version 0.94.8 and hadoop version 2.7.0&#39;" href="/feeds/question/32690166">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9/32691174" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9/32691174" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9/32691174">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:32690166});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '32690166');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452632791,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"8872ec4c653acc968af5bcb434502271","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"3f9ee2d99b7b","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"f5db443c1ac0","js/wmd.en.js":"b7209bb18569","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"54b998574be9","js/tageditor.en.js":"bce25cab66ee","js/tageditornew.en.js":"da1a6faf4b1a","js/inline-tag-editing.en.js":"7e793ad8611c","js/revisions.en.js":"6aca57a6c709","js/review.en.js":"775aea04d276","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"38881ac6b6fc","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"95207368686a","js/keyboard-shortcuts.en.js":"cd362c7762a7","js/external-editor.en.js":"1c46403ac90b","js/external-editor.en.js":"1c46403ac90b","js/snippet-javascript.en.js":"f590e314ee2d","js/snippet-javascript-codemirror.en.js":"ed6ec2d2099d"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32690166%2funable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9%2f32691174" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32690166%2funable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9%2f32691174" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32690166%2funable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9%2f32691174" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32690166%2funable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9%2f32691174" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32690166%2funable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9%2f32691174" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9" class="question-hyperlink">Unable to create Hbase table from hive with Hive version 1.1.0 HBase version 0.94.8 and hadoop version 2.7.0</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="32690166"  id="question">
+
+    <div class="everyonelovesstackoverflow" id="careers1">
+        </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32690166">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>Unable to create Hbase table from hive with Hive version 1.1.0 HBase version 0.94.8 and hadoop version 2.7.0</p>
+
+<p><div class="snippet" data-lang="js" data-hide="false">
+<div class="snippet-code">
+<pre class="snippet-code-html lang-html prettyprint-override"><code>hive (default)&gt; CREATE TABLE test_hive_hbase(eid int, ename string, esal double) 
+              &gt; STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+              &gt; WITH SERDEPROPERTIES 
+              &gt; ("hbase.columns.mapping" = ":key,cfstr:enm,cfsal:esl")
+              &gt; TBLPROPERTIES ("hbase.table.name" = "test_hive_hbase");
+FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. org/apache/hadoop/hbase/HBaseConfiguration</code></pre>
+</div>
+</div>
+</p>
+
+<p>I have created an auxlib folder under hive and added all jars from hive, hbase and hadoop.</p>
+
+<p><div class="snippet" data-lang="js" data-hide="false">
+<div class="snippet-code">
+<pre class="snippet-code-html lang-html prettyprint-override"><code>hduser@ubuntu:/usr/lib/hive/auxlib$ ls -latr
+total 174536
+-rw-r--r--  1 hduser hduser   822524 Oct 19  2011 mysql-connector-java-5.1.16.jar
+drwxr-xr-x  5 hduser hduser     4096 May 22  2013 ruby
+drwxr-xr-x  3 hduser hduser     4096 May 22  2013 native
+-rw-r--r--  1 hduser hduser   779974 May 22  2013 zookeeper-3.4.5.jar1
+-rw-r--r--  1 hduser hduser   449505 May 22  2013 velocity-1.7.jar
+-rw-r--r--  1 hduser hduser   995720 May 22  2013 snappy-java-1.0.3.2.jar
+-rw-r--r--  1 hduser hduser     8601 May 22  2013 slf4j-log4j12-1.4.3.jar
+-rw-r--r--  1 hduser hduser    15345 May 22  2013 slf4j-api-1.4.3.jar
+-rw-r--r--  1 hduser hduser   132368 May 22  2013 servlet-api-2.5-6.1.14.jar
+-rw-r--r--  1 hduser hduser   449818 May 22  2013 protobuf-java-2.4.0a.jar
+-rw-r--r--  1 hduser hduser   790250 May 22  2013 netty-3.2.4.Final.jar
+-rw-r--r--  1 hduser hduser    82445 May 22  2013 metrics-core-2.1.2.jar
+-rw-r--r--  1 hduser hduser   336580 May 22  2013 libthrift-0.8.0.jar1
+-rw-r--r--  1 hduser hduser    33015 May 22  2013 jsr305-1.3.9.jar
+-rw-r--r--  1 hduser hduser   134910 May 22  2013 jsp-api-2.1-6.1.14.jar
+-rw-r--r--  1 hduser hduser  1024680 May 22  2013 jsp-2.1-6.1.14.jar
+-rw-r--r--  1 hduser hduser 13312045 May 22  2013 jruby-complete-1.6.5.jar
+-rw-r--r--  1 hduser hduser   177131 May 22  2013 jetty-util-6.1.26.jar
+-rw-r--r--  1 hduser hduser   539912 May 22  2013 jetty-6.1.26.jar
+-rw-r--r--  1 hduser hduser    67758 May 22  2013 jettison-1.1.jar
+-rw-r--r--  1 hduser hduser   147933 May 22  2013 jersey-json-1.8.jar
+-rw-r--r--  1 hduser hduser   458233 May 22  2013 jersey-core-1.8.jar
+-rw-r--r--  1 hduser hduser   890168 May 22  2013 jaxb-impl-2.2.3-1.jar
+-rw-r--r--  1 hduser hduser    89967 May 22  2013 jaxb-api-2.1.jar
+-rw-r--r--  1 hduser hduser    76844 May 22  2013 jasper-runtime-5.5.23.jar
+-rw-r--r--  1 hduser hduser   408133 May 22  2013 jasper-compiler-5.5.23.jar
+-rw-r--r--  1 hduser hduser    20642 May 22  2013 jamon-runtime-2.3.1.jar
+-rw-r--r--  1 hduser hduser    32353 May 22  2013 jackson-xc-1.8.8.jar
+-rw-r--r--  1 hduser hduser   669065 May 22  2013 jackson-mapper-asl-1.8.8.jar
+-rw-r--r--  1 hduser hduser    17884 May 22  2013 jackson-jaxrs-1.8.8.jar
+-rw-r--r--  1 hduser hduser   227517 May 22  2013 jackson-core-asl-1.8.8.jar
+-rw-r--r--  1 hduser hduser   181201 May 22  2013 httpcore-4.1.3.jar
+-rw-r--r--  1 hduser hduser   352254 May 22  2013 httpclient-4.1.2.jar
+-rw-r--r--  1 hduser hduser    95975 May 22  2013 high-scale-lib-1.1.1.jar
+-rw-r--r--  1 hduser hduser  1648200 May 22  2013 guava-11.0.2.jar1
+-rw-r--r--  1 hduser hduser  3566844 May 22  2013 core-3.1.1.jar
+-rw-r--r--  1 hduser hduser    60686 May 22  2013 commons-logging-1.1.1.jar
+-rw-r--r--  1 hduser hduser   279193 May 22  2013 commons-lang-2.5.jar1
+-rw-r--r--  1 hduser hduser   163151 May 22  2013 commons-io-2.1.jar
+-rw-r--r--  1 hduser hduser   305001 May 22  2013 commons-httpclient-3.1.jar
+-rw-r--r--  1 hduser hduser   112341 May 22  2013 commons-el-1.0.jar
+-rw-r--r--  1 hduser hduser   168042 May 22  2013 avro-ipc-1.5.3.jar
+-rw-r--r--  1 hduser hduser   263268 May 22  2013 avro-1.5.3.jar
+-rw-r--r--  1 hduser hduser    15010 May 22  2013 xmlenc-0.52.jar
+-rw-r--r--  1 hduser hduser   253205 May 22  2013 junit-4.10-HBASE-1.jar
+-rw-r--r--  1 hduser hduser   694352 May 22  2013 jersey-server-1.8.jar
+-rw-r--r--  1 hduser hduser  3929148 May 22  2013 hadoop-core-1.0.4.jar1
+-rw-r--r--  1 hduser hduser   180792 May 22  2013 commons-net-1.4.1.jar1
+-rw-r--r--  1 hduser hduser    43033 May 22  2013 asm-3.1.jar
+-rw-rw-r--  1 hduser hduser  4203147 Jul 22  2013 hadoop-core-1.2.1.jar
+-rw-r--r--  1 hduser hduser   481535 May 20  2014 log4j-1.2.16.jar1
+-rw-r--r--  1 hduser hduser    41123 May 20  2014 commons-cli-1.2.jar
+-rw-r--r--  1 hduser hduser   575389 May 20  2014 commons-collections-3.2.1.jar
+-rw-r--r--  1 hduser hduser   105112 May 20  2014 servlet-api-2.5.jar
+-rw-r--r--  1 hduser hduser   143602 May 20  2014 commons-digester-1.8.jar
+-rw-r--r--  1 hduser hduser   188671 May 20  2014 commons-beanutils-1.7.0.jar
+-rw-r--r--  1 hduser hduser    65261 May 20  2014 oro-2.0.8.jar
+-rw-r--r--  1 hduser hduser   392124 May 20  2014 velocity-1.5.jar
+-rw-r--r--  1 hduser hduser    18336 May 20  2014 ant-launcher-1.9.1.jar
+-rw-r--r--  1 hduser hduser  1997485 May 20  2014 ant-1.9.1.jar
+-rw-r--r--  1 hduser hduser    62050 May 20  2014 commons-logging-1.1.3.jar
+-rw-r--r--  1 hduser hduser    58160 May 20  2014 commons-codec-1.4.jar
+-rw-r--r--  1 hduser hduser   279781 May 20  2014 commons-httpclient-3.0.1.jar
+-rw-r--r--  1 hduser hduser    76643 May 20  2014 hamcrest-core-1.1.jar
+-rw-r--r--  1 hduser hduser   433368 May 20  2014 httpclient-4.2.5.jar
+-rw-r--r--  1 hduser hduser   227708 May 20  2014 httpcore-4.2.5.jar
+-rw-r--r--  1 hduser hduser    26514 May 20  2014 stax-api-1.0.1.jar
+-rw-r--r--  1 hduser hduser    62983 May 20  2014 activation-1.1.jar
+-rw-r--r--  1 hduser hduser   185140 May 20  2014 commons-io-2.4.jar
+-rw-r--r--  1 hduser hduser   298829 May 20  2014 commons-configuration-1.6.jar
+-rw-r--r--  1 hduser hduser   206035 May 20  2014 commons-beanutils-core-1.8.0.jar
+-rw-r--r--  1 hduser hduser   832410 May 20  2014 commons-math-2.1.jar
+-rw-r--r--  1 hduser hduser    29555 May 20  2014 paranamer-2.3.jar
+-rw-r--r--  1 hduser hduser   400680 May 20  2014 avro-1.7.5.jar
+-rw-r--r--  1 hduser hduser   241367 May 20  2014 commons-compress-1.4.1.jar
+-rw-r--r--  1 hduser hduser    94672 May 20  2014 xz-1.0.jar
+-rw-r--r--  1 hduser hduser  1251514 May 20  2014 snappy-java-1.0.5.jar
+-rw-r--r--  1 hduser hduser   110600 May 20  2014 bonecp-0.8.0.RELEASE.jar
+-rw-r--r--  1 hduser hduser   339666 May 20  2014 datanucleus-api-jdo-3.2.6.jar
+-rw-r--r--  1 hduser hduser    15071 May 20  2014 jta-1.1.jar
+-rw-r--r--  1 hduser hduser   164368 May 20  2014 antlr-runtime-3.4.jar
+-rw-r--r--  1 hduser hduser   201124 May 20  2014 jdo-api-3.0.1.jar
+-rw-r--r--  1 hduser hduser   148627 May 20  2014 stringtemplate-3.2.1.jar
+-rw-r--r--  1 hduser hduser   445288 May 20  2014 antlr-2.7.7.jar
+-rw-r--r--  1 hduser hduser  1809447 May 20  2014 datanucleus-rdbms-3.2.9.jar
+-rw-r--r--  1 hduser hduser  1890075 May 20  2014 datanucleus-core-3.2.10.jar
+-rw-r--r--  1 hduser hduser   236660 May 20  2014 ST4-4.0.4.jar
+-rw-r--r--  1 hduser hduser  6377448 May 20  2014 groovy-all-2.1.6.jar
+-rw-r--r--  1 hduser hduser    12131 May 20  2014 jpam-1.1.jar
+-rw-r--r--  1 hduser hduser    16030 May 20  2014 geronimo-jta_1.1_spec-1.1.1.jar
+-rw-r--r--  1 hduser hduser    30548 May 20  2014 geronimo-jaspic_1.0_spec-1.0.jar
+-rw-r--r--  1 hduser hduser    12452 May 20  2014 geronimo-annotation_1.0_spec-1.1.1.jar
+-rw-r--r--  1 hduser hduser    21879 May 20  2014 asm-tree-3.1.jar
+-rw-r--r--  1 hduser hduser    32693 May 20  2014 asm-commons-3.1.jar
+-rw-r--r--  1 hduser hduser   447676 May 20  2014 mail-1.4.1.jar
+-rw-r--r--  1 hduser hduser  1681148 May 20  2014 jetty-all-7.6.0.v20120127.jar
+-rw-r--r--  1 hduser hduser  1683027 May 20  2014 jetty-all-server-7.6.0.v20120127.jar
+-rw-r--r--  1 hduser hduser    55953 May 20  2014 tempus-fugit-1.1.jar
+-rw-r--r--  1 hduser hduser   250546 May 20  2014 plexus-utils-1.5.6.jar
+-rw-r--r--  1 hduser hduser   284220 May 27  2014 commons-lang-2.6.jar
+-rw-r--r--  1 hduser hduser   245039 May 31  2014 junit-4.11.jar
+-rw-r--r--  1 hduser hduser  2189117 Jul 15  2014 guava-14.0.1.jar
+-rw-r--r--  1 hduser hduser    96221 Jul 16  2014 commons-pool-1.5.4.jar
+-rw-r--r--  1 hduser hduser   160519 Jul 16  2014 commons-dbcp-1.4.jar
+-rw-r--r--  1 hduser hduser    19827 Jul 29  2014 opencsv-2.3.jar
+-rw-r--r--  1 hduser hduser    25429 Aug  1  2014 regexp-1.3.jar
+-rw-r--r--  1 hduser hduser   792964 Aug 12  2014 zookeeper-3.4.6.jar
+-rw-r--r--  1 hduser hduser  1208356 Aug 12  2014 netty-3.7.0.Final.jar
+-rw-r--r--  1 hduser hduser    93210 Aug 12  2014 super-csv-2.2.0.jar
+-rw-r--r--  1 hduser hduser    69858 Aug 20  2014 maven-scm-provider-svnexe-1.4.jar
+-rw-r--r--  1 hduser hduser    40066 Aug 20  2014 maven-scm-provider-svn-commons-1.4.jar
+-rw-r--r--  1 hduser hduser    94421 Aug 20  2014 maven-scm-api-1.4.jar
+-rw-r--r--  1 hduser hduser    60527 Aug 20  2014 jcommander-1.32.jar
+-rw-r--r--  1 hduser hduser   415578 Aug 20  2014 commons-vfs2-2.0.jar
+-rw-r--r--  1 hduser hduser   117409 Aug 20  2014 accumulo-trace-1.6.0.jar
+-rw-r--r--  1 hduser hduser    57420 Aug 20  2014 accumulo-start-1.6.0.jar
+-rw-r--r--  1 hduser hduser   102069 Aug 20  2014 accumulo-fate-1.6.0.jar
+-rw-r--r--  1 hduser hduser  4368200 Aug 20  2014 accumulo-core-1.6.0.jar
+-rw-r--r--  1 hduser hduser    30359 Sep 17  2014 apache-curator-2.6.0.pom
+-rw-r--r--  1 hduser hduser   185245 Sep 17  2014 curator-framework-2.6.0.jar1
+-rw-r--r--  1 hduser hduser    68866 Sep 17  2014 curator-client-2.6.0.jar1
+-rw-r--r--  1 hduser hduser    30595 Oct  1  2014 commons-compiler-2.7.6.jar
+-rw-r--r--  1 hduser hduser   611863 Oct  1  2014 janino-2.7.6.jar
+-rw-r--r--  1 hduser hduser    18402 Oct  1  2014 eigenbase-properties-1.1.4.jar
+-rw-r--r--  1 hduser hduser    33031 Nov 17  2014 jsr305-3.0.0.jar
+-rw-r--r--  1 hduser hduser   227712 Nov 19  2014 libthrift-0.9.2.jar
+-rw-r--r--  1 hduser hduser   213854 Nov 19  2014 jline-2.12.jar
+-rw-r--r--  1 hduser hduser  2771530 Nov 19  2014 parquet-hadoop-bundle-1.6.0rc3.jar
+-rw-r--r--  1 hduser hduser   313686 Nov 19  2014 libfb303-0.9.2.jar
+-rw-r--r--  1 hduser hduser  3103132 Nov 19  2014 derby-10.11.1.1.jar
+-rw-r--r--  1 hduser hduser   448794 Dec 11  2014 apache-log4j-extras-1.2.17.jar
+-rw-r--r--  1 hduser hduser   432351 Feb  1  2015 calcite-linq4j-1.0.0-incubating.jar
+-rw-r--r--  1 hduser hduser   216853 Feb  1  2015 calcite-avatica-1.0.0-incubating.jar
+-rw-r--r--  1 hduser hduser  3295091 Feb  1  2015 calcite-core-1.0.0-incubating.jar
+-rw-r--r--  1 hduser hduser    48557 Feb  1  2015 pentaho-aggdesigner-algorithm-5.1.5-jhyde.jar
+-rw-r--r--  1 hduser hduser   108675 Feb 18  2015 hive-shims-common-1.1.0.jar
+-rw-r--r--  1 hduser hduser    31656 Feb 18  2015 hive-shims-0.20S-1.1.0.jar
+-rw-r--r--  1 hduser hduser    58444 Feb 18  2015 hive-shims-0.23-1.1.0.jar
+-rw-r--r--  1 hduser hduser    13074 Feb 18  2015 hive-shims-scheduler-1.1.0.jar
+-rw-r--r--  1 hduser hduser     8953 Feb 18  2015 hive-shims-1.1.0.jar
+-rw-r--r--  1 hduser hduser   238123 Feb 18  2015 hive-common-1.1.0.jar
+-rw-r--r--  1 hduser hduser   809287 Feb 18  2015 hive-serde-1.1.0.jar
+-rw-r--r--  1 hduser hduser  5273347 Feb 18  2015 hive-metastore-1.1.0.jar
+-rw-r--r--  1 hduser hduser    42296 Feb 18  2015 hive-ant-1.1.0.jar
+-rw-r--r--  1 hduser hduser 18438062 Feb 18  2015 hive-exec-1.1.0.jar
+-rw-r--r--  1 hduser hduser  1860639 Feb 18  2015 hive-service-1.1.0.jar
+-rw-r--r--  1 hduser hduser    93137 Feb 18  2015 hive-jdbc-1.1.0.jar
+-rw-r--r--  1 hduser hduser   113184 Feb 18  2015 hive-accumulo-handler-1.1.0.jar
+-rw-r--r--  1 hduser hduser    37446 Feb 18  2015 hive-cli-1.1.0.jar
+-rw-r--r--  1 hduser hduser   133166 Feb 18  2015 hive-beeline-1.1.0.jar
+-rw-r--r--  1 hduser hduser   121456 Feb 18  2015 hive-contrib-1.1.0.jar
+-rw-r--r--  1 hduser hduser   115801 Feb 18  2015 hive-hbase-handler-1.1.0.jar
+-rw-r--r--  1 hduser hduser    27785 Feb 18  2015 hive-hwi-1.1.0.jar
+-rw-r--r--  1 hduser hduser    14527 Feb 18  2015 hive-testutils-1.1.0.jar
+-rw-r--r--  1 hduser hduser   539263 Apr 10 11:51 zookeeper-3.4.6-tests.jar
+-rw-r--r--  1 hduser hduser   194354 Apr 10 11:51 xml-apis-1.3.04.jar
+-rw-r--r--  1 hduser hduser  1229125 Apr 10 11:51 xercesImpl-2.9.1.jar
+-rw-r--r--  1 hduser hduser    23346 Apr 10 11:51 stax-api-1.0-2.jar
+-rw-r--r--  1 hduser hduser   995968 Apr 10 11:51 snappy-java-1.0.4.1.jar
+-rw-r--r--  1 hduser hduser     8866 Apr 10 11:51 slf4j-log4j12-1.7.10.jar
+-rw-r--r--  1 hduser hduser    32119 Apr 10 11:51 slf4j-api-1.7.10.jar
+-rw-r--r--  1 hduser hduser   533455 Apr 10 11:51 protobuf-java-2.5.0.jar
+-rw-r--r--  1 hduser hduser  1779991 Apr 10 11:51 netty-all-4.0.23.Final.jar
+-rw-r--r--  1 hduser hduser  1199572 Apr 10 11:51 netty-3.6.2.Final.jar
+-rw-r--r--  1 hduser hduser  1419869 Apr 10 11:51 mockito-all-1.8.5.jar
+-rw-r--r--  1 hduser hduser    85449 Apr 10 11:51 metrics-core-3.0.1.jar
+-rw-r--r--  1 hduser hduser   489884 Apr 10 11:51 log4j-1.2.17.jar
+-rw-r--r--  1 hduser hduser  1045744 Apr 10 11:51 leveldbjni-all-1.8.jar
+-rw-r--r--  1 hduser hduser   100636 Apr 10 11:51 jsp-api-2.1.jar
+-rw-r--r--  1 hduser hduser   185746 Apr 10 11:51 jsch-0.1.42.jar
+-rw-r--r--  1 hduser hduser   589289 Apr 10 11:51 joda-time-2.7.jar
+-rw-r--r--  1 hduser hduser   539735 Apr 10 11:51 jets3t-0.9.0.jar
+-rw-r--r--  1 hduser hduser   713089 Apr 10 11:51 jersey-server-1.9.jar
+-rw-r--r--  1 hduser hduser   147952 Apr 10 11:51 jersey-json-1.9.jar
+-rw-r--r--  1 hduser hduser    14786 Apr 10 11:51 jersey-guice-1.9.jar
+-rw-r--r--  1 hduser hduser   458739 Apr 10 11:51 jersey-core-1.9.jar
+-rw-r--r--  1 hduser hduser   130458 Apr 10 11:51 jersey-client-1.9.jar
+-rw-r--r--  1 hduser hduser   105134 Apr 10 11:51 jaxb-api-2.2.2.jar
+-rw-r--r--  1 hduser hduser    18490 Apr 10 11:51 java-xmlbuilder-0.4.jar
+-rw-r--r--  1 hduser hduser     2497 Apr 10 11:51 javax.inject-1.jar
+-rw-r--r--  1 hduser hduser    27084 Apr 10 11:51 jackson-xc-1.9.13.jar
+-rw-r--r--  1 hduser hduser   780664 Apr 10 11:51 jackson-mapper-asl-1.9.13.jar
+-rw-r--r--  1 hduser hduser    18336 Apr 10 11:51 jackson-jaxrs-1.9.13.jar
+-rw-r--r--  1 hduser hduser   865838 Apr 10 11:51 jackson-databind-2.2.3.jar
+-rw-r--r--  1 hduser hduser   232248 Apr 10 11:51 jackson-core-asl-1.9.13.jar
+-rw-r--r--  1 hduser hduser   192699 Apr 10 11:51 jackson-core-2.2.3.jar
+-rw-r--r--  1 hduser hduser    33483 Apr 10 11:51 jackson-annotations-2.2.3.jar
+-rw-r--r--  1 hduser hduser  1475955 Apr 10 11:51 htrace-core-3.1.0-incubating.jar
+-rw-r--r--  1 hduser hduser    45024 Apr 10 11:51 hamcrest-core-1.3.jar
+-rw-r--r--  1 hduser hduser    32018 Apr 10 11:51 hadoop-yarn-server-web-proxy-2.7.0.jar
+-rw-r--r--  1 hduser hduser    38363 Apr 10 11:51 hadoop-yarn-server-tests-2.7.0.jar
+-rw-r--r--  1 hduser hduser    52865 Apr 10 11:51 hadoop-yarn-server-sharedcachemanager-2.7.0.jar
+-rw-r--r--  1 hduser hduser  1227925 Apr 10 11:51 hadoop-yarn-server-resourcemanager-2.7.0.jar
+-rw-r--r--  1 hduser hduser   686156 Apr 10 11:51 hadoop-yarn-server-nodemanager-2.7.0.jar
+-rw-r--r--  1 hduser hduser   360828 Apr 10 11:51 hadoop-yarn-server-common-2.7.0.jar
+-rw-r--r--  1 hduser hduser   197128 Apr 10 11:51 hadoop-yarn-server-applicationhistoryservice-2.7.0.jar
+-rw-r--r--  1 hduser hduser    97753 Apr 10 11:51 hadoop-yarn-registry-2.7.0.jar
+-rw-r--r--  1 hduser hduser  1655209 Apr 10 11:51 hadoop-yarn-common-2.7.0.jar
+-rw-r--r--  1 hduser hduser   141988 Apr 10 11:51 hadoop-yarn-client-2.7.0.jar
+-rw-r--r--  1 hduser hduser    14038 Apr 10 11:51 hadoop-yarn-applications-unmanaged-am-launcher-2.7.0.jar
+-rw-r--r--  1 hduser hduser    46326 Apr 10 11:51 hadoop-yarn-applications-distributedshell-2.7.0.jar
+-rw-r--r--  1 hduser hduser  2009286 Apr 10 11:51 hadoop-yarn-api-2.7.0.jar
+-rw-r--r--  1 hduser hduser   105874 Apr 10 11:51 hadoop-streaming-2.7.0.jar
+-rw-r--r--  1 hduser hduser   115027 Apr 10 11:51 hadoop-sls-2.7.0.jar
+-rw-r--r--  1 hduser hduser   281477 Apr 10 11:51 hadoop-rumen-2.7.0.jar
+-rw-r--r--  1 hduser hduser   114815 Apr 10 11:51 hadoop-openstack-2.7.0.jar
+-rw-r--r--  1 hduser hduser   159466 Apr 10 11:51 hadoop-nfs-2.7.0.jar
+-rw-r--r--  1 hduser hduser   273436 Apr 10 11:51 hadoop-mapreduce-examples-2.7.0.jar
+-rw-r--r--  1 hduser hduser    44658 Apr 10 11:51 hadoop-mapreduce-client-shuffle-2.7.0.jar
+-rw-r--r--  1 hduser hduser  1530257 Apr 10 11:51 hadoop-mapreduce-client-jobclient-2.7.0-tests.jar
+-rw-r--r--  1 hduser hduser    37558 Apr 10 11:51 hadoop-mapreduce-client-jobclient-2.7.0.jar
+-rw-r--r--  1 hduser hduser     4136 Apr 10 11:51 hadoop-mapreduce-client-hs-plugins-2.7.0.jar
+-rw-r--r--  1 hduser hduser   161677 Apr 10 11:51 hadoop-mapreduce-client-hs-2.7.0.jar
+-rw-r--r--  1 hduser hduser  1529054 Apr 10 11:51 hadoop-mapreduce-client-core-2.7.0.jar
+-rw-r--r--  1 hduser hduser   751807 Apr 10 11:51 hadoop-mapreduce-client-common-2.7.0.jar
+-rw-r--r--  1 hduser hduser   510731 Apr 10 11:51 hadoop-mapreduce-client-app-2.7.0.jar
+-rw-r--r--  1 hduser hduser   102458 Apr 10 11:51 hadoop-hdfs-nfs-2.7.0.jar
+-rw-r--r--  1 hduser hduser  3220975 Apr 10 11:51 hadoop-hdfs-2.7.0-tests.jar
+-rw-r--r--  1 hduser hduser  8215724 Apr 10 11:51 hadoop-hdfs-2.7.0.jar
+-rw-r--r--  1 hduser hduser   217965 Apr 10 11:51 hadoop-gridmix-2.7.0.jar
+-rw-r--r--  1 hduser hduser    64429 Apr 10 11:51 hadoop-extras-2.7.0.jar
+-rw-r--r--  1 hduser hduser   102504 Apr 10 11:51 hadoop-distcp-2.7.0.jar
+-rw-r--r--  1 hduser hduser    14739 Apr 10 11:51 hadoop-datajoin-2.7.0.jar
+-rw-r--r--  1 hduser hduser  1858491 Apr 10 11:51 hadoop-common-2.7.0-tests.jar
+-rw-r--r--  1 hduser hduser  3423861 Apr 10 11:51 hadoop-common-2.7.0.jar
+-rw-r--r--  1 hduser hduser   134230 Apr 10 11:51 hadoop-azure-2.7.0.jar
+-rw-r--r--  1 hduser hduser   102984 Apr 10 11:51 hadoop-aws-2.7.0.jar
+-rw-r--r--  1 hduser hduser    70493 Apr 10 11:51 hadoop-auth-2.7.0.jar
+-rw-r--r--  1 hduser hduser    21938 Apr 10 11:51 hadoop-archives-2.7.0.jar
+-rw-r--r--  1 hduser hduser     9906 Apr 10 11:51 hadoop-ant-2.7.0.jar
+-rw-r--r--  1 hduser hduser    17350 Apr 10 11:51 hadoop-annotations-2.7.0.jar
+-rw-r--r--  1 hduser hduser    65012 Apr 10 11:51 guice-servlet-3.0.jar
+-rw-r--r--  1 hduser hduser   710492 Apr 10 11:51 guice-3.0.jar
+-rw-r--r--  1 hduser hduser   190432 Apr 10 11:51 gson-2.2.4.jar
+-rw-r--r--  1 hduser hduser   270342 Apr 10 11:51 curator-recipes-2.7.1.jar
+-rw-r--r--  1 hduser hduser   186273 Apr 10 11:51 curator-framework-2.7.1.jar
+-rw-r--r--  1 hduser hduser    69500 Apr 10 11:51 curator-client-2.7.1.jar
+-rw-r--r--  1 hduser hduser   273370 Apr 10 11:51 commons-net-3.1.jar
+-rw-r--r--  1 hduser hduser  1599627 Apr 10 11:51 commons-math3-3.1.1.jar
+-rw-r--r--  1 hduser hduser   412739 Apr 10 11:51 commons-lang3-3.3.2.jar
+-rw-r--r--  1 hduser hduser    24239 Apr 10 11:51 commons-daemon-1.0.13.jar
+-rw-r--r--  1 hduser hduser   662947 Apr 10 11:51 azure-storage-2.0.0.jar
+-rw-r--r--  1 hduser hduser 11948376 Apr 10 11:51 aws-java-sdk-1.7.4.jar
+-rw-r--r--  1 hduser hduser   303139 Apr 10 11:51 avro-1.7.4.jar
+-rw-r--r--  1 hduser hduser    43398 Apr 10 11:51 asm-3.2.jar
+-rw-r--r--  1 hduser hduser    79912 Apr 10 11:51 api-util-1.0.0-M20.jar
+-rw-r--r--  1 hduser hduser    16560 Apr 10 11:51 api-asn1-api-1.0.0-M20.jar
+-rw-r--r--  1 hduser hduser   691479 Apr 10 11:51 apacheds-kerberos-codec-2.0.0-M15.jar
+-rw-r--r--  1 hduser hduser    44925 Apr 10 11:51 apacheds-i18n-2.0.0-M15.jar
+-rw-r--r--  1 hduser hduser     4467 Apr 10 11:51 aopalliance-1.0.jar
+-rw-r--r--  1 hduser hduser    67166 May  7 07:28 hadoop-auth-2.6.0.jar1
+drwxrwxr-x  6 hduser hduser     4096 May  8 02:54 php
+drwxrwxr-x 10 hduser hduser     4096 May  8 02:54 py
+drwxrwxr-x 10 hduser hduser     4096 Sep 21 00:33 ..
+lrwxrwxrwx  1 hduser hduser       47 Sep 21 00:34 mysql-connector-java-5.1.32.jar -&gt; /usr/share/java/mysql-connector-java-5.1.32.jar
+drwxrwxr-x  6 hduser hduser    16384 Sep 21 00:55 .</code></pre>
+</div>
+</div>
+</p>
+
+<p>Also I have added hadoop and hbase conf in hive conf folder </p>
+
+<p><div class="snippet" data-lang="js" data-hide="false">
+<div class="snippet-code">
+<pre class="snippet-code-html lang-html prettyprint-override"><code>hduser@ubuntu:/usr/lib/hive/conf$ ls -ltr
+total 1000
+-rw-r--r-- 1 hduser hduser     10 May 22  2013 regionservers
+-rw-r--r-- 1 hduser hduser   2250 May 22  2013 hbase-policy.xml
+-rw-r--r-- 1 hduser hduser   2378 May  3  2014 hive-env.sh.template
+-rw-r--r-- 1 hduser hduser   3050 May 20  2014 hive-log4j.properties.template
+-rw-r--r-- 1 hduser hduser   2662 May 20  2014 hive-exec-log4j.properties.template
+-rw-r--r-- 1 hduser hduser   6316 Feb  2  2015 hbase-env.sh
+-rw-r--r-- 1 hduser hduser   1139 Feb 12  2015 beeline-log4j.properties.template
+-rw-r--r-- 1 hduser hduser 154793 Feb 18  2015 hive-default.xml.template
+-rw-r--r-- 1 hduser hduser   4567 Apr 10 11:51 yarn-env.sh
+-rw-r--r-- 1 hduser hduser   2250 Apr 10 11:51 yarn-env.cmd
+-rw-r--r-- 1 hduser hduser   2268 Apr 10 11:51 ssl-server.xml.example
+-rw-r--r-- 1 hduser hduser   2316 Apr 10 11:51 ssl-client.xml.example
+-rw-r--r-- 1 hduser hduser     10 Apr 10 11:51 slaves
+-rw-r--r-- 1 hduser hduser    758 Apr 10 11:51 mapred-site.xml.template
+-rw-r--r-- 1 hduser hduser   4113 Apr 10 11:51 mapred-queues.xml.template
+-rw-r--r-- 1 hduser hduser   1383 Apr 10 11:51 mapred-env.sh
+-rw-r--r-- 1 hduser hduser    951 Apr 10 11:51 mapred-env.cmd
+-rw-r--r-- 1 hduser hduser  11237 Apr 10 11:51 log4j.properties
+-rw-r--r-- 1 hduser hduser   5511 Apr 10 11:51 kms-site.xml
+-rw-r--r-- 1 hduser hduser   1631 Apr 10 11:51 kms-log4j.properties
+-rw-r--r-- 1 hduser hduser   1527 Apr 10 11:51 kms-env.sh
+-rw-r--r-- 1 hduser hduser   3518 Apr 10 11:51 kms-acls.xml
+-rw-r--r-- 1 hduser hduser    620 Apr 10 11:51 httpfs-site.xml
+-rw-r--r-- 1 hduser hduser     21 Apr 10 11:51 httpfs-signature.secret
+-rw-r--r-- 1 hduser hduser   1657 Apr 10 11:51 httpfs-log4j.properties
+-rw-r--r-- 1 hduser hduser   1449 Apr 10 11:51 httpfs-env.sh
+-rw-r--r-- 1 hduser hduser   9683 Apr 10 11:51 hadoop-policy.xml
+-rw-r--r-- 1 hduser hduser   2490 Apr 10 11:51 hadoop-metrics.properties
+-rw-r--r-- 1 hduser hduser   2598 Apr 10 11:51 hadoop-metrics2.properties
+-rw-r--r-- 1 hduser hduser   3670 Apr 10 11:51 hadoop-env.cmd
+-rw-r--r-- 1 hduser hduser    318 Apr 10 11:51 container-executor.cfg
+-rw-r--r-- 1 hduser hduser   1335 Apr 10 11:51 configuration.xsl
+-rw-r--r-- 1 hduser hduser   4436 Apr 10 11:51 capacity-scheduler.xml
+-rw-r--r-- 1 hduser hduser    893 May  7 21:05 yarn-site.xml
+-rw-r--r-- 1 hduser hduser    845 May  7 21:07 mapred-site.xml
+-rw-r--r-- 1 hduser hduser   1300 May  7 22:57 hdfs-site.xml
+-rw-r--r-- 1 hduser hduser 156183 May  8 03:41 hive-default.xml~
+-rw-r--r-- 1 hduser hduser 156183 May  8 04:02 hive-default.xml
+drwxrwxr-x 5 hduser hduser   4096 May  8 07:10 metastore_db
+-rw-rw-r-- 1 hduser hduser    638 May  8 07:10 derby.log
+-rw-r--r-- 1 hduser hduser    874 May  9 23:18 core-site.xml
+drwxrwxr-x 3 hduser hduser   4096 May 13 00:18 ${system:java.io.tmpdir}
+-rw-r--r-- 1 hduser hduser   4837 May 13 00:51 hadoop-env.sh
+-rw-r--r-- 1 hduser hduser   3033 May 19 20:47 hive-log4j.properties~
+-rw-r--r-- 1 hduser hduser   3035 May 19 20:48 hive-log4j.properties
+-rwxr-xr-x 1 hduser hduser   1832 May 20 02:28 hiverc_old
+-rw-r--r-- 1 hduser hduser   1629 Sep 20 17:26 hbase-site.xml
+-rw-r--r-- 1 hduser hduser   2708 Sep 21 00:33 hive-env.sh~
+-rw-r--r-- 1 hduser hduser 158846 Sep 21 00:41 hive-site.xml~
+-rw-r--r-- 1 hduser hduser 158844 Sep 21 00:42 hive-site.xml
+-rw-r--r-- 1 hduser hduser   2660 Sep 21 00:43 hive-env.sh</code></pre>
+</div>
+</div>
+</p>
+
+<p>Also in hive_env.sh file I have specified below :</p>
+
+<p><div class="snippet" data-lang="js" data-hide="false">
+<div class="snippet-code">
+<pre class="snippet-code-html lang-html prettyprint-override"><code>export HIVE_AUX_JARS_PATH=/usr/lib/hive/auxlib
+
+#export JAVA_HOME=/usr/lib/jvm/jdk1.8.0/
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0/
+export HADOOP_HOME=/usr/local/hadoop
+export HIVE_HOME=/usr/lib/hive
+
+export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$PATH</code></pre>
+</div>
+</div>
+</p>
+
+<p>Still getting the error while trying to create Hbase table from hive. Am I still missing anything?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/hadoop" class="post-tag" title="show questions tagged &#39;hadoop&#39;" rel="tag">hadoop</a> <a href="/questions/tagged/hive" class="post-tag" title="show questions tagged &#39;hive&#39;" rel="tag">hive</a> <a href="/questions/tagged/hbase" class="post-tag" title="show questions tagged &#39;hbase&#39;" rel="tag">hbase</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/32690166" title="short permalink to this question" class="short-link" id="link-post-32690166">share</a><span class="lsep">|</span><a href="/posts/32690166/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2015-09-21 08:02:34Z" class="relativetime">Sep 21 '15 at 8:02</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3090114/koushik-chandra"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/YC56w.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3090114/koushik-chandra">Koushik Chandra</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">175</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="14 bronze badges"><span class="badge3"></span><span class="badgecount">14</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32690166" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32690166" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/32690166/unable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="32691174"></a>
+<div id="answer-32691174" class="answer" data-answerid="32691174"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32691174">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I used Hadoop-2.7, Hive-1.1, HBase-1.0.0
+Use the following syntax:</p>
+
+<p><code>hbase shell</code></p>
+
+<p><code>create 'people', 'info'</code></p>
+
+<pre>
+put 'people', '100', 'info:name', 'naga'
+put 'people', '101', 'info:name', 'siva'
+put 'people', '100', 'info:age',  30
+put 'people', '101', 'info:age',  35
+</pre>
+
+<p>hive</p>
+
+<p><strong><code>CREATE external TABLE people(rid string, name string, age int) 
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' WITH SERDEPROPERTIES ("hbase.columns.mapping" = ":key,info:name,info:age", "hbase.table.name" = "people");</code></strong></p>
+
+<pre>
+hive> select * from people;
+OK
+100 naga    30
+101 siva    35
+Time taken: 0.115 seconds, Fetched: 2 row(s)
+</pre>
+
+<p><strong>Note:</strong> If it is not working, then check the jars compatibility and any missing jars.</p>
+
+<p><strong>Update:</strong> Even this one also works fine:</p>
+
+<p><strong><code>CREATE TABLE hbase_people(rid string, name string, age int) 
+ STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' WITH  SERDEPROPERTIES ("hbase.columns.mapping" = ":key,info:name,info:age", "hbase.table.name" = "hbase_people");</code></strong></p>
+
+<p>OK</p>
+
+<p>Time taken: 0.48 seconds</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/32691174" title="short permalink to this answer" class="short-link" id="link-post-32691174">share</a><span class="lsep">|</span><a href="/posts/32691174/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/32691174/revisions" title="show all edits to this post">edited <span title="2015-09-21 10:15:51Z" class="relativetime">Sep 21 '15 at 10:15</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-09-21 09:02:15Z" class="relativetime">Sep 21 '15 at 9:02</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1145303/naga"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/23b7f490fe75ffeca428d7ec38e90c48?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1145303/naga">Naga</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">253</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32691174" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-53226406" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">External table is fine. But what I am trying is not external table. Here I am trying to create HBase table from Hive only.</span>
+                    &ndash;&nbsp;<a href="/users/3090114/koushik-chandra"
+                       title="175 reputation"
+                       class="comment-user owner">Koushik Chandra</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-21 09:17:27Z" class="relativetime-clean">Sep 21 '15 at 9:17</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53226447" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I didn&#39;t found the HBase version 1.0.0, could you please share me the download link</span>
+                    &ndash;&nbsp;<a href="/users/3090114/koushik-chandra"
+                       title="175 reputation"
+                       class="comment-user owner">Koushik Chandra</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-21 09:18:25Z" class="relativetime-clean">Sep 21 '15 at 9:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53228411" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Use this link: <a href="http://www.us.apache.org/dist/hbase/1.1.2/" rel="nofollow">us.apache.org/dist/hbase/1.1.2</a></span>
+                    &ndash;&nbsp;<a href="/users/1145303/naga"
+                       title="253 reputation"
+                       class="comment-user">Naga</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-21 10:13:02Z" class="relativetime-clean">Sep 21 '15 at 10:13</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32691174" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/32690166/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="32690166" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="8872ec4c653acc968af5bcb434502271">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32690166%2funable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f32690166%2funable-to-create-hbase-table-from-hive-with-hive-version-1-1-0-hbase-version-0-9%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/hadoop" class="post-tag" title="show questions tagged &#39;hadoop&#39;" rel="tag">hadoop</a> <a href="/questions/tagged/hive" class="post-tag" title="show questions tagged &#39;hive&#39;" rel="tag">hive</a> <a href="/questions/tagged/hbase" class="post-tag" title="show questions tagged &#39;hbase&#39;" rel="tag">hbase</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2015-09-21 08:02:34Z"><b>3 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>68 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-09-21 10:15:51Z">3 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">Stack Exchange Year in Review 2015</a>
+                </div>
+                <br class="cbt" />
+            </div>
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 8 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<div class="everyonelovesstackoverflow" id="careers2">
+        </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/11657578" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-3
+    </div>
+</a><a href="/questions/11657578/mapreduce-hadoop-a-basic-implementation-of-table-in-hive-or-hbase" class="question-hyperlink">MapReduce (Hadoop): A basic implementation of table in Hive or HBase</a>
+</div>
+<div class="spacer">
+<a href="/q/12444417" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">3
+    </div>
+</a><a href="/questions/12444417/inserting-data-in-hbase-table-from-hive-integration" class="question-hyperlink">Inserting data in HBASE table from HIVE Integration</a>
+</div>
+<div class="spacer">
+<a href="/q/13346687" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">3
+    </div>
+</a><a href="/questions/13346687/configuring-hadoop-hbase-and-hive-cluster" class="question-hyperlink">Configuring Hadoop, HBase and Hive Cluster</a>
+</div>
+<div class="spacer">
+<a href="/q/13911501" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">67
+    </div>
+</a><a href="/questions/13911501/when-to-use-hadoop-hbase-hive-and-pig" class="question-hyperlink">When to use Hadoop, HBase, Hive and Pig?</a>
+</div>
+<div class="spacer">
+<a href="/q/20411233" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/20411233/hadoop-hive-sql-create-external-table-from-an-oddly-formatted-file" class="question-hyperlink">Hadoop Hive SQL: Create External Table from an oddly formatted file</a>
+</div>
+<div class="spacer">
+<a href="/q/24920050" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/24920050/query-hbase-table-from-hive" class="question-hyperlink">Query HBase table from Hive</a>
+</div>
+<div class="spacer">
+<a href="/q/28352523" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/28352523/noclassdeffounderrorhbaseconfiguration-while-trying-to-create-hbase-table-from" class="question-hyperlink">NoClassDefFoundError(HBaseConfiguration) while trying to create Hbase table from Hive</a>
+</div>
+<div class="spacer">
+<a href="/q/30126794" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/30126794/unable-to-create-hive-table-for-hbase" class="question-hyperlink">Unable to create hive table for hbase</a>
+</div>
+<div class="spacer">
+<a href="/q/31048485" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/31048485/error-while-creating-hive-hbase-table" class="question-hyperlink">Error while creating Hive/Hbase Table</a>
+</div>
+<div class="spacer">
+<a href="/q/32701905" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/32701905/unable-to-load-data-in-hbase-table-from-hive" class="question-hyperlink">unable to load data in hbase table from hive</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114650/did-kylo-ren-ever-actually-start-training-with-snoke" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Did Kylo Ren ever actually start training with Snoke?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34749943/python-with-as-for-custom-context-manager" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Python with...as for custom context manager
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78546/rihannas-accent-in-the-song-of-diamonds" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Rihanna&#39;s accent in the song of &quot;Diamonds&quot;
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1025110/do-most-music-cds-contain-the-needed-info-about-their-content" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do most music CDs contain the needed info about their content?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1609276/negation-of-injectivity" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Negation of injectivity
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228887/3d-glasses-giving-the-opposite-effect-to-that-expected" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    3D glasses giving the opposite effect to that expected
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/116556/deleting-rows-from-a-spreadsheet-where-column-c-is-blank" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Deleting rows from a spreadsheet where Column C is blank
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-blender" title="Blender Stack Exchange"></div><a href="http://blender.stackexchange.com/questions/44847/unlinking-objects" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:502 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Unlinking Objects
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-anime" title="Anime &amp; Manga Stack Exchange"></div><a href="http://anime.stackexchange.com/questions/28895/is-bakuman-based-on-the-real-life-story-of-the-author-or-the-people-he-knew" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:477 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is Bakuman based on the real life story of the author or the people he knew?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34724320/why-does-the-smallest-int-%e2%88%922147483648-have-type-long" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does the smallest int, −2147483648, have type &#39;long&#39;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/126006/how-to-make-use-of-batch-mode-with-an-unpivot-a-loop-join" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to make use of Batch Mode with an UNPIVOT (a loop join)?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-photo" title="Photography Stack Exchange"></div><a href="http://photo.stackexchange.com/questions/72729/how-to-photograph-frost-and-snow-sparkling" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:61 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to photograph frost and snow sparkling?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69208/choose-the-powerball-numbers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Choose The Powerball Numbers!
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61523/how-to-diagnose-problems-in-a-paper-rejected-in-pre-review" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to diagnose problems in a paper rejected in pre-review?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69189/build-a-compiler-bomb" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Build a Compiler Bomb
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114636/where-were-the-knights-of-ren-during-the-events-of-the-force-awakens" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where were the Knights of Ren during the events of The Force Awakens?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-biology" title="Biology Stack Exchange"></div><a href="http://biology.stackexchange.com/questions/42255/pedigree-analysis-problem" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:375 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Pedigree Analysis: Problem
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287303/printing-letters-or-words-for-posting-on-walls" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Printing letters or words for posting on walls
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110357/is-it-possible-for-my-password-to-have-more-than-one-password-combination" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible for my password to have more than one password combination?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33040/multiple-dna-one-creature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Multiple DNA, one creature
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/81944/how-to-prevent-mold-in-stored-joint-compound" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to prevent mold in stored joint compound
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34739112/can-the-jvm-gc-move-objects-in-the-middle-of-a-reference-comparison-causing-a-c" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can the JVM GC move objects in the middle of a reference comparison, causing a comparison to fail even when both sides refer to the same object?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-cs" title="Computer Science Stack Exchange"></div><a href="http://cs.stackexchange.com/questions/51757/what-would-we-call-this-datastructure" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:419 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would we call this datastructure?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="http://space.stackexchange.com/questions/13482/whats-salvageable-from-a-dead-satellite" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s salvageable from a dead satellite?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/32690166" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/32690166/ivc/8914');});
+</script>
+<noscript>
+    <div><img src="/posts/32690166/ivc/8914" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.12.3166
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|hadoop|hive|hbase|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

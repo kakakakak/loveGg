@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>How to actually set up basic Titan + Rexster + Cassandra? - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How to actually set up basic Titan + Rexster + Cassandra?" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I am trying to set up a completely basic Titan Rexster Cassandra instance, but I can&#39;t seem to break the code. I have tried a whole lot of things now to get it to work but I just can&#39;t seem to get ..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra/31900944"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra/31900944" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=8be8ff05c90c"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=e67f9bfa3488">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;How to actually set up basic Titan + Rexster + Cassandra?&#39;" href="/feeds/question/19712610">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra/31900944" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra/31900944" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra/31900944">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:19712610});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '19712610');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452638348,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"c82e9ba6da5583e8fcc07891e4726864","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"1750d7783db0","js/moderator.en.js":"9473d953df60","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"5bb841502813","js/wmd.en.js":"d725c4fade0a","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"f58b9bbdda52","js/tageditor.en.js":"c56016b68262","js/tageditornew.en.js":"a7cff53691da","js/inline-tag-editing.en.js":"33c4ccd9bf9f","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"13dd6d49dd1e","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"27ead32e3cf5","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"9973d183bb8f","js/keyboard-shortcuts.en.js":"f4df1d9e6e4d","js/external-editor.en.js":"9327339c2328","js/external-editor.en.js":"9327339c2328","js/snippet-javascript.en.js":"433470c8fb5e","js/snippet-javascript-codemirror.en.js":"7f3b96fdf7b3"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f19712610%2fhow-to-actually-set-up-basic-titan-rexster-cassandra%2f31900944" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f19712610%2fhow-to-actually-set-up-basic-titan-rexster-cassandra%2f31900944" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f19712610%2fhow-to-actually-set-up-basic-titan-rexster-cassandra%2f31900944" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f19712610%2fhow-to-actually-set-up-basic-titan-rexster-cassandra%2f31900944" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f19712610%2fhow-to-actually-set-up-basic-titan-rexster-cassandra%2f31900944" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra" class="question-hyperlink">How to actually set up basic Titan + Rexster + Cassandra?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="19712610"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk60584095",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk60584095">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="19712610">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>9</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I am trying to set up a completely basic Titan Rexster Cassandra instance, but I can't seem to break the code. I have tried a whole lot of things now to get it to work but I just can't seem to get it to work. No matter how much I read about it I am not able to set it up properly.</p>
+
+<p>What I want is a Titan-rexster-cassandra instance running in embedded mode with a few indexes including elastic search. After all the stuff I have read it seems that this is what I should get when i download titan-server-0.4.0 and run the <code>bin/titan.sh start</code> command. An this also starts the server. However: When I try to add an index to this, nothing happens. When I try to populate it over RexPro nothing is added. </p>
+
+<p>When I restart the server my graph is gone. It is no longer in the Rexster list of graphs when I go to <code>http://localhost:8182/graphs</code>. So it appears that my data does not persist, or at least disappears for rexster.</p>
+
+<p>I feel like I have tried just about everything to get this to work:</p>
+
+<ul>
+<li>Changing the <code>.properties</code> to include the search-index like so: <code>storrage.index.search.backend=elasticsearch</code>...</li>
+<li>Changing the <code>.properties</code> files (all of them) to use <code>cassandra</code>, <code>embeddedcassandra</code> and <code>cassandrathrift</code> for <code>storage.backend</code></li>
+<li>Trying to start the server with properties as indicated in <a href="http://stackoverflow.com/questions/16397426/proper-way-of-starting-a-titan-graph-server-and-connect-with-gremlin">this question</a> to point to specific config files.  </li>
+<li>I have looked through the <code>titan.sh</code> file to see what actually happens, then gone to the config files indicated by these and had a look to see what goes on there, upon which I have tried a lot of things such as the above.</li>
+</ul>
+
+<p>I have struggled with this for well over a week, probably two or even more and I am starting to lose faith. I am considering going back to neo4j, but unfortunately I really need the scalability of Titan. However if I can't get it to work then it is no use. I feel like there might be some trivial but essential thing that I have not figured out, or forgot.</p>
+
+<p>Do anyone know of a guide out there that brings you from absolute scratch (eg. starting a fresh VM or something), or close to it, to getting a titan-rexster-cassandra instance running with elastic search index? Or perhaps, if you are awesome, provide such a guide? I feel lost :(</p>
+
+<hr>
+
+<p><strong>Key Points:</strong></p>
+
+<p>Ubuntu 12.04 (also tried 13.10. Same issue)</p>
+
+<p>Titan 0.4.0</p>
+
+<p><strong>Goal:</strong> To get persistance, index a vertex name property with Elastic search, and get edges with weight.</p>
+
+<p>Connecting with ruby rexpro like this: </p>
+
+<pre><code>require "rexpro" #the "rexpro" gem
+rexpro_client = Rexpro::Client.new(host: 'the.ip.of.my.machine.running.rexster', port: 8184)
+results = rexpro_client.execute("g.getClass()", graph_name: "graph").results
+#=&gt; returns the following: class com.thinkaurelius.titan.graphdb.database.StandardTitanGraph
+</code></pre>
+
+<hr>
+
+<p>The steps I follow to create the problem where the DB does not persist:</p>
+
+<ul>
+<li>On WindowsAzure: Create a new small (1 core, 1.75GB ram) VM with <code>Ubuntu 12.04 LTS</code> with name <code>vmname</code> (or whatever).</li>
+<li>Log on to this VM with SSH when it is ready (<code>ssh azureuser@vmname.cloudhost.net -p 22</code>)</li>
+<li>Run: <code>sudo apt-get update</code></li>
+<li>Run: <code>sudo apt-get install openjdk-7-jdk openjdk-7-jre p7zip-full</code></li>
+<li>Run: <code>mkdir /home/azureuser/Downloads</code></li>
+<li>Run: <code>wget -O /home/azureuser/Downloads/titan-server-0.4.0.zip "http://s3.thinkaurelius.com/downloads/titan/titan-server-0.4.0.zip"</code></li>
+<li>Run: <code>cd /home/azureuser/Downloads/</code></li>
+<li>Run: <code>7z x titan-server-0.4.0.zip</code></li>
+<li>Run: <code>cd /home/azureuser/Downloads/titan-server-0.4.0</code></li>
+<li>Run: <code>sudo bin/titan.sh -c cassandra-es start</code></li>
+<li>Run: <code>sudo bin/rexster-console.sh</code></li>
+<li>In rexster console, run: <code>g = rexster.getGraph("graph")</code>, returns <code>titangraph[cassandra:null]</code></li>
+<li>CTRL-C out of rexster consloe</li>
+<li>Run: <code>sudo bin/titan.sh stop</code></li>
+<li>Run: <code>sudo bin/titan.sh -c cassandra-es start</code></li>
+<li>Run: <code>sudo bin/rexster-console.sh</code></li>
+<li>In rexster console, run: <code>g = rexster.getGraph("graph")</code>. <strong>Now this returns null, not a graph.</strong></li>
+</ul>
+
+<p>There appears to be some issues here when shutting down and starting up againt: </p>
+
+<p><strong>On shutdown</strong></p>
+
+<pre><code>[WARN] ShutdownManager - ShutdownListener JVM Shutdown Hook Remover threw an exception, continuing with shutdown
+</code></pre>
+
+<p><strong>On Startup #2</strong></p>
+
+<pre><code>Starting Cassandra...
+xss =  -Dtitan.logdir=/home/azureuser/Downloads/titan-server-0.4.0/log -ea -javaagent:/home/azureuser/Downloads/titan-server-0.4.0/lib/jamm-0.2.5.jar -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=42 -Xms840M -Xmx840M -Xmn100M -XX:+HeapDumpOnOutOfMemoryError -Xss256k
+Starting Titan + Rexster...
+ INFO 12:00:12,780 Logging initialized
+ INFO 12:00:12,805 JVM vendor/version: OpenJDK 64-Bit Server VM/1.7.0_25
+ INFO 12:00:12,806 Heap size: 870318080/870318080
+ INFO 12:00:12,806 Classpath: /home/azureuser/Downloads/titan-server-0.4.0/conf:/home/azureuser/Downloads/titan-server-0.4.0/build/classes/main:/home/azureuser/Downloads/titan-server-0.4.0/build/classes/thrift:/home/azureuser/Downloads/titan-server-0.4.0/lib/activation-...
+ INFO 12:00:13,397 JNA mlockall successful
+ INFO 12:00:13,419 Loading settings from file:/home/azureuser/Downloads/titan-server-0.4.0/conf/cassandra.yaml
+ INFO 12:00:14,093 DiskAccessMode 'auto' determined to be mmap, indexAccessMode is mmap
+ INFO 12:00:14,093 disk_failure_policy is stop
+ INFO 12:00:14,101 Global memtable threshold is enabled at 276MB
+ INFO 12:00:14,878 Initializing key cache with capacity of 41 MBs.
+ INFO 12:00:14,892 Scheduling key cache save to each 14400 seconds (going to save all keys).
+ INFO 12:00:14,894 Initializing row cache with capacity of 0 MBs and provider org.apache.cassandra.cache.SerializingCacheProvider
+ INFO 12:00:14,955 Scheduling row cache save to each 0 seconds (going to save all keys).
+ INFO 12:00:15,273 Opening db/cassandra/data/system/schema_keyspaces/system-schema_keyspaces-ib-2 (167 bytes)
+ INFO 12:00:15,347 Opening db/cassandra/data/system/schema_keyspaces/system-schema_keyspaces-ib-1 (264 bytes)
+ INFO 12:00:15,376 Opening db/cassandra/data/system/schema_columnfamilies/system-schema_columnfamilies-ib-11 (717 bytes)
+ INFO 12:00:15,387 Opening db/cassandra/data/system/schema_columnfamilies/system-schema_columnfamilies-ib-9 (6183 bytes)
+ INFO 12:00:15,392 Opening db/cassandra/data/system/schema_columnfamilies/system-schema_columnfamilies-ib-10 (687 bytes)
+ INFO 12:00:15,411 Opening db/cassandra/data/system/schema_columns/system-schema_columns-ib-2 (209 bytes)
+ INFO 12:00:15,416 Opening db/cassandra/data/system/schema_columns/system-schema_columns-ib-1 (3771 bytes)
+ INFO 12:00:15,450 Opening db/cassandra/data/system/local/system-local-ib-3 (109 bytes)
+ INFO 12:00:15,455 Opening db/cassandra/data/system/local/system-local-ib-2 (120 bytes)
+ INFO 12:00:15,521 Opening db/cassandra/data/system/local/system-local-ib-1 (356 bytes)
+Processes forked.  Setup may take some time.
+Run bin/rexster-console.sh to connect.
+azureuser@neugle:~/Downloads/titan-server-0.4.0$  INFO 12:00:16,705 completed pre-loading (8 keys) key cache.
+ INFO 12:00:16,777 Replaying db/cassandra/commitlog/CommitLog-2-1383479792488.log, db/cassandra/commitlog/CommitLog-2-1383479792489.log
+ INFO 12:00:16,802 Replaying db/cassandra/commitlog/CommitLog-2-1383479792488.log
+ INFO 12:00:17,178 Finished reading db/cassandra/commitlog/CommitLog-2-1383479792488.log
+ INFO 12:00:17,179 Replaying db/cassandra/commitlog/CommitLog-2-1383479792489.log
+ INFO 12:00:17,179 Finished reading db/cassandra/commitlog/CommitLog-2-1383479792489.log
+ INFO 12:00:17,191 Enqueuing flush of Memtable-local@1221155490(52/52 serialized/live bytes, 22 ops)
+ INFO 12:00:17,194 Writing Memtable-local@1221155490(52/52 serialized/live bytes, 22 ops)
+ INFO 12:00:17,204 Enqueuing flush of Memtable-users@1341189399(28/28 serialized/live bytes, 2 ops)
+ INFO 12:00:17,211 Enqueuing flush of Memtable-system_properties@1057472358(26/26 serialized/live bytes, 1 ops)
+ INFO 12:00:17,416 Completed flushing db/cassandra/data/system/local/system-local-ib-4-Data.db (84 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=142)
+ INFO 12:00:17,480 Writing Memtable-users@1341189399(28/28 serialized/live bytes, 2 ops)
+ INFO 12:00:17,626 Completed flushing db/cassandra/data/system_auth/users/system_auth-users-ib-1-Data.db (64 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=142)
+ INFO 12:00:17,630 Writing Memtable-system_properties@1057472358(26/26 serialized/live bytes, 1 ops)
+ INFO 12:00:17,776 Completed flushing db/cassandra/data/titan/system_properties/titan-system_properties-ib-1-Data.db (64 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=142)
+ INFO 12:00:17,780 Log replay complete, 12 replayed mutations
+ INFO 12:00:17,787 Fixing timestamps of schema ColumnFamily schema_keyspaces...
+ INFO 12:00:17,864 Enqueuing flush of Memtable-local@1592659210(65/65 serialized/live bytes, 2 ops)
+ INFO 12:00:17,872 Writing Memtable-local@1592659210(65/65 serialized/live bytes, 2 ops)
+[INFO] Application - .:Welcome to Rexster:.
+ INFO 12:00:18,027 Completed flushing db/cassandra/data/system/local/system-local-ib-5-Data.db (97 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=297)
+ INFO 12:00:18,036 Enqueuing flush of Memtable-schema_keyspaces@1453195003(527/527 serialized/live bytes, 12 ops)
+ INFO 12:00:18,038 Writing Memtable-schema_keyspaces@1453195003(527/527 serialized/live bytes, 12 ops)
+[INFO] RexsterProperties - Using [/home/azureuser/Downloads/titan-server-0.4.0/conf/rexster-cassandra-es.xml] as configuration source.
+ INFO 12:00:18,179 Completed flushing db/cassandra/data/system/schema_keyspaces/system-schema_keyspaces-ib-3-Data.db (257 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=1227)
+[INFO] Application - Rexster is watching [/home/azureuser/Downloads/titan-server-0.4.0/conf/rexster-cassandra-es.xml] for change.
+[WARN] AstyanaxStoreManager - Couldn't set custom Thrift Frame Size property, use 'cassandrathrift' instead.
+ INFO 12:00:18,904 Cassandra version: 1.2.2
+ INFO 12:00:18,906 Thrift API version: 19.35.0
+ INFO 12:00:18,906 CQL supported versions: 2.0.0,3.0.1 (default: 3.0.1)
+[INFO] ConnectionPoolMBeanManager - Registering mbean: com.netflix.MonitoredResources:type=ASTYANAX,name=ClusterTitanConnectionPool,ServiceType=connectionpool
+[INFO] CountingConnectionPoolMonitor - AddHost: 127.0.0.1
+ INFO 12:00:19,087 Loading persisted ring state
+ INFO 12:00:19,097 Starting up server gossip
+ INFO 12:00:19,162 Enqueuing flush of Memtable-local@114523622(251/251 serialized/live bytes, 9 ops)
+ INFO 12:00:19,169 Writing Memtable-local@114523622(251/251 serialized/live bytes, 9 ops)
+ INFO 12:00:19,314 Completed flushing db/cassandra/data/system/local/system-local-ib-6-Data.db (238 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=51470)
+ INFO 12:00:19,369 Compacting [SSTableReader(path='db/cassandra/data/system/local/system-local-ib-3-Data.db'), SSTableReader(path='db/cassandra/data/system/local/system-local-ib-2-Data.db'), SSTableReader(path='db/cassandra/data/system/local/system-local-ib-4-Data.db'), SSTableReader(path='db/cassandra/data/system/local/system-local-ib-1-Data.db'), SSTableReader(path='db/cassandra/data/system/local/system-local-ib-6-Data.db'), SSTableReader(path='db/cassandra/data/system/local/system-local-ib-5-Data.db')]
+ INFO 12:00:19,479 Starting Messaging Service on port 7000
+ INFO 12:00:19,585 Using saved token [7398637255000140098]
+ INFO 12:00:19,588 Enqueuing flush of Memtable-local@365797436(84/84 serialized/live bytes, 4 ops)
+ INFO 12:00:19,588 Writing Memtable-local@365797436(84/84 serialized/live bytes, 4 ops)
+ INFO 12:00:19,666 Compacted 6 sstables to [db/cassandra/data/system/local/system-local-ib-7,].  1,004 bytes to 496 (~49% of original) in 286ms = 0.001654MB/s.  6 total rows, 1 unique.  Row merge counts were {1:0, 2:0, 3:0, 4:0, 5:0, 6:1, }
+ INFO 12:00:19,796 Completed flushing db/cassandra/data/system/local/system-local-ib-8-Data.db (120 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=51745)
+ INFO 12:00:19,810 Enqueuing flush of Memtable-local@1775610672(50/50 serialized/live bytes, 2 ops)
+ INFO 12:00:19,812 Writing Memtable-local@1775610672(50/50 serialized/live bytes, 2 ops)
+ INFO 12:00:19,967 Completed flushing db/cassandra/data/system/local/system-local-ib-9-Data.db (109 bytes) for commitlog position ReplayPosition(segmentId=1383480016398, position=51919)
+ INFO 12:00:20,088 Node localhost/127.0.0.1 state jump to normal
+ INFO 12:00:20,108 Startup completed! Now serving reads.
+^C
+azureuser@neugle:~/Downloads/titan-server-0.4.0$ sudo bin/rexster-console.sh[WARN] GraphConfigurationContainer - Could not load graph graph. Please check the XML configuration.
+[WARN] GraphConfigurationContainer - GraphConfiguration could not be found or otherwise instantiated: [com.thinkaurelius.titan.tinkerpop.rexster.TitanGraphConfiguration]. Ensure that it is in Rexster's path.
+com.tinkerpop.rexster.config.GraphConfigurationException: GraphConfiguration could not be found or otherwise instantiated: [com.thinkaurelius.titan.tinkerpop.rexster.TitanGraphConfiguration]. Ensure that it is in Rexster's path.
+    at com.tinkerpop.rexster.config.GraphConfigurationContainer.getGraphFromConfiguration(GraphConfigurationContainer.java:137)
+    at com.tinkerpop.rexster.config.GraphConfigurationContainer.&lt;init&gt;(GraphConfigurationContainer.java:54)
+    at com.tinkerpop.rexster.server.XmlRexsterApplication.reconfigure(XmlRexsterApplication.java:99)
+    at com.tinkerpop.rexster.server.XmlRexsterApplication.&lt;init&gt;(XmlRexsterApplication.java:47)
+    at com.tinkerpop.rexster.Application.&lt;init&gt;(Application.java:96)
+    at com.tinkerpop.rexster.Application.main(Application.java:188)
+Caused by: java.lang.IllegalArgumentException: Could not instantiate implementation: com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager
+    at com.thinkaurelius.titan.diskstorage.Backend.instantiate(Backend.java:339)
+    at com.thinkaurelius.titan.diskstorage.Backend.getImplementationClass(Backend.java:351)
+    at com.thinkaurelius.titan.diskstorage.Backend.getStorageManager(Backend.java:294)
+    at com.thinkaurelius.titan.diskstorage.Backend.&lt;init&gt;(Backend.java:112)
+    at com.thinkaurelius.titan.graphdb.configuration.GraphDatabaseConfiguration.getBackend(GraphDatabaseConfiguration.java:682)
+    at com.thinkaurelius.titan.graphdb.database.StandardTitanGraph.&lt;init&gt;(StandardTitanGraph.java:72)
+    at com.thinkaurelius.titan.core.TitanFactory.open(TitanFactory.java:40)
+    at com.thinkaurelius.titan.tinkerpop.rexster.TitanGraphConfiguration.configureGraphInstance(TitanGraphConfiguration.java:25)
+    at com.tinkerpop.rexster.config.GraphConfigurationContainer.getGraphFromConfiguration(GraphConfigurationContainer.java:119)
+    ... 5 more
+Caused by: java.lang.reflect.InvocationTargetException
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+    at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+    at com.thinkaurelius.titan.diskstorage.Backend.instantiate(Backend.java:328)
+    ... 13 more
+Caused by: com.thinkaurelius.titan.diskstorage.TemporaryStorageException: Temporary failure in storage backend
+    at com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager.ensureKeyspaceExists(AstyanaxStoreManager.java:429)
+    at com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager.&lt;init&gt;(AstyanaxStoreManager.java:172)
+    ... 18 more
+Caused by: com.netflix.astyanax.connectionpool.exceptions.BadRequestException: BadRequestException: [host=127.0.0.1(127.0.0.1):9160, latency=42(60), attempts=1]InvalidRequestException(why:Keyspace names must be case-insensitively unique ("titan" conflicts with "titan"))
+    at com.netflix.astyanax.thrift.ThriftConverter.ToConnectionPoolException(ThriftConverter.java:159)
+    at com.netflix.astyanax.thrift.AbstractOperationImpl.execute(AbstractOperationImpl.java:65)
+    at com.netflix.astyanax.thrift.AbstractOperationImpl.execute(AbstractOperationImpl.java:28)
+    at com.netflix.astyanax.thrift.ThriftSyncConnectionFactoryImpl$ThriftConnection.execute(ThriftSyncConnectionFactoryImpl.java:151)
+    at com.netflix.astyanax.connectionpool.impl.AbstractExecuteWithFailoverImpl.tryOperation(AbstractExecuteWithFailoverImpl.java:69)
+    at com.netflix.astyanax.connectionpool.impl.AbstractHostPartitionConnectionPool.executeWithFailover(AbstractHostPartitionConnectionPool.java:256)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl.executeSchemaChangeOperation(ThriftClusterImpl.java:146)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl.addKeyspace(ThriftClusterImpl.java:246)
+    at com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager.ensureKeyspaceExists(AstyanaxStoreManager.java:424)
+    ... 19 more
+Caused by: InvalidRequestException(why:Keyspace names must be case-insensitively unique ("titan" conflicts with "titan"))
+    at org.apache.cassandra.thrift.Cassandra$system_add_keyspace_result.read(Cassandra.java:33158)
+    at org.apache.thrift.TServiceClient.receiveBase(TServiceClient.java:78)
+    at org.apache.cassandra.thrift.Cassandra$Client.recv_system_add_keyspace(Cassandra.java:1408)
+    at org.apache.cassandra.thrift.Cassandra$Client.system_add_keyspace(Cassandra.java:1395)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl$9.internalExecute(ThriftClusterImpl.java:250)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl$9.internalExecute(ThriftClusterImpl.java:247)
+    at com.netflix.astyanax.thrift.AbstractOperationImpl.execute(AbstractOperationImpl.java:60)
+    ... 26 more
+[WARN] GraphConfigurationContainer - Could not instantiate implementation: com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager
+java.lang.IllegalArgumentException: Could not instantiate implementation: com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager
+    at com.thinkaurelius.titan.diskstorage.Backend.instantiate(Backend.java:339)
+    at com.thinkaurelius.titan.diskstorage.Backend.getImplementationClass(Backend.java:351)
+    at com.thinkaurelius.titan.diskstorage.Backend.getStorageManager(Backend.java:294)
+    at com.thinkaurelius.titan.diskstorage.Backend.&lt;init&gt;(Backend.java:112)
+    at com.thinkaurelius.titan.graphdb.configuration.GraphDatabaseConfiguration.getBackend(GraphDatabaseConfiguration.java:682)
+    at com.thinkaurelius.titan.graphdb.database.StandardTitanGraph.&lt;init&gt;(StandardTitanGraph.java:72)
+    at com.thinkaurelius.titan.core.TitanFactory.open(TitanFactory.java:40)
+    at com.thinkaurelius.titan.tinkerpop.rexster.TitanGraphConfiguration.configureGraphInstance(TitanGraphConfiguration.java:25)
+    at com.tinkerpop.rexster.config.GraphConfigurationContainer.getGraphFromConfiguration(GraphConfigurationContainer.java:119)
+    at com.tinkerpop.rexster.config.GraphConfigurationContainer.&lt;init&gt;(GraphConfigurationContainer.java:54)
+    at com.tinkerpop.rexster.server.XmlRexsterApplication.reconfigure(XmlRexsterApplication.java:99)
+    at com.tinkerpop.rexster.server.XmlRexsterApplication.&lt;init&gt;(XmlRexsterApplication.java:47)
+    at com.tinkerpop.rexster.Application.&lt;init&gt;(Application.java:96)
+    at com.tinkerpop.rexster.Application.main(Application.java:188)
+Caused by: java.lang.reflect.InvocationTargetException
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+    at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+    at com.thinkaurelius.titan.diskstorage.Backend.instantiate(Backend.java:328)
+    ... 13 more
+Caused by: com.thinkaurelius.titan.diskstorage.TemporaryStorageException: Temporary failure in storage backend
+    at com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager.ensureKeyspaceExists(AstyanaxStoreManager.java:429)
+    at com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager.&lt;init&gt;(AstyanaxStoreManager.java:172)
+    ... 18 more
+Caused by: com.netflix.astyanax.connectionpool.exceptions.BadRequestException: BadRequestException: [host=127.0.0.1(127.0.0.1):9160, latency=42(60), attempts=1]InvalidRequestException(why:Keyspace names must be case-insensitively unique ("titan" conflicts with "titan"))
+    at com.netflix.astyanax.thrift.ThriftConverter.ToConnectionPoolException(ThriftConverter.java:159)
+    at com.netflix.astyanax.thrift.AbstractOperationImpl.execute(AbstractOperationImpl.java:65)
+    at com.netflix.astyanax.thrift.AbstractOperationImpl.execute(AbstractOperationImpl.java:28)
+    at com.netflix.astyanax.thrift.ThriftSyncConnectionFactoryImpl$ThriftConnection.execute(ThriftSyncConnectionFactoryImpl.java:151)
+    at com.netflix.astyanax.connectionpool.impl.AbstractExecuteWithFailoverImpl.tryOperation(AbstractExecuteWithFailoverImpl.java:69)
+    at com.netflix.astyanax.connectionpool.impl.AbstractHostPartitionConnectionPool.executeWithFailover(AbstractHostPartitionConnectionPool.java:256)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl.executeSchemaChangeOperation(ThriftClusterImpl.java:146)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl.addKeyspace(ThriftClusterImpl.java:246)
+    at com.thinkaurelius.titan.diskstorage.cassandra.astyanax.AstyanaxStoreManager.ensureKeyspaceExists(AstyanaxStoreManager.java:424)
+    ... 19 more
+Caused by: InvalidRequestException(why:Keyspace names must be case-insensitively unique ("titan" conflicts with "titan"))
+    at org.apache.cassandra.thrift.Cassandra$system_add_keyspace_result.read(Cassandra.java:33158)
+    at org.apache.thrift.TServiceClient.receiveBase(TServiceClient.java:78)
+    at org.apache.cassandra.thrift.Cassandra$Client.recv_system_add_keyspace(Cassandra.java:1408)
+    at org.apache.cassandra.thrift.Cassandra$Client.system_add_keyspace(Cassandra.java:1395)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl$9.internalExecute(ThriftClusterImpl.java:250)
+    at com.netflix.astyanax.thrift.ThriftClusterImpl$9.internalExecute(ThriftClusterImpl.java:247)
+    at com.netflix.astyanax.thrift.AbstractOperationImpl.execute(AbstractOperationImpl.java:60)
+    ... 26 more
+[INFO] HttpReporterConfig - Configured HTTP Metric Reporter.
+[INFO] ConsoleReporterConfig - Configured Console Metric Reporter.
+[INFO] HttpRexsterServer - HTTP/REST thread pool configuration: kernal[4 / 4] worker[8 / 8] 
+[INFO] HttpRexsterServer - Using org.glassfish.grizzly.strategies.LeaderFollowerNIOStrategy IOStrategy for HTTP/REST.
+[INFO] HttpRexsterServer - Rexster Server running on: [http://localhost:8182]
+[INFO] RexProRexsterServer - Using org.glassfish.grizzly.strategies.LeaderFollowerNIOStrategy IOStrategy for RexPro.
+[INFO] RexProRexsterServer - RexPro thread pool configuration: kernal[4 / 4] worker[8 / 8] 
+[INFO] RexProRexsterServer - Rexster configured with no security.
+[INFO] RexProRexsterServer - RexPro Server bound to [0.0.0.0:8184]
+[INFO] ShutdownManager$ShutdownSocketListener - Bound shutdown socket to /127.0.0.1:8183. Starting listener thread for shutdown requests.
+^C
+</code></pre>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/cassandra" class="post-tag" title="show questions tagged &#39;cassandra&#39;" rel="tag">cassandra</a> <a href="/questions/tagged/titan" class="post-tag" title="show questions tagged &#39;titan&#39;" rel="tag">titan</a> <a href="/questions/tagged/rexster" class="post-tag" title="show questions tagged &#39;rexster&#39;" rel="tag">rexster</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/19712610" title="short permalink to this question" class="short-link" id="link-post-19712610">share</a><span class="lsep">|</span><a href="/posts/19712610/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/19712610/revisions" title="show all edits to this post">edited <span title="2013-11-03 23:15:23Z" class="relativetime">Nov 3 '13 at 23:15</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-10-31 17:05:01Z" class="relativetime">Oct 31 '13 at 17:05</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/741850/cort3z"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/4a92d66111d2f71d36b14aec1741fb14?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/741850/cort3z">Cort3z</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">3,086</span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="42 bronze badges"><span class="badge3"></span><span class="badgecount">42</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-19712610" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-19712610" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								2 Answers
+                                <span style="display:none;" itemprop="answerCount">2</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/19712610/how-to-actually-set-up-basic-titan-rexster-cassandra?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="19718418"></a>
+<div id="answer-19718418" class="answer accepted-answer" data-answerid="19718418"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="19718418">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>As a first note, <code>embeddedcassandra</code> is no longer what you want in Titan 0.4.0.  You can read more about that <a href="https://groups.google.com/forum/#!searchin/aureliusgraphs/embeddedcassandra/aureliusgraphs/EasJTTkDtfY/sPcrWLT9JKsJ">here</a>.  In the Titan Server distribution for 0.4.0 cassandra and rexster run in separate JVMs and should generally run out-of-the-box from the distribution.  </p>
+
+<p>Also note, that I would say it is recommended to create types/indices by way of the Gremlin Console directly.  I like being "close to the graph" when working with <code>TypeMaker</code>.  You can read more about such production implementation patterns <a href="http://thinkaurelius.com/2013/07/25/developing-a-domain-specific-language-in-gremlin/">here</a>.</p>
+
+<p>As for your specific problem, your issue helped uncover a hole in the documentation (which has since been <a href="https://github.com/thinkaurelius/titan/wiki/Rexster-Graph-Server#getting-started-quickly-with-titan-serverzip">remedied</a>).  To ensure that elasticsearch gets started with Titan Server make sure that you do:</p>
+
+<pre><code>bin/titan.sh -c cassandra-es start
+</code></pre>
+
+<p>At this point you can connect via Rexster to construct and query elasticsearch indices.  Here's an example from Rexster Console:</p>
+
+<pre><code>rexster[groovy]&gt; g = rexster.getGraph("graph")
+==&gt;titangraph[cassandra:null]
+rexster[groovy]&gt; g.makeKey("name").dataType(String.class).indexed("search",Vertex.class).make()
+==&gt;v[74]
+rexster[groovy]&gt; g.commit()
+==&gt;null
+rexster[groovy]&gt; g.addVertex([name:'marko'])
+==&gt;v[4]
+rexster[groovy]&gt; g.addVertex([name:'stephen'])
+==&gt;v[8]
+rexster[groovy]&gt; g.commit()
+==&gt;null
+rexster[groovy]&gt; g.V.has('name',PREFIX,'mar')
+==&gt;v[4]
+</code></pre>
+
+<p>Note that by starting Titan Server in this mode, elasticsearch is running in <a href="https://github.com/thinkaurelius/titan/wiki/Using-Elastic-Search#elasticsearch-embedded-configuration">embedded mode</a> to the Titan instance started by Rexster which means that:</p>
+
+<blockquote>
+  <p>Elasticsearch will not be accessible from outside of this particular
+  Titan instance, i.e., remote connections will not be possible</p>
+</blockquote>
+
+<p>So if you are trying to connect via a Titan Gremlin Console, I don't believe it will work.  Connections have to run through Rexster.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/19718418" title="short permalink to this answer" class="short-link" id="link-post-19718418">share</a><span class="lsep">|</span><a href="/posts/19718418/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/19718418/revisions" title="show all edits to this post">edited <span title="2013-11-01 12:17:20Z" class="relativetime">Nov 1 '13 at 12:17</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-10-31 23:32:50Z" class="relativetime">Oct 31 '13 at 23:32</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1831717/stephen-mallette"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/fd9d045ca36173a4db8c870cd8ab7eb6?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1831717/stephen-mallette">stephen mallette</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">8,775</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="39 bronze badges"><span class="badge3"></span><span class="badgecount">39</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-19718418" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="8"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-29306005" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Alright, that seems to be starting. What index name should I use? In the documentation it says that you make elasticsearch indices like this: <code>graph.makeKey(&quot;reason&quot;).dataType(String.class).indexed(&quot;search&quot;,Vertex.class).i&zwnj;&#8203;ndexed(&quot;search&quot;, Edge.class).make()</code>. When I do this I get an error, which I guess is because the <code>search</code> index does not exist (the stack trace won&#39;t show). How do I fix this?</span>
+                    &ndash;&nbsp;<a href="/users/741850/cort3z"
+                       title="3086 reputation"
+                       class="comment-user owner">Cort3z</a>
+                <span class="comment-date" dir="ltr"><span title="2013-11-01 11:33:43Z" class="relativetime-clean">Nov 1 '13 at 11:33</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-29306672" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Where are you trying to create the index from? Rexster Console?</span>
+                    &ndash;&nbsp;<a href="/users/1831717/stephen-mallette"
+                       title="8775 reputation"
+                       class="comment-user">stephen mallette</a>
+                <span class="comment-date" dir="ltr"><span title="2013-11-01 12:02:33Z" class="relativetime-clean">Nov 1 '13 at 12:02</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-29307027" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Expanded my answer a bit to show index creation.  Again, no extra configuration was required here...works out of the box.</span>
+                    &ndash;&nbsp;<a href="/users/1831717/stephen-mallette"
+                       title="8775 reputation"
+                       class="comment-user">stephen mallette</a>
+                <span class="comment-date" dir="ltr"><span title="2013-11-01 12:17:45Z" class="relativetime-clean">Nov 1 '13 at 12:17</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-29310033" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Ahh.. I was using the gremlin console and <code>TitanFactory(&#39;tmp&#47;titan&#39;)</code>. I thought I could not do this with rexster. Thanks Stephen!</span>
+                    &ndash;&nbsp;<a href="/users/741850/cort3z"
+                       title="3086 reputation"
+                       class="comment-user owner">Cort3z</a>
+                <span class="comment-date" dir="ltr"><span title="2013-11-01 14:04:36Z" class="relativetime-clean">Nov 1 '13 at 14:04</span></span>
+                    <span class="edited-yes" title="this comment was edited 3 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-29310874" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hate to bother you, but there is one last thing: When I stop the server with <code>bin&#47;titan.sh stop</code> and then start it again with <code>bin&#47;titan.sh -c cassandra-es start</code> the graph is gone. In rexster console when I do <code>g = rexster.getGraph(&quot;graoh&quot;)</code> I get null in return. Is there maybe something wrong with my setup?</span>
+                    &ndash;&nbsp;<a href="/users/741850/cort3z"
+                       title="3086 reputation"
+                       class="comment-user owner">Cort3z</a>
+                <span class="comment-date" dir="ltr"><span title="2013-11-01 14:29:53Z" class="relativetime-clean">Nov 1 '13 at 14:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-19718418" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>8</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1615932714",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1615932714">
+            </div>
+  
+<a name="31900944"></a>
+<div id="answer-31900944" class="answer" data-answerid="31900944"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="31900944">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Maybe I'm a little late to the party, but i thought anyone else coming to this question could benefit.</p>
+
+<p>Using this script will automatically setup embedded cassandra for "Titan 0.5.4 with Hadoop 2" I didn't test it with "titan-0.9.0-M2-hadoop1.zip", but if it works please let me know.</p>
+
+<p>The script takes the current hostname ip and replaces the network ip settings in all the relevant configuration files (The Titan directory must be at: /opt/titan/, change accordingly).</p>
+
+<pre><code>#!/usr/bin/env bash
+cd /tmp
+wget http://s3.thinkaurelius.com/downloads/titan/titan-0.5.4-hadoop2.zip -O titan.zip
+unzip titan.zip -d /opt/titan
+
+//quries for current hostname ip - check your /etc/hosts file or this possibly won't work
+titan_node_ip=$(hostname -i)
+#/opt/titan/conf/cassandra.yaml
+sed -i 's/seeds:.*$/seeds: "'$titan_node_ip'"/g' /opt/titan/conf/cassandra.yaml
+sed -i 's/listen_address:.*$/listen_address: '$titan_node_ip'/g' /opt/titan/conf/cassandra.yaml
+sed -i 's/rpc_address:.*/rpc_address: '$titan_node_ip'/g' /opt/titan/conf/cassandra.yaml
+
+#/opt/titan/conf/elasticsearch.yml
+sed -i 's/network.host:.*/network.host: '$titan_node_ip'/g' /opt/titan/conf/elasticsearch.yml
+
+#/opt/titan/conf/rexster-cassandra-es.xml
+sed -i 's/&lt;base-uri&gt;.*&lt;\/base-uri&gt;/&lt;base-uri&gt;http:\/\/'$titan_node_ip'&lt;\/base-uri&gt;/g' /opt/titan/conf/rexster-cassandra-es.xml
+sed -i 's/&lt;storage.hostname&gt;.*&lt;\/storage.hostname&gt;/&lt;storage.hostname&gt;'$titan_node_ip'&lt;\/storage.hostname&gt;/g' /opt/titan/conf/rexster-cassandra-es.xml
+sed -i 's/ &lt;index.search.hostname&gt;.*&lt;\/index.search.hostname&gt;/&lt;index.search.hostname&gt;'$titan_node_ip'&lt;\/index.search.hostname&gt;/g' /opt/titan/conf/rexster-cassandra-es.xml
+
+#/opt/titan/conf/titan-cassandra-embedded-es.properties
+sed -i 's/storage.backend=.*/storage.backend=embeddedcassandra/g' /opt/titan/conf/titan-cassandra-embedded-es.properties
+
+#/opt/titan/bin/titan.sh
+sed -i 's/ELASTICSEARCH_IP:=.*}/ELASTICSEARCH_IP:='$titan_node_ip'}/g' /opt/titan/bin/titan.sh
+sed -i 's/REXSTER_IP:=.*}/REXSTER_IP:='$titan_node_ip'}/g' /opt/titan/bin/titan.sh
+</code></pre>
+
+<p>if all is well you should now be able to run titan successfully in cassandraembedded mode: </p>
+
+<pre><code>/opt/titan/bin/titan.sh start
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/31900944" title="short permalink to this answer" class="short-link" id="link-post-31900944">share</a><span class="lsep">|</span><a href="/posts/31900944/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-08-09 04:33:47Z" class="relativetime">Aug 9 '15 at 4:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/4379791/null"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/15273579d497a0bd65f0faceb7c83e65?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/4379791/null">Null</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">53</span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-31900944" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-31900944" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/19712610/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="19712610" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="c82e9ba6da5583e8fcc07891e4726864">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f19712610%2fhow-to-actually-set-up-basic-titan-rexster-cassandra%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f19712610%2fhow-to-actually-set-up-basic-titan-rexster-cassandra%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/cassandra" class="post-tag" title="show questions tagged &#39;cassandra&#39;" rel="tag">cassandra</a> <a href="/questions/tagged/titan" class="post-tag" title="show questions tagged &#39;titan&#39;" rel="tag">titan</a> <a href="/questions/tagged/rexster" class="post-tag" title="show questions tagged &#39;rexster&#39;" rel="tag">rexster</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-10-31 17:05:01Z"><b>2 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>7765 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-08-09 04:33:47Z">5 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">Stack Exchange Year in Review 2015</a>
+                </div>
+                <br class="cbt" />
+            </div>
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 8 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1582009734",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1582009734">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			<div class="module" id="chat-feature">
+    
+
+    
+<h4><a href="http://chat.stackoverflow.com" id="h-chat-link">Visit Chat</a></h4>
+
+<div class="related" id="ad502-rooms"></div>
+<script>
+// <!--
+    StackExchange.ready(
+    function () {
+        var options = {
+            chatUrl: 'http://chat.stackoverflow.com',
+            reloadUrl: '/api/recent-chat',
+            preloadData: {"activeUsers":125,"activeRooms":38,"rooms":[{"name":"JavaScript","id":17,"lastPost":1452628235,"posts":3117018,"users":[{"name":"ndugger","id":1408759,"emailhash":"!https://i.stack.imgur.com/TDwdk.png?s=128\u0026g=1","lastPost":1452628235},{"name":"ton.yeung","id":860947,"emailhash":"!https://i.stack.imgur.com/WLi8a.png?s=128\u0026g=1","lastPost":1452628232},{"name":"ssube","id":129032,"emailhash":"e8bea8f9e6972dfd3113d67da68e6933","lastPost":1452628151},{"name":"Ben Fortune","id":2615209,"emailhash":"c455958b4e9f556e6c26923e1e6ca8c3","lastPost":1452628125},{"name":"Jhawins","id":1596138,"emailhash":"!https://i.stack.imgur.com/IMX6n.png?s=128\u0026g=1","lastPost":1452628110},{"name":"phenomnomnominal","id":1386166,"emailhash":"7ea079654bb159fdaa4043834688f57d","lastPost":1452628089},{"name":"Luggage","id":956900,"emailhash":"4416acf0ee6259443ee3cca16d894d14","lastPost":1452628076}],"messages":[{"date":1452628235,"user":"ndugger","userid":1408759}],"singleImage":false,"tags":["ecmascript","es6","javascript","nodejs","promises","xandercoded"]},{"name":"PHP","id":11,"lastPost":1452628287,"posts":2188795,"users":[{"name":"Haider Ali","id":1386415,"emailhash":"!https://i.stack.imgur.com/ZdE0J.jpg?s=128\u0026g=1","lastPost":1452628287},{"name":"Waxi","id":2725684,"emailhash":"!https://i.stack.imgur.com/HgQwr.jpg?s=128\u0026g=1","lastPost":1452628056},{"name":"HelpingHand","id":2354952,"emailhash":"!https://i.stack.imgur.com/tZQ23.png?s=128\u0026g=1","lastPost":1452627130},{"name":"Bob Nocraz","id":4815044,"emailhash":"711d3c507e5426443316a82d90d17ae9","lastPost":1452626832},{"name":"Wes","id":4251625,"emailhash":"!https://i.stack.imgur.com/XUshi.jpg?s=128\u0026g=1","lastPost":1452625122},{"name":"Trowski","id":2439754,"emailhash":"ff52be277448d60987ee029864145638","lastPost":1452625079},{"name":"Paul Crovella","id":3942918,"emailhash":"!https://i.stack.imgur.com/Rup3Y.jpg?s=128\u0026g=1","lastPost":1452624578}],"messages":[{"date":1452628287,"user":"Haider Ali","userid":1386415}],"singleImage":false,"tags":["php"]}]} 
+        };
+
+        StackExchange.chatAd.init(options);
+    });
+// -->
+</script>
+
+</div>  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/16397426" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">18</div>
+	</a>
+	<a href="/questions/16397426/how-to-start-titan-graph-server-and-connect-with-gremlin" class="question-hyperlink">How to start Titan graph server and connect with gremlin?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/19477443" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">8
+    </div>
+</a><a href="/questions/19477443/how-to-delete-graph-in-titan-with-cassandra-storage-backend" class="question-hyperlink">How to delete graph in Titan with Cassandra storage backend?</a>
+</div>
+<div class="spacer">
+<a href="/q/23535345" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/23535345/updating-titan-vertex-property-using-rexster-rexpro-failing" class="question-hyperlink">Updating titan vertex property using rexster rexpro failing</a>
+</div>
+<div class="spacer">
+<a href="/q/23796400" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/23796400/how-to-setup-titan-with-embedded-cassandra-and-rexster" class="question-hyperlink">How to setup Titan with embedded Cassandra and Rexster</a>
+</div>
+<div class="spacer">
+<a href="/q/24893716" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/24893716/how-to-create-and-start-working-with-a-graph-database-in-titan-rexster-from-bulb" class="question-hyperlink">How to create and start working with a graph database in Titan/Rexster from Bulbs</a>
+</div>
+<div class="spacer">
+<a href="/q/26707000" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/26707000/titan-rexster-with-external-cassandra-instance" class="question-hyperlink">titan rexster with external cassandra instance</a>
+</div>
+<div class="spacer">
+<a href="/q/27519841" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/27519841/titan-blueprints-rexster" class="question-hyperlink">Titan BluePrints Rexster</a>
+</div>
+<div class="spacer">
+<a href="/q/28639103" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/28639103/using-rexster-and-titan-graph-db-for-scalable-applications" class="question-hyperlink">Using Rexster and Titan Graph DB for scalable applications</a>
+</div>
+<div class="spacer">
+<a href="/q/29505545" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/29505545/how-configure-multiple-cassandra-nodes-as-storage-backend-in-rexster-config" class="question-hyperlink">How configure multiple cassandra nodes as storage.backend in Rexster config?</a>
+</div>
+<div class="spacer">
+<a href="/q/29544657" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/29544657/how-to-find-the-information-about-index-created-on-titan-rexster-graph-database" class="question-hyperlink">How to find the information about index created on Titan/Rexster graph database with cassandra as datastore</a>
+</div>
+<div class="spacer">
+<a href="/q/29674738" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/29674738/titan-how-to-check-the-index-characteristics-such-as-unique-or-not" class="question-hyperlink">Titan : How to check the index characteristics, such as UNIQUE or not?</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114629/were-luke-and-kylo-ren-thought-to-be-the-only-force-users-left-in-the-force-awak" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Were Luke and Kylo Ren thought to be the only Force users left in The Force Awakens?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/25287/switch-the-knights" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Switch The Knights
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46157/whats-the-meaning-of-the-two-scarves-during-the-riot-in-straight-outta-compton" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s the meaning of the two scarves during the riot in Straight Outta Compton?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-gamedev" title="Game Development Stack Exchange"></div><a href="http://gamedev.stackexchange.com/questions/114706/how-to-design-a-leaderboard-where-lower-is-better" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:53 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to design a leaderboard where lower is better?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1609276/negation-of-injectivity" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Negation of injectivity
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33040/multiple-dna-one-creature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Multiple DNA, one creature
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/748511/is-an-ssl-cert-needed-here" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is an SSL Cert needed here?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-skeptics" title="Skeptics Stack Exchange"></div><a href="http://skeptics.stackexchange.com/questions/31376/is-stack-exchange-the-only-major-network-where-moderators-are-democratically-ele" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:212 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is Stack Exchange the only major network where moderators are democratically elected?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33147/if-people-had-magic-powers-how-would-it-affect-slavery" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If people had magic powers, how would it affect slavery?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-lifehacks" title="Lifehacks Stack Exchange"></div><a href="http://lifehacks.stackexchange.com/questions/10660/how-to-rid-steelware-of-metallic-taste" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:593 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to rid steelware of metallic taste
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/73024/opposing-skill-rolls-natural-20" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Opposing skill rolls &amp; Natural 20
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/65366/how-can-i-know-what-fonts-a-website-is-using" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I know what fonts a website is using?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/24555/what-actually-happens-when-there-is-not-enough-oil-in-a-car-engine" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What actually happens when there is not enough oil in a car engine?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1609918/what-exactly-are-those-two-irrational-numbers-x-and-y-such-that-xy-is-rationa" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What exactly are those &quot;two irrational numbers&quot; x and y such that x^y is rational?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/126030/possible-benefits-of-storing-data-as-string-instead-of-columns" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible benefits of storing data as string instead of columns
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287317/writing-fraction-in-matrix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Writing fraction in matrix
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-sharepoint" title="SharePoint Stack Exchange"></div><a href="http://sharepoint.stackexchange.com/questions/166816/sharepoint-2013-show-ribbon-to-admin-only" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:232 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Sharepoint 2013 - show ribbon to admin only
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33048/what-would-an-earth-with-no-timezones-be-like" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would an Earth with no timezones be like?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/60475/how-do-exit-interviews-benefit-the-company" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do exit interviews benefit the company?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-photo" title="Photography Stack Exchange"></div><a href="http://photo.stackexchange.com/questions/72729/how-to-photograph-frost-and-snow-sparkling" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:61 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to photograph frost and snow sparkling?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61534/professor-gave-me-a-higher-grade-than-i-deserved" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Professor gave me a higher grade than I deserved?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34743533/automated-property-with-getter-only-can-be-set-why" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Automated property with getter only, can be set, why?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1025428/limit-excel-cpu-usage" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Limit Excel CPU Usage
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114672/meaning-behind-rich-purnells-email-in-the-martian" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Meaning behind Rich Purnell&#39;s email in The Martian
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/19712610" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/19712610/ivc/1c15');});
+</script>
+<noscript>
+    <div><img src="/posts/19712610/ivc/1c15" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.12.3167
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('cassandra,titan,rexster');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|cassandra|titan|rexster|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

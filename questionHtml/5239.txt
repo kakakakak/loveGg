@@ -1,0 +1,2939 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>Why is Perl the best choice for most string manipulation tasks? - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Why is Perl the best choice for most string manipulation tasks?" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I&#39;ve heard that Perl is the go-to language for string manipulation (and line noise ;). Can someone provide examples and comparisons with other language(s) to show me why?
+" />
+    <meta property="og:url" content="http://stackoverflow.com/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks/1491364"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks/1491364" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=e5852343f40d"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Why is Perl the best choice for most string manipulation tasks?&#39;" href="/feeds/question/1490745">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks/1491364" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks/1491364" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks/1491364">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:8,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:1490745});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '1490745');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452547765,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"8872ec4c653acc968af5bcb434502271","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c28ffc75f822","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"9ede90d3ed16","js/full.en.js":"033d573c35db","js/wmd.en.js":"47ccdaf392cb","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"20bcb42b710b","js/tageditornew.en.js":"a71ee27852ba","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"ae29b9441b40","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"c251bbc879d8","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"03a7725d4a79","js/keyboard-shortcuts.en.js":"0e582d41820b","js/external-editor.en.js":"cea2f1a9cb30","js/external-editor.en.js":"cea2f1a9cb30","js/snippet-javascript.en.js":"a787fb64bef0","js/snippet-javascript-codemirror.en.js":"569e93559c76"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1490745%2fwhy-is-perl-the-best-choice-for-most-string-manipulation-tasks%2f1491364" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1490745%2fwhy-is-perl-the-best-choice-for-most-string-manipulation-tasks%2f1491364" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1490745%2fwhy-is-perl-the-best-choice-for-most-string-manipulation-tasks%2f1491364" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1490745%2fwhy-is-perl-the-best-choice-for-most-string-manipulation-tasks%2f1491364" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1490745%2fwhy-is-perl-the-best-choice-for-most-string-manipulation-tasks%2f1491364" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks" class="question-hyperlink">Why is Perl the best choice for most string manipulation tasks?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="1490745"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1737666179",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1737666179">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1490745">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">13</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>2</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I've heard that Perl is the go-to language for string manipulation (and line noise ;). Can someone provide examples and comparisons with other language(s) to show me why?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/perl" class="post-tag" title="show questions tagged &#39;perl&#39;" rel="tag">perl</a> <a href="/questions/tagged/string" class="post-tag" title="show questions tagged &#39;string&#39;" rel="tag">string</a> <a href="/questions/tagged/programming-languages" class="post-tag" title="show questions tagged &#39;programming-languages&#39;" rel="tag">programming-languages</a> <a href="/questions/tagged/comparison" class="post-tag" title="show questions tagged &#39;comparison&#39;" rel="tag">comparison</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/1490745" title="short permalink to this question" class="short-link" id="link-post-1490745">share</a><span class="lsep">|</span><a href="/posts/1490745/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/1490745/revisions" title="show all edits to this post">edited <span title="2009-09-29 23:24:31Z" class="relativetime">Sep 29 '09 at 23:24</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2766176/brian-d-foy"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/edd8638efe875601bfe394a8aea5b16d?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2766176/brian-d-foy">brian d foy</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 82208" dir="ltr">82.2k</span><span title="22 gold badges"><span class="badge1"></span><span class="badgecount">22</span></span><span title="139 silver badges"><span class="badge2"></span><span class="badgecount">139</span></span><span title="371 bronze badges"><span class="badge3"></span><span class="badgecount">371</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2009-09-29 05:41:00Z" class="relativetime">Sep 29 '09 at 5:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/117069/rcix"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ce6b518b4bcac25b257d449cd14271b4?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/117069/rcix">RCIX</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 14821" dir="ltr">14.8k</span><span title="33 gold badges"><span class="badge1"></span><span class="badgecount">33</span></span><span title="112 silver badges"><span class="badge2"></span><span class="badgecount">112</span></span><span title="182 bronze badges"><span class="badge3"></span><span class="badgecount">182</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1490745" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="3"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1342752" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><a href="http://www.google.com/search?q=perl+regex" rel="nofollow">google.com/search?q=perl+regex</a></span>
+                    &ndash;&nbsp;<a href="/users/426996/alec-smart"
+                       title="22607 reputation"
+                       class="comment-user">Alec Smart</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 05:44:41Z" class="relativetime-clean">Sep 29 '09 at 5:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1342782" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;m not sure why you asked this question. Are you looking for a perl tutorial? Or do you want to know whether to invest time in learning perl?</span>
+                    &ndash;&nbsp;<a href="/users/174553/ashwin"
+                       title="2372 reputation"
+                       class="comment-user">Ashwin</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 05:59:39Z" class="relativetime-clean">Sep 29 '09 at 5:59</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1342803" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Option B. I have written a fairly complex lua script that is sort of string manipulation and i&#39;m wondering whether it would be significantly simpler in perl.</span>
+                    &ndash;&nbsp;<a href="/users/117069/rcix"
+                       title="14821 reputation"
+                       class="comment-user owner">RCIX</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 06:05:27Z" class="relativetime-clean">Sep 29 '09 at 6:05</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1342857" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Given a fairly complex script, aside idiosyncrasies with LUA, it would still require fairly complex Perl/regex.</span>
+                    &ndash;&nbsp;<a href="/users/67211/gregory"
+                       title="456 reputation"
+                       class="comment-user">Gregory</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 06:25:28Z" class="relativetime-clean">Sep 29 '09 at 6:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1342862" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In that case, I&#39;d suggest it well worth the time. perldoc.perl.org is a good place to start</span>
+                    &ndash;&nbsp;<a href="/users/174553/ashwin"
+                       title="2372 reputation"
+                       class="comment-user">Ashwin</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 06:26:52Z" class="relativetime-clean">Sep 29 '09 at 6:26</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1490745" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>3</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								11 Answers
+                                <span style="display:none;" itemprop="answerCount">11</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/1490745/why-is-perl-the-best-choice-for-most-string-manipulation-tasks?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="1490787"></a>
+<div id="answer-1490787" class="answer accepted-answer" data-answerid="1490787"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1490787">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">13</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>It is very subjective, so I wouldn't say that Perl is the best choice, but it is certainly a valid choice for string manipulation. Other alternatives are Tcl, Python, AWK, etc.</p>
+
+<p>I like Perl's capabilities because it has excellent support (better than POSIX as pointed out in the comment) for fast regexs and the implicit variables makes it easy to do basic string crunching with very little code. </p>
+
+<p>If you have a *nix background a lot of what you already know will apply to Perl as well, which makes it fairly easy to pick up for a lot of people. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1490787" title="short permalink to this answer" class="short-link" id="link-post-1490787">share</a><span class="lsep">|</span><a href="/posts/1490787/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1490787/revisions" title="show all edits to this post">edited <span title="2009-09-29 15:43:35Z" class="relativetime">Sep 29 '09 at 15:43</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 05:57:56Z" class="relativetime">Sep 29 '09 at 5:57</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/38206/brian-rasmussen"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/4eea78103ba2306f23b41fd15b46228e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/38206/brian-rasmussen">Brian Rasmussen</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 79819" dir="ltr">79.8k</span><span title="22 gold badges"><span class="badge1"></span><span class="badgecount">22</span></span><span title="151 silver badges"><span class="badge2"></span><span class="badgecount">151</span></span><span title="250 bronze badges"><span class="badge3"></span><span class="badgecount">250</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1490787" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1342978" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Actually, it&#39;s pretty objective, when it comes to <a href="http://en.wikipedia.org/wiki/Regular_expression#Perl-derivative_regular_expressions" rel="nofollow">regexes Perl has more features than the POSIX standard</a>.</span>
+                    &ndash;&nbsp;<a href="/users/34051/xxxxxxx"
+                       title="1739 reputation"
+                       class="comment-user">xxxxxxx</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 06:59:09Z" class="relativetime-clean">Sep 29 '09 at 6:59</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1343237" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@spx2: fair enough. The subjective part was whether someone would consider Perl to be the go-to language in every sense. Some people are not too wild about Perl in general, so they may not prefer it despite its regex abilities.</span>
+                    &ndash;&nbsp;<a href="/users/38206/brian-rasmussen"
+                       title="79819 reputation"
+                       class="comment-user">Brian Rasmussen</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 08:19:21Z" class="relativetime-clean">Sep 29 '09 at 8:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1343243" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">down voter, please leave a comment.</span>
+                    &ndash;&nbsp;<a href="/users/38206/brian-rasmussen"
+                       title="79819 reputation"
+                       class="comment-user">Brian Rasmussen</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 08:19:55Z" class="relativetime-clean">Sep 29 '09 at 8:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1368337" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">actually , I completely disagree , Perl is the best language there is for string manipulation</span>
+                    &ndash;&nbsp;<a href="/users/34051/xxxxxxx"
+                       title="1739 reputation"
+                       class="comment-user">xxxxxxx</a>
+                <span class="comment-date" dir="ltr"><span title="2009-10-03 16:29:50Z" class="relativetime-clean">Oct 3 '09 at 16:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1368509" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">spx2: Well, I agree but that doesn&#39;t make it so. A lot of people don&#39;t like Perl for whatever reason, so this is pretty subjective.</span>
+                    &ndash;&nbsp;<a href="/users/38206/brian-rasmussen"
+                       title="79819 reputation"
+                       class="comment-user">Brian Rasmussen</a>
+                <span class="comment-date" dir="ltr"><span title="2009-10-03 17:39:10Z" class="relativetime-clean">Oct 3 '09 at 17:39</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1490787" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1202600751",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1202600751">
+            </div>
+  
+<a name="1490982"></a>
+<div id="answer-1490982" class="answer" data-answerid="1490982"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1490982">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">12</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Perl -> Practical Extraction and Reporting Language</p>
+
+<p>Perl's strength(when it comes to string processing) lies in it's very powerful <a href="http://en.wikipedia.org/wiki/Regular%5Fexpression">Regular expression engine</a>.</p>
+
+<p>Because of this there are many people in the field of BioInformatics using Perl as their
+main tool, hence the large number of posts about <a href="http://www.google.com/search?q=site%3Aperlmonks.org+bioperl+string+DNA">BioPerl on PerlMonks</a> . In BioInformatics they work with strings a lot , they call them "sequences"(I don't know much about this).</p>
+
+<p><a href="http://perlmonks.org">Perlmonks.org</a> is the heart of the Perl community, check out the immense number of hits
+when you search for <a href="http://www.google.com/search?q=site%3Aperlmonks.org+regex">site:perlmonks.org regex 20,000 hits</a></p>
+
+<p>You cannot ignore the sheer number of modules on <a href="http://search.cpan.org">CPAN</a>:</p>
+
+<ul>
+<li><a href="http://search.cpan.org/search?query=string&amp;mode=module">375 modules under the namespace String on CPAN(Perl's module repository)</a></li>
+<li><a href="http://search.cpan.org/search?query=regex&amp;mode=module">241 in Regex namespace</a></li>
+<li><a href="http://search.cpan.org/search?query=regexp&amp;mode=module">156 in Regexp namespace</a>.</li>
+</ul>
+
+<p>This is very clear evidence that Perl is a very powerful language when it comes to string processing.</p>
+
+<p>So if you want to do some string processing and you're using Perl, you've got it covered :)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1490982" title="short permalink to this answer" class="short-link" id="link-post-1490982">share</a><span class="lsep">|</span><a href="/posts/1490982/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/1490982/revisions" title="show all edits to this post">edited <span title="2009-09-29 13:52:52Z" class="relativetime">Sep 29 '09 at 13:52</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1337/brad-gilbert"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/72de240484e389dbedb6a3e428b9f0c1?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1337/brad-gilbert">Brad Gilbert</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 14578" dir="ltr">14.6k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="45 silver badges"><span class="badge2"></span><span class="badgecount">45</span></span><span title="83 bronze badges"><span class="badge3"></span><span class="badgecount">83</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 06:54:34Z" class="relativetime">Sep 29 '09 at 6:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/34051/xxxxxxx"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/aa619a092534f14a427cc883b7a7daeb?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/34051/xxxxxxx">xxxxxxx</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,739</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="21 silver badges"><span class="badge2"></span><span class="badgecount">21</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1490982" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1343394" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">perl&#39;s regex engine is not called PCRE.  PCRE is a feature-limited &quot;clone&quot; of perl&#39;s regex engine.</span>
+                    &ndash;&nbsp;<a href="/users/8457/jrockway"
+                       title="28324 reputation"
+                       class="comment-user">jrockway</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 08:57:25Z" class="relativetime-clean">Sep 29 '09 at 8:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1343412" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@jrockway , thanks , you&#39;re right. But from wikipedia:   As of Perl 5.9.4, PCRE is also available as a replacement for Perl&#39;s default regular expression engine through the re::engine::PCRE module.</span>
+                    &ndash;&nbsp;<a href="/users/34051/xxxxxxx"
+                       title="1739 reputation"
+                       class="comment-user">xxxxxxx</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 09:01:02Z" class="relativetime-clean">Sep 29 '09 at 9:01</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1347789" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Don&#39;t trust everything you read in Wikipedia. :)</span>
+                    &ndash;&nbsp;<a href="/users/2766176/brian-d-foy"
+                       title="82208 reputation"
+                       class="comment-user">brian d foy</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 23:20:17Z" class="relativetime-clean">Sep 29 '09 at 23:20</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1490982" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1491004"></a>
+<div id="answer-1491004" class="answer" data-answerid="1491004"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1491004">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">8</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>To address the second part of your question: Perl's reputation for line noise comes from 4 kinds of people:</p>
+
+<ul>
+<li><p>Overly clever (for their own good) hackers (or sometimes just hacks) who value cleverness and showing off over readability. "If it was hard to write it should be hard to read" is NOT just a mythical attitude.</p></li>
+<li><p>People who wouldn't know good software development if it hit them over the head with a cluebat. Such as people who save a couple of characters in a program by using <code>$_</code> instead of a named variable. In a nested scope. Or never heard of comments. Or self-documenting identifiers. Or whitespace.</p></li>
+<li><p>People who think that software development == code golf. More seriously, that the less the amount of characters in the code, the more readable it is, because they misunderstand what "conciseness" means in code.</p>
+
+<p>(NOTE: first 2 sets are not mutually exclusive)</p></li>
+<li><p>People who code/hack in perl (e.g. SysAdmins) who have very little training, experience or incentive to do software development. E.g. the percentage of people using Perl who do quick and dirty hacks with bad style and worse code quality is probably higher than, say Python. </p>
+
+<p>Just for reference, 80% of awful Perl "code" in my $work falls under this - it was written by financial analysts who are smart enough to pick up a Perl book and some earlier scripts, clone off a script that does what business need is, and don't have CS/programming background to worry about how readable/maintainable their code was.</p></li>
+</ul>
+
+<p>In other (and less snide) words, you can write beautiful, incredibly readable and easy to maintain <strong>software</strong> in Perl. It all depends on who does the writing, what their priorities and skills are. Also, <strong>just like with any other language</strong>, you can write a miserable write-only mess with it. </p>
+
+<p>The difference from other languages is that very often, the write-onlyness of said mess, when done in Perl, does indeed consist of very high density of non-letter characters (sygils and special characters in poorly written RegExes). This high density can indeed, asymptotically approximate line noise.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1491004" title="short permalink to this answer" class="short-link" id="link-post-1491004">share</a><span class="lsep">|</span><a href="/posts/1491004/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1491004/revisions" title="show all edits to this post">edited <span title="2014-02-15 07:04:24Z" class="relativetime">Feb 15 '14 at 7:04</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 07:03:06Z" class="relativetime">Sep 29 '09 at 7:03</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/119280/dvk"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a7efd5c795e9797c30fce4126daaa9c0?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/119280/dvk">DVK</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 74621" dir="ltr">74.6k</span><span title="15 gold badges"><span class="badge1"></span><span class="badgecount">15</span></span><span title="141 silver badges"><span class="badge2"></span><span class="badgecount">141</span></span><span title="237 bronze badges"><span class="badge3"></span><span class="badgecount">237</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1491004" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1343010" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;ll preface this with: I like perl. However it&#39;s not only the programmer to blame for perl&#39;s reputation of linenoise. Perl, unlike most languages, allows lots things to be done implicitly (like the $_, $0, etc variables, implicit arguments to functions, etc.) where you don&#39;t have to explicitly declare you want something to be done, but perl will do something reasonable. This is a wonderful time saving measure, but is utterly incomprehensible to those who don&#39;t understand the semantics. Compare this to Python, which is a language almost anyone can read even without having written Python.</span>
+                    &ndash;&nbsp;<a href="/users/134772/falaina"
+                       title="5329 reputation"
+                       class="comment-user">Falaina</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 07:09:29Z" class="relativetime-clean">Sep 29 '09 at 7:09</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1343086" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Perl has the implicit arguments that you talk of. And as a programmer you can choose to use them or not.</span>
+                    &ndash;&nbsp;<a href="/users/34051/xxxxxxx"
+                       title="1739 reputation"
+                       class="comment-user">xxxxxxx</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 07:30:59Z" class="relativetime-clean">Sep 29 '09 at 7:30</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1343194" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@spx2 - Amen. @Falaina - that is EXACTLY what I was talking about. No software developer worth talking about would be caught dead using $_, myself inlcuded, outside of 5-line throwaway eprsonal use quick hack.</span>
+                    &ndash;&nbsp;<a href="/users/119280/dvk"
+                       title="74621 reputation"
+                       class="comment-user">DVK</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 08:09:33Z" class="relativetime-clean">Sep 29 '09 at 8:09</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1343211" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Falaina - also, added 1 more reason (Few people hack python with no thought of/need to produce clean code than do Perl. This has very little to do with innate qualities of the language, and more to do with distribution of purposes it is used for.</span>
+                    &ndash;&nbsp;<a href="/users/119280/dvk"
+                       title="74621 reputation"
+                       class="comment-user">DVK</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 08:14:09Z" class="relativetime-clean">Sep 29 '09 at 8:14</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1343424" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@DVK this is turning into a &quot;Perl vs. Python&quot; as I see it ...</span>
+                    &ndash;&nbsp;<a href="/users/34051/xxxxxxx"
+                       title="1739 reputation"
+                       class="comment-user">xxxxxxx</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 09:03:01Z" class="relativetime-clean">Sep 29 '09 at 9:03</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1491004" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1491364"></a>
+<div id="answer-1491364" class="answer" data-answerid="1491364"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1491364">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Because It is what is perl made for. Because Perl is expressive, powerful and fast. I have beaten many times specialized products with small and dirty script in perl written in few minutes. For example, outer join and large join vs. MySQL (just because can't do merge join), ETL processing vs. Java Hadoop (because I have years experience to write it effectively and perl IO layer is just great) and so and so.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1491364" title="short permalink to this answer" class="short-link" id="link-post-1491364">share</a><span class="lsep">|</span><a href="/posts/1491364/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 08:55:23Z" class="relativetime">Sep 29 '09 at 8:55</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/49197/hynek-pichi-vychodil"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/15ebf24a33a29b9efbf9924f530dd736?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/49197/hynek-pichi-vychodil">Hynek -Pichi- Vychodil</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 17517" dir="ltr">17.5k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="29 silver badges"><span class="badge2"></span><span class="badgecount">29</span></span><span title="56 bronze badges"><span class="badge3"></span><span class="badgecount">56</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1491364" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1491364" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1490763"></a>
+<div id="answer-1490763" class="answer" data-answerid="1490763"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1490763">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>It's a very subjective question. Perhaps the true answer is that Perl has a nice syntax (incl. the regex syntax) that makes people want to sign it high praises over other languages? IMHO, any language that supports a rich regex syntax would be considerablly powerfull at string manipulation.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1490763" title="short permalink to this answer" class="short-link" id="link-post-1490763">share</a><span class="lsep">|</span><a href="/posts/1490763/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 05:49:39Z" class="relativetime">Sep 29 '09 at 5:49</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/67211/gregory"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/2eea31f9ef4a3d54f240de71eac2af6b?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/67211/gregory">Gregory</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">456</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="13 bronze badges"><span class="badge3"></span><span class="badgecount">13</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1490763" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1343221" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The reason people want to sing it high praises is that Perl is very powerful in all the ways that matter, including in the very important metrics of &quot;effort expended to develop software with functionality X&quot;.</span>
+                    &ndash;&nbsp;<a href="/users/119280/dvk"
+                       title="74621 reputation"
+                       class="comment-user">DVK</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 08:15:56Z" class="relativetime-clean">Sep 29 '09 at 8:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1490763" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1490820"></a>
+<div id="answer-1490820" class="answer" data-answerid="1490820"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1490820">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Kids these days!  Back in the day, all we had was <a href="http://en.wikipedia.org/wiki/SNOBOL" rel="nofollow">SNOBOL</a> -- and we liked it!  Try it sometime...you never know, you might want something respectable to fall back on when this Perl fad runs its course!</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1490820" title="short permalink to this answer" class="short-link" id="link-post-1490820">share</a><span class="lsep">|</span><a href="/posts/1490820/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 06:07:05Z" class="relativetime">Sep 29 '09 at 6:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/153430/jim-lewis"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a446e1fd338fb334fa68b3f7470cd65b?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/153430/jim-lewis">Jim Lewis</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 23416" dir="ltr">23.4k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="45 silver badges"><span class="badge2"></span><span class="badgecount">45</span></span><span title="71 bronze badges"><span class="badge3"></span><span class="badgecount">71</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1490820" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1342861" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1 lol... (15 chars)</span>
+                    &ndash;&nbsp;<a href="/users/117069/rcix"
+                       title="14821 reputation"
+                       class="comment-user owner">RCIX</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 06:26:25Z" class="relativetime-clean">Sep 29 '09 at 6:26</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1490820" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1490856"></a>
+<div id="answer-1490856" class="answer" data-answerid="1490856"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1490856">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Perl is widely used for string manipulation tasks as its string manipulation API is easy to learn. And also its regex is widely used. It has been in use for a very long time and anyone with a Unix background would pick up perl very easily. Historically, perl was developed in the late 80's for report processing tasks and was "originally" developed for text processing tasks. So till date, the trend continues as anyone with a string manipulation task or text processing task would opt for perl as the first choice. Its not that other languages like python arent up to the task, but perl's popular in this area.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1490856" title="short permalink to this answer" class="short-link" id="link-post-1490856">share</a><span class="lsep">|</span><a href="/posts/1490856/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 06:19:55Z" class="relativetime">Sep 29 '09 at 6:19</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/100836/zaki"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3cb2756e74033587a855f771f05cb6b3?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/100836/zaki">Zaki</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,146</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="19 silver badges"><span class="badge2"></span><span class="badgecount">19</span></span><span title="37 bronze badges"><span class="badge3"></span><span class="badgecount">37</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1490856" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1490856" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1495439"></a>
+<div id="answer-1495439" class="answer" data-answerid="1495439"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1495439">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I like Perl a lot, write books about it, publish a magazine about it, and so on. I don't think I would ever say it's the best language to do anything in. A lot of that has to do with the task you need to do. For many string processing tasks, ETL, data cleanup, and so in, Perl is a very strong and capable language. You wouldn't have that much trouble doing simple tasks.</p>
+
+<p>Your comment sounds like it comes from the early 1990s though, when the rest of the world hadn't caught up. Many of the dynamic languages are now up to task, so you might not have to switch languages. If you decide to use Perl and run into problems, there are plenty of people here who are willing to help, and not all of us will fault you if you choose something else. :)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1495439" title="short permalink to this answer" class="short-link" id="link-post-1495439">share</a><span class="lsep">|</span><a href="/posts/1495439/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 23:24:15Z" class="relativetime">Sep 29 '09 at 23:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2766176/brian-d-foy"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/edd8638efe875601bfe394a8aea5b16d?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2766176/brian-d-foy">brian d foy</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 82208" dir="ltr">82.2k</span><span title="22 gold badges"><span class="badge1"></span><span class="badgecount">22</span></span><span title="139 silver badges"><span class="badge2"></span><span class="badgecount">139</span></span><span title="371 bronze badges"><span class="badge3"></span><span class="badgecount">371</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1495439" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1495439" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1490809"></a>
+<div id="answer-1490809" class="answer" data-answerid="1490809"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1490809">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>At the beginning, Perl was developed for easy report processing and dealing with text files, thus it's got a very strong REGEX support. Most of the info on REGEX you can find in <a href="http://perldoc.perl.org/" rel="nofollow">perldoc</a>. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1490809" title="short permalink to this answer" class="short-link" id="link-post-1490809">share</a><span class="lsep">|</span><a href="/posts/1490809/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 06:04:41Z" class="relativetime">Sep 29 '09 at 6:04</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/155007/andreyv"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/16f42efd2849f391a85c242163655bb1?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/155007/andreyv">andreyv</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">69</span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1490809" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1490809" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1491399"></a>
+<div id="answer-1491399" class="answer" data-answerid="1491399"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1491399">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I disagree that Perl is the best language for text processing.  Simple things are easy; to replace foo with bar:</p>
+
+<pre><code>$data =~ s/foo/bar/g;
+</code></pre>
+
+<p>Harder things are not simple, though.  Look at <a href="http://search.cpan.org/perldoc?Data%3A%3ASExpression" rel="nofollow">Data::SExpression</a>, for example.  It is a lot of code to do something very simple.</p>
+
+<p>An similar implementation in Haskell with PArrow looks something like:</p>
+
+<pre><code>import Text.ParserCombinators.PArrow
+
+data Atom = QuotedString String | Symbol String
+          deriving (Show, Eq)
+
+data Sexp = Sexp [Sexp] | Atom Atom
+          deriving (Eq)
+
+
+quotedString :: Char -&gt; Char -&gt; MD a Atom
+quotedString quoteChar escapeChar = between q q inside &gt;&gt;^ QuotedString
+    where q = char quoteChar
+          inside = many $ (char escapeChar &gt;&gt;&gt; anyChar) &lt;+&gt; notChar quoteChar
+
+doubleQuotedString, symbol :: MD a Atom
+doubleQuotedString = quotedString '"' '\\'
+symbol = word &gt;&gt;^ Symbol
+
+atom, sexp :: MD a Sexp
+atom = (doubleQuotedString &lt;+&gt; symbol) &gt;&gt;^ Atom
+sexp = atom &lt;+&gt; (between (char '(') (char ')') sexp' &gt;&gt;^ Sexp)
+       where sexp' = sepBy1 sexp spaces
+</code></pre>
+
+<p>Just sayin'.  Perl is not the end-all-and-be-all of text manipulation.  There are many reasons to prefer Perl to other languages, but parsing is not one of them.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1491399" title="short permalink to this answer" class="short-link" id="link-post-1491399">share</a><span class="lsep">|</span><a href="/posts/1491399/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1491399/revisions" title="show all edits to this post">edited <span title="2009-09-29 19:59:45Z" class="relativetime">Sep 29 '09 at 19:59</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/8355/cjm"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8d0099a2574719d7a67eab012851bf9b?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/8355/cjm">cjm</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 49954" dir="ltr">50k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="89 silver badges"><span class="badge2"></span><span class="badgecount">89</span></span><span title="144 bronze badges"><span class="badge3"></span><span class="badgecount">144</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 09:02:17Z" class="relativetime">Sep 29 '09 at 9:02</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/8457/jrockway"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/cfc5e6808a7e7cf74768be0adc766452?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/8457/jrockway">jrockway</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 28324" dir="ltr">28.3k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="49 silver badges"><span class="badge2"></span><span class="badgecount">49</span></span><span title="79 bronze badges"><span class="badge3"></span><span class="badgecount">79</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1491399" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1344832" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><a href="http://search.cpan.org/perldoc/Data::SExpression" rel="nofollow">search.cpan.org/perldoc/Data::SExpression</a></span>
+                    &ndash;&nbsp;<a href="/users/1337/brad-gilbert"
+                       title="14578 reputation"
+                       class="comment-user">Brad Gilbert</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 13:56:56Z" class="relativetime-clean">Sep 29 '09 at 13:56</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1345109" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">There is impossible to write Text.ParserCombinators.PArrow module in perl? It is new for me.</span>
+                    &ndash;&nbsp;<a href="/users/49197/hynek-pichi-vychodil"
+                       title="17517 reputation"
+                       class="comment-user">Hynek -Pichi- Vychodil</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 14:49:03Z" class="relativetime-clean">Sep 29 '09 at 14:49</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1345572" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Not impossible.  Also not done.  The question is &quot;why use Perl for parsers&quot;, not &quot;why use Perl for writing a parser combinator library&quot;.  The answer to the second question is not the same as the answer to the first.</span>
+                    &ndash;&nbsp;<a href="/users/8457/jrockway"
+                       title="28324 reputation"
+                       class="comment-user">jrockway</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 16:03:36Z" class="relativetime-clean">Sep 29 '09 at 16:03</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1348687" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I don&#39;t understand the purpose of this Parser Arrow ... when on CPAN there are 1733 modules under the Parse namespace , beat that Haskell ! <a href="http://search.cpan.org/search?query=parse&amp;mode=module" rel="nofollow">search.cpan.org/search?query=parse&amp;mode=module</a>.  And I will make it a habbit of contradicting you(because I&#39;m right) , Perl IS the end-all-and-be-all of text manipulation. :)</span>
+                    &ndash;&nbsp;<a href="/users/34051/xxxxxxx"
+                       title="1739 reputation"
+                       class="comment-user">xxxxxxx</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-30 04:57:27Z" class="relativetime-clean">Sep 30 '09 at 4:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1349576" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">do they ?  can you elaborate ?</span>
+                    &ndash;&nbsp;<a href="/users/34051/xxxxxxx"
+                       title="1739 reputation"
+                       class="comment-user">xxxxxxx</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-30 09:32:14Z" class="relativetime-clean">Sep 30 '09 at 9:32</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1491399" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1493396"></a>
+<div id="answer-1493396" class="answer" data-answerid="1493396"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1493396">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Perl was the go-to language for a long time. The problem is it can be pretty messy and difficult to maintain (some people can write Perl that avoids this, but it is very easy to wrote ugly code). I would not tell you to avoid Perl, but many have moved on to some modern alternatives.</p>
+
+<p>I would recommend learning one of the newer scripting languages such as Python or Ruby. Both will work very well for your needs, and can easily handle more difficult tasks later on. They're both quite nice to work in, after having written C and Perl for so long.</p>
+
+<p>In short, Perl would be a good hammer for this nail. Python and Ruby would be nail-guns.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1493396" title="short permalink to this answer" class="short-link" id="link-post-1493396">share</a><span class="lsep">|</span><a href="/posts/1493396/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-09-29 15:45:04Z" class="relativetime">Sep 29 '09 at 15:45</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/23048/mattg"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c76da3846eb3fff027bc1ff373a4945f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/23048/mattg">MattG</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,177</span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1493396" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1345957" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Python is also not modern (almost same age as Perl), but Ruby is.</span>
+                    &ndash;&nbsp;<a href="/users/13467/alexandr-ciornii"
+                       title="6279 reputation"
+                       class="comment-user">Alexandr Ciornii</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-29 17:12:23Z" class="relativetime-clean">Sep 29 '09 at 17:12</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1393944" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">C&#39;mon.  1993 (or 1995) (Ruby) <a href="http://en.wikipedia.org/wiki/Ruby_%28programming_language%29" rel="nofollow">en.wikipedia.org/wiki/Ruby_%28programming_language%29</a>  vs 1991 (Python).  Neither is exactly a toddler.</span>
+                    &ndash;&nbsp;<a href="/users/15842/gregg-lind"
+                       title="8516 reputation"
+                       class="comment-user">Gregg Lind</a>
+                <span class="comment-date" dir="ltr"><span title="2009-10-08 13:36:15Z" class="relativetime-clean">Oct 8 '09 at 13:36</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1493396" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/1490745/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="1490745" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="8872ec4c653acc968af5bcb434502271">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1490745%2fwhy-is-perl-the-best-choice-for-most-string-manipulation-tasks%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f1490745%2fwhy-is-perl-the-best-choice-for-most-string-manipulation-tasks%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/perl" class="post-tag" title="show questions tagged &#39;perl&#39;" rel="tag">perl</a> <a href="/questions/tagged/string" class="post-tag" title="show questions tagged &#39;string&#39;" rel="tag">string</a> <a href="/questions/tagged/programming-languages" class="post-tag" title="show questions tagged &#39;programming-languages&#39;" rel="tag">programming-languages</a> <a href="/questions/tagged/comparison" class="post-tag" title="show questions tagged &#39;comparison&#39;" rel="tag">comparison</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2009-09-29 05:41:00Z"><b>6 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>7142 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-02-15 07:04:24Z">1 year ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1831391831",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1831391831">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},1e4)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/1504717" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">443
+    </div>
+</a><a href="/questions/1504717/why-does-comparing-strings-in-python-using-either-or-is-sometimes-produce" class="question-hyperlink">Why does comparing strings in Python using either &#39;==&#39; or &#39;is&#39; sometimes produce a different result?</a>
+</div>
+<div class="spacer">
+<a href="/q/2045644" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">53
+    </div>
+</a><a href="/questions/2045644/what-is-the-proper-way-to-check-if-a-string-is-empty-in-perl" class="question-hyperlink">What is the proper way to check if a string is empty in Perl?</a>
+</div>
+<div class="spacer">
+<a href="/q/3019708" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/3019708/simplest-way-to-match-array-of-strings-to-search-in-perl" class="question-hyperlink">Simplest way to match array of strings to search in perl?</a>
+</div>
+<div class="spacer">
+<a href="/q/3362640" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">42
+    </div>
+</a><a href="/questions/3362640/why-are-most-string-manipulations-in-java-based-on-regexp" class="question-hyperlink">Why are most string manipulations in Java based on regexp?</a>
+</div>
+<div class="spacer">
+<a href="/q/4271393" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/4271393/where-can-i-find-simple-exercises-to-practice-string-manipulation-in-perl" class="question-hyperlink">Where can I find simple exercises to practice string manipulation in Perl?</a>
+</div>
+<div class="spacer">
+<a href="/q/6162484" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">443
+    </div>
+</a><a href="/questions/6162484/why-does-modern-perl-avoid-utf-8-by-default" class="question-hyperlink">Why does modern Perl avoid UTF-8 by default?</a>
+</div>
+<div class="spacer">
+<a href="/q/6939130" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/6939130/manipulating-string-perl-svs-in-c" class="question-hyperlink">Manipulating String Perl SVs in C</a>
+</div>
+<div class="spacer">
+<a href="/q/7277813" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">3
+    </div>
+</a><a href="/questions/7277813/am-i-going-crazy-with-the-perl-string-comparison-operator-debug-log-included" class="question-hyperlink">Am I going crazy with the Perl string comparison operator? Debug log included</a>
+</div>
+<div class="spacer">
+<a href="/q/8881291" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted extra-large">1721
+    </div>
+</a><a href="/questions/8881291/why-is-char-preferred-over-string-for-passwords-in-java" class="question-hyperlink">Why is char[] preferred over String for passwords in Java?</a>
+</div>
+<div class="spacer">
+<a href="/q/31460222" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/31460222/comparing-strings-from-xml-in-perl" class="question-hyperlink">Comparing strings from XML in Perl?</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/254599/how-to-get-the-computer-name-not-its-hostname" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to get the computer name (not its hostname)?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110141/how-to-know-whether-a-textfile-has-been-edited-or-tampered-with" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to know whether a textfile has been edited or tampered with?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/25165/three-logicians-walk-out-of-the-bar" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Three logicians walk out of the bar
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34723842/whats-is-the-difference-between-array-ofn-arrayn-and-array-n" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s is the difference between Array.of(n) , Array(n) and array = [n]?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299041/what-would-be-the-idiom-for-the-following-sentence" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would be the idiom for the following sentence?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/60475/how-do-exit-interviews-benefit-the-company" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do exit interviews benefit the company?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/228132/a-converse-to-cartan-hadamard-theorem" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A Converse to Cartan–Hadamard theorem?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103834/how-to-repeat-a-matrix-on-its-side" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to repeat a matrix on it&#39;s side?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/719916/how-to-have-a-forward-slash-in-a-file-name" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to have a forward slash in a file name?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-writers" title="Writers Stack Exchange"></div><a href="http://writers.stackexchange.com/questions/20399/where-to-draw-the-line-between-fantasy-and-reality-in-a-story" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where to draw the line between fantasy and reality in a story?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34724320/why-is-long-the-type-of-the-smallest-int-%e2%88%922147483648" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is long the type of the smallest int, −2147483648?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/43592/what-is-the-meaning-of-the-osic-suffix-on-a-metal-e-g-cobaltosic-oxide" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the meaning of the &quot;-osic&quot; suffix on a metal (e.g., cobaltosic oxide)?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-reverseengineering" title="Reverse Engineering Stack Exchange"></div><a href="http://reverseengineering.stackexchange.com/questions/11743/unable-to-break-at-driverentry-of-malicious-driver" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:489 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Unable to break at DriverEntry of malicious Driver
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61425/what-are-the-implications-of-the-whole-class-failing-an-exam" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What are the implications of the whole class failing an exam?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228802/why-are-many-physicists-trying-to-develop-non-perturbative-quantum-theories" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are many physicists trying to develop non-perturbative quantum theories?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114412/why-does-binary-exist" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does Binary exist?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/24514/what-possible-causes-for-the-check-engine-light-can-i-check-for-myself" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What possible causes for the &quot;check engine&quot; light can I check for myself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/298987/what-is-the-word-that-means-to-lose-against-a-totally-inexperienced-opponent" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the word that means -&quot;to lose against a totally inexperienced opponent&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-es" title="Stack Overflow en español"></div><a href="http://es.stackoverflow.com/questions/2381/eliminar-sin-rastro-archivo-de-subversion" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:637 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    &#191;Eliminar sin rastro archivo de Subversion?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/125886/check-if-a-user-exists-in-a-sql-server-database" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Check if a user exists in a SQL Server database
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251478/how-important-is-it-to-upgrade-ship-weapons-in-mass-effect-2" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How important is it to upgrade ship weapons in Mass Effect 2?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1024672/is-it-possible-to-create-firewall-that-only-allows-legitimate-webserver-traffic" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible to create firewall that only allows legitimate webserver traffic on port 443 and not any other service?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1608168/random-solving-of-a-rubik-cube" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Random solving of a Rubik cube .
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-philosophy" title="Philosophy Stack Exchange"></div><a href="http://philosophy.stackexchange.com/questions/31422/occams-razor-vs-less-simple-yet-viable-alternatives" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:265 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Occam&#39;s razor vs. less simple yet viable alternatives
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/1490745" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/1490745/ivc/ec26');});
+</script>
+<noscript>
+    <div><img src="/posts/1490745/ivc/ec26" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-perl</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3157
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('perl,string,programming-languages,comparison');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|perl|string|programming-languages|comparison|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

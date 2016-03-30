@@ -1,0 +1,3626 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>multicore - What parallel programming model do you recommend today to take advantage of the manycore processors of tomorrow? - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="What parallel programming model do you recommend today to take advantage of the manycore processors of tomorrow?" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="If you were writing a new application from scratch today, and wanted it to scale to all the cores you could throw at it tomorrow, what parallel programming model/system/language/library would you c..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the/80039"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the/80039" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=8be8ff05c90c"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=e67f9bfa3488">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;What parallel programming model do you recommend today to take advantage of the manycore processors of tomorrow?&#39;" href="/feeds/question/79999">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the/80039" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the/80039" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the/80039">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:79999});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '79999');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452639951,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"c82e9ba6da5583e8fcc07891e4726864","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"1750d7783db0","js/moderator.en.js":"9473d953df60","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"5bb841502813","js/wmd.en.js":"d725c4fade0a","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"f58b9bbdda52","js/tageditor.en.js":"c56016b68262","js/tageditornew.en.js":"a7cff53691da","js/inline-tag-editing.en.js":"33c4ccd9bf9f","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"13dd6d49dd1e","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"27ead32e3cf5","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"9973d183bb8f","js/keyboard-shortcuts.en.js":"f4df1d9e6e4d","js/external-editor.en.js":"9327339c2328","js/external-editor.en.js":"9327339c2328","js/snippet-javascript.en.js":"433470c8fb5e","js/snippet-javascript-codemirror.en.js":"7f3b96fdf7b3"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f79999%2fwhat-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the%2f80039" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f79999%2fwhat-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the%2f80039" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f79999%2fwhat-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the%2f80039" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f79999%2fwhat-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the%2f80039" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f79999%2fwhat-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the%2f80039" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the" class="question-hyperlink">What parallel programming model do you recommend today to take advantage of the manycore processors of tomorrow?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="79999"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk484336805",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk484336805">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="79999">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">44</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>38</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>If you were writing a new application from scratch today, and wanted it to scale to all the cores you could throw at it tomorrow, what parallel programming model/system/language/library would you choose?  Why?</p>
+
+<p>I am particularly interested in answers along these axes:</p>
+
+<ol>
+<li>Programmer productivity / ease of use (can mortals successfully use it?)</li>
+<li>Target application domain (what problems is it (not) good at?)</li>
+<li>Concurrency style (does it support tasks, pipelines, data parallelism, messages...?)
+<li>Maintainability / future-proofing (will anybody still be using it in 20 years?)</li>
+<li>Performance (how does it scale on what kinds of hardware?)</li>
+</ol>
+
+<p>I am being deliberately vague on the nature of the application in anticipation of getting good general answers useful for a variety of applications.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/multicore" class="post-tag" title="show questions tagged &#39;multicore&#39;" rel="tag">multicore</a> <a href="/questions/tagged/parallel-processing" class="post-tag" title="show questions tagged &#39;parallel-processing&#39;" rel="tag">parallel-processing</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/79999" title="short permalink to this question" class="short-link" id="link-post-79999">share</a><span class="lsep">|</span><a href="/posts/79999/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/79999/revisions" title="show all edits to this post">edited <span title="2010-09-27 02:12:20Z" class="relativetime">Sep 27 '10 at 2:12</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/131930/jeremy-friesner"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/91536fe27d32713b8a154a0bf42f6748?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/131930/jeremy-friesner">Jeremy Friesner</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 23060" dir="ltr">23.1k</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="48 silver badges"><span class="badge2"></span><span class="badgecount">48</span></span><span title="103 bronze badges"><span class="badge3"></span><span class="badgecount">103</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2008-09-17 04:29:37Z" class="relativetime">Sep 17 '08 at 4:29</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/171236/doctor-j"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d3b966fda9859d4bcd97c46b6a851210?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/171236/doctor-j">Doctor J</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,378</span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-79999" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-79999" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								22 Answers
+                                <span style="display:none;" itemprop="answerCount">22</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/79999/what-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="84271"></a>
+<div id="answer-84271" class="answer" data-answerid="84271"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="84271">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">27</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Multi-core programming may actually require more than one paradigm. Some current contenders are:</p>
+
+<ol>
+<li><a href="http://labs.google.com/papers/mapreduce.html">MapReduce</a>. This works well where a problem can be easily decomposed into parallel chunks.</li>
+<li><a href="http://www.haskell.org/haskellwiki/GHC/Data_Parallel_Haskell">Nested Data Parallelism</a>. This is similar to MapReduce, but actually supports recursive decomposition of a problem, even when the recursive chunks are of irregular size. Look for NDP to be a big win in purely functional languages running on massively parallel but limited hardware (like GPUs).</li>
+<li><a href="http://en.wikipedia.org/wiki/Software_transactional_memory">Software Transactional Memory</a>. If you need traditional threads, STM makes them bearable. You pay a 50% performance hit in critical sections, but you can scale complex locking schemes to 100s of processors without pain. This will not, however, work for distributed systems.</li>
+<li><a href="http://www.erlang.org/">Parallel object threads with messaging</a>. This really clever model is used by Erlang. Each "object" becomes a lightweight thread, and objects communicate by asynchronous messages and pattern matching. It's basically true parallel OO. This has succeeded nicely in several real-world applications, and it works great for unreliable distributed systems.</li>
+</ol>
+
+<p>Some of these paradigms give you maximum performance, but only work if the problem decomposes cleanly. Others sacrifice some performance, but allow a wider variety of algorithms. I suspect that some combination of the above will ultimately become a standard toolkit.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/84271" title="short permalink to this answer" class="short-link" id="link-post-84271">share</a><span class="lsep">|</span><a href="/posts/84271/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 15:10:10Z" class="relativetime">Sep 17 '08 at 15:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/12089/emk"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c80aa0608c845cd64585e9fc9ca4cc67?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/12089/emk">emk</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 35377" dir="ltr">35.4k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="28 silver badges"><span class="badge2"></span><span class="badgecount">28</span></span><span title="43 bronze badges"><span class="badge3"></span><span class="badgecount">43</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-84271" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-84271" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk543194508",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk543194508">
+            </div>
+  
+<a name="80176"></a>
+<div id="answer-80176" class="answer" data-answerid="80176"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80176">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">13</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Two solutions I really like are <a href="http://Moscova.Inria.Fr/join/">join calculus</a> (<a href="http://JoCaml.Inria.Fr/">JoCaml</a>, <a href="http://Research.Microsoft.Com/~nick/polyphony/">Polyphonic C#</a>, <a href="http://Research.Microsoft.Com/COmega/">Cω</a>) and the <a href="http://Wikipedia.Org/wiki/Actor_model">actor model</a> (<a href="http://Erlang.Org/">Erlang</a>, <a href="http://Scala-Lang.Org/">Scala</a>, <a href="http://ERights.Org/">E</a>, <a href="http://IoLanguage.Com/">Io</a>).</p>
+
+<p>I'm not particularly impressed with <a href="http://Wikipedia.Org/wiki/Software_transactional_memory">Software Transactional Memory</a>. It just feels like it's only there to allow threads to cling on to life a little while longer, even though they should have died decades ago. However, it does have three major advantages:</p>
+
+<ol>
+<li>People understand transactions in databases</li>
+<li>There is already talk of transactional RAM hardware</li>
+<li>As much as we all wish them gone, threads are probably going to be the dominant concurrency model for the next couple of decades, sad as that may be. STM could significantly reduce the pain.</li>
+</ol>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80176" title="short permalink to this answer" class="short-link" id="link-post-80176">share</a><span class="lsep">|</span><a href="/posts/80176/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 05:04:04Z" class="relativetime">Sep 17 '08 at 5:04</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2988/j%c3%b6rg-w-mittag"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ed181f8c80df53d2b67a4f4fff088ed4?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2988/j%c3%b6rg-w-mittag">J&#246;rg W Mittag</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 204452" dir="ltr">204k</span><span title="38 gold badges"><span class="badge1"></span><span class="badgecount">38</span></span><span title="267 silver badges"><span class="badge2"></span><span class="badgecount">267</span></span><span title="432 bronze badges"><span class="badge3"></span><span class="badgecount">432</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80176" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-14194371" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">&quot;threads are probably going to be the dominant concurrency model for the next couple of decades&quot;. From my point of view, threads have basically already disappeared.</span>
+                    &ndash;&nbsp;<a href="/users/13924/jon-harrop"
+                       title="31814 reputation"
+                       class="comment-user">Jon Harrop</a>
+                <span class="comment-date" dir="ltr"><span title="2012-06-04 23:34:00Z" class="relativetime-clean">Jun 4 '12 at 23:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80176" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80039"></a>
+<div id="answer-80039" class="answer" data-answerid="80039"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80039">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">11</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The mapreduce/hadoop paradigm is useful, and relevant.  Especially for people who are used to languages like perl, the idea of mapping over an array and doing some action on each element should come pretty fluidly and naturally, and mapreduce/hadoop just takes it to the next stage and says that there's no reason that each element of the array need be processed on the same machine.  </p>
+
+<p>In a sense it's more battle tested, because Google is using mapreduce and plenty of people have been using hadoop, and has shown that it works well for scaling applications across multiple machines over the network.  And if you can scale over multiple machines across the network, you can scale over multiple cores in a single machine.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80039" title="short permalink to this answer" class="short-link" id="link-post-80039">share</a><span class="lsep">|</span><a href="/posts/80039/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:35:18Z" class="relativetime">Sep 17 '08 at 4:35</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/7548/daniel-papasian"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8dbf61180e3e86ac1620fa9753eafab6?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/7548/daniel-papasian">Daniel Papasian</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 11725" dir="ltr">11.7k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="21 silver badges"><span class="badge2"></span><span class="badgecount">21</span></span><span title="29 bronze badges"><span class="badge3"></span><span class="badgecount">29</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80039" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-875580" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Annoyingly, I know of no MapReduce implementations which work in parallel (like Hadoop) but which are not distributed.  Mongo and CouchDB have map/reduce implementations, but they don&#39;t parallelize the computations, and hadoop is a monster to set up if you just want to gain benefit from 4-8 cores in a single box.</span>
+                    &ndash;&nbsp;<a href="/users/1502059/nick-bastin"
+                       title="15116 reputation"
+                       class="comment-user">Nick Bastin</a>
+                <span class="comment-date" dir="ltr"><span title="2009-06-30 13:17:50Z" class="relativetime-clean">Jun 30 '09 at 13:17</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1188370" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Map and Reduce are simply functional programming constructs. They can be easily implemented in any major language. Functional languages like F# already have these built in. If you need intra box parallelism use a library for you language. On .Net I have been using Task Parallel Library for quite sometime.</span>
+                    &ndash;&nbsp;<a href="/users/41717/steve"
+                       title="4866 reputation"
+                       class="comment-user">Steve</a>
+                <span class="comment-date" dir="ltr"><span title="2009-08-29 19:16:04Z" class="relativetime-clean">Aug 29 '09 at 19:16</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2941748" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Steve: Note that <code>MapReduce</code> is not <code>reduce g (map f xs)</code> but, rather, something much more complicated.</span>
+                    &ndash;&nbsp;<a href="/users/13924/jon-harrop"
+                       title="31814 reputation"
+                       class="comment-user">Jon Harrop</a>
+                <span class="comment-date" dir="ltr"><span title="2010-05-23 18:34:09Z" class="relativetime-clean">May 23 '10 at 18:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80039" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80024"></a>
+<div id="answer-80024" class="answer" data-answerid="80024"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80024">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">10</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For .NET application I choose "<a href="http://msdn.microsoft.com/en-us/magazine/cc163329.aspx" rel="nofollow">.NET Parallel Extensions (PLINQ)</a>" it's extremely easy to use and allows me to parallelize existing code in minutes.</p>
+
+<ol>
+<li>It's simple to learn</li>
+<li>Used to perform complex operations over large arrays of objects, so I can't comment on other applications</li>
+<li>Supports tasks and piplines</li>
+<li>Should be supported for a next couple of years, but who knows for sure?</li>
+<li>CTP version has some performance issues, but already looks very promising.</li>
+</ol>
+
+<p>Mono <a href="http://tirania.org/blog/archive/2008/Jul-26-1.html" rel="nofollow">will likely get</a> support for PLINQ, so it could be a cross-platform solution as well.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80024" title="short permalink to this answer" class="short-link" id="link-post-80024">share</a><span class="lsep">|</span><a href="/posts/80024/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/80024/revisions" title="show all edits to this post">edited <span title="2008-09-17 04:50:43Z" class="relativetime">Sep 17 '08 at 4:50</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:33:07Z" class="relativetime">Sep 17 '08 at 4:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1196/aku"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/73a14c05d010066c0ea9f5ad934a8510?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1196/aku">aku</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 69970" dir="ltr">70k</span><span title="22 gold badges"><span class="badge1"></span><span class="badgecount">22</span></span><span title="139 silver badges"><span class="badge2"></span><span class="badgecount">139</span></span><span title="184 bronze badges"><span class="badge3"></span><span class="badgecount">184</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80024" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80024" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80079"></a>
+<div id="answer-80079" class="answer" data-answerid="80079"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80079">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For heavy computations and the like, purely functional languages like <a href="http://www.haskell.org/">Haskell</a> are easily <a href="http://www.macs.hw.ac.uk/~dsg/gph/">parallelizable</a> without any effort on the part of the programmer. Apart from learning Haskell, that is.</p>
+
+<p>However, I do not think that this is the way of the (near) future, simply because too many programmers are too used to the imperative programming paradigm.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80079" title="short permalink to this answer" class="short-link" id="link-post-80079">share</a><span class="lsep">|</span><a href="/posts/80079/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:46:01Z" class="relativetime">Sep 17 '08 at 4:46</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/14637/thomas"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1904e7096278a10f1dfb3fdc0ceb53cc?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/14637/thomas">Thomas</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 77826" dir="ltr">77.8k</span><span title="18 gold badges"><span class="badge1"></span><span class="badgecount">18</span></span><span title="184 silver badges"><span class="badge2"></span><span class="badgecount">184</span></span><span title="291 bronze badges"><span class="badge3"></span><span class="badgecount">291</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80079" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2941766" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">-1: &quot;purely functional languages like Haskell are easily parallelizable without any effort on the part of the programmer&quot;. Only if &quot;parallelizable&quot; means burning all of your cores without getting decent performance. In reality, purely functional languages like Haskell seriously impede parallelism.</span>
+                    &ndash;&nbsp;<a href="/users/13924/jon-harrop"
+                       title="31814 reputation"
+                       class="comment-user">Jon Harrop</a>
+                <span class="comment-date" dir="ltr"><span title="2010-05-23 18:41:34Z" class="relativetime-clean">May 23 '10 at 18:41</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3041113" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I elaborated recently in a criticism of some published research on this subject: <a href="http://flyingfrogblog.blogspot.com/2010/06/regular-shape-polymorphic-parallel.html" rel="nofollow">flyingfrogblog.blogspot.com/2010/06/&hellip;</a></span>
+                    &ndash;&nbsp;<a href="/users/13924/jon-harrop"
+                       title="31814 reputation"
+                       class="comment-user">Jon Harrop</a>
+                <span class="comment-date" dir="ltr"><span title="2010-06-05 11:08:14Z" class="relativetime-clean">Jun 5 '10 at 11:08</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3041127" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In essence, purely functional languages make heavy use of immutable data structures. That places far more stress on the garbage collector (which has serial components) and memory bandwidth due to the unnecessary copying. The result is cache unfriendliness that forces every core to contend for the machine&#39;s shared memory, destroying scalability. That is why the Haskell guys only got 2.6&#215; speedup on 8 cores when other published results show up to 5-7&#215; speedups.</span>
+                    &ndash;&nbsp;<a href="/users/13924/jon-harrop"
+                       title="31814 reputation"
+                       class="comment-user">Jon Harrop</a>
+                <span class="comment-date" dir="ltr"><span title="2010-06-05 11:12:06Z" class="relativetime-clean">Jun 5 '10 at 11:12</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3041139" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">FWIW, the guys at MIT who produced Cilk (which was recently bought by Intel) explain in their papers about cache oblivious algorithms that it is essential to mutate data structures in place if you want to avoid that effect.</span>
+                    &ndash;&nbsp;<a href="/users/13924/jon-harrop"
+                       title="31814 reputation"
+                       class="comment-user">Jon Harrop</a>
+                <span class="comment-date" dir="ltr"><span title="2010-06-05 11:14:06Z" class="relativetime-clean">Jun 5 '10 at 11:14</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3043245" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Note that the research Jon refers to isn&#39;t yet published as he claims, and one of the authors went to some effort to rebut his criticism in the comments on previous entry on Jon&#39;s blog.</span>
+                    &ndash;&nbsp;<a href="/users/96982/ganesh-sittampalam"
+                       title="23194 reputation"
+                       class="comment-user">Ganesh Sittampalam</a>
+                <span class="comment-date" dir="ltr"><span title="2010-06-05 20:20:02Z" class="relativetime-clean">Jun 5 '10 at 20:20</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80079" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="89155"></a>
+<div id="answer-89155" class="answer" data-answerid="89155"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="89155">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><a href="http://www.kamaelia.org/Home" rel="nofollow">kamaelia</a> is a <strong>python framework</strong> for building applications with lots of communicating processes.</p>
+
+<blockquote>
+  <h1><img src="http://www.kamaelia.org/cat-trans-medium.png" width="100" height="93"> Kamaelia - Concurrency made useful, fun</h1>
+  
+  <p>In Kamaelia you build systems from <strong>simple components that talk to each other</strong>. This speeds development, massively aids maintenance and also means you <strong>build naturally concurrent software</strong>. It's intended to be accessible by <strong>any</strong> developer, including novices. It also makes it fun :)  </p>
+  
+  <p>What sort of systems? Network servers, clients, desktop applications, pygame based games, transcode systems and pipelines, digital TV systems, spam eradicators, teaching tools, and a fair amount more :) </p>
+</blockquote>
+
+<p>See also the Question <a href="http://stackoverflow.com/questions/121674/multi-core-and-concurrency-languages-libraries-and-development-techniques">Multi-Core and Concurrency - Languages, Libraries and Development Techniques</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/89155" title="short permalink to this answer" class="short-link" id="link-post-89155">share</a><span class="lsep">|</span><a href="/posts/89155/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/89155/revisions" title="show all edits to this post">edited <span title="2008-11-22 16:58:31Z" class="relativetime">Nov 22 '08 at 16:58</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2008-09-18 01:20:15Z" class="relativetime">Sep 18 '08 at 1:20</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2541/sam-hasler"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/R15wI.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2541/sam-hasler">Sam Hasler</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 10421" dir="ltr">10.4k</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="52 silver badges"><span class="badge2"></span><span class="badgecount">52</span></span><span title="89 bronze badges"><span class="badge3"></span><span class="badgecount">89</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-89155" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-89155" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80044"></a>
+<div id="answer-80044" class="answer" data-answerid="80044"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80044">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I'm betting on communicating event loops with promises, as realized in systems like <a href="http://twistedmatrix.com" rel="nofollow">Twisted</a>, <a href="http://erights.org" rel="nofollow">E</a>, <a href="http://prog.vub.ac.be/amop/start" rel="nofollow">AmbientTalk</a>, and others. They retain the ability to write code with the same execution-model assumptions as non-concurrent/parallel applications, but scaling to distributed and parallel systems. (That's why I'm working on <a href="http://launchpad.net/ecru" rel="nofollow">Ecru</a>.)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80044" title="short permalink to this answer" class="short-link" id="link-post-80044">share</a><span class="lsep">|</span><a href="/posts/80044/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:36:19Z" class="relativetime">Sep 17 '08 at 4:36</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/6043/allen"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/7b19b7049d7a3b14bd0c5623ad08f124?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/6043/allen">Allen</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">3,794</span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="28 bronze badges"><span class="badge3"></span><span class="badgecount">28</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80044" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80044" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80064"></a>
+<div id="answer-80064" class="answer" data-answerid="80064"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80064">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Check out <a href="http://www.erlang.org/" rel="nofollow">Erlang</a>. Google for it, and watch the various presentations and videos. Many of the programmers and architects I respect are quite taken with its scalability. We're using it where I work pretty heavily...</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80064" title="short permalink to this answer" class="short-link" id="link-post-80064">share</a><span class="lsep">|</span><a href="/posts/80064/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:40:56Z" class="relativetime">Sep 17 '08 at 4:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/14028/kevin-little"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/66c0b0464838d75ad39c0baeaa01bf4c?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/14028/kevin-little">Kevin Little</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">6,600</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="42 bronze badges"><span class="badge3"></span><span class="badgecount">42</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80064" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-51609" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">There&#39;s also Reia for Erlang <a href="http://wiki.reia-lang.org/wiki/Reia_Programming_Language" rel="nofollow">wiki.reia-lang.org/wiki/Reia_Programming_Language</a></span>
+                    &ndash;&nbsp;<a href="/users/2541/sam-hasler"
+                       title="10421 reputation"
+                       class="comment-user">Sam Hasler</a>
+                <span class="comment-date" dir="ltr"><span title="2008-10-02 15:30:23Z" class="relativetime-clean">Oct 2 '08 at 15:30</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80064" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="84547"></a>
+<div id="answer-84547" class="answer" data-answerid="84547"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="84547">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>As mentioned, purely functional languages are inherently parallelizable. However, imperative languages are much more intuitive for many people, and we are deeply entrenched in imperative legacy code. The fundamental issue is that pure functional languages express side-effects explicitly, while side effects are expressed implicitly in imperative languages by the order of statements.</p>
+
+<p>I believe that techniques to declaratively express side effects (e.g., in an object oriented framework) will allow compilers to decompose imperative statements into their functional relationships. This should then allow the code to be automatically parallelized in much the same way pure functional code would be.</p>
+
+<p>Of course, just as today it is still desirable to write certain performance-critical code in assembly language, it will still be necessary to write performance-critical explicitly parallel code tomorrow. However, techniques such as I outlined should help automatically take advantage of manycore architectures with minimal effort expended by the developer.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/84547" title="short permalink to this answer" class="short-link" id="link-post-84547">share</a><span class="lsep">|</span><a href="/posts/84547/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 15:32:58Z" class="relativetime">Sep 17 '08 at 15:32</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/16080/smo"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3e62e10fe5faf61381c5ffb3f12dcb72?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/16080/smo">smo</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">678</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-84547" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-84547" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="658601"></a>
+<div id="answer-658601" class="answer" data-answerid="658601"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="658601">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I'm surprised nobody has suggested MPI (Message Passing Interface).  While designed for distributed memory, MPI programs with essential and frequent global coupling (solving linear and nonlinear equations with billions of unknowns) have been shown to scale to 200k cores.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/658601" title="short permalink to this answer" class="short-link" id="link-post-658601">share</a><span class="lsep">|</span><a href="/posts/658601/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-03-18 14:53:15Z" class="relativetime">Mar 18 '09 at 14:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/33208/jed"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/snMPG.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/33208/jed">Jed</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">987</span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="21 bronze badges"><span class="badge3"></span><span class="badgecount">21</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-658601" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-658601" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80034"></a>
+<div id="answer-80034" class="answer" data-answerid="80034"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80034">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Qt concurrent offers an implementation of MapReduce for multicore which is really easy to use. It is multiOS.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80034" title="short permalink to this answer" class="short-link" id="link-post-80034">share</a><span class="lsep">|</span><a href="/posts/80034/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:34:36Z" class="relativetime">Sep 17 '08 at 4:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/446497/fulmicoton"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1cd46a26ceada395ae900bd4cd40a052?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/446497/fulmicoton">fulmicoton</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">6,670</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="31 silver badges"><span class="badge2"></span><span class="badgecount">31</span></span><span title="59 bronze badges"><span class="badge3"></span><span class="badgecount">59</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80034" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80034" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80150"></a>
+<div id="answer-80150" class="answer" data-answerid="80150"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80150">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If your problem domain permits try to think about a share nothing model. The less you share between processes and threads the less you have to design complex concurrency models.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80150" title="short permalink to this answer" class="short-link" id="link-post-80150">share</a><span class="lsep">|</span><a href="/posts/80150/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:59:33Z" class="relativetime">Sep 17 '08 at 4:59</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/13615/daniel"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a86a83fc626cee1768d73446a5817890?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/13615/daniel">Daniel</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">291</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80150" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80150" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="229336"></a>
+<div id="answer-229336" class="answer" data-answerid="229336"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="229336">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>See also the question <a href="http://stackoverflow.com/questions/121674/multi-core-and-concurrency-languages-libraries-and-development-techniques">Multi-Core and Concurrency - Languages, Libraries and Development Techniques</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/229336" title="short permalink to this answer" class="short-link" id="link-post-229336">share</a><span class="lsep">|</span><a href="/posts/229336/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2008-10-23 11:08:19Z" class="relativetime">Oct 23 '08 at 11:08</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2541/sam-hasler"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/R15wI.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2541/sam-hasler">Sam Hasler</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 10421" dir="ltr">10.4k</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="52 silver badges"><span class="badge2"></span><span class="badgecount">52</span></span><span title="89 bronze badges"><span class="badge3"></span><span class="badgecount">89</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-229336" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-229336" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="940345"></a>
+<div id="answer-940345" class="answer" data-answerid="940345"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="940345">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This question seems to keep appearing with different wording - maybe there are different constituencies within StackOverflow.  <a href="http://www.jpaulmorrison.com/fbp/" rel="nofollow"> Flow-Based Programming </a> (FBP) is a concept/methodology that has been around for over 30 years, and is being used to handle most of the batch processing at a major Canadian bank. It has thread-based implementations in Java and C#, although earlier implementations were fiber-based (C++, and mainframe Assembler - the one used at the bank).  Most approaches to the problem of taking advantage of multicore involve trying to take a conventional single-threaded program and figure out which parts can run in parallel.  FBP takes a different approach: the application is designed from the start in terms of multiple "black-box" components running asynchronously (think of a manufacturing assembly line).  Since the interface between components is data streams, FBP is essentially language-independent, and therefore supports mixed-language applications, and domain-specific languages.  For the same reason, side-effects are minimized.  It could also be described as a "share nothing" model, and a MOM (message-oriented middleware).  MapReduce seems to be a special case of FBP. FBP differs from Erlang mostly in that Erlang operates in terms of many short-lived threads, so green threads are more appropriate there, whereas FBP uses fewer (typically a few 10s to a few hundred) longer-lived threads. For a <em>piece</em> of a batch network that has been in daily use for over 30 years, see <a href="http://www.jpaulmorrison.com/fbp/image010.jpg" rel="nofollow"> part of batch network</a>.  For a high-level design of an interactive app, see <a href="http://www.jpaulmorrison.com/cgi-bin/wiki.pl?BrokerageApplication" rel="nofollow"> Brokerage app high-level design</a>. FBP has been found to result in much more maintainable applications, and improved elapsed times - even on single core machines!</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/940345" title="short permalink to this answer" class="short-link" id="link-post-940345">share</a><span class="lsep">|</span><a href="/posts/940345/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-06-02 15:55:15Z" class="relativetime">Jun 2 '09 at 15:55</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/408718/paul-morrison"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ed91d4e4ab700626054cf240cd87bd2a?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/408718/paul-morrison">Paul Morrison</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">659</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="28 bronze badges"><span class="badge3"></span><span class="badgecount">28</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-940345" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-940345" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="940631"></a>
+<div id="answer-940631" class="answer" data-answerid="940631"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="940631">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A job-queue with multiple workers system (not sure of the correct terminology - message queue?)</p>
+
+<p>Why?</p>
+
+<p>Mainly, because it's an absurdly simple concept. You have a list of stuff that needs processing, then a bunch of processes that get jobs and process them.</p>
+
+<p>Also, unlike the reasons, say, Haskell or Erlang are so concurrent/parallelisable(?), it's entirely language-agnostic - you can trivially implement such a system in C, or Python, or any other language (even using shell scripting), whereas I doubt bash will get software transactional memory or join-calculus anytime soon.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/940631" title="short permalink to this answer" class="short-link" id="link-post-940631">share</a><span class="lsep">|</span><a href="/posts/940631/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-06-02 16:48:07Z" class="relativetime">Jun 2 '09 at 16:48</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/745/dbr"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/edf857d71f672d8f411ef6b8376316b8?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/745/dbr">dbr</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 83508" dir="ltr">83.5k</span><span title="42 gold badges"><span class="badge1"></span><span class="badgecount">42</span></span><span title="206 silver badges"><span class="badge2"></span><span class="badgecount">206</span></span><span title="282 bronze badges"><span class="badge3"></span><span class="badgecount">282</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-940631" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1188523" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">As long as you have giant chunks of parallel work to schedule, this works great.  Can you find those giant chunks?</span>
+                    &ndash;&nbsp;<a href="/users/120163/ira-baxter"
+                       title="60710 reputation"
+                       class="comment-user">Ira Baxter</a>
+                <span class="comment-date" dir="ltr"><span title="2009-08-29 20:31:18Z" class="relativetime-clean">Aug 29 '09 at 20:31</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-940631" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1344990"></a>
+<div id="answer-1344990" class="answer" data-answerid="1344990"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1344990">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I really like the model <a href="http://www.clojure.org" rel="nofollow">Clojure</a> has chosen.  Clojure uses a combination of immutable data structures and software transactional memory.</p>
+
+<p>Immutable data structures are ones that never change.  New versions of the structures can be created with modified data, but if you have a "pointer" to a data structure, it will never change out from under you.  This is good because you can access that data without worrying about concurrency problems.</p>
+
+<p>Software transactional memory is discussed elsewhere in these answers but suffice it to say that it is a mechanism whereby multiple threads can all act upon some data and if they collide, one of the threads is rolled back to try again.  This allows for much faster speed when the risk of collision is present but unlikely.</p>
+
+<p>There is a <a href="http://clojure.blip.tv/file/812787" rel="nofollow">video</a> from author Rich Hickey that goes into a lot more detail.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1344990" title="short permalink to this answer" class="short-link" id="link-post-1344990">share</a><span class="lsep">|</span><a href="/posts/1344990/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-08-28 04:18:16Z" class="relativetime">Aug 28 '09 at 4:18</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/40744/steve-rowe"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/7892e92db302a8a8fcea9b4fb30fa710?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/40744/steve-rowe">Steve Rowe</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 15443" dir="ltr">15.4k</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="40 silver badges"><span class="badge2"></span><span class="badgecount">40</span></span><span title="70 bronze badges"><span class="badge3"></span><span class="badgecount">70</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1344990" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-5540184" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1 for the excellent video!</span>
+                    &ndash;&nbsp;<a href="/users/214010/mikera"
+                       title="73352 reputation"
+                       class="comment-user">mikera</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-11 00:15:52Z" class="relativetime-clean">Feb 11 '11 at 0:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1344990" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1345078"></a>
+<div id="answer-1345078" class="answer" data-answerid="1345078"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1345078">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A worthwhile path might be <a href="http://en.wikipedia.org/wiki/OpenCL" rel="nofollow">OpenCL</a>, which provides a means of distributing certain kinds of compute loads across heterogeneous compute resources, IE the same code will run on a multicore CPU and also commodity GPU's.  ATI has recently released exactly such a <a href="http://ati.amd.com/technology/streamcomputing/opencl.html" rel="nofollow">toolchain</a>.  NVidia's <a href="http://www.nvidia.com/object/cuda%5Fhome.html" rel="nofollow">CUDA</a> toolchain is similar, although somewhat more restricted.  It also appears that Nvidia has an OpenCL sdk <a href="http://www.nvidia.com/object/cuda%5Fopencl.html" rel="nofollow">in the works</a></p>
+
+<p>It should be noted that this probably won't help much where the workloads are not of a data-parallel nature, for instance it won't help much with typical transaction processing.  OpenCL is mainly oriented toward the kinds of computing that are math intensive, such as scientific/engineering simulation or financial modeling.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1345078" title="short permalink to this answer" class="short-link" id="link-post-1345078">share</a><span class="lsep">|</span><a href="/posts/1345078/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-08-28 04:52:57Z" class="relativetime">Aug 28 '09 at 4:52</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/65696/singlenegationelimination"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d8da959b2a586b4a147604e6f534a9fe?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/65696/singlenegationelimination">SingleNegationElimination</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 74924" dir="ltr">74.9k</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="125 silver badges"><span class="badge2"></span><span class="badgecount">125</span></span><span title="196 bronze badges"><span class="badge3"></span><span class="badgecount">196</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1345078" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1345078" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="2893087"></a>
+<div id="answer-2893087" class="answer" data-answerid="2893087"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2893087">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>If you were writing a new application from scratch today, and wanted it to scale to all the cores you could throw at it tomorrow, what parallel programming model/system/language/library would you choose?</p>
+</blockquote>
+
+<p>Perhaps the most widely applicable today is Cilk-style task queues (now available in .NET 4). They are great for problems that can be solved using divide and conquer with predictable complexity for subtasks (such as parallel <code>map</code> and <code>reduce</code> over arrays where the complexity of the function arguments is known as well as algorithms like quicksort) and that covers many real problems.</p>
+
+<p>Moreover, this only applies to shared-memory architectures like today's multicores. While I do not believe this basic architecture will disappear anytime soon I do believe it must be combined with distributed parallelism at some point. This will either be in the form of a cluster of multicores on a manycore CPU with message passing between multicores, or in the form of a hierarchy of cores with predictable communication times between them. These will require substantially different programming models to obtain maximum efficiency and I do not believe much is known about them.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/2893087" title="short permalink to this answer" class="short-link" id="link-post-2893087">share</a><span class="lsep">|</span><a href="/posts/2893087/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/2893087/revisions" title="show all edits to this post">edited <span title="2010-06-05 11:16:36Z" class="relativetime">Jun 5 '10 at 11:16</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-05-23 19:23:46Z" class="relativetime">May 23 '10 at 19:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/13924/jon-harrop"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/827b1643b9e1ac6af6a9341db5bd3f6a?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/13924/jon-harrop">Jon Harrop</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 31814" dir="ltr">31.8k</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="106 silver badges"><span class="badge2"></span><span class="badgecount">106</span></span><span title="217 bronze badges"><span class="badge3"></span><span class="badgecount">217</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2893087" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2893087" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1344944"></a>
+<div id="answer-1344944" class="answer" data-answerid="1344944"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1344944">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>We've been using <a href="http://www.semanticdesigns.com/Products/PARLANSE" rel="nofollow">PARLANSE</a>, a parallel programming langauge with explicit partial-order specification of concurrency for the last decade, to implement a scalable program analysis and transformation system (<a href="http://www.semanticdesigns.com/Products/DMS/DMSToolkit.html" rel="nofollow">DMS Software Reengineering Toolkit</a>) that mostly does symbolic rather than numeric computation.   PARLANSE is a compiled, C-like language with traditional scalar data types character, integer, float, dynamic data types string and array, compound data types structure and union, and lexically-scoped functions.   While most of the language is vanilla (arithmetic expressions over operands, if-then-else statements, do loops, function calls), the parallelism is not.  Parallelism  is expressed by defining a "precedes" relation over blocks of code (e.g, a before b, a before c, d before c)
+written as</p>
+
+<pre><code>(|;  a  (... a's computation)
+     (&lt;&lt; a) b ( ... b's computation ... )
+     (&lt;&lt; a) c ( ....c's computation ...)
+     (&gt;&gt; c) d ( ... d's computation...)
+)|;
+</code></pre>
+
+<p>where the &lt;&lt; and >> operators refer to "order in time".  The PARLANSE compiler can see these parallel computations and preallocate all the structures necessary for computation
+grains a,b,c,d, and generate custom code to start/stop each one, thus minimizing the overhead to start and stop these parallel grains.</p>
+
+<p>See this link for <a href="http://stackoverflow.com/questions/1862599/multithreading-puzzles/1866161#1866161"> <em>parallel</em> iterative deepening search for optimals solutions to the 15-puzzle</a>, which is the 4x4 big-brother of the 8-puzzle.   It only uses <em>potential</em> parallel as a parallelism construct  <strong>(|| a b c d )</strong> which says there are no partial order constraints on the computations <em>a</em> *b* <em>c</em> *d*, but it also uses speculation and asynchronously aborts tasks that won't find solutions.  Its a lot of ideas in a pretty small bit of code.</p>
+
+<p>PARLANSE runs on multicore PCs.  A big PARLANSE program (we've built many with 1 million+ lines or more) will have thousands of these partial orders, some of which call functions that contain others.
+So far we've had good results with up to 8 CPUs, and modest payoff with up to 16, and we're still tuning the system.  (We think a real problem with larger numbers of cores on current PCs is memory bandwidth: 16 cores pounding a memory subsystem creates a huge bandwidth demand).</p>
+
+<p>Most other languages don't expose the parallelism so it is hard to find, and the runtime systems pay a high price for scheduling computation grains by using general-purpose scheduling primitives.  We think that's a recipe for disaster or at least poor performance because of Amhdahl's law: if the number of machine instructions to schedule a grain is large compared to the work, you can't be efficient.  OTOH, if you insist on computation grains with many machine instructions to keep the scheduling costs relatively low, you can't find computation grains that are independent and so you don't have any useful parallelism to schedule.   So the key idea behind PARLANSE is to minimize the cost of scheduling grains, so that grains can be small, so that there can be many of them found in real code.   The insight into this tradeoff came from the abject failure of the pure dataflow paradigm, that did everything in parallel with tiny parallel chunks (e.g., the add operator).</p>
+
+<p>We've been working on this on and off for a decade.  Its hard to get this right.  I don't see how folks that haven't been building parallel langauges and using/tuning them for this time frame have any serious chance of building effective parallel systems. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1344944" title="short permalink to this answer" class="short-link" id="link-post-1344944">share</a><span class="lsep">|</span><a href="/posts/1344944/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1344944/revisions" title="show all edits to this post">edited <span title="2010-09-27 01:45:40Z" class="relativetime">Sep 27 '10 at 1:45</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-08-28 03:53:56Z" class="relativetime">Aug 28 '09 at 3:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/120163/ira-baxter"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/OPDmg.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/120163/ira-baxter">Ira Baxter</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 60710" dir="ltr">60.7k</span><span title="10 gold badges"><span class="badge1"></span><span class="badgecount">10</span></span><span title="90 silver badges"><span class="badge2"></span><span class="badgecount">90</span></span><span title="177 bronze badges"><span class="badge3"></span><span class="badgecount">177</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1344944" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1344944" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="5943908"></a>
+<div id="answer-5943908" class="answer" data-answerid="5943908"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="5943908">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>There are three parts to parallel programming IMO: identify the parallelism and specify the parallelism. Identify=Breaking down the algorithm into concurrent chunks of work, specify=doing the actual coding/debugging. Identify is independent of which framework you will use to specify the parallelism and I don't think a framework can help there much. It comes with good understanding of your app, target platform, common parallel programming trade-offs (hardware latencies etc), and MOST importantly experience. Specify however can be discussed and this is what I try to answer below: </p>
+
+<p>I have tried many frameworks (at school and work). Since you asked about multicores, which are all shared memory, I will stick with three shared memory frameworks I have used. </p>
+
+<p>Pthreads (Its no really a framework, but definitely applicable):</p>
+
+<p>Pro: 
+-Pthreads is extremely general. To me, pthreads are like the assembly of parallel programming. You can code any paradigm in pthreads. 
+-Its flexible so you can make it as high performance as you want. There are no inherent limitations to slow you down. You can write your own constructs and primitives and get as much speed as possible.</p>
+
+<p>Con: 
+-Requires you to do all the plumbing like managing work-queues, task distribution, yourself. 
+-The actual syntax is ugly and your app often has a lot of extra code which makes code hard to write and then hard to read. </p>
+
+<p>OpenMP:</p>
+
+<p>Pros:
+-The code looks clean, plumbing and task-splitting is mostly down under the hood
+-Semi-flexible. It gives you several interesting options for work-scheduling </p>
+
+<p>Cons:
+-Meant for simple for-loop like parallelism. (The newer Intel verion does support tasks too but the tasks are the same as Cilk). 
+-Underlying structures may or may not be well-written for performance. GNUs implementation is just ok. Intel's ICC worked better for me but I would rather write some stuff myself for higher performance. </p>
+
+<p>Cilk, Intel TBB, Apple GCD:</p>
+
+<p>Pros: 
+-Provably optimal underlying algorithms for task-level parallelism 
+-Decent control of serial/parallel tasks
+-TBB also has a pipeline parallelism framework which I used (it isn't the best to be frank)
+-Eliminates the task of writing a lot of code for task-based systems which can be a big plus if you are short-handed </p>
+
+<p>Cons: 
+-Less control of underlying structures' performance. I know the Intel TBB has very poorly-performing underlying data structures, e.g., the work queue was bad (in 2008 when I saw it). 
+-The code looks awful sometimes with all the keywords and buzzwords they want you to use
+-Requires reading a lot of references to understand their "flexible" APIs</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/5943908" title="short permalink to this answer" class="short-link" id="link-post-5943908">share</a><span class="lsep">|</span><a href="/posts/5943908/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-05-10 00:27:31Z" class="relativetime">May 10 '11 at 0:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/745944/aater-suleman"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/430f40087f3612614c81cee17e54c201?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/745944/aater-suleman">Aater Suleman</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,610</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-5943908" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-5943908" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="80037"></a>
+<div id="answer-80037" class="answer" data-answerid="80037"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="80037">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I'd use Java - its portable so future processors wont be a problem. I'd also code my application with layers seperating interface / logic and data (more like  3 tier web app) with standard mutex routines as a library (less debugging of parallel code). Remember that web servers scale to many processors really well and are the least painful path to multicore. Either that or look at the old Connection Machine model with a virtual processor tied to data.  </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/80037" title="short permalink to this answer" class="short-link" id="link-post-80037">share</a><span class="lsep">|</span><a href="/posts/80037/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-17 04:34:56Z" class="relativetime">Sep 17 '08 at 4:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/14907/zurk"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/df0725486391ad6de1874762d81134cb?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/14907/zurk">zurk</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">91</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-80037" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-80037" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="229360"></a>
+<div id="answer-229360" class="answer" data-answerid="229360"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="229360">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Erlang is the more "mature solution" and is portable and open source. I fiddled around with Polyphonic C# , I don't know how it would be to program everyday in it.</p>
+
+<p>There are libraries and extensions for almost every language/OS under the sun, google transactional memory . It's an interesting approach from MS.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/229360" title="short permalink to this answer" class="short-link" id="link-post-229360">share</a><span class="lsep">|</span><a href="/posts/229360/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-10-23 11:18:27Z" class="relativetime">Oct 23 '08 at 11:18</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/24276/alepani"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/61362110c4bbf119aa08f18372f01652?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/24276/alepani">AlePani</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">508</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-229360" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-229360" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/79999/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="79999" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="c82e9ba6da5583e8fcc07891e4726864">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f79999%2fwhat-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f79999%2fwhat-parallel-programming-model-do-you-recommend-today-to-take-advantage-of-the%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/multicore" class="post-tag" title="show questions tagged &#39;multicore&#39;" rel="tag">multicore</a> <a href="/questions/tagged/parallel-processing" class="post-tag" title="show questions tagged &#39;parallel-processing&#39;" rel="tag">parallel-processing</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2008-09-17 04:29:37Z"><b>7 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>4873 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2011-05-10 00:27:31Z">4 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2016/01/year-in-review-2015/" class="question-hyperlink">Stack Exchange Year in Review 2015</a>
+                </div>
+                <br class="cbt" />
+            </div>
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 8 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1305908715",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1305908715">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			<div style="margin-bottom: 10px;">
+        
+
+<style type="text/css">
+#newsletter-ad {
+    width: 270px;
+    height: 250px;
+    overflow: hidden;
+    background: url('//cdn.sstatic.net/stackoverflow/img/newsletter-ad.png?v=3');
+    padding: 0 15px 0 15px;
+}
+#newsletter-ad-header {
+    margin-top: 60px;
+}
+#newsletter-ad ul {
+    margin: 1em 0 1em 1.5em;
+}
+#newsletter-ad ul li {
+    margin-bottom: 5px;
+}
+#newsletter-signup-container {
+    text-align: center;
+}
+#newsletter-preview-container {
+    margin-top: 10px;
+    text-align: center;
+}
+#newsletter-email-input {
+    width: 200px;
+}
+</style>
+
+<script>
+    StackExchange.ready(function () {
+        StackExchange.newsletterAd.init();
+    });
+</script>
+
+<div id="newsletter-ad">
+    <p id="newsletter-ad-header">Get the <b>weekly newsletter!</b></p>
+    <ul>
+        <li>Top questions and answers</li>
+        <li>Important announcements</li>
+        <li>Unanswered questions</li>
+    </ul>
+    <div id="newsletter-signup-container"><input id="newsletter-signup" type="button" value="Sign up for the newsletter" /></div>
+    <p id="newsletter-preview-container">see an <a href="//stackexchange.com/newsletters/newsletter?site=stackoverflow.com" id="newsletter-preview">example newsletter</a></p>
+    <div class="dno">
+        
+<p class="privacy-policy-agreement">
+By subscribing, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />
+    </div>
+</div>
+
+    </div>  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/121674" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">33</div>
+	</a>
+	<a href="/questions/121674/multi-core-and-concurrency-languages-libraries-and-development-techniques" class="question-hyperlink">Multi-Core and Concurrency - Languages, Libraries and Development Techniques</a>
+</div><div class="spacer">
+	<a href="/q/1862599" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">21</div>
+	</a>
+	<a href="/questions/1862599/multithreading-puzzles" class="question-hyperlink">Multithreading Puzzles</a>
+</div><div class="spacer">
+	<a href="/q/668943" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="/questions/668943/d2010-beta-the-perfect-way-to-support-multi-core" class="question-hyperlink">D2010 Beta: The Perfect Way to support Multi-Core</a>
+</div><div class="spacer">
+	<a href="/q/84143" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/84143/what-programming-paradigm-will-be-most-successful-in-future-multi-core-computers" class="question-hyperlink">What programming paradigm will be most successful in future multi-core computers?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/363341" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">56
+    </div>
+</a><a href="/questions/363341/how-are-you-taking-advantage-of-multicore" class="question-hyperlink">How are you taking advantage of Multicore?</a>
+</div>
+<div class="spacer">
+<a href="/q/637665" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">6
+    </div>
+</a><a href="/questions/637665/does-asp-net-by-default-take-advantage-of-multicore-processor" class="question-hyperlink">Does ASP.NET by default take advantage of multicore processor?</a>
+</div>
+<div class="spacer">
+<a href="/q/3623332" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/3623332/parallel-programming-does-this-code-look-like-what-its-asking-race-condition-an" class="question-hyperlink">Parallel Programming does this code look like what its asking? race condition and forall statement help</a>
+</div>
+<div class="spacer">
+<a href="/q/3647444" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">6
+    </div>
+</a><a href="/questions/3647444/the-state-of-programming-and-compiling-for-multicore-systems" class="question-hyperlink">The state of programming and compiling for multicore systems</a>
+</div>
+<div class="spacer">
+<a href="/q/8515861" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/8515861/executing-two-program-in-differet-processors-in-parallel" class="question-hyperlink">executing two program in differet processors in parallel</a>
+</div>
+<div class="spacer">
+<a href="/q/10598746" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/10598746/basic-parallel-programming-concept-cost-of-search-with-n-processors" class="question-hyperlink">basic parallel programming concept: cost of search with N processors</a>
+</div>
+<div class="spacer">
+<a href="/q/23290917" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/23290917/can-i-take-advantage-of-parallelization-to-make-this-piece-of-code-faster" class="question-hyperlink">Can I take advantage of parallelization to make this piece of code faster?</a>
+</div>
+<div class="spacer">
+<a href="/q/23742214" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/23742214/is-there-a-language-that-takes-advantage-of-massively-parallel-computers" class="question-hyperlink">Is there a language that takes advantage of massively parallel computers?</a>
+</div>
+<div class="spacer">
+<a href="/q/25190079" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/25190079/if-my-node-process-creates-child-processes-will-those-child-processes-be-able-to" class="question-hyperlink">if my node process creates child processes will those child processes be able to take advantage of other processor cores?</a>
+</div>
+<div class="spacer">
+<a href="/q/26008661" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/26008661/parallel-programs-in-multi-core-processors" class="question-hyperlink">parallel programs in Multi Core processors</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46157/whats-the-meaning-of-the-two-scarves-during-the-riot-in-straight-outta-compton" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s the meaning of the two scarves during the riot in Straight Outta Compton?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33048/what-would-an-earth-with-no-timezones-be-like" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would an Earth with no timezones be like?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/24275/what-makes-a-visual-approach-quicker-than-an-ils-approach" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What makes a visual approach quicker than an ILS approach?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33147/if-people-had-magic-powers-how-would-it-affect-slavery" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If people had magic powers, how would it affect slavery?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1025428/limit-excel-cpu-usage" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Limit Excel CPU Usage
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34739112/can-the-jvm-gc-move-objects-in-the-middle-of-a-reference-comparison-causing-a-c" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can the JVM GC move objects in the middle of a reference comparison, causing a comparison to fail even when both sides refer to the same object?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/229047/why-human-voice-cant-produce-a-shepard-tone" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why human voice can&#39;t produce a Shepard tone?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299041/idiom-for-making-fun-of-something-people-are-ashamed-of" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Idiom for making fun of something people are ashamed of?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110357/is-it-possible-for-my-password-to-have-more-than-one-password-combination" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible for my password to have more than one password combination?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46163/why-did-tywin-laninster-never-try-to-become-a-king" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why did Tywin Laninster never try to become a king?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1605183/if-squaring-a-number-means-multiplying-that-number-with-itself-then-shouldnt-ta" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If squaring a number means multiplying that number with itself then shouldn&#39;t taking square root of a number mean to divide a number by itself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/190223/how-to-visualize-independent-two-sample-t-test" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to visualize independent two sample t-test?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103885/how-to-inject-unevaluated-list-of-unique-into-a-ruledelayed" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to inject unevaluated list of Unique into a RuleDelayed?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61523/how-to-diagnose-problems-in-a-paper-rejected-in-pre-review" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to diagnose problems in a paper rejected in pre-review?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287317/writing-fraction-in-matrix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Writing fraction in matrix
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114505/why-are-starfleet-bridges-positioned-so-vulnerably" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are Starfleet bridges positioned so vulnerably?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/229076/can-vinyl-lps-store-audio-above-20khz-and-can-it-be-played-back" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can vinyl LPs store audio above 20kHz and can it be played back?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/24289/would-an-etops-flight-plan-be-legal-if" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would an ETOPS flight plan be legal if ...
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/65366/how-can-i-know-what-fonts-a-website-is-using" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I know what fonts a website is using?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114636/where-were-the-knights-of-ren-during-the-events-of-the-force-awakens" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where were the Knights of Ren during the events of The Force Awakens?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33145/what-happens-if-money-vanishes-if-not-spent" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What happens if money vanishes if not spent?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34743533/automated-property-with-getter-only-can-be-set-why" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Automated property with getter only, can be set, why?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61534/professor-gave-me-a-higher-grade-than-i-deserved" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Professor gave me a higher grade than I deserved?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299270/adjective-of-testosterone" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Adjective of &quot;testosterone&quot;
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/79999" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/79999/ivc/1d55');});
+</script>
+<noscript>
+    <div><img src="/posts/79999/ivc/1d55" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.12.3167
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('multicore,parallel-processing');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|multicore|parallel-processing|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

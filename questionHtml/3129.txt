@@ -1,0 +1,2599 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>mongodb - So... this NoSQL thing - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="So... this NoSQL thing" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I&#39;ve been looking at MongoDB and I&#39;m fascinated. It appears (although I have to be suspicious) that in exchange for organizing my database in a slightly different way, I get as much performance as ..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/3183067/so-this-nosql-thing/3183463"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/3183067/so-this-nosql-thing/3183463" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=e5852343f40d"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;So... this NoSQL thing&#39;" href="/feeds/question/3183067">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/3183067/so-this-nosql-thing/3183463" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/3183067/so-this-nosql-thing/3183463" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/3183067/so-this-nosql-thing/3183463">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:17,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:3183067});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '3183067');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452542154,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"8872ec4c653acc968af5bcb434502271","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c28ffc75f822","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"9ede90d3ed16","js/full.en.js":"033d573c35db","js/wmd.en.js":"47ccdaf392cb","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"20bcb42b710b","js/tageditornew.en.js":"a71ee27852ba","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"ae29b9441b40","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"c251bbc879d8","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"03a7725d4a79","js/keyboard-shortcuts.en.js":"0e582d41820b","js/external-editor.en.js":"cea2f1a9cb30","js/external-editor.en.js":"cea2f1a9cb30","js/snippet-javascript.en.js":"a787fb64bef0","js/snippet-javascript-codemirror.en.js":"569e93559c76"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3183067%2fso-this-nosql-thing%2f3183463" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3183067%2fso-this-nosql-thing%2f3183463" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3183067%2fso-this-nosql-thing%2f3183463" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3183067%2fso-this-nosql-thing%2f3183463" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3183067%2fso-this-nosql-thing%2f3183463" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/3183067/so-this-nosql-thing" class="question-hyperlink">So&hellip; this NoSQL thing</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="3183067"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk202865611",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk202865611">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183067">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">45</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>15</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I've been looking at MongoDB and I'm fascinated. It appears (although I have to be suspicious) that in exchange for organizing my database in a slightly different way, I get as much performance as I have CPUs and RAM for free? It seems elegant, and flexible, but I'm not trading that for fast like I am with Rails. So what's the catch? What does a relational database give me that I can't do as well or at all with Mongo? In other words, why (other than immaturity of existing NoSQL systems and resistence to change) doesn't the entire industry jump ship from MySQL? </p>
+
+<p>As I understood it, as you scale, you get MySQL to feed Memcache. Now it appears I can start with something equally performant from the beginning.</p>
+
+<p>I know I can't do transactions across relationships... when would this be a big deal?</p>
+
+<p>I read <a href="http://teddziuba.com/2010/03/i-cant-wait-for-nosql-to-die.html">http://teddziuba.com/2010/03/i-cant-wait-for-nosql-to-die.html</a> but as I understand it, his argument is basically that real businesses which use real tools don't need to avoid SQL, so people who feel a need to ditch it are doing it wrong. But no "enterprise" has to deal with nearly as many concurrent users as Facebook or Google, so I don't really see his point. (Walmart has 1.8 million employees; Facebook has 300 million users).</p>
+
+<p>I'm genuinely curious about this... I promise I'm not trolling.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/mongodb" class="post-tag" title="show questions tagged &#39;mongodb&#39;" rel="tag">mongodb</a> <a href="/questions/tagged/nosql" class="post-tag" title="show questions tagged &#39;nosql&#39;" rel="tag">nosql</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/3183067" title="short permalink to this question" class="short-link" id="link-post-3183067">share</a><span class="lsep">|</span><a href="/posts/3183067/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2010-07-06 01:55:27Z" class="relativetime">Jul 6 '10 at 1:55</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/36013/jacobbaer"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e34bd5144bdca8d5122af2f5c45423d7?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/36013/jacobbaer">jacobbaer</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">586</span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="13 bronze badges"><span class="badge3"></span><span class="badgecount">13</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183067" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="12"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-3277791" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I don&#39;t think NoSQL gives any of the ACID guarantees. You decide how important it is to you.</span>
+                    &ndash;&nbsp;<a href="/users/251153/zneak"
+                       title="62506 reputation"
+                       class="comment-user">zneak</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 01:58:47Z" class="relativetime-clean">Jul 6 '10 at 1:58</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3278032" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>as I understand it, his argument is basically that real businesses which use real tools don&#39;t need to avoid SQL</code> no one is avoiding SQL, they&#39;re avoiding a relational database.  Think NoREL, rather than NoSQL.  NoREL is structure based, whereas an RDBMS has tables and data structures that interrelate.</span>
+                    &ndash;&nbsp;<a href="/users/183181/vol7ron"
+                       title="14744 reputation"
+                       class="comment-user">vol7ron</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 03:03:45Z" class="relativetime-clean">Jul 6 '10 at 3:03</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3278046" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">by &quot;SQL&quot; I meant traditional SQL/relational database engines, not the query language literally.</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 03:05:51Z" class="relativetime-clean">Jul 6 '10 at 3:05</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3278070" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>so I don&#39;t really see his point</code> his point is that most businesses are not Google or Facebook size, so people should stop acting like they&#39;re the prodigious son.  Then he makes the point that MySQL and PostgreSQL do scale nicely and where they don&#39;t, there&#39;s no need to try and re-invent the wheel, which is what NoSQL is trying to do - instead Google patches, where necessary.  Finally, the xSQLs have already answered problems that NoSQL have avoided, which is almost guaranteed to appear down the road.</span>
+                    &ndash;&nbsp;<a href="/users/183181/vol7ron"
+                       title="14744 reputation"
+                       class="comment-user">vol7ron</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 03:11:20Z" class="relativetime-clean">Jul 6 '10 at 3:11</span></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3278096" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><b>What good is a database if it&#39;s just a random collection of data that is not guaranteed to be returned?</b>  I have high quality requirements for any project I do, thus I would only see this being considered in something trivial, like streaming media playlists.  But the costs (design scalability) are still more significant than the temporary performance gain, so I still wouldn&#39;t implement it.</span>
+                    &ndash;&nbsp;<a href="/users/183181/vol7ron"
+                       title="14744 reputation"
+                       class="comment-user">vol7ron</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 03:19:34Z" class="relativetime-clean">Jul 6 '10 at 3:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183067" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>12</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								8 Answers
+                                <span style="display:none;" itemprop="answerCount">8</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/3183067/so-this-nosql-thing?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/3183067/so-this-nosql-thing?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/3183067/so-this-nosql-thing?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="3183087"></a>
+<div id="answer-3183087" class="answer accepted-answer" data-answerid="3183087"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183087">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">61</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I am also a big fan of MongoDB. That having been said, it is absolutely not a wholesale replacement for RDBMS. Facebook has 300 million users but if some of your friends don't show up in the list one time, or one of the photo albums is missing on the occasional request, would you notice? Probably not. If your status update doesn't trickle down to all of your friends for a few minutes, does it matter? Hardly. If Wal-Mart's balance sheets are out of sync, would someone lose their head? Definitely.</p>
+
+<p>NoSQL databases are great in "fuzzy" environments where relationships are not strict and data integrity can afford to be out of sync. RDBMS are still important when data sets are extremely complex and relational (hence the name), and they need to be kept pure.</p>
+
+<p>The big push to NoSQL comes from the fact for the last 30 years, we have been using RDMBS systems for both scenarios. We now have a more appropriate tool for many situations. Some would argue most, in fact. But no one would argue all.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3183087" title="short permalink to this answer" class="short-link" id="link-post-3183087">share</a><span class="lsep">|</span><a href="/posts/3183087/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-07-06 02:03:03Z" class="relativetime">Jul 6 '10 at 2:03</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/67/rex-m"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3e9f1629fd4cb4a5ce9fbd27b13e862d?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/67/rex-m">Rex M</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 92989" dir="ltr">93k</span><span title="21 gold badges"><span class="badge1"></span><span class="badgecount">21</span></span><span title="220 silver badges"><span class="badge2"></span><span class="badgecount">220</span></span><span title="281 bronze badges"><span class="badge3"></span><span class="badgecount">281</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183087" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-3277817" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I like this answer, thank you for the detail. I&#39;m curious, though, everything I know about scaling a relational database says you do replication, which is, just like Mongo&#39;s replication, &quot;eventually consistent&quot;. How does a relational database keep things in sync across slaves better than a NoSQL database?</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:07:31Z" class="relativetime-clean">Jul 6 '10 at 2:07</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277826" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@jacobbaer across instances, there is a delay. What I am talking about is across data sets within a single instance. With RDBMS I can update any number of data sets as a single transaction. With MongoDB if two commits come in that affect multiple data sets, I need a third operation to come back through when they are finished and re-validate the data to ensure it is all correct. And that needs to happen without interruption, e.g. no <i>other</i> operations. So in a high-traffic system like we&#39;re talking about, relationships could almost always be slightly off.</span>
+                    &ndash;&nbsp;<a href="/users/67/rex-m"
+                       title="92989 reputation"
+                       class="comment-user">Rex M</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:10:34Z" class="relativetime-clean">Jul 6 '10 at 2:10</span></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277870" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I believe you do get transaction support within collections, but I guess if you have data that need to be consistent that spans collections (rather than being embedded) you&#39;re in trouble. Is there a technical reason why Mongo can&#39;t implement that? I find it hard to believe leaving off that feature is the only thing that makes it so much faster.</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:22:47Z" class="relativetime-clean">Jul 6 '10 at 2:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183087" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk19129462",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk19129462">
+            </div>
+  
+<a name="3183463"></a>
+<div id="answer-3183463" class="answer" data-answerid="3183463"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183463">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">14</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I write this but as a dispute to Rex's answer.</p>
+
+<p>I dispute the idea that nosql is relationless and fuzzy.</p>
+
+<p>I had been working with CODASYL many years ago with C and Cobol - entity relationships are very tight in CODASYL.</p>
+
+<p>In contrast, relational database systems have a very liberal policy towards relationships. As long as you can identiy a foreign key, you could form a relationship adhoc.</p>
+
+<p>It is frequently taken for granted that SQL is synonymous with RDBMS, but people have been writing SQL drivers for CODASYL, XML, inverted sets, etc.</p>
+
+<p>RDBMS/SQL do not equal precision in data or relationship. In fact, RDBMS has been a constant cause in imprecision and misperception of relationships. I do not see how RDBMS offer better data and relationship integrity than hadoop, for example. Put on a layer of JDO - and we can construct a network of good and clean relationships between entities in hadoop.</p>
+
+<p>However, I like working with SQL because it gives me the ability to script adhoc relationships, even though I realise that adhoc relationships is a constant cause of relationship adulteration and problems.</p>
+
+<p>Having the opportunity to work with statistical analysis of business and industrial processes, SQL gave me the ability to explore relationships where no relationships had previously been perceived. The opportunity to work with statistical analysis gave me insights that would not normally come the way of SQL programmers.</p>
+
+<p>For example, you would design and normalise your schema to reflect a set of processes. What you might not realise is that relationships change over time. The statistical characteristics would reveal that a schema may no longer be as "properly normalised" as it once had been. That the principal components of the processes have mutated over time. But non-statistical programmers do not understand that and continue to tout RDBMS as the perfect solution for data integrity and relationship precision.</p>
+
+<p>However, in a relationship-linking database, you could link entities in relationships as they appear. When relationships mutate, the linking naturally mutate with the data. Relationships and their mutation are documented within the database system without the expensive need to renormalise the schema. At which point, RDBMS is good only as temp dbs.</p>
+
+<p>But then you might counter that RDBMS too allows you to flexibly mutate your relationships, since that is what SQL does best. True, very true - so long as you perform BCNF or even 4NF. Otherwise, you would begin to see that your queries and data loaders performing replicated operations. But then your many years in the RDBMS business have so far certainly at least made you realise that BCNF is very expensive and operationally inefficient and that we are constantly guilty of 2.5 NFing our schemata.</p>
+
+<p>To say that RDBMS and SQL promotes data and relationship integrity is a gross mis-statement. Either you work in a company that is so tiny or you didn't stay in your positions for more than two years - you would not see the amount of data or the information mutation and the problems caused by RDBMS. The abuse of RDBMS is the cause of executives being restricted in the view by computer applications and the cause of financial failures of companies failing to see changes in market behaviour because their views were restricted by the programmers whose views were restricted to their veneration of their beloved RDBMS schemata.</p>
+
+<p>That is why SQL programmers do not understand why your company statistician refuses to use your application which you crafted meticulously but they employed a college intern to write SQL to download data into their personal servers and that your company executives learn to trust the accountants' and statisticians' spreadsheets rather than your elegant multi-tiered applications because of your applications' inability to mutate with processes.</p>
+
+<p>It might not be possible, but I still urge you to acquire some statistical understanding to perceive how processes mutate over time so that you can make the right technological decision.</p>
+
+<p>The reason people are not moving to SQL-less is lack of a good scripting environment like SQL to perform adhoc relationship analysis. Not because SQL-less technology is deficient in precision or integrity. Adhoc relationship analysis is very important nowadays due to the rapid and agile application development attitudes and strategies we have nowadays.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3183463" title="short permalink to this answer" class="short-link" id="link-post-3183463">share</a><span class="lsep">|</span><a href="/posts/3183463/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-07-06 04:15:39Z" class="relativetime">Jul 6 '10 at 4:15</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/140803/blessed-geek"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/9b0721c1da4f00e69cd58a4cc909768c?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/140803/blessed-geek">Blessed Geek</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">8,461</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="63 silver badges"><span class="badge2"></span><span class="badgecount">63</span></span><span title="120 bronze badges"><span class="badge3"></span><span class="badgecount">120</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183463" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-3278474" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@h2g2java, I think you may be in danger of promoting at least two misconceptions here. Firstly, relational databases have nothing much to do with &quot;relationships&quot; per se. The R in RDBMS refers to the mathematical concept of a <i>relation</i> - which is not at all what I understand you to mean by a <i>relationship</i> (i.e. a semantic &quot;association among things&quot;). Secondly, SQL DBMSs are not relational anyway. The commonly cited drawbacks of SQL DBMSs are generally consequences of the SQL model and have nothing to do with the relational model - something which NoSQL advocates often seem confused about.</span>
+                    &ndash;&nbsp;<a href="/users/191708/sqlvogel"
+                       title="15063 reputation"
+                       class="comment-user">sqlvogel</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 05:06:19Z" class="relativetime-clean">Jul 6 '10 at 5:06</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3278713" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The American Constitution today has less to do with what &quot;the founding fathers had originally intended it&quot; than whom our elected Congressmen  and venerated Presidents have chosen to fill the seats of the Supreme court.</span>
+                    &ndash;&nbsp;<a href="/users/140803/blessed-geek"
+                       title="8461 reputation"
+                       class="comment-user">Blessed Geek</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 05:56:34Z" class="relativetime-clean">Jul 6 '10 at 5:56</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-7900090" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Blessed Geek: +1. In a corporate environment, looking for these semantic relationships would normally be delegated to an OLAP database, with constant data migration from the OLTP. How do you think this relates to NoSQL?</span>
+                    &ndash;&nbsp;<a href="/users/31158/jord%c3%a3o"
+                       title="35219 reputation"
+                       class="comment-user">Jord&#227;o</a>
+                <span class="comment-date" dir="ltr"><span title="2011-07-13 12:49:57Z" class="relativetime-clean">Jul 13 '11 at 12:49</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-13862500" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">2.5NFing ... nice phrase ;)</span>
+                    &ndash;&nbsp;<a href="/users/813561/jasonk"
+                       title="488 reputation"
+                       class="comment-user">jasonk</a>
+                <span class="comment-date" dir="ltr"><span title="2012-05-21 08:52:25Z" class="relativetime-clean">May 21 '12 at 8:52</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183463" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3192074"></a>
+<div id="answer-3192074" class="answer" data-answerid="3192074"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3192074">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">10</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Let me hit the questions one at a time:</p>
+
+<blockquote>
+  <p>I know I can't do transactions across relationships... when would this be a big deal?</p>
+</blockquote>
+
+<p>Picture cascading deletes. Or even just basic referential integrity. The concept of "foreign keys" can't really be enforced across "collections" (the Mongo term for tables). You can do atomic writes to only a single "document" (AKA record). So if you have a DB issue, you can orphan data in the DB.</p>
+
+<blockquote>
+  <p>I get as much performance as I have CPUs and RAM for free?</p>
+</blockquote>
+
+<p>Not free, but definitely with a different set of trade-offs. For example, Mongo is great at running single-record, key/value look-ups. However, Mongo is poor at running relational queries. You'll need to use map-reduce for many of these. Mongo is a "RAM-whore". Mongo basically demands 64-bit for any significant dataset. Mongo will suck up drive space, load up a 140GB DB and you can end up using 200+ GB as the swap file grows during use.</p>
+
+<p>And you're still going to want a fast drive.</p>
+
+<p>In fact, I think it's safe to say the MongoDB is really a DB system that caters to leading-edge hardware (64-bit, lots of RAM, SSDs). I mean, the whole DB is centered around looking up data index data in RAM (hello 64-bit) and then doing focused random lookups on the drive (hello SSD).</p>
+
+<blockquote>
+  <p>why ... doesn't the entire industry jump ship from MySQL?</p>
+</blockquote>
+
+<ol>
+<li>It's <strong>not ACID-compliant</strong>. Probably quite bad for the banking system (of course, most of them are still processing flat files, but that's a different issue). However, note that you can force "safe" writes with Mongo and guarantee that data gets to disk, but only one "document" at a time.</li>
+<li>It's <strong>still very young</strong>. Lots of big business are still running old versions of Crystal Reports on their SQL Server 2000 app written in VB6. Or they're building enterprise service buses to manage the crazy heterogeneous environments they've built up over the years.</li>
+<li>It's a <strong>very different paradigm</strong>. Maybe 30% of the questions I regularly see on Mongo mailing lists (and here) are fundamentally tied to <em>"how do I do query X?"</em> or <em>"how do I structure this data?"</em>. Using MongoDB typically requires that you denormalize in advance. This is not only a little difficult, it's untrained. Most people only learn "normalization" in school, nobody teaches us how to denormalize for performance.</li>
+<li>It's <strong>not the right tool for everything</strong>. Honestly I think that MongoDB is great tool for reading and writing transactional data. That simple "one-a-time" CRUD that comprises much of modern apps. However, MongoDB is not really great at reporting. In fact, I honestly envision that the next step is not <em>"Mongo for everything"</em> it's <em>"Mongo for transactional"</em> and <em>"MySQL for reporting"</em>. When your data gets big enough that you throw out "real-time reporting", then using Map-Reduce to populate a reporting DB doesn't seem that bad.</li>
+</ol>
+
+<blockquote>
+  <p>As I understood it, as you scale, you get MySQL to feed Memcache. Now it appears I can start with something equally performant from the beginning.</p>
+</blockquote>
+
+<p>Honestly, I'm working towards this on a few of my projects. Again, I think that MongoDB actually does make a valid caching layer. In fact, it makes a file-backed caching layer. So if you're capable of pushing MySQL change to Mongo, then you're getting getting Memcached without cache misses. It also makes it easy to "warm the cache" on new server, just copy files and start Mongo pointing at the correct folder, it really is that easy.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3192074" title="short permalink to this answer" class="short-link" id="link-post-3192074">share</a><span class="lsep">|</span><a href="/posts/3192074/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-07-07 05:11:15Z" class="relativetime">Jul 7 '10 at 5:11</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/261188/gates-vp"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/f78bb8dde52f12c7f7eb5e989f766cb8?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/261188/gates-vp">Gates VP</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 31011" dir="ltr">31k</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="61 silver badges"><span class="badge2"></span><span class="badgecount">61</span></span><span title="82 bronze badges"><span class="badge3"></span><span class="badgecount">82</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3192074" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-3290567" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">A relational db is also a &quot;RAM-WHORE&quot;. Relational db&#39;s become slow when indexes are too big to fit in RAM. MongoDB makes it easier to shard the data over multiple inexpensive computers. You can store 1-n relation in one collection so cascading deletes between collection are often not needed. Life becomes more difficult when you want to do n:m relations with Mongodb. What worries me most about MongoDB is durability. I agree that MongoDB&#39;s map-reduce is slow. &quot;select ... group by&quot; is also easier.</span>
+                    &ndash;&nbsp;<a href="/users/357240/ttt"
+                       title="180 reputation"
+                       class="comment-user">TTT</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-07 10:25:48Z" class="relativetime-clean">Jul 7 '10 at 10:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3330052" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">On MongoDB and durability: <a href="http://www.mikealrogers.com/2010/07/mongodb-performance-durability/" rel="nofollow">mikealrogers.com/2010/07/mongodb-performance-durability</a></span>
+                    &ndash;&nbsp;<a href="/users/357240/ttt"
+                       title="180 reputation"
+                       class="comment-user">TTT</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-12 08:07:05Z" class="relativetime-clean">Jul 12 '10 at 8:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-11014969" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1 for inventing &quot;RAM-whore&quot;.</span>
+                    &ndash;&nbsp;<a href="/users/55944/fantius"
+                       title="2367 reputation"
+                       class="comment-user">Fantius</a>
+                <span class="comment-date" dir="ltr"><span title="2012-01-11 17:58:00Z" class="relativetime-clean">Jan 11 '12 at 17:58</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3192074" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3183188"></a>
+<div id="answer-3183188" class="answer" data-answerid="3183188"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183188">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>How often do you think Facebook does arbitrary queries against its datastore(s)? Not everything is a web app, and conversely not every set of data needs to be analyzed deeply.</p>
+
+<p>NoSQL in my opinion, is largely a reactionary response to what basically amounted to people using RDBMS for tasks they were not well suited because people didn't actively make a decision  based on their needs and chose some default. To "jump ship from MySQL" (or RDBMSs in general) industry-wide would be to make the same mistake all over again and the pendulum will end up swinging back the other way. </p>
+
+<p>If MongoDB works for your use case, by all means go ahead. Just don't assume your use case is all use cases. There is no technology that fits all scenarios. The invention of the supersonic jets didn't eliminate the use of freight trains.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3183188" title="short permalink to this answer" class="short-link" id="link-post-3183188">share</a><span class="lsep">|</span><a href="/posts/3183188/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-07-06 02:40:16Z" class="relativetime">Jul 6 '10 at 2:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/61289/logan-capaldo"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e34b5cae57e0dd170114dba444e37852?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/61289/logan-capaldo">Logan Capaldo</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 26440" dir="ltr">26.4k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="42 silver badges"><span class="badge2"></span><span class="badgecount">42</span></span><span title="61 bronze badges"><span class="badge3"></span><span class="badgecount">61</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183188" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183188" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3183104"></a>
+<div id="answer-3183104" class="answer" data-answerid="3183104"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183104">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The big backlash against NoSQL is rooted in the mentality of many of the NoSQL advocates. Specifically, the attitude best summarized as "SQL is too hard, I shouldn't have to do it". I dislike NoSQL because it seems in many cases to be elevating ignorance.</p>
+
+<blockquote>
+  <p>I know I can't do transactions across relationships... when would this be a big deal?</p>
+</blockquote>
+
+<p>More often than you might expect. There are a lot of things that can go wrong when you can't assume a consistent dataset.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3183104" title="short permalink to this answer" class="short-link" id="link-post-3183104">share</a><span class="lsep">|</span><a href="/posts/3183104/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-07-06 02:08:55Z" class="relativetime">Jul 6 '10 at 2:08</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/85763/kalium"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/bc188ed5f5c56574cc6f17a450f108cf?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/85763/kalium">Kalium</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">3,424</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183104" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="3"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-3277839" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It&#39;s unfortunate the message is coming across that way. The <i>intention</i> is that SQL is indeed hard because it is a very specialized, high-precision language optimized for transactional, highly complex relational operations; yet for many applications, that level of complexity and precision isn&#39;t necessary. So they are quite right to say they shouldn&#39;t have to do it, <i>for that specific case</i>. Though again, it&#39;s very unfortunate they come across so negative/ignorant.</span>
+                    &ndash;&nbsp;<a href="/users/67/rex-m"
+                       title="92989 reputation"
+                       class="comment-user">Rex M</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:14:00Z" class="relativetime-clean">Jul 6 '10 at 2:14</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277852" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Isn&#39;t it more &quot;scaling existing implementations of SQL databses is too hard, I shouldn&#39;t have to do it&quot;? &quot;SQL is too hard, I shouldn&#39;t have to do it&quot; seems to be more the argument for an ORM. Am I misunderstanding something?</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:19:07Z" class="relativetime-clean">Jul 6 '10 at 2:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277875" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@jacobbaer ORMs are not viable for many of the situations where RDBMS are the best match, precisely because they abstract away a lot of the power and precision SQL affords.</span>
+                    &ndash;&nbsp;<a href="/users/67/rex-m"
+                       title="92989 reputation"
+                       class="comment-user">Rex M</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:23:28Z" class="relativetime-clean">Jul 6 '10 at 2:23</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277886" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Exactly what Rex M said. If you can use an ORM, you probably don&#39;t need the feature set/limitations of an RDBMS anyway.</span>
+                    &ndash;&nbsp;<a href="/users/61289/logan-capaldo"
+                       title="26440 reputation"
+                       class="comment-user">Logan Capaldo</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:26:47Z" class="relativetime-clean">Jul 6 '10 at 2:26</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277898" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@rex Ah, okay. So to make sure I&#39;m understanding this, writing an SQL query to do something efficiently is harder but preferable to writing a map/reduce function or similar to do it in Mongo, because taking the time to do it in SQL lets you keep better consistency, right?</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:29:08Z" class="relativetime-clean">Jul 6 '10 at 2:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183104" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>3</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3183140"></a>
+<div id="answer-3183140" class="answer" data-answerid="3183140"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183140">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I have used MongoDB, Redis (more than key-value pair supports list, set and sorted set), Tokyo Tyrant, Memcached and MySql &amp; PostgreSQL.</p>
+
+<p>The arguments between NoSQL DB And SQL based DB are completely baseless. You need to choose the appropriate model based on your use case.. If you need ACID compliances, go ahead with SQL DB like PostgreSQL, Oracle etc. You need high performance, but you less care about data, then you may consider noSQL DB. They are fundamentally different technologies. You can even use the combination of models. With NoSQL, you will be missing relationships, constraints and sometimes transaction.. In fact, thats is the one of the reason NoSQL are faster..</p>
+
+<p>Once I have lost two months of aggregate data with MongoDB.. No clue how I lost them..But I had backup and I have lost few minutes of data. I brought back MongoDB with backup.. If you use NoSQL, take occasional backup or schedule cron jobs for DB backup. This is applicable for SQL DB also.</p>
+
+<p>Compared to SQL RDBMS, NoSQL DBs are younger and they are currently under full fledged development but NoSQL DBs are matured in their scope ie they meant for high performance, easy replication.</p>
+
+<p>In my website(stacked.in), I have used only redis DB, it works much much faster than MySQL.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3183140" title="short permalink to this answer" class="short-link" id="link-post-3183140">share</a><span class="lsep">|</span><a href="/posts/3183140/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/3183140/revisions" title="show all edits to this post">edited <span title="2010-07-06 02:30:55Z" class="relativetime">Jul 6 '10 at 2:30</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-07-06 02:23:54Z" class="relativetime">Jul 6 '10 at 2:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <span class="anonymous-gravatar"></span>
+    </div>
+    <div class="user-details">
+        user90150
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183140" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183140" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3183211"></a>
+<div id="answer-3183211" class="answer" data-answerid="3183211"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183211">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Remember, NoSQL isn't exactly new. After all, they had to use something before SQL and relational databases, right? In fact, systems like MUMPS and CODASYL work the same way and are decades old. What relational databases give you is the ability to query data in arbitrary ways.</p>
+
+<p>Say you have a database with customers, their purchases, and what items they purchased. A NoSQL DB might have customers containing purchases and purchases containing items. This makes it easy to find out what items a given customer purchased, but hard to find out what customers purchased a given item. A relational DB would have tables for customers, purchases, items, and a table linking items to purchases. In SQL, both queries are trivial to formulate, and the database engine does all the hard work for you.</p>
+
+<p>Also, keep in mind that part of the NoSQL trend is to sacrifice consistency or reliability for speed, scalability, and cost. Relational DBs can scale, but it's not cheap. If you go to <a href="http://tpc.org" rel="nofollow">http://tpc.org</a> you can find RDBMSes that run on hundreds of cores simultaneously to deliver millions of transactions per minute, but they cost millions of dollars.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3183211" title="short permalink to this answer" class="short-link" id="link-post-3183211">share</a><span class="lsep">|</span><a href="/posts/3183211/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-07-06 02:48:50Z" class="relativetime">Jul 6 '10 at 2:48</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/310574/gabe"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/270f64e82d870933748c4dbfd01a7c96?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/310574/gabe">Gabe</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 56893" dir="ltr">56.9k</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="85 silver badges"><span class="badge2"></span><span class="badgecount">85</span></span><span title="154 bronze badges"><span class="badge3"></span><span class="badgecount">154</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183211" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183211" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3183088"></a>
+<div id="answer-3183088" class="answer" data-answerid="3183088"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3183088">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If your data does not take advantage of relational algebra, nor do you need ACID guarantees, then you don't gain anything by using languages that cater exclusively for those uses.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3183088" title="short permalink to this answer" class="short-link" id="link-post-3183088">share</a><span class="lsep">|</span><a href="/posts/3183088/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-07-06 02:03:23Z" class="relativetime">Jul 6 '10 at 2:03</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/52273/arafangion"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8e25c72c9528fd7a7610a15f4cad6382?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/52273/arafangion">Arafangion</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">6,206</span><span title="19 silver badges"><span class="badge2"></span><span class="badgecount">19</span></span><span title="47 bronze badges"><span class="badge3"></span><span class="badgecount">47</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3183088" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-3277832" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Isn&#39;t the idea to design your schema in ways that don&#39;t require relational algebra? (Note that I learned this term 15 seconds ago, so my understanding of what you mean by that is pretty shallow). Although there are probably some problem domains where it can&#39;t be avoided...</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:11:55Z" class="relativetime-clean">Jul 6 '10 at 2:11</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277860" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@jacobbaer the idea is not to artificially develop relationships the application domain doesn&#39;t require, simply to make your data model fit into an RDBMS.</span>
+                    &ndash;&nbsp;<a href="/users/67/rex-m"
+                       title="92989 reputation"
+                       class="comment-user">Rex M</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:20:03Z" class="relativetime-clean">Jul 6 '10 at 2:20</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277917" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@rex Right, but just going over some of my current projects, relationships represented as relationships in SQL worked just fine as embedded objects (especially with the way I wanted to query them). For example, one of my hobby projects is a Facebook app to compare schedules. I can HABTM users and class periods in MySQL, or I can store class periods as a list under users in Mongo. So the relationship isn&#39;t artificially created when I do it in SQL, but it also doesn&#39;t need to happen in Mongo. Are there situations where it&#39;s impossible to do something like this efficiently?</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:33:52Z" class="relativetime-clean">Jul 6 '10 at 2:33</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277933" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@jacobbaer I can&#39;t comment on the particulars of your application without being more familiar with it.</span>
+                    &ndash;&nbsp;<a href="/users/67/rex-m"
+                       title="92989 reputation"
+                       class="comment-user">Rex M</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:39:09Z" class="relativetime-clean">Jul 6 '10 at 2:39</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3277988" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Right, but I&#39;m saying the particulars of my application demanded a relationship in SQL, but didn&#39;t need a relationship in Mongo, so I didn&#39;t have to give up ACID (which is maintained within collections).</span>
+                    &ndash;&nbsp;<a href="/users/36013/jacobbaer"
+                       title="586 reputation"
+                       class="comment-user owner">jacobbaer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-06 02:53:49Z" class="relativetime-clean">Jul 6 '10 at 2:53</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3183088" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/3183067/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="3183067" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="8872ec4c653acc968af5bcb434502271">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3183067%2fso-this-nosql-thing%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f3183067%2fso-this-nosql-thing%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/mongodb" class="post-tag" title="show questions tagged &#39;mongodb&#39;" rel="tag">mongodb</a> <a href="/questions/tagged/nosql" class="post-tag" title="show questions tagged &#39;nosql&#39;" rel="tag">nosql</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2010-07-06 01:55:27Z"><b>5 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>3427 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2010-07-07 05:11:15Z">5 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk503471796",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk503471796">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/10203041" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">-2</div>
+	</a>
+	<a href="/questions/10203041/using-nosql-on-a-web-application-and-not-using-sql" class="question-hyperlink">Using NoSQL on a web application, and not using SQL</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/1777103" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes large">512
+    </div>
+</a><a href="/questions/1777103/what-nosql-solutions-are-out-there-for-net" class="question-hyperlink">What NoSQL solutions are out there for .NET?</a>
+</div>
+<div class="spacer">
+<a href="/q/3215029" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">189
+    </div>
+</a><a href="/questions/3215029/nosql-mongodb-vs-lucene-or-solr-as-your-database" class="question-hyperlink">NoSQL (MongoDB) vs Lucene (or Solr) as your database</a>
+</div>
+<div class="spacer">
+<a href="/q/3375494" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">118
+    </div>
+</a><a href="/questions/3375494/nosql-mongodb-vs-couchdb" class="question-hyperlink">NoSQL - MongoDB vs CouchDB</a>
+</div>
+<div class="spacer">
+<a href="/q/5341378" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/5341378/which-nosql-database-to-choose-for-a-network-daemon" class="question-hyperlink">Which noSQL database to choose for a network daemon?</a>
+</div>
+<div class="spacer">
+<a href="/q/5718798" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/5718798/how-efficient-is-it-to-search-through-arrays-of-data-in-nosql" class="question-hyperlink">How efficient is it to search through arrays of data in NoSQL</a>
+</div>
+<div class="spacer">
+<a href="/q/6058683" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">5
+    </div>
+</a><a href="/questions/6058683/store-sync-facebook-graph-in-a-nosql-mongodb" class="question-hyperlink">Store/Sync Facebook Graph in a NoSQL (MongoDB)</a>
+</div>
+<div class="spacer">
+<a href="/q/9000546" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">5
+    </div>
+</a><a href="/questions/9000546/caching-eav-data-xml-or-nosql-mongodb" class="question-hyperlink">Caching EAV data - XML or NoSQL / MongoDB?</a>
+</div>
+<div class="spacer">
+<a href="/q/12488720" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">9
+    </div>
+</a><a href="/questions/12488720/nosql-database-for-ecommerce" class="question-hyperlink">NoSQL Database for ECommerce</a>
+</div>
+<div class="spacer">
+<a href="/q/20515822" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-1
+    </div>
+</a><a href="/questions/20515822/fast-nosql-queries-when-dealing-with-large-datasets" class="question-hyperlink">Fast NOSQL queries when dealing with large datasets</a>
+</div>
+<div class="spacer">
+<a href="/q/29629148" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/29629148/enterprise-nosql-stack-solution-for-mobile-web" class="question-hyperlink">Enterprise NoSQL Stack Solution for Mobile/Web</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/88938/one-big-sign-up-button-or-3" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    One big sign up button or 3
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/307063/why-does-git-pull-perform-a-merge-instead-of-a-rebase-by-default" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does git pull perform a merge instead of a rebase by default?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/287064/auto-linebreaking-in-underset" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Auto-linebreaking in underset
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78490/the-difference-between-devil-and-demon" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The difference between &quot;devil&quot; and &quot;demon&quot;
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="http://gis.stackexchange.com/questions/176399/clip-polygon-using-buffer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Clip polygon using buffer
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251482/where-did-my-christmas-sale-cards-go" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where did my Christmas Sale cards go?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/719912/how-to-find-all-empty-files-and-folders-in-a-specific-directory-including-files" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to find all empty files and folders in a specific directory including files which just look empty but are not?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/125886/check-if-a-user-exists-in-a-sql-server-database" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Check if a user exists in a SQL Server database
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34724320/why-is-long-the-type-of-the-smallest-int-%e2%88%922147483648" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is long the type of the smallest int, −2147483648?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-es" title="Stack Overflow en español"></div><a href="http://es.stackoverflow.com/questions/2381/eliminar-sin-rastro-archivo-de-subversion" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:637 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    &#191;Eliminar sin rastro archivo de Subversion?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1608078/sufficient-conditions-for-bounded-function" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Sufficient conditions for bounded function?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110172/why-would-security-cover-things-like-natural-disasters" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why would security cover things like natural disasters?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-cooking" title="Seasoned Advice"></div><a href="http://cooking.stackexchange.com/questions/65270/whats-the-difference-between-a-cobbler-crisp-crumble-buckle-and-betty" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:49 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s the difference between a cobbler, crisp, crumble, buckle, and betty?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-lifehacks" title="Lifehacks Stack Exchange"></div><a href="http://lifehacks.stackexchange.com/questions/10622/how-can-i-eat-my-bagel-when-i-lack-a-knife-to-cut-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:593 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I eat my bagel when I lack a knife to cut it?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69121/surrounded-countries" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Surrounded Countries
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/104881/possible-to-use-runas-in-apex-trigger" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible to use runAs in Apex Trigger?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228802/why-are-many-physicists-trying-to-develop-non-perturbative-quantum-theories" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are many physicists trying to develop non-perturbative quantum theories?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/286874/given-a-list-of-primes-how-can-i-plot-%cf%80x" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Given a list of primes, how can I plot π(x)?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103800/order-of-evaluation-does-mathematica-evaluate-variables-before-or-after-substi" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Order of evaluation - does Mathematica evaluate variables before or after substitution?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/254599/how-to-get-the-computer-name-not-its-hostname" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to get the computer name (not its hostname)?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/60475/how-do-exit-interviews-benefit-the-company" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do exit interviews benefit the company?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/190196/are-cova-b-and-meana-b-equal-to-cova-covb-and-meana-meanb" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are Cov(A-B) and Mean(A-B) equal to Cov(A)-Cov(B) and Mean(A)-Mean(B)?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299052/is-puppy-a-synonym-of-dog" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is puppy a synonym of dog?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/748228/how-do-vpn-servers-clients-avoid-routing-their-own-remote-connection-packets-thr" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do VPN servers/clients avoid routing their own remote connection packets through themself?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/3183067" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/3183067/ivc/d924');});
+</script>
+<noscript>
+    <div><img src="/posts/3183067/ivc/d924" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3157
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('mongodb,nosql');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|mongodb|nosql|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

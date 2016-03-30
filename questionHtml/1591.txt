@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>c# - Memory-constrained external sorting of strings, with duplicates combined&amp;counted, on a critical server (billions of filenames) - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Memory-constrained external sorting of strings, with duplicates combined&amp;counted, on a critical server (billions of filenames)" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Our server produces files like {c521c143-2a23-42ef-89d1-557915e2323a}-sign.xml in its log folder. The first part is GUID; the second part is name template.
+
+I want to count the number of files with..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted/32535440"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted/32535440" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=e5852343f40d"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Memory-constrained external sorting of strings, with duplicates combined&amp;counted, on a critical server (billions of filenames)&#39;" href="/feeds/question/32535222">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted/32535440" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted/32535440" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted/32535440">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:5,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:32535222});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '32535222');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452537790,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"feb94ac237bf4560673eb2216871336d","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c28ffc75f822","js/moderator.en.js":"24ee4d052056","js/full-anon.en.js":"9ede90d3ed16","js/full.en.js":"033d573c35db","js/wmd.en.js":"47ccdaf392cb","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"20bcb42b710b","js/tageditornew.en.js":"a71ee27852ba","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"ae29b9441b40","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"c251bbc879d8","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"03a7725d4a79","js/keyboard-shortcuts.en.js":"0e582d41820b","js/external-editor.en.js":"cea2f1a9cb30","js/external-editor.en.js":"cea2f1a9cb30","js/snippet-javascript.en.js":"a787fb64bef0","js/snippet-javascript-codemirror.en.js":"569e93559c76"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32535222%2fmemory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted%2f32535440" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32535222%2fmemory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted%2f32535440" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32535222%2fmemory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted%2f32535440" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32535222%2fmemory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted%2f32535440" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32535222%2fmemory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted%2f32535440" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted" class="question-hyperlink">Memory-constrained external sorting of strings, with duplicates combined&amp;counted, on a critical server (billions of filenames)</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="32535222"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk57683104",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk57683104">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32535222">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>4</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>Our server produces files like <code>{c521c143-2a23-42ef-89d1-557915e2323a}-sign.xml</code> in its log folder. The first part is GUID; the second part is name template.</p>
+
+<p>I want to count the number of files with same name template. For instance, we have</p>
+
+<pre><code>{c521c143-2a23-42ef-89d1-557915e2323a}-sign.xml
+{aa3718d1-98e2-4559-bab0-1c69f04eb7ec}-hero.xml
+{0c7a50dc-972e-4062-a60c-062a51c7b32c}-sign.xml
+</code></pre>
+
+<p>The result should be </p>
+
+<pre><code>sign.xml,2
+hero.xml,1
+</code></pre>
+
+<p>The total kinds of possible name templates is unknown, possibly exceeds <code>int.MaxValue</code>.</p>
+
+<p>The total number of files on the server is unknown, possibly exceeds <code>int.MaxValue</code>.</p>
+
+<p><strong>Requirements</strong>:</p>
+
+<p>The final result should be sorted by name template.</p>
+
+<p>The server on which the tool is going to run is super critical. We should be able to tell memory usage (MB) and the number of temporary files generated, if any, before running the tool and without knowing any characteristic of the log folder.</p>
+
+<p>We use C# language.</p>
+
+<p><strong>My idea</strong>:</p>
+
+<ul>
+<li>For the first 5000 files, count the occurrences, write result to <code>Group1.txt</code>.</li>
+<li>For the second 5000 files, count the occurrences, write result to <code>Group2.txt</code>. </li>
+<li>Repeat until all files are processed. Now we have a bunch of group files.</li>
+</ul>
+
+<p>Then I merge all these group files.</p>
+
+<pre><code>   Group1.txt     Group2.txt   Group3.txt     Group4.txt   
+       \            /            \                /
+       Group1-2.txt                Group3-4.txt
+                  \                 /
+                    Group1-4.txt
+</code></pre>
+
+<p><code>Group1-4.txt</code> is the final result.</p>
+
+<p>The disagreement between me and my friend is how we count the occurrences.</p>
+
+<p>I suggest to use dictionary. File name template is key. Let m be partition size. (In this example it's 5000.) Then time complexity O(m), space complexity O(m).</p>
+
+<p>My friend suggests to sort the name template then count the occurrence in one pass as same name templates are all together now. time complexity O(m log m), space complexity O(m).</p>
+
+<p>We cannot persuade each other. Do you guys see any issues of the two methods?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/c%23" class="post-tag" title="show questions tagged &#39;c#&#39;" rel="tag">c#</a> <a href="/questions/tagged/algorithm" class="post-tag" title="show questions tagged &#39;algorithm&#39;" rel="tag">algorithm</a> <a href="/questions/tagged/sorting" class="post-tag" title="show questions tagged &#39;sorting&#39;" rel="tag">sorting</a> <a href="/questions/tagged/dictionary" class="post-tag" title="show questions tagged &#39;dictionary&#39;" rel="tag">dictionary</a> <a href="/questions/tagged/large-data" class="post-tag" title="show questions tagged &#39;large-data&#39;" rel="tag">large-data</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/32535222" title="short permalink to this question" class="short-link" id="link-post-32535222">share</a><span class="lsep">|</span><a href="/posts/32535222/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/32535222/revisions" title="show all edits to this post">edited <span title="2015-09-14 00:36:16Z" class="relativetime">Sep 14 '15 at 0:36</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/224132/peter-cordes"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/N4ivW.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/224132/peter-cordes">Peter Cordes</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 14490" dir="ltr">14.5k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="18 silver badges"><span class="badge2"></span><span class="badgecount">18</span></span><span title="62 bronze badges"><span class="badge3"></span><span class="badgecount">62</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2015-09-12 04:41:39Z" class="relativetime">Sep 12 '15 at 4:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/746461/loveright"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/cab04a8efb05937830be8df8a033e5fd?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/746461/loveright">LoveRight</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,276</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="35 bronze badges"><span class="badge3"></span><span class="badgecount">35</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32535222" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-52928745" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The flaw in your analysis is the claim that the time complexity for the dictionary is O(m). You are going to request O(m) dictionary lookups (that&#39;s true),  but the internal implementation of the dictionary will determine the time complexity of each lookup request. I would not expect better than O(log m) time for each lookup request.</span>
+                    &ndash;&nbsp;<a href="/users/3386109/user3386109"
+                       title="16313 reputation"
+                       class="comment-user">user3386109</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-12 05:20:22Z" class="relativetime-clean">Sep 12 '15 at 5:20</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-52928796" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;m willing to bet money there aren&#39;t billions of files.</span>
+                    &ndash;&nbsp;<a href="/users/108796/blindy"
+                       title="34824 reputation"
+                       class="comment-user">Blindy</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-12 05:25:20Z" class="relativetime-clean">Sep 12 '15 at 5:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-52928874" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Blindy Theoretically he could.  <i><a href="http://answers.microsoft.com/en-us/windows/forum/windows_7-files/what-is-the-maximum-number-of-files-i-can-place/07b62caa-04c7-4c8a-92bb-6ac12b737beb" rel="nofollow">Maximum number of files in a single folder: 4,294,967,295</a></i> ; and <i><a href="https://technet.microsoft.com/en-us/library/cc781134%28v=ws.10%29.aspx?f=255&amp;MSPPError=-2147217396" rel="nofollow">Files per volume  4,294,967,295 (232 minus 1 file)</a></i></span>
+                    &ndash;&nbsp;<a href="/users/585968/micky"
+                       title="4034 reputation"
+                       class="comment-user">Micky</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-12 05:32:36Z" class="relativetime-clean">Sep 12 '15 at 5:32</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-52930161" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@user3386109: Any decent generic hash table implementation will give you amortized constant-time (O(1)) inserts, so it take O(m) time to insert (or increment if already present) m items.  If the average time for an insert was O(log m), the time for m items would be O(m log m).  O(1) amortized time is achieved by doubling the hash table size every time it needs to grow.</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-12 06:56:28Z" class="relativetime-clean">Sep 12 '15 at 6:56</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53037025" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@LoveRight: is this a one-off problem?  If so, I&#39;m afraid my answer was a bit overkill, and you probably don&#39;t want to spend a week implementing a super-compact string dictionary with a Radix Trie that periodically compresses itself down to a DAWG.  &gt;.&lt;  For a one-off, I&#39;d just batch on a certain number of unique strings seen, and use the library  SortedDictionary.</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-15 17:02:37Z" class="relativetime-clean">Sep 15 '15 at 17:02</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32535222" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								4 Answers
+                                <span style="display:none;" itemprop="answerCount">4</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/32535222/memory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="32537772"></a>
+<div id="answer-32537772" class="answer accepted-answer" data-answerid="32537772"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32537772">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>IDK if external sorting with count-merging of duplicates has been studied.  I did find a 1983 paper (see below).  Usually, sorting algorithms are designed and studied with the assumption of sorting objects by keys, so duplicate keys have different objects.  There might be some existing literature on this, but it's a very interesting problem.  Probably it's just considered an application of compact dictionaries combined with external merge-sorting.</p>
+
+<p>Efficient dictionaries for storing large amounts of strings in little memory is a very well studied problem.  Most of the useful data structures can include auxiliary data for each word (in our case, a dup count).</p>
+
+<hr>
+
+<p>TL:DR summary of useful ideas, since I rambled on in way too much detail about many things in the main body of this answer:</p>
+
+<ul>
+<li><p>Batch boundaries when your dictionary size hits a threshold, not after fixed numbers of input files.  If there were a lot of duplicates in a group of 5000 strings, you still won't be using very much memory.  You can find way more duplicates in the first pass this way.</p></li>
+<li><p>Sorted batches makes merging <em>much</em> faster.  You can and should merge many->one instead of binary merging.  Use a PriorityQueue to figure out which input file has the line you should take next.</p></li>
+<li><p>To avoid a burst of memory usage when sorting the keys in a hash table, use a dictionary that can do an in-order traversal of keys.  (i.e. sort on the fly.)  There's <a href="https://msdn.microsoft.com/en-us/library/f7fta44c%28v=vs.110%29.aspx" rel="nofollow"><code>SortedDictionary&lt;TKey, TValue&gt;</code></a> (binary tree-based).  This also interleaves the CPU usage of sorting with the I/O waiting to get the input strings.</p></li>
+<li><p>Radix-sort each batch into outputs by first-character (a-z, non-alphabetic that sorts before <code>A</code>, and non-alphabetic that sorts after <code>z</code>).  Or some other bucketing choice that distributes your keys well.  Use separate dictionaries for each radix bucket, and empty only the biggest into a batch when you hit your memory ceiling.  (fancier eviction heuristics than "biggest" may be worth it.)</p></li>
+<li><p>throttle I/O (esp. when merging), and check system CPU load and memory pressure.  Adapt behaviour accordingly to make sure you don't cause an impact when the server is most busy.</p></li>
+<li><p>For smaller temp files at the cost of CPU time, use a common-prefix encoding, or maybe lz4.</p></li>
+<li><p>A space-efficient dictionary will allow larger batch sizes (and thus a larger duplicate-finding window) for the same upper memory bound.  A <a href="https://en.wikipedia.org/wiki/Trie" rel="nofollow">Trie</a> (or better, <a href="https://en.wikipedia.org/wiki/Radix_tree" rel="nofollow">Radix Trie</a>) might be ideal, because it stores the characters within the tree nodes, with common prefixes only stored once.  <a href="https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton" rel="nofollow">Directed Acyclic Word Graphs</a> are even more compact (finding redundancy between common substrings that aren't prefixes).  Using one as a Dictionary is tricky but probably possible (see below).</p></li>
+<li><p>Take advantage of the fact that you don't need to delete any tree nodes or strings until you're going to empty the whole dictionary.  Use a growable array of nodes, and another growable char array that packs strings head to tail.  (Useful for a Radix Trie (multi-char nodes), but not a regular Trie where each node is a single char.)</p></li>
+<li><p>Depending on how the duplicates are distributed, you might or might not be able to find very many on the first pass.  This has some implications, but doesn't really change how you end up merging.</p></li>
+</ul>
+
+<hr>
+
+<p>I'm assuming you have some directory traversal idea in mind, which can efficiently supply your code with a stream of strings to be uniquified and counted.  So I'll just say "strings" or "keys", to talk about the inputs.</p>
+
+<p>Trim off as many unnecessary characters as possible (e.g. lose the <code>.xml</code> if they're all <code>.xml</code>).</p>
+
+<hr>
+
+<p>It might be useful to do the CPU/memory intensive work on a separate machine, depending on what other hardware you have with a fast network connection to your critical production server.</p>
+
+<p>You could run a simple program on the server that sends filenames over a TCP connection to a program running on another machine, where it's safe to use much more memory.  The program on the server could still do small dictionary batches, and just store them on a remote filesystem.</p>
+
+<hr>
+
+<p>And now, since none of the other answers really put all the pieces together, here's my actual answer:</p>
+
+<p>An upper bound on memory usage is easy.  Write your program to use a constant memory ceiling, regardless of input size.  Bigger inputs will lead to more merging phases, not more memory usage at any point.</p>
+
+<p>The best estimate of temporary file storage space you can do without looking at the input is a <em>very</em> conservative upper bound that assumes every input string is unique.  You need some way to estimate how many input strings there will be.  (Most filesystems know how many separate files they contain, without having to walk the directory tree and count them.)</p>
+
+<p>You can make some assumptions about the distribution of duplicates to make a better guess.</p>
+
+<p>If <em>number</em>, rather than size, of scratch files is an issue, you can store multiple batches in the same output file, one after another.  Either put length-headers at the start of each to allow skipping forward by batch, or write byte offsets to a separate data stream.  If size is also important, see my paragraph about using frcode-style common-prefix compression.</p>
+
+<hr>
+
+<p>As Ian Mercer points out in his answer, sorting your batches will make merging them much more efficient.  If you don't, you either risk hitting a wall where your algorithm can't make forward progress, or you need to do something like load one batch, scan another batch for entries that are in the first, and rewrite the 2nd batch with just the potentially-few matching entries removed.</p>
+
+<p>Not sorting your batches makes the time complexity of the first pass O(N), but either you have to sort at some point later, or your later stages have a worst-case bound that's dramatically worse.  You want your output globally sorted, so other than RadixSort approaches, there's no avoiding an O(N log N) somewhere.</p>
+
+<p>With limited batch size, O(log N) merge steps are expected, so your original analysis missed the O(N log N) complexity of your approach by ignoring what needs to happen after the phase1 batches are written.</p>
+
+<hr>
+
+<p>The appropriate design choices change a lot depending on whether our memory ceiling is big enough to find many duplicates within one batch.  If even a complex compact data structure like a Trie doesn't help much, putting the data into a Trie and getting it out again to write a batch is a waste of CPU time.</p>
+
+<p>If you can't do much duplicate-elimination within each batch anyway, then you need to optimize for putting possibly-matching keys together for the next stage.  Your first stage could group input strings by first byte, into up-to 252 or so output files (not all 256 values are legal filename characters), or into 27 or so output files (alphabet + misc), or 26+26+1 for upper/lower case + non-alphabetic.   Temp files can omit the common prefix from each string.</p>
+
+<p>Then most of these first stage batches should have a much higher duplicate density.  Actually, this Radix distribution of inputs into output buckets is useful in any case, see below.</p>
+
+<p>You should still sort your first-stage outputs in chunks, to give the next pass a much wider dup-find window for the same RAM.</p>
+
+<hr>
+
+<p>I'm going to spend more time on the domain where you can find a useful amount of duplicates in the initial stream, before using up ~100MiB of RAM, or whatever you choose as an upper limit.</p>
+
+<p>Obviously we add strings to some sort of dictionary to find and count duplicates on the fly, while only requiring enough storage for the set of unique strings.  Just storing strings and <em>then</em> sorting them would be significantly less efficient, because we'd hit our RAM limit much sooner without on-the-fly duplicate detection.</p>
+
+<p>To minimize the phase2 work, phase1 should find and count as many duplicates as possible, reducing the total size of the p2 data.  Reducing the amount of merging work for phase2 is good, too.  <strong>Bigger batches helps with both factors</strong>, so it's very useful to come as close to your memory ceiling as you safely can in phase1.  Instead of writing a batch after a constant number of input strings, do it when your memory consumption nears your chosen ceiling.  Duplicates are counted and thrown away, and don't take any extra storage.</p>
+
+<p>An alternative to accurate memory accounting is tracking the unique strings in your dictionary, which is easy (and done for you by the library implementation).  Accumulating the length of strings added can give you a good estimate of memory used for storing the strings, too.  Or just make an assumption about string length distribution.  Make your hash table the right size initially so it doesn't have to grow while you add elements, so you stop when it's 60% full (load factor) or something.</p>
+
+<hr>
+
+<p>A space-efficient data structure for the dictionary increases our dup-finding window for a given memory limit.  Hash tables get badly inefficient when their load factor is too high, but the hash table itself only has to store pointers to the strings.  It's the most familiar dictionary and has a library implementations.</p>
+
+<p>We know we're going to want our batch sorted once we've seen enough unique keys, so it might make sense to use a dictionary that can be traversed in sorted order.  <strong>Sorting on the fly makes sense because keys will come in slowly</strong>, limited by disk IO since we're reading from filesystem metadata.  One downside is if most of the keys we see are duplicates, then we're doing a lot of O(log batchsize) lookups, rather than a lot of O(1) lookups.  And it's more likely that a key will be a duplicate when the dictionary is big, so most of those O(log batchsize) queries will be with a batch size near max, not uniformly distributed between 0 and max.  A tree pays the O(log n) overhead of sorting for every lookup, whether the key turned out to be unique or not.  A hash table only pays the sorting cost at the end after removing duplicates.  So for a tree it's O(total_keys * log unique_keys), hash table is O(unique_keys * log unique_keys) to sort a batch.</p>
+
+<p>A hash table with max load factor set to 0.75 or something might be pretty dense, but having to sort the <code>KeyValuePair</code>s before writing out a batch probably puts a damper on using standard Dictionary.  You don't need copies of the strings, but you'll probably end up copying all the pointers (refs) to scratch space for a non-in-place sort, and maybe also when getting them out of the hash table before sorting.   (Or instead of just pointers, KeyValuePair, to avoid having to go back and look up each string in the hash table).    If short spikes of big memory consumption are tolerable, and don't cause you to swap / page to disk, you could be fine.  This is avoidable if you can do an in-place sort in the buffer used by the hash table, but I doubt that can happen with standard-library containers.</p>
+
+<p>A constant trickle of CPU usage to maintain the sorted dictionary at the speed keys are available is probably better than infrequent bursts of CPU usage to sort all of a batch's keys, besides the burst of memory consumption.</p>
+
+<p>The .NET standard library has <a href="https://msdn.microsoft.com/en-us/library/f7fta44c%28v=vs.110%29.aspx" rel="nofollow"><code>SortedDictionary&lt;TKey, TValue&gt;</code></a>, which the docs say is implemented with a binary tree.  I didn't check if it has a rebalance function, or uses a red-black tree, to guarantee O(log n) worst case performance.  I'm not sure how much memory overhead it would have.  If this is a one-off task, then I'd absolutely recommend using this to implement it quickly and easily.  And also for a first version of a more optimized design for repeated use.  You'll probably find it's good enough, unless you can find a nice library implementation of Tries.</p>
+
+<hr>
+
+<h2>Data structures for memory-efficient sorted dictionaries</h2>
+
+<p>The more memory efficient out dictionary is, the more dups we can find before having to write out a batch and delete the dictionary.  Also, if it's a sorted dictionary, the larger our batches can be even when they can't find duplicates.</p>
+
+<p>A secondary impact of data structure choice is how much memory traffic we generate while running on the critical server.  A sorted array (with O(log n) lookup time (binary search), and O(n) insert time (shuffle elements to make room)) would be compact.  However, it wouldn't just be slow, it would saturate memory bandwidth with memmove a lot of the time.  100% CPU usage doing this would have a bigger impact on the server's performance than 100% CPU usage searching a binary tree.  It doesn't know where to load the next node from until it's loaded the current node, so it can't pipeline memory requests.  The branch mispredicts of comparisons in the tree search also help moderate consumption of the memory bandwidth that's shared by all cores.  (That's right, some 100%-CPU-usage programs are worse than others!)</p>
+
+<p>It's nice if emptying our dictionary doesn't leave memory fragmented when we empty it.  Tree nodes will be constant size, though, so a bunch of scattered holes will be usable for future tree node allocations.  However, if we have separate dictionaries for multiple radix buckets (see below), key strings associated with other dictionaries might be mixed in with tree nodes.  This could lead to malloc having a hard time reusing all the freed memory, potentially increasing actual OS-visible memory usage by some small factor.  (Unless C# runtime garbage collection does compaction, in which case fragmentation is taken care of.)</p>
+
+<p>Since you never need to delete nodes until you want to empty the dictionary and delete them all, you could store your Tree nodes in a growable array.  So memory management only has to keep track of one big allocation, reducing bookkeeping overhead compared to malloc of each node separately.  Instead of real pointers, the left / right child pointers could be array indices.  This lets you use only 16 or 24 bits for them.  (A <a href="https://en.wikipedia.org/wiki/Heap_%28data_structure%29" rel="nofollow">Heap</a> is another kind of binary tree stored in an array, but it can't be used efficiently as a dictionary.  It's a tree, but not a <em>search</em> tree).</p>
+
+<p>Storing the string keys for a dictionary would normally be done with each String as a separately-allocated object, with pointers to them in an array.  Since again, you never need to delete, grow, or even modify one until you're ready to delete them all, you can pack them head to tail in a char array, with a terminating zero-byte at the end of each one.  This again saves a lot of book-keeping, and also makes it easy to keep track of how much memory is in use for the key strings, letting you safely come closer to your chosen memory upper bound.</p>
+
+<h2>Trie / DAWG for even more compact storage</h2>
+
+<p>For even denser storage of a set of strings, we can eliminate the redundancy of storing all the characters of every string, since there are probably a lot of common prefixes.</p>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Trie" rel="nofollow">Trie</a> stores the strings in the tree structure, giving you common-prefix compression.  It can be traversed in sorted order, so it sorts on the fly.  Each node has as many children as there are different next-characters in the set, so it's not a binary tree.  A C# Trie partial implementation (delete not written) can be found in <a href="http://stackoverflow.com/a/12396706/224132">this SO answer</a>, to a question similar to this but not requiring batching / external sorting.  </p>
+
+<p>Trie nodes need to store potentially many child pointers, so each node can be large.  Or each node could be variable-size, holding the list of nextchar:ref pairs inside the node, if C# makes that possible.  Or as the Wikipedia article says, a node can actually be a linked-list or binary search tree, to avoid wasting space in nodes with few children.  (The lower levels of a tree will have a lot of that.)  End-of-word markers / nodes are needed to distinguish between substrings that aren't separate dictionary entries, and ones that are.  Our count field can serve that purpose.  Count=0 means the substring ending here isn't in the dictionary.  count>=0 means it is.</p>
+
+<p>A more compact Trie is the <a href="https://en.wikipedia.org/wiki/Radix_tree" rel="nofollow">Radix Tree, or PATRICIA Tree</a>, which stores multiple characters per node.</p>
+
+<p>Another extension of this idea is the <a href="https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton" rel="nofollow">Deterministic acyclic finite state automaton (DAFSA)</a>, sometimes called a Directed Acyclic Word Graph (DAWG), but note that the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_word_graph" rel="nofollow">DAWG wikipedia article</a> is about a different thing with the same name.  I'm not sure a DAWG can be traversed in sorted order to get all the keys out at the end, and as wikipedia points out, storing associated data (like a duplicate count) requires a modification.  I'm also not sure they can be built incrementally, but I think you can do lookups without having compacted.  The newly added entries will be stored like a Trie, until a compaction step every 128 new keys merges them into the DAWG.  (Or run the compaction less frequently for bigger DAWGs, so you aren't doing it too much, like doubling the size of a hash table when it has to grow, instead of growing linearly, to amortize the expensive op.)</p>
+
+<p>You can make a DAWG more compact by storing multiple characters in a single node when there isn't any branching / converging.  <a href="http://xlinux.nist.gov/dads//HTML/directedAcyclicWordGraph.html" rel="nofollow">This page</a> also mentions a Huffman-coding approach to compact DAWGs, and has some other links and article citations.</p>
+
+<p><a href="http://pages.pathcom.com/~vadco/dawg.html" rel="nofollow">JohnPaul Adamovsky's DAWG implementation (in C)</a> looks good, and describes some optimizations it uses.  I haven't looked carefully to see if it can map strings to counts.  It's optimized to store all the nodes in an array.</p>
+
+<p><a href="http://stackoverflow.com/questions/12190326/parsing-one-terabyte-of-text-and-efficiently-counting-the-number-of-occurrences#comment31962178_12399830">This answer</a> to the dup-count words in 1TB of text question suggests DAWGs, and has a couple links, but I'm not sure how useful it is.</p>
+
+<hr>
+
+<h2>Writing batches: Radix on first character</h2>
+
+<p>You could get your RadixSort on, and keep separate dictionaries for every starting character (or for a-z, non-alphabetic that sorts before a, non-alphabetic that sorts after z).  Each dictionary writes out to a different temp file.  If you have multiple compute nodes available for a MapReduce approach, this would be the way to distribute merging work to the compute nodes.</p>
+
+<p>This allows an interesting modification: instead of writing all radix buckets at once, <strong>only write the largest dictionary as a batch</strong>.  This prevents tiny batches going into some buckets each time you.  This will reduce the width of the merging within each bucket, speeding up phase2.</p>
+
+<p>With a binary tree, this reduces the depth of each tree by about log2(num_buckets), speeding up lookups.  With a Trie, this is redundant (<em>each</em> node uses the next character as a radix to order the child trees).  With a DAWG, this actually hurts your space-efficiency because you lose out on finding the redundancy between strings with different starts but later shared parts.</p>
+
+<p>This has the potential to behave poorly if there are a few infrequently-touched buckets that keep growing, but don't usually end up being the largest.  They could use up a big fraction of your total memory, making for small batches from the commonly-used buckets.  You could implement a smarter eviction algorithm that records when a bucket (dictionary) was last emptied.  The NeedsEmptying score for a bucket would be something like a product of size and age.  Or maybe some function of age, like sqrt(age).  Some way to record how many duplicates each bucket has found since last emptied would be useful, too.  If you're in a spot in your input stream where there are a lot of repeats for one of the buckets, the last thing you want to do is empty it frequently.  Maybe every time you find a duplicate in a bucket, increment a counter.  Look at the ratio of age vs. dups-found.  Low-use buckets sitting there taking RAM away from other buckets will be easy to find that way, when their size starts to creep up.  Really-valuable buckets might be kept even when they're the current biggest, if they're finding a lot of duplicates.</p>
+
+<p>If your data structures for tracking age and dups found is a struct-of-arrays, the <code>(last_emptied[bucket] - current_pos) / (float)dups_found[bucket]</code> division can be done efficiently with vector floating point.  One integer division is slower than one FP division.  One FP division is the same speed as 4 FP divisions, and compilers can hopefully auto-vectorize if you make it easy for them like this.</p>
+
+<p>There's a lot of work to do between buckets filling up, so division would be a tiny hiccup unless you use a <em>lot</em> of buckets.</p>
+
+<h1>choosing how to bucket</h1>
+
+<p>With a good eviction algorithm, an ideal choice of bucketing will put keys that rarely have duplicates together in some buckets, and buckets that have many duplicates together in other buckets.  If you're aware of any patterns in your data, this would be a way to exploit it.  Having some buckets that are mostly low-dup means that all those unique keys don't wash away the valuable keys into an output batch.  An eviction algorithm that looks at how valuable a bucket has been in terms of dups found per unique key will automatically figure out which buckets are valuable and worth keeping, even though their size is creeping up.</p>
+
+<p>There are <em>many</em> ways to radix your strings into buckets.  Some will ensure that every element in a bucket compares less than every element in every later bucket, so producing fully-sorted output is easy.  Some won't, but have other advantages.  There are going to be tradeoffs between bucketing choices, all of which are data-dependent:</p>
+
+<ul>
+<li>good at finding a lot of duplicates in the first pass (e.g. by separating high-dup patterns from low-dup patterns)</li>
+<li>distributes the number of batches uniformly between buckets (so no bucket has a huge number of batches requiring a multi-stage merge in phase2), and maybe other factors.</li>
+<li>produces bad behaviour when combined with your eviction algorithm on your data set.</li>
+<li>amount of between-bucket merging needed to produce globally-sorted output.  The importance of this scales with the total number of unique strings, not the number of input strings.</li>
+</ul>
+
+<p>I'm sure clever people have thought about good ways to bucket strings before me, so this is probably worth searching on if the obvious approach of by-first-character isn't ideal.  This special use-case (of sorting while eliminating/counting duplicates) is not typical.  I think most work on sorting only considers sorts that preserve duplicates.  So you might not find much that helps choose a good bucketing algorithm for a dup-counting external sort.  In any case, it will be data-dependent.</p>
+
+<p>Some concrete-options for bucketing are: Radix = first two bytes together (still combining upper/lowercase, and combining non-alphabetic characters).  Or Radix = the first byte of the hash code.  (Requires a global-merge to produce sorted output.)  Or Radix = <code>(str[0]&gt;&gt;2) &lt;&lt; 6 + str[1]&gt;&gt;2</code>.  i.e. ignore the low 2 bits of the first 2 chars, to put <code>[abcd][abcd].*</code> together, <code>[abcd][efgh].*</code> together, etc.  This would also require some merging of the sorted results between some sets of buckets.  e.g. <code>daxxx</code> would be in the first bucket, but <code>aexxx</code> would be in the 2nd.  But only buckets with the same first-char high-bits need to be merged with each other to produce the sorted final output.</p>
+
+<p>An idea for handling a bucketing choice that gives great dup-finding but needs merge-sorting between buckets:  When writing the phase2 output, bucket it with the first character as the radix to produce the sort order you want.  Each phase1 bucket scatters output into phase2 buckets as part of the global sort.  Once all the phase1 batches that can include strings starting with <code>a</code> have been processed, do the merge of the <code>a</code> phase2-bucket into the final output and delete those temp files.</p>
+
+<p>Radix = first 2 bytes (combining non-alphabetic) would make for for 28<sup>2</sup> = 784 buckets.  With 200MiB of RAM, that's average output file size of only ~256k.  Emptying just one bucket at a time would make that the minimum, and you'd usually get larger batches, so this could work.  (Your eviction algorithm could hit a pathological case that made it keep a lot of big buckets, and write a series of tiny batches for new buckets.  There are dangers to clever heuristics if you don't test carefully).</p>
+
+<p>Multiple batches packed into the same output file is probably most useful with many small buckets.  You'll have e.g. 784 output files, each containing a series of batches.  Hopefully your filesystem has enough contiguous free space, and is smart enough, to do a good job of not fragmenting too badly when scattering small-ish writes to many files.</p>
+
+<hr>
+
+<h2>Merging:</h2>
+
+<p>In the merging stages, with sorted batches we don't need a dictionary.  Just take the next line from the batch that has the lowest, combining duplicates as you find them.</p>
+
+<p>MergeSort typically merges pairs, but <a href="https://en.wikipedia.org/wiki/External_sorting" rel="nofollow">when doing external sorting (i.e. disk -> disk)</a>, a much wider input is common to avoid reading and re-writing the output a lot of times.  Having 25 input files open to merge into one output file should be fine.  Use the library implementation of PriorityQueue (typically implemented as a Heap) to choose the next input element from many sorted lists.  Maybe add input lines with the string as the priority, and the count and input file number as payload.</p>
+
+<p>If you used radix distribute-by-first-character in the first pass, then merge all the <code>a</code> batches into the final output file (even if this process takes multiple merging stages), then all the <code>b</code> batches, etc.  <strong>You don't need to check any of the batches from the starts-with-<code>a</code> bucket against batches from any other bucket</strong>, so this saves a <em>lot</em> of merging work, esp. if your keys are well distributed by first character.</p>
+
+<hr>
+
+<h2>Minimizing impact on the production server:</h2>
+
+<p>Throttle disk I/O during merging, to avoid bringing your server to its knees if disk prefetch generates a huge I/O queue depth of reads.  Throttling your I/O, rather than a narrower merge, is probably a better choice.  If the server is busy with its normal job, it prob. won't be doing many big sequential reads even if you're only reading a couple files.</p>
+
+<p>Check the system load occasionally while running.  If it's high, sleep for 1 sec before doing some more work and checking again.  If it's really high, don't do any more work until the load average drops (sleeping 30sec between checks).</p>
+
+<p>Check the system memory usage, too, and reduce your batch threshold if memory is tight on the production server.  (Or if really tight, flush your partial batch and sleep until memory pressure reduces.)</p>
+
+<p>If temp-file size is an issue, you could do <a href="https://github.com/c9/node-gnu-tools/blob/master/findutils-src/locate/frcode.c" rel="nofollow">common-prefix compression like frcode from updatedb/locate</a> to significantly reduce the file size for sorted lists of strings.  Probably use case-sensitive sorting within a batch, but case-insensitive radixing.  So each batch in the <code>a</code> bucket  will have all the <code>A</code>s, then all the <code>a</code>s.  Or even LZ4 compress / decompress them on the fly.  Use hex for the counts, not decimal.  It's shorter, and faster to encode/decode.</p>
+
+<p>Use a separator that's not a legal filename character, like <code>/</code>, between key and count.  String parsing might well take up a lot of the CPU time in the merge stage, so it's worth considering.  If you can leave strings in per-file input buffers, and just point your PQueue at them, that might be good.  (And tell you which input file a string came from, without storing that separately.)</p>
+
+<hr>
+
+<p>performance tuning:</p>
+
+<p>If the initial unsorted strings were available extremely fast, then a hash table with small batches that fit the dictionary in the CPU L3 cache might be a win, unless a larger window can include a much larger fraction of keys, and find more dups.  It depends on how many repeats are typical in say 100k files.  Build small sorted batches in RAM as you read, then merge them to a disk batch.  This may be more efficient than doing a big in-memory quicksort, since you don't have random access to the input until you've initially read it.</p>
+
+<p>Since I/O will probably be the limit, large batches that don't fit in the CPU's data cache are probably a win, to find more duplicates and (greatly?) reduce the amount of merging work to be done.</p>
+
+<p>It might be convenient to check the hash table size / memory consumption after every chunk of filenames you get from the OS, or after every subdirectory or whatever.  As long as you choose a conservative size bound, and you make sure you can't go for too long without checking, you don't need to go nuts checking every iteration.</p>
+
+<hr>
+
+<p><a href="http://dc-pubs.dbs.uni-leipzig.de/files/Bitton1983Duplicaterecordeliminationin.pdf" rel="nofollow">This paper from 1983</a> examines external merge-sorting eliminating duplicates as they're encountered, and also suggests duplicate elimination with a hash function and a bitmap.  With long input strings, storing MD5 or SHA1 hashes for duplicate-elimination saves a lot of space.</p>
+
+<p>I'm not sure what they had in mind with their bitmap idea.  Being collision-resistant enough to be usable without going back to check the original string would require a hash code of too many bits to index a reasonable-size bitmap.  (e.g. MD5 is a 128bit hash).</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/32537772" title="short permalink to this answer" class="short-link" id="link-post-32537772">share</a><span class="lsep">|</span><a href="/posts/32537772/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/32537772/revisions" title="show all edits to this post">edited <span title="2015-09-15 16:58:59Z" class="relativetime">Sep 15 '15 at 16:58</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-09-12 10:30:29Z" class="relativetime">Sep 12 '15 at 10:30</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/224132/peter-cordes"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/N4ivW.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/224132/peter-cordes">Peter Cordes</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 14490" dir="ltr">14.5k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="18 silver badges"><span class="badge2"></span><span class="badgecount">18</span></span><span title="62 bronze badges"><span class="badge3"></span><span class="badgecount">62</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32537772" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-52995490" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The long answer I have ever seen in SE :). Hats off to your efforts.</span>
+                    &ndash;&nbsp;<a href="/users/4999394/ravindra"
+                       title="3727 reputation"
+                       class="comment-user">ravindra</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-14 17:07:47Z" class="relativetime-clean">Sep 14 '15 at 17:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-52995907" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@sunrise76: yeah, I kinda went overboard.  If I was in academia, I&#39;d have thought about actually writing this up as a paper to publish.  It combines the theoretical with a novel implementation constraint (don&#39;t bog down the production server), and I thinking of new ideas.  This question was what got me interested in the topic, so this seemed like a good place to brain-dump everything I thought of (and later, stuff I found about Tries and DAWGs, after going looking for compact dictionary data structures.  Pretty much everything else I came up with on my own, except N-way external merging :)</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-14 17:18:57Z" class="relativetime-clean">Sep 14 '15 at 17:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53047455" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks for the great answer! It&#39;s a good idea to do analysis on another computer. For now I will use one thread to enumerate files and the other thread to sort and count the files with SortedDictionary.</span>
+                    &ndash;&nbsp;<a href="/users/746461/loveright"
+                       title="1276 reputation"
+                       class="comment-user owner">LoveRight</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-15 23:10:30Z" class="relativetime-clean">Sep 15 '15 at 23:10</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54092031" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In regards to DAWG, it&#39;s not too tricky to use it as a dictionary, as all you need to do is tunnel until a required vertice doesn&#39;t exist, or you reach the length of the key you&#39;re looking for. One can store a count or value on the node as well as an End-Of-Word flag. Sorting could be achieved by inserting new vertices in sorted order, maybe using SortedList&lt;T&gt; or similar.</span>
+                    &ndash;&nbsp;<a href="/users/213495/matt-searles"
+                       title="786 reputation"
+                       class="comment-user">Matt Searles</a>
+                <span class="comment-date" dir="ltr"><span title="2015-10-15 05:44:23Z" class="relativetime-clean">Oct 15 '15 at 5:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54095727" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@MattSearles: A character or string in a DAWG can be the end of multiple different words.  (And yes, you indicate that with an end-of-word flag.)  Storing associated data (like a count) is harder, though, because you need to tell <i>which</i> word you reached the end of.  IIRC, one of the links I found suggested using the path through the DAWG as an array index into an array of associated data, or something like that.</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-10-15 07:53:49Z" class="relativetime-clean">Oct 15 '15 at 7:53</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32537772" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1985368923",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1985368923">
+            </div>
+  
+<a name="32536114"></a>
+<div id="answer-32536114" class="answer" data-answerid="32536114"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32536114">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>How do you "merge the group files" in your approach? In worst case every line had a different name template so each group file had 5,000 lines in it and each merge doubles the number of lines until you overflow memory.</p>
+
+<p>Your friend is closer to the answer, those intermediate files need to be sorted so you can read them line by line and merge them to create new files without having to hold them all in memory. This is a well-known problem, it's an <a href="https://en.wikipedia.org/wiki/External_sorting">external sort</a>. Once sorted you can count the results.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/32536114" title="short permalink to this answer" class="short-link" id="link-post-32536114">share</a><span class="lsep">|</span><a href="/posts/32536114/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-09-12 06:54:05Z" class="relativetime">Sep 12 '15 at 6:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/224370/ian-mercer"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/511f8780418a56371868eeac19104e08?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/224370/ian-mercer">Ian Mercer</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 23510" dir="ltr">23.5k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="45 silver badges"><span class="badge2"></span><span class="badgecount">45</span></span><span title="83 bronze badges"><span class="badge3"></span><span class="badgecount">83</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32536114" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-52933212" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Great point.  Sorting each batch also means you don&#39;t need to build a new dictionary when merging two batches.</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-12 10:32:15Z" class="relativetime-clean">Sep 12 '15 at 10:32</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53046400" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Oh, yes.. I later realized the problem of my method. Thanks for the wiki link.</span>
+                    &ndash;&nbsp;<a href="/users/746461/loveright"
+                       title="1276 reputation"
+                       class="comment-user owner">LoveRight</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-15 22:13:29Z" class="relativetime-clean">Sep 15 '15 at 22:13</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32536114" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="32535393"></a>
+<div id="answer-32535393" class="answer" data-answerid="32535393"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32535393">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A jolly good problem.</p>
+
+<p>Considering that you intend to process the results in batches of <strong>5000</strong>, I don't believe <em>memory optimisations</em> will be of particular importance so we could probably ignore that aspect like a bad <em>Adam Sandler</em> film and move onto the more exciting stuff.  Besides, just because some computation uses more RAM does not necessarily imply it's a bad algorithm.  No one ever complained about <em>look-up</em> tables.</p>
+
+<p>However, I do agree <em>computationally</em> the <strong>dictionary approach is better</strong> because it's <strong>faster</strong>.  With respect to the alternative, why perform an unnecessary sort even if its quick?  The latter, with its  "O(m log m)" is ultimately slower than "O(m)".</p>
+
+<h2>The Real Problem?</h2>
+
+<p>With RAM out of the equation, the problem is essentially that of <em>computation</em>.  Any "performance problem" in the algorithm will arguably be <strong>insignificant</strong> to the <strong>time it takes to traverse the file system in the first place</strong>.</p>
+
+<p>That's arguably where the real challenge will be.  A problem for another time perhaps?</p>
+
+<p><strong>EDIT</strong>: displayName makes a good point about using Hadoop - quite ideal for concurrent jobs and compute</p>
+
+<p>Good luck!</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/32535393" title="short permalink to this answer" class="short-link" id="link-post-32535393">share</a><span class="lsep">|</span><a href="/posts/32535393/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/32535393/revisions" title="show all edits to this post">edited <span title="2015-09-12 05:25:41Z" class="relativetime">Sep 12 '15 at 5:25</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-09-12 05:11:06Z" class="relativetime">Sep 12 '15 at 5:11</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/585968/micky"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/753b54a60805b7cc2ec2902c000b502a?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/585968/micky">Micky</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,034</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="19 silver badges"><span class="badge2"></span><span class="badgecount">19</span></span><span title="36 bronze badges"><span class="badge3"></span><span class="badgecount">36</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32535393" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-52945054" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This misses the point that you should sort at some point to make merging efficient.  Reducing I/O load and temp file size by finding more duplicates before writing out a batch is potentially useful.  See my answer.  The problem is to avoid bogging down a production server.</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-12 21:53:13Z" class="relativetime-clean">Sep 12 '15 at 21:53</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32535393" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="32535440"></a>
+<div id="answer-32535440" class="answer" data-answerid="32535440"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32535440">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Your problem is a very good candidate for <strong>Map-Reduce</strong>. Great news: You don't need to <em>move from C# to Java (Hadoop)</em> as <a href="http://stackoverflow.com/questions/428798/map-and-reduce-in-net">Map-Reduce is possible in .NET framework!</a></p>
+
+<p>Through LINQs you have the basic elements of execution in place already for performing Map Reduce in C#. This might be one advantage over going for External Sort though there is no question about the observation behind External Sort. <a href="http://codecube.net/2009/02/mapreduce-in-c-using-linq/" rel="nofollow">This link</a> has the <em>'Hello World!'</em> of Map-Reduce already implemented in C# using LINQs and should get you started.</p>
+
+<hr>
+
+<p>If you do move to Java, one of the most comprehensive tutorial about it is <a href="http://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html" rel="nofollow">here</a>. Google about Hadoop and Map-Reduce and you will get plenty of information  and numerous good online video tutorials.</p>
+
+<p>Further, if you wish to move to Java, your requirements of:</p>
+
+<ul>
+<li>Sorted results</li>
+<li>critical RAM usage</li>
+</ul>
+
+<p>will surely be met as they are inbuilt fulfillments you get from a Map-Reduce job in Hadoop.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/32535440" title="short permalink to this answer" class="short-link" id="link-post-32535440">share</a><span class="lsep">|</span><a href="/posts/32535440/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/32535440/revisions" title="show all edits to this post">edited <span title="2015-09-13 04:23:33Z" class="relativetime">Sep 13 '15 at 4:23</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-09-12 05:20:47Z" class="relativetime">Sep 12 '15 at 5:20</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1835769/displayname"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/397c37e03d867c1f8afcbb6bb3d56649?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1835769/displayname">displayName</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">3,238</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="31 bronze badges"><span class="badge3"></span><span class="badgecount">31</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32535440" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="9"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-52949055" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">There is no need to move to Java, you can do Map-Reduce with <a href="http://www.25hoursaday.com/weblog/2008/06/16/FunctionalProgrammingInC30HowMapReduceFilterCanRockYourWorld.aspx" rel="nofollow">Enumerable.Select and Enumerable.Aggregate</a>.</span>
+                    &ndash;&nbsp;<a href="/users/80274/scott-chamberlain"
+                       title="54012 reputation"
+                       class="comment-user">Scott Chamberlain</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-13 04:04:46Z" class="relativetime-clean">Sep 13 '15 at 4:04</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53037918" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Unless you have multiple servers to distribute the work to, limiting yourself to a single thread on the OP&#39;s &quot;critical server&quot; is going to have less impact on whatever else that server needs to be doing.  A framework that has building blocks for this, and lets you set a memory ceiling, has clear advantages for a quick non-optimal implementation, though.</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-15 17:29:23Z" class="relativetime-clean">Sep 15 '15 at 17:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53038886" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@PeterCordes: It doesn&#39;t have to be multiple servers. It can be multiple threads on the same server.</span>
+                    &ndash;&nbsp;<a href="/users/1835769/displayname"
+                       title="3238 reputation"
+                       class="comment-user">displayName</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-15 17:59:03Z" class="relativetime-clean">Sep 15 '15 at 17:59</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53039379" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@displayName: If you read the OP&#39;s question, it&#39;s pretty clear he wants to avoid disrupting the operation of a critical server.  Using multiple threads, each with their own memory consumption, is a terrible idea for <b>this</b> specific case.  It&#39;d be better to use your whole memory budget on a single thread, to find more dups in phase1.  Minimizing total disk I/O and CPU time, and avoiding load spikes, is much more important than minimizing wall-clock time here.  Depending on how many unique keys there are, a single thread with a big dictionary might be best even without the load constraint.</span>
+                    &ndash;&nbsp;<a href="/users/224132/peter-cordes"
+                       title="14490 reputation"
+                       class="comment-user">Peter Cordes</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-15 18:13:32Z" class="relativetime-clean">Sep 15 '15 at 18:13</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53040089" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@PeterCordes: Avoiding disruption of critical server&#39;s operations goes without saying. What OP wants though is - &quot;be able to tell memory usage (MB) and the number of temporary files generated&quot;. Both conditions can be met with this approach. Further, Map-Reduce is especially for these kinds of heavy jobs. It does <i>Speculative Execution</i> (google it). And that is because it is not a wise idea to leave such heavy task to a single thread because if it crashes, all work is lost. MR is therefore definitely not a &quot;terrible&quot; idea. :D</span>
+                    &ndash;&nbsp;<a href="/users/1835769/displayname"
+                       title="3238 reputation"
+                       class="comment-user">displayName</a>
+                <span class="comment-date" dir="ltr"><span title="2015-09-15 18:36:37Z" class="relativetime-clean">Sep 15 '15 at 18:36</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32535440" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>9</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/32535222/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="32535222" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="feb94ac237bf4560673eb2216871336d">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f32535222%2fmemory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                                    
+                                var $window = $(window),
+                                    onScroll = function(e) {
+                                        var $elem = $('.new-login-left'),
+                                            docViewTop = $window.scrollTop(),
+                                            docViewBottom = docViewTop + $window.height(),
+                                            elemTop = $elem.offset().top,
+                                            elemBottom = elemTop + $elem.height();							
+                                        if ((docViewTop < elemTop) && (docViewBottom > elemBottom))  {
+                                            StackExchange.using('gps', function() { StackExchange.gps.track('embedded_signup_form.view', { location: 'question_page' }); });
+                                            $window.unbind('scroll', onScroll);
+                                        }
+                                    };
+                                $window.on('scroll', onScroll);
+                                    
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f32535222%2fmemory-constrained-external-sorting-of-strings-with-duplicates-combinedcounted%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/c%23" class="post-tag" title="show questions tagged &#39;c#&#39;" rel="tag">c#</a> <a href="/questions/tagged/algorithm" class="post-tag" title="show questions tagged &#39;algorithm&#39;" rel="tag">algorithm</a> <a href="/questions/tagged/sorting" class="post-tag" title="show questions tagged &#39;sorting&#39;" rel="tag">sorting</a> <a href="/questions/tagged/dictionary" class="post-tag" title="show questions tagged &#39;dictionary&#39;" rel="tag">dictionary</a> <a href="/questions/tagged/large-data" class="post-tag" title="show questions tagged &#39;large-data&#39;" rel="tag">large-data</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2015-09-12 04:41:39Z"><b>4 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>275 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-09-15 16:58:59Z">3 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1068148938",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1068148938">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/12190326" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">44</div>
+	</a>
+	<a href="/questions/12190326/parsing-one-terabyte-of-text-and-efficiently-counting-the-number-of-occurrences" class="question-hyperlink">Parsing one terabyte of text and efficiently counting the number of occurrences of each word</a>
+</div><div class="spacer">
+	<a href="/q/428798" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">17</div>
+	</a>
+	<a href="/questions/428798/map-and-reduce-in-net" class="question-hyperlink">Map and Reduce in .NET</a>
+</div><div class="spacer">
+	<a href="/q/9215820" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">6</div>
+	</a>
+	<a href="/questions/9215820/find-duplicates-in-large-file" class="question-hyperlink">Find duplicates in large file</a>
+</div><div class="spacer">
+	<a href="/q/24369698" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="/questions/24369698/removing-duplicate-strings-with-limited-memory" class="question-hyperlink">Removing duplicate strings with limited memory</a>
+</div><div class="spacer">
+	<a href="/q/33948751" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="/questions/33948751/is-sse-redundant-or-discouraged" class="question-hyperlink">Is SSE redundant or discouraged?</a>
+</div><div class="spacer">
+	<a href="/q/33772644" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/33772644/find-the-value-that-was-present-maximum-number-of-entries" class="question-hyperlink">find the value that was present maximum number of entries</a>
+</div><div class="spacer">
+	<a href="/q/33732202" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">3</div>
+	</a>
+	<a href="/questions/33732202/how-to-store-vocabulary-in-an-array-more-effectively" class="question-hyperlink">How to store vocabulary in an array more effectively?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/3911029" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/3911029/external-memory-merge-sort" class="question-hyperlink">External memory merge sort</a>
+</div>
+<div class="spacer">
+<a href="/q/9651921" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/9651921/find-the-a-location-in-a-matrix-so-that-the-cost-of-every-one-moving-to-that-loc" class="question-hyperlink">Find the a location in a matrix so that the cost of every one moving to that location is smallest</a>
+</div>
+<div class="spacer">
+<a href="/q/17867359" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/17867359/count-co-ocurrence-sorted-vector-string-c" class="question-hyperlink">count co-ocurrence sorted vector string c++</a>
+</div>
+<div class="spacer">
+<a href="/q/20372641" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/20372641/duplicate-removal-sorting-string-algorithm-in-c" class="question-hyperlink">Duplicate removal sorting string algorithm in C</a>
+</div>
+<div class="spacer">
+<a href="/q/21564858" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/21564858/combined-complexity-of-phases-of-external-sort" class="question-hyperlink">Combined complexity of phases of external sort</a>
+</div>
+<div class="spacer">
+<a href="/q/23292776" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-4
+    </div>
+</a><a href="/questions/23292776/counting-the-occurrences-of-every-duplicate-words-in-a-string-using-dictionary-i" class="question-hyperlink">Counting the occurrences of every duplicate words in a string using dictionary in c#</a>
+</div>
+<div class="spacer">
+<a href="/q/26562102" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/26562102/build-all-possible-sorted-combinations-of-a-liststring" class="question-hyperlink">Build all possible sorted combinations of a List&lt;string&gt;</a>
+</div>
+<div class="spacer">
+<a href="/q/26582900" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/26582900/memory-usage-for-10k-servers-each-containing-1-billion-integers" class="question-hyperlink">memory usage for 10K servers each containing 1 billion integers</a>
+</div>
+<div class="spacer">
+<a href="/q/28837242" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/28837242/parallel-radix-sort-with-virtual-memory-and-write-combining" class="question-hyperlink">Parallel radix sort with virtual memory and write-combining</a>
+</div>
+<div class="spacer">
+<a href="/q/29075059" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/29075059/sorting-1-billion-integers-using-collections-sort-gives-out-of-memory-error" class="question-hyperlink">Sorting 1 billion integers using collections.sort() gives out of memory error</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/43584/naming-a-4-branched-cyclic-compound" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Naming a 4 branched cyclic compound
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69049/flip-it-flop-it-mean-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Flip It, Flop It, Mean It
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/43592/what-is-the-meaning-of-the-osic-suffix-on-a-metal-e-g-cobaltosic-oxide" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the meaning of the &quot;-osic&quot; suffix on a metal (e.g., cobaltosic oxide)?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103829/extracting-color-options-from-barchart" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Extracting Color Options from BarChart
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/748217/instancetype-attribute-in-active-directory" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    instanceType attribute in Active Directory
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251486/cards-for-free-hero-power" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Cards for free hero power
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/60475/how-do-exit-interviews-benefit-the-company" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do exit interviews benefit the company?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228786/how-does-the-particle-in-the-double-slit-experiment-interacts-with-the-slits" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does the particle in the double slit experiment interacts with the slits?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tridion" title="Tridion Stack Exchange"></div><a href="http://tridion.stackexchange.com/questions/13640/httpdeployer-not-publishing-to-azure-file-storage" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:485 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    HttpDeployer not publishing to Azure file storage
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78475/a-large-vase-lays-is-laid-in-the-corner-of-our-front-hallway" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A large vase (lays / is laid) in the corner of our front hallway
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114392/why-is-there-a-cannon-at-hogwarts" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is there a cannon at Hogwarts?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61425/what-are-the-implications-of-the-whole-class-failing-an-exam" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What are the implications of the whole class failing an exam?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46109/looking-for-name-of-movie-about-the-president-landing-via-parachute-in-a-forest" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Looking for name of movie about the president landing via parachute in a forest
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1608168/random-solving-of-a-rubik-cube" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Random solving of a Rubik cube .
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/254625/bash-extract-text-between-three-single-quotes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Bash: Extract text between three single quotes
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-dsp" title="Signal Processing Stack Exchange"></div><a href="http://dsp.stackexchange.com/questions/28221/the-need-for-phase-wrapping" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:295 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The need for phase wrapping?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/46101/how-is-scarlet-witch-able-to-stop-the-train" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How is Scarlet Witch able to stop the train?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-magento" title="Magento Stack Exchange"></div><a href="http://magento.stackexchange.com/questions/96679/can-i-use-a-sql-file-in-my-magento-module-installer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:479 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can i use a .sql file in my magento module installer ?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33019/what-would-cause-a-planet-to-be-continually-dim-yet-still-have-heat" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would cause a planet to be continually dim, yet still have heat?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110141/how-to-know-whether-a-textfile-has-been-edited-or-tampered-with" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to know whether a textfile has been edited or tampered with?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-crypto" title="Cryptography Stack Exchange"></div><a href="http://crypto.stackexchange.com/questions/31857/periodic-one-way-function" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:281 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Periodic One Way Function
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78490/the-difference-between-devil-and-demon" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The difference between &quot;devil&quot; and &quot;demon&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/104881/possible-to-use-runas-in-apex-trigger" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible to use runAs in Apex Trigger?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/57931/are-lottery-tickets-ever-a-wise-investment-provided-the-jackpot-is-large-enough" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are lottery tickets ever a wise investment provided the jackpot is large enough?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/32535222" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/32535222/ivc/dc24');});
+</script>
+<noscript>
+    <div><img src="/posts/32535222/ivc/dc24" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-cs</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3157
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('c%23,algorithm,sorting,dictionary,large-data');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|c#|algorithm|sorting|dictionary|large-data|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

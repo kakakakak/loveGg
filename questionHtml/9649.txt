@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>Apache Sqoop/Pig Consistent Data Representation/Processing - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Apache Sqoop/Pig Consistent Data Representation/Processing" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="In our organization, we have been trying to use hadoop ecosystem based tools to implement ETLs lately. Although the ecosystem itself is quite big, we are using only a very limited set of tools at the " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=2ad47c1cbf74"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Apache Sqoop/Pig Consistent Data Representation/Processing&#39;" href="/feeds/question/22028522">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:22028522});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '22028522');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452557358,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"8003426aae9135a28c330cb68d32266c","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"89e086192993","js/moderator.en.js":"7b2687f4cf30","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"a5e983bd7490","js/wmd.en.js":"bdc36644892f","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"a24a0049a77a","js/tageditornew.en.js":"53847fa72831","js/inline-tag-editing.en.js":"314cfb72355b","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"abdba91a2e50","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"5faa9f5da067","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"3874cd280138","js/keyboard-shortcuts.en.js":"2ee500392c30","js/external-editor.en.js":"cf58cc6630ef","js/external-editor.en.js":"cf58cc6630ef","js/snippet-javascript.en.js":"f590e314ee2d","js/snippet-javascript-codemirror.en.js":"20797e12ebbb"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22028522%2fapache-sqoop-pig-consistent-data-representation-processing" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22028522%2fapache-sqoop-pig-consistent-data-representation-processing" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22028522%2fapache-sqoop-pig-consistent-data-representation-processing" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22028522%2fapache-sqoop-pig-consistent-data-representation-processing" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22028522%2fapache-sqoop-pig-consistent-data-representation-processing" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing" class="question-hyperlink">Apache Sqoop/Pig Consistent Data Representation/Processing</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="22028522"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1711221593",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1711221593">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="22028522">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>2</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>In our organization, we have been trying to use hadoop ecosystem based tools to implement ETLs lately. Although the ecosystem itself is quite big, we are using only a very limited set of tools at the moment. Our typical pipeline flow is as follows:</p>
+
+<pre><code>Source Database (1 or more) -&gt; sqoop import -&gt; pig scripts -&gt; sqoop export -&gt; Destination Database (1 or more)
+</code></pre>
+
+<p>Over a period of time, we have encountered multiple issues with the above approach to implementing ETLs. One problem we notice a fair bit is that the fields don't align properly when trying to read a field from HDFS using pig (where data on HDFS has been typically imported with sqoop) and pig script fails with an error. For instance, a string may end up in a numeric field type due to misalignment. </p>
+
+<p>It appears that there are two approaches to this problem:</p>
+
+<ol>
+<li><p>Remove the problem characters you know of in fields before processing with pig. This is the approach we have taken in the past. We do know that we have some bad data in our source databases - typically new lines and tabs in fields that shouldn't exist. (NOTE: we used to have tabs as field delimiters). So what we did is to use a DB view or a free-form query option sqoop that in turn uses a REPLACE function or its equivalent that's available in the source DB (typically mysql but less often postgres). This approach does work but it has the side effect of HDFS data not matching the source data. In addition, some of the other imported fields will no longer make sense - for instance, imagine that you have a MD5 or SHA1 hash on a field but the field has been modified to replace some characters, so we have to compute MD5 or SHA1 to be consistent instead of importing the one from the source DB. In addition, this approach involves trial and error to a certain extent. We wouldn't necessarily know which fields need to be modified ahead of time (and which characters to remove) so we might need more than one iteration to reach our end goal.</p></li>
+<li><p>Use enclosure feature with sqoop in combination with escaping and combine this with a loader of an appropriate type in pig so that not only do the fields do line up properly but a given field (and its associated values) are represented the same way as the data moves through the pipeline. </p></li>
+</ol>
+
+<h3>I was trying to figure out a good way to accomplish #2 using different options available in sqoop and pig. Presented below is an outline of what I have tried so far in addition to the findings.</h3>
+
+<p>Below are the specific versions of software used for this experiment:</p>
+
+<pre><code>Sqoop: 1.4.3
+Pig: 0.12.0
+Hadoop: 2.0.0
+</code></pre>
+
+<p>Since our data sets are typically large (and would take several hours to process), I figured I'll come up with an extremely small data set that kind of mimics some of the data issues we have had. Towards this end, I put together a small table in mysql (which will be used as source DB):</p>
+
+<pre><code>mysql&gt; desc example;
++-------+---------------+------+-----+---------+----------------+
+| Field | Type          | Null | Key | Default | Extra          |
++-------+---------------+------+-----+---------+----------------+
+| id    | int(11)       | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(1024) | YES  |     | NULL    |                |
+| v1    | int(11)       | YES  |     | NULL    |                |
+| v2    | int(11)       | YES  |     | NULL    |                |
+| v3    | int(11)       | YES  |     | NULL    |                |
++-------+---------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+</code></pre>
+
+<p>After data has been added with INSERT statement, here are the contents of the example table:</p>
+
+<pre><code>mysql&gt; select * from example;
++----+----------------------------------------------------------------------------+------+------+------+
+| id | name                                                                       | v1   | v2   | v3   |
++----+----------------------------------------------------------------------------+------+------+------+
+|  1 | Some string, with a comma.                                                 |    1 |    2 |    3 |
+|  2 | Another "string with quotes"                                               |    4 |    5 |    6 |
+|  3 | A string with 
+new line                                                    |    7 |    8 |    9 |
+|  4 | A string with 3 new lines - 
+first new line
+second new line
+third new line |   10 |   11 |   12 |
+|  5 | a string with "quote" and a
+new line                                       |   13 |   14 |   15 |
+|  6 | clean record                                                               |    0 |    1 |    2 |
+|  7 | single 
+ newline                                                           |    0 |    1 |    2 |
+|  8 |                                                                            |   51 |   52 |   53 |
+|  9 | NULL                                                                       |  105 | NULL |  103 |
++----+----------------------------------------------------------------------------+------+------+------+
+9 rows in set (0.00 sec)
+</code></pre>
+
+<p>We can readily see the new lines in name field. I didn't include tabs in this data set as I switched the delimiter from tab to comma, so there is one record with a comma. Since typical enclosing character is a double quote, there are some records with double quotes. Finally in the last two records (id = 8 and 9), I wanted to see how the empty string and nulls are represented in char type field and how null is represented in numeric type field.</p>
+
+<p>I tried the following sqoop import on the above table:</p>
+
+<pre><code>sqoop import --connect jdbc:mysql://localhost/test --username user --password pass --table example --columns 'id, name, v1, v2, v3' --verbose --split-by id --target-dir example --fields-terminated-by , --escaped-by \\ --enclosed-by \" --num-mappers 1
+</code></pre>
+
+<p>Notice that blackslash has been used an escape character, double quote as an enclosure, and comma as field delimiter.</p>
+
+<p>Here is how the data looks on HDFS:</p>
+
+<pre><code>$hadoop fs -cat example/part-m-00000
+"1","Some string, with a comma.","1","2","3"
+"2","Another \"string with quotes\"","4","5","6"
+"3","A string with 
+new line","7","8","9"
+"4","A string with 3 new lines - 
+first new line
+second new line
+third new line","10","11","12"
+"5","a string with \"quote\" and a
+new line","13","14","15"
+"6","clean record","0","1","2"
+"7","single 
+ newline","0","1","2"
+"8","","51","52","53"
+"9","null","105","null","103"
+</code></pre>
+
+<p>I created a small pig script to read and parse the above data:</p>
+
+<pre><code>REGISTER '……./pig/contrib/piggybank/java/piggybank.jar';
+data = LOAD 'example' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE') AS (id:int, name:chararray, v1:int, v2:int, v3:int);
+dump data;
+</code></pre>
+
+<p>Notice the usage of CSVExcelStorage loader that's available in piggybank. Since we have newlines in the incoming data set, we enable MULTILINE option. The above script produces the following output:</p>
+
+<pre><code>(1,Some string, with a comma.,1,2,3)
+(2,Another \string with quotes\",4,5,6)
+(3,A string with 
+new line,7,8,9)
+(4,A string with 3 new lines - 
+first new line
+second new line
+third new line,10,11,12)
+(5,a string with \quote\" and a
+new line,13,14,15)
+(6,clean record,0,1,2)
+(7,single 
+ newline,0,1,2)
+(8,",51,52,53)
+(9,null,105,,103)
+</code></pre>
+
+<p>In records with id 2 and 5, a blackslash remains in the place of the very first double quote while for subsequent double quotes, both the slash as well as the quote remains. This is not exactly what I want. Noting that CSVExcelStorage, based on Excel 2007, uses double quotes to escape quote (i.e., consecutive double quotes are treated as single double quote), I made the escape character a double quote:</p>
+
+<pre><code>sqoop import --connect jdbc:mysql://localhost/test --username user --password pass --table example --columns 'name, v1, v2, v3' --verbose --split-by id --target-dir example --fields-terminated-by , --escaped-by '\"' --enclosed-by '\"' --num-mappers 1
+</code></pre>
+
+<p>Before executing the above command, I deleted the existing data:
+    $hadoop fs -rm -r example</p>
+
+<p>After the sqoop import runs through, here is how data looks on HDFS now:</p>
+
+<pre><code>$hadoop fs -cat example/part-m-00000
+"1","Some string, with a comma.","1","2","3"
+"2","Another """"string with quotes""""","4","5","6"
+"3","A string with 
+new line","7","8","9"
+"4","A string with 3 new lines - 
+first new line
+second new line
+third new line","10","11","12"
+"5","a string with """"quote"""" and a
+new line","13","14","15"
+"6","clean record","0","1","2"
+"7","single 
+ newline","0","1","2"
+"8","","51","52","53"
+"9","null","105","null","103"
+</code></pre>
+
+<p>I ran the same pig script once more on this data and it produces the following output:</p>
+
+<pre><code>(1,Some string, with a comma.,1,2,3)
+(2,Another ""string with quotes"",4,5,6)
+(3,A string with 
+new line,7,8,9)
+(4,A string with 3 new lines - 
+first new line
+second new line
+third new line,10,11,12)
+(5,a string with ""quote"" and a
+new line,13,14,15)
+(6,clean record,0,1,2)
+(7,single 
+ newline,0,1,2)
+(8,",51,52,53)
+(9,null,105,,103)
+</code></pre>
+
+<p>Noticing that any double quotes in the string are now doubled effectively, I can get rid of this by using REPLACE function in pig:</p>
+
+<pre><code>data2 = FOREACH data GENERATE id, REPLACE(name, '""', '"') as name, v1, v2, v3;
+dump data2;
+</code></pre>
+
+<p>The above script produces the following output:</p>
+
+<pre><code>(1,Some string, with a comma.,1,2,3)
+(2,Another "string with quotes",4,5,6)
+(3,A string with 
+new line,7,8,9)
+(4,A string with 3 new lines - 
+first new line
+second new line
+third new line,10,11,12)
+(5,a string with "quote" and a
+new line,13,14,15)
+(6,clean record,0,1,2)
+(7,single 
+ newline,0,1,2)
+(8,",51,52,53)
+(9,null,105,,103)
+</code></pre>
+
+<p>The above looks much more like the output I want. One last item I need to ensure is that nulls and empty strings for chararray type and nulls for int type are accounted for. </p>
+
+<p>Towards that end, I add one more section to the above pig script that generates null and empty strings for char type and null for int type:</p>
+
+<pre><code>data3 = FOREACH data2 GENERATE id, name, v1, v2, v3, null as name2:chararray, '' as name3:chararray, null as v4:int;
+dump data3;
+</code></pre>
+
+<p>The output looks as follows:</p>
+
+<pre><code>(1,Some string, with a comma.,1,2,3,,,)
+(2,Another "string with quotes",4,5,6,,,)
+(3,A string with 
+new line,7,8,9,,,)
+(4,A string with 3 new lines - 
+first new line
+second new line
+third new line,10,11,12,,,)
+(5,a string with "quote" and a
+new line,13,14,15,,,)
+(6,clean record,0,1,2,,,)
+(7,single 
+ newline,0,1,2,,,)
+(8,",51,52,53,,,)
+(9,null,105,,103,,,)
+</code></pre>
+
+<p>I stored the same output in HDFS using the following pig script:</p>
+
+<pre><code>STORE data3 INTO 'example_output' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE');
+</code></pre>
+
+<p>Here is how data on HDFS looks like:</p>
+
+<pre><code>$hadoop fs -cat example_output/part-m-00000
+1,"Some string, with a comma.",1,2,3,,,                                                                                                                                                                                            
+2,"Another ""string with quotes""",4,5,6,,,                                                                                                                                                                                        
+3,"A string with                                                                                                                                                                                                                   
+new line",7,8,9,,,                                                                                                                                                                                                                 
+4,"A string with 3 new lines -                                                                                                                                                                                                     
+first new line                                                                                                                                                                                                                     
+second new line                                                                                                                                                                                                                    
+third new line",10,11,12,,,                                                                                                                                                                                                        
+5,"a string with ""quote"" and a                                                                                                                                                                                                   
+new line",13,14,15,,,                                                                                                                                                                                                              
+6,clean record,0,1,2,,,                                                                                                                                                                                                            
+7,"single                                                                                                                                                                                                                          
+ newline",0,1,2,,,
+8,"""",51,52,53,,,
+9,null,105,,103,,,
+</code></pre>
+
+<p>For nulls and empty strings, the only two records of interest are the bottom two ones (id = 8 and 9). It’s clear that there is a difference between empty string and null from source using sqoop versus that which is generated from pig.  I could account for null and empty strings in the name field above similar to how I have done for the double quote but it seems rather manual and more steps than needed.</p>
+
+<p>Notice that although we have used "enclosed-by" option in sqoop import (as opposed to "optionally-enclosed-by" option), the output from PIG uses enclosure only when there is a need for it i.e., if a quote or a comma appears in the field, then enclosing is performed, otherwise not - in other words, this looks like the sqoop equivalent of "optionally-enclosed-by" option.</p>
+
+<p>The final stage in the pipeline is sqoop export. I put together the following table:</p>
+
+<pre><code>mysql&gt; desc example_output;
++-------+---------------+------+-----+---------+-------+
+| Field | Type          | Null | Key | Default | Extra |
++-------+---------------+------+-----+---------+-------+
+| id    | int(11)       | YES  |     | NULL    |       |
+| name  | varchar(1024) | YES  |     | NULL    |       |
+| v1    | int(11)       | YES  |     | NULL    |       |
+| v2    | int(11)       | YES  |     | NULL    |       |
+| v3    | int(11)       | YES  |     | NULL    |       |
+| name2 | varchar(1024) | YES  |     | NULL    |       |
+| name3 | varchar(1024) | YES  |     | NULL    |       |
+| v4    | int(11)       | YES  |     | NULL    |       |
++-------+---------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+</code></pre>
+
+<p>Here is the sqoop export command I used:</p>
+
+<pre><code>sqoop export --connect jdbc:mysql://localhost/test --username user --password pass --table example_output --export-dir example_output --input-fields-terminated-by , --input-escaped-by '\"' --input-optionally-enclosed-by '\"' --num-mappers 1 --verbose
+</code></pre>
+
+<p>The export options are similar to import options except that the "enclosed-by" has been replaced by "optionally-enclosed-by" and an "input-" prefix has been added to some of the options (e.g: --input-fields-terminated-by) since sqoop export uses those while reading input from HDFS.</p>
+
+<p>This fails with the following error in the logs:</p>
+
+<pre><code>2014-02-25 22:19:05,750 ERROR org.apache.sqoop.mapreduce.TextExportMapper: Exception: 
+java.lang.RuntimeException: Can't parse input data: 'Some string, with a comma.,1,2,3,,,'
+    at example_output.__loadFromFields(example_output.java:396)
+    at example_output.parse(example_output.java:309)
+    at org.apache.sqoop.mapreduce.TextExportMapper.map(TextExportMapper.java:83)
+    at org.apache.sqoop.mapreduce.TextExportMapper.map(TextExportMapper.java:39)
+    at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:140)
+    at org.apache.sqoop.mapreduce.AutoProgressMapper.run(AutoProgressMapper.java:64)
+    at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:672)
+    at org.apache.hadoop.mapred.MapTask.run(MapTask.java:330)
+    at org.apache.hadoop.mapred.Child$4.run(Child.java:268)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at javax.security.auth.Subject.doAs(Subject.java:415)
+    at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408)
+    at org.apache.hadoop.mapred.Child.main(Child.java:262)
+Caused by: java.util.NoSuchElementException
+    at java.util.ArrayList$Itr.next(ArrayList.java:794)
+    at example_output.__loadFromFields(example_output.java:366)
+    ... 12 more
+2014-02-25 22:19:05,756 ERROR org.apache.sqoop.mapreduce.TextExportMapper: On input: 1,"Some string, with a comma.",1,2,3,,,
+2014-02-25 22:19:05,757 ERROR org.apache.sqoop.mapreduce.TextExportMapper: On input file: hdfs://nameservice1/user/xyz/example_output/part-m-00000
+2014-02-25 22:19:05,757 ERROR org.apache.sqoop.mapreduce.TextExportMapper: At position 0
+</code></pre>
+
+<p>In an effort to troubleshoot this problem, I created a HDFS location that has only one record (id = 6) from the input data set:</p>
+
+<pre><code>$ hadoop fs -cat example_output_single_record/part-m-00000
+6,clean record,0,1,2,,,
+</code></pre>
+
+<p>Now the sqoop export command becomes:</p>
+
+<pre><code>sqoop export --connect jdbc:mysql://localhost/test --username user --password pass --table example_output --export-dir example_output_single_record --input-fields-terminated-by , --input-escaped-by '\"' --input-optionally-enclosed-by '\"' --num-mappers 1 --verbose
+</code></pre>
+
+<p>The above command runs through fine and produces the desired result of inserting the single record into the destination DB:</p>
+
+<pre><code>mysql&gt; select * from example_output;
++------+--------------+------+------+------+-------+-------+------+
+| id   | name         | v1   | v2   | v3   | name2 | name3 | v4   |
++------+--------------+------+------+------+-------+-------+------+
+|    6 | clean record |    0 |    1 |    2 |       |       | NULL |
++------+--------------+------+------+------+-------+-------+------+
+1 row in set (0.00 sec)
+</code></pre>
+
+<p>While null value has been preserved for the numeric field, both null and empty string mapped to empty string in the destination DB. </p>
+
+<h3>With the above as the background, here are the questions:</h3>
+
+<ol>
+<li><p>I think it would be easier if we can ensure that a given value for a given data type will be represented/processed exactly the same way regardless of whether it’s coming from sqoop or generated by pig. Has anyone figured out a way to ensure consistent representation/processing of a given data type while preserving the original field values? I have covered only two data types here (chararray and int) but I suppose some of the other data types also have potentially similar issues.</p></li>
+<li><p>I have used "enclosed-by" option in sqoop import instead of "optionally-enclosed-by" so that every field value will be enclosed within double quotes. I just thought it would be a source of less confusion if every value in every field was enclosed instead of just those that need enclosing. What do others use and has one of these options worked better for your use case relative to the other? It looks like CSVExcelStorage doesn't support a notion of "enclosed-by" - are there any other storage functions that support this mechanism?</p></li>
+<li><p>Any suggestions on how to get the sqoop export to work as intended on the full output of pig script (i.e., example_output on HDFS)? </p></li>
+</ol>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/apache-pig" class="post-tag" title="show questions tagged &#39;apache-pig&#39;" rel="tag">apache-pig</a> <a href="/questions/tagged/sqoop" class="post-tag" title="show questions tagged &#39;sqoop&#39;" rel="tag">sqoop</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/22028522" title="short permalink to this question" class="short-link" id="link-post-22028522">share</a><span class="lsep">|</span><a href="/posts/22028522/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/22028522/revisions" title="show all edits to this post">edited <span title="2014-02-27 01:44:27Z" class="relativetime">Feb 27 '14 at 1:44</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/881229/kara"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/0263c4c9036955a2d9768bf6a35a8345?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/881229/kara">Kara</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,696</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="25 silver badges"><span class="badge2"></span><span class="badgecount">25</span></span><span title="40 bronze badges"><span class="badge3"></span><span class="badgecount">40</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2014-02-25 23:30:49Z" class="relativetime">Feb 25 '14 at 23:30</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2821596/srikrishna"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ee80f08069e73c5bc77d3347f1c2f4a5?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2821596/srikrishna">srikrishna</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">113</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22028522" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-22028522" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/22028522/apache-sqoop-pig-consistent-data-representation-processing?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="22057200"></a>
+<div id="answer-22057200" class="answer" data-answerid="22057200"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="22057200">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Maybe you need to step back and choose a simpler solution.  So you have newlines, tabs, commas, double quotes, nulls, foreign characters? and maybe even some garbage in your data, but how random is it really?  Could you choose an obscure delimiter character and survive?</p>
+
+<p>For example, to use <a href="http://en.wikipedia.org/wiki/End_Transmission_Block_character" rel="nofollow">0x17</a> as the field delimiter  </p>
+
+<p>use delimiter with sqoop:</p>
+
+<pre><code>--fields-terminated-by \0x17
+</code></pre>
+
+<p>and with pig:</p>
+
+<pre><code>LOAD 'input.dat' USING PigStorage('\\0x17') as (x,y,z);
+</code></pre>
+
+<p>Or maybe there is some other obscure ascii value you could use:
+<a href="http://en.wikipedia.org/wiki/ASCII" rel="nofollow">http://en.wikipedia.org/wiki/ASCII</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/22057200" title="short permalink to this answer" class="short-link" id="link-post-22057200">share</a><span class="lsep">|</span><a href="/posts/22057200/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/22057200/revisions" title="show all edits to this post">edited <span title="2014-02-27 01:32:56Z" class="relativetime">Feb 27 '14 at 1:32</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-02-27 01:26:27Z" class="relativetime">Feb 27 '14 at 1:26</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/542620/freerobots"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/uRdN1.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/542620/freerobots">Freerobots</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">424</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+            
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22057200" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-33481084" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Perhaps I could. One potential issue with this approach is that one would have to make sure that the delimiter doesn&#39;t exist in the data set in question (this needs to be done every time we bring in a new data set). I can also use a different obscure delimiter for different data sets as appropriate and get around the issue. However, none of these approaches in my personal opinion are very elegant solutions and neither are they generic. Wasn&#39;t enclosure/escaping functionality designed to help with these types of issues? I was looking for a solution that can be re-used across multiple data sets.</span>
+                    &ndash;&nbsp;<a href="/users/2821596/srikrishna"
+                       title="113 reputation"
+                       class="comment-user owner">srikrishna</a>
+                <span class="comment-date" dir="ltr"><span title="2014-02-27 18:30:53Z" class="relativetime-clean">Feb 27 '14 at 18:30</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34545324" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Ok, here is a refinment on this answer:      Instead of hoping to choose an obscure delimiter that is not in your data set, choose one that you have forced to be unique.  This can be done during sqooping like so:  <code>--hive-drop-import-delims --fields-terminated-by &#39;\001&#39;</code>  This strips all \n \r and ^A characters from the input and then specifies that fields will be delimited with ^A. Then, you know for certain that your field delimiter (^A) is not in your data set and your line delimiter (\n) is also not in your data set.</span>
+                    &ndash;&nbsp;<a href="/users/542620/freerobots"
+                       title="424 reputation"
+                       class="comment-user">Freerobots</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-27 01:19:37Z" class="relativetime-clean">Mar 27 '14 at 1:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34576602" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Another refinement: instead of using <code>--hive-drop-import-delims</code>, use <code>--hive-delims-replacement &#39; &#39;</code>, and replace the \n, \r, and ^A characters that exist inside your fields with spaces.</span>
+                    &ndash;&nbsp;<a href="/users/542620/freerobots"
+                       title="424 reputation"
+                       class="comment-user">Freerobots</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-27 16:50:51Z" class="relativetime-clean">Mar 27 '14 at 16:50</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-22057200" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/22028522/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="22028522" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="8003426aae9135a28c330cb68d32266c">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f22028522%2fapache-sqoop-pig-consistent-data-representation-processing%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f22028522%2fapache-sqoop-pig-consistent-data-representation-processing%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/apache-pig" class="post-tag" title="show questions tagged &#39;apache-pig&#39;" rel="tag">apache-pig</a> <a href="/questions/tagged/sqoop" class="post-tag" title="show questions tagged &#39;sqoop&#39;" rel="tag">sqoop</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-02-25 23:30:49Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>2606 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-02-27 01:44:27Z">1 year ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1126037762",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1126037762">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/12852695" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/12852695/apache-sqoop-communication-link-failure" class="question-hyperlink">Apache Sqoop communication link failure</a>
+</div>
+<div class="spacer">
+<a href="/q/13084548" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/13084548/pig-latin-reading-data-from-a-file-and-storing-it-as-tuple" class="question-hyperlink">Pig latin - Reading data from a file and storing it as tuple</a>
+</div>
+<div class="spacer">
+<a href="/q/17215186" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/17215186/hadoop-pig-unable-to-load-sqooped-data" class="question-hyperlink">hadoop pig: unable to load sqooped data</a>
+</div>
+<div class="spacer">
+<a href="/q/18192602" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/18192602/apache-sqoop-pig-field-escaping" class="question-hyperlink">Apache Sqoop/Pig field escaping</a>
+</div>
+<div class="spacer">
+<a href="/q/21936147" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/21936147/sqoop-to-two-tables-from-one-part-filepig-output" class="question-hyperlink">Sqoop to two tables from one part file(pig output)</a>
+</div>
+<div class="spacer">
+<a href="/q/22409657" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/22409657/calling-sqoop-in-pig-script" class="question-hyperlink">Calling sqoop in pig script</a>
+</div>
+<div class="spacer">
+<a href="/q/23334748" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/23334748/staging-table-while-loading-data-to-sql-server-sqoop" class="question-hyperlink">--staging-table while loading data to sql server (sqoop)</a>
+</div>
+<div class="spacer">
+<a href="/q/28979972" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/28979972/sqoop-import-export-for-period-data-type-in-teradata" class="question-hyperlink">Sqoop import/export for period data type in teradata</a>
+</div>
+<div class="spacer">
+<a href="/q/33098863" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/33098863/apache-pig-how-to-load-a-file-having-fields-enclosed-within-double-quotes-and" class="question-hyperlink">Apache Pig &mdash; how to load a file having fields enclosed within double quotes and separated by comma</a>
+</div>
+<div class="spacer">
+<a href="/q/33801691" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/33801691/apache-pig-how-to-read-data-from-csv-file" class="question-hyperlink">Apache Pig - How to read data from CSV file</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/88938/one-big-sign-up-button-or-3" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    One big sign up button or 3
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251486/cards-for-free-hero-power" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Cards for free hero power
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34724320/why-does-the-smallest-int-%e2%88%922147483648-have-type-long" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does the smallest int, −2147483648, have type &#39;long&#39;?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/43592/what-is-the-meaning-of-the-osic-suffix-on-a-metal-e-g-cobaltosic-oxide" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the meaning of the &quot;-osic&quot; suffix on a metal (e.g., cobaltosic oxide)?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33059/wearing-a-cape-during-combat" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Wearing a cape during combat?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33040/multiple-dna-one-creature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Multiple DNA, one creature
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33048/what-would-an-earth-with-no-timezones-be-like" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would an Earth with no timezones be like?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/228579/does-quantum-mechanics-play-a-role-in-the-brain" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does quantum mechanics play a role in the brain?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-lifehacks" title="Lifehacks Stack Exchange"></div><a href="http://lifehacks.stackexchange.com/questions/10622/how-can-i-eat-my-bagel-when-i-lack-a-knife-to-cut-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:593 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I eat my bagel when I lack a knife to cut it?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299052/is-puppy-a-synonym-of-dog" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is puppy a synonym of dog?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/298987/what-is-the-word-that-means-to-lose-against-a-totally-inexperienced-opponent" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the word that means -&quot;to lose against a totally inexperienced opponent&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/104881/possible-to-use-runas-in-apex-trigger" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible to use runAs in Apex Trigger?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/748277/how-does-snmp-get-cpu-usage-on-linux" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does SNMP get CPU usage on Linux?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-es" title="Stack Overflow en español"></div><a href="http://es.stackoverflow.com/questions/2378/como-llamar-un-stored-procedure-desde-entity-framework-6-code-first" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:637 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Como llamar un stored procedure desde Entity Framework 6 code first
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/65299/open-source-software-capable-of-open-sketch-files" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Open source software capable of open Sketch files
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78507/now-were-only-a-nip-and-tuck-away" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Now we&#39;re only a nip and tuck away
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33066/why-are-monasteries-so-remote" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are monasteries so remote?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69156/find-ranges-of-true-values-in-a-list" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Find ranges of True values in a list
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-earthscience" title="Earth Science Stack Exchange"></div><a href="http://earthscience.stackexchange.com/questions/7212/why-is-the-pond-in-my-backyard-not-frozen-when-it-is-5-degrees-f" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:553 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the pond in my backyard not frozen when it is 5 degrees F?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34725215/why-does-msvc-pick-a-long-long-as-the-type-for-2147483648" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does MSVC pick a long long as the type for -2147483648?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299145/it-was-your-choice-idiom-or-expression" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    It was your choice; idiom or expression
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/57931/are-lottery-tickets-ever-a-wise-investment-provided-the-jackpot-is-large-enough" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are lottery tickets ever a wise investment provided the jackpot is large enough?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1605183/if-squaring-a-number-means-multiplying-that-number-with-itself-then-shouldnt-ta" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If squaring a number means multiplying that number with itself then shouldn&#39;t taking square root of a number mean to divide a number by itself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/307063/why-does-git-pull-perform-a-merge-instead-of-a-rebase-by-default" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does git pull perform a merge instead of a rebase by default?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/22028522" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/22028522/ivc/7c27');});
+</script>
+<noscript>
+    <div><img src="/posts/22028522/ivc/7c27" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3159
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('apache-pig,sqoop');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|apache-pig|sqoop|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>

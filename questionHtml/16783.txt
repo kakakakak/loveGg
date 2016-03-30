@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>Need help getting spark-cassandra-connector to work - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Need help getting spark-cassandra-connector to work" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I need some help getting a test application working in the spark environment using the spark cassandra connector.
+
+First the details:
+
+I have created a test app in Intellij using Scala and the foll..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/25537515/need-help-getting-spark-cassandra-connector-to-work"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/25537515/need-help-getting-spark-cassandra-connector-to-work" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=2ad47c1cbf74"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=ff9c04b6645a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Need help getting spark-cassandra-connector to work&#39;" href="/feeds/question/25537515">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/25537515/need-help-getting-spark-cassandra-connector-to-work" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/25537515/need-help-getting-spark-cassandra-connector-to-work" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/25537515/need-help-getting-spark-cassandra-connector-to-work">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:2,shownCommentCount:2,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:25537515});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '25537515');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1452575102,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableSocialMediaInSharePopup":true},"user":{"fkey":"feb94ac237bf4560673eb2216871336d","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"89e086192993","js/moderator.en.js":"7b2687f4cf30","js/full-anon.en.js":"b07e91421e2e","js/full.en.js":"a5e983bd7490","js/wmd.en.js":"bdc36644892f","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"f58acd4f09d3","js/help.en.js":"8ccb22b4d37a","js/tageditor.en.js":"a24a0049a77a","js/tageditornew.en.js":"53847fa72831","js/inline-tag-editing.en.js":"314cfb72355b","js/revisions.en.js":"df3cb25dfabf","js/review.en.js":"abdba91a2e50","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"5faa9f5da067","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"3874cd280138","js/keyboard-shortcuts.en.js":"2ee500392c30","js/external-editor.en.js":"cf58cc6630ef","js/external-editor.en.js":"cf58cc6630ef","js/snippet-javascript.en.js":"f590e314ee2d","js/snippet-javascript-codemirror.en.js":"20797e12ebbb"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f25537515%2fneed-help-getting-spark-cassandra-connector-to-work" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f25537515%2fneed-help-getting-spark-cassandra-connector-to-work" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 151 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f25537515%2fneed-help-getting-spark-cassandra-connector-to-work" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f25537515%2fneed-help-getting-spark-cassandra-connector-to-work" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="/jobs">Jobs<span class="nav-jobs-beta">beta</span></a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                                            </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
+            <br/>
+                <br/>Join them; it only takes a minute:<br/>
+            <br/>
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f25537515%2fneed-help-getting-spark-cassandra-connector-to-work" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Join the Stack Overflow community to:</b>
+            <ol id="hiw">
+                <li id="q">Ask programming questions
+                </li>
+                <li id="an">Answer and help your peers
+                </li>
+                <li id="b">Get recognized for your expertise
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        StackExchange.ready(function () {
+
+            var location = 0;
+            if ($("body").hasClass("questions-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("question-page")) {
+                location = 1;;
+            } else if ($("body").hasClass("faq-page")) {
+                location = 5;;
+            } else if ($("body").hasClass("home-page")) {
+                location = 3;;
+            }
+
+            $('#tell-me-more').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+                });
+            });
+            $('#herobox #close').click(function () {
+                StackExchange.using("gps", function () {
+                    StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+                });
+                $.cookie("hero", "mini", { path: "/", expires: 365 });
+                $.ajax({
+                    url: "/hero-mini",
+                    success: function (data) {
+                        $("#herobox").fadeOut("fast", function () {
+                            $("#herobox").replaceWith(data);
+                            $("#herobox-mini").fadeIn("fast");
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/25537515/need-help-getting-spark-cassandra-connector-to-work" class="question-hyperlink">Need help getting spark-cassandra-connector to work</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="25537515"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1508624322",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1508624322">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="25537515">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I need some help getting a test application working in the spark environment using the spark cassandra connector.</p>
+
+<p>First the details:</p>
+
+<p><strong>I have created a test app in Intellij using Scala and the following code:</strong></p>
+
+<pre><code>import com.datastax.spark.connector._
+import org.apache.spark.{SparkContext, SparkConf}
+object test {
+  def main(args: Array[String]){
+    val conf = new SparkConf(true).set("spark.cassandra.connection.host", "xx.xxx.xxx.59")
+                                  .set("spark.cassandra.username", "ubuntu")
+                                  .set("spark.cassandra.password", "")
+
+  val sc = new SparkContext("spark://xx.xxx.xxx.xxx:7077", "Season", conf)
+  println("Got past the setup.")
+
+  val ks = "test"// analytics_loadset"
+  val incf =  "kv"//site_detail"
+
+  println("Got past setting the variables.")
+
+  val rdd = sc.cassandraTable(ks, incf)
+  println(rdd.count)
+  println("Got past reading the RDD.")
+
+  println("done with test")
+    sc.stop()
+  }
+}
+</code></pre>
+
+<p><strong>What i get back is the following:</strong></p>
+
+<pre><code>    "C:\Program Files\Java\jdk1.7.0_60\bin\java" -Didea.launcher.port=7538 "-Didea.launcher.bin.path=C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 13.1.4\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.7.0_60\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\jfxrt.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.7.0_60\jre\lib\ext\zipfs.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\target\scala-2.10\classes;C:\Users\JEUser\.sbt\boot\scala-2.10.4\lib\scala-library.jar;C:\Users\JEUser\.ivy2\cache\colt\colt\jars\colt-1.2.0.jar;C:\Users\JEUser\.ivy2\cache\com.clearspring.analytics\stream\jars\stream-2.5.1.jar;C:\Users\JEUser\.ivy2\cache\com.codahale.metrics\metrics-core\bundles\metrics-core-3.0.2.jar;C:\Users\JEUser\.ivy2\cache\com.codahale.metrics\metrics-graphite\bundles\metrics-graphite-3.0.0.jar;C:\Users\JEUser\.ivy2\cache\com.codahale.metrics\metrics-json\bundles\metrics-json-3.0.0.jar;C:\Users\JEUser\.ivy2\cache\com.codahale.metrics\metrics-jvm\bundles\metrics-jvm-3.0.0.jar;C:\Users\JEUser\.ivy2\cache\com.datastax.cassandra\cassandra-driver-core\jars\cassandra-driver-core-2.0.4-sources.jar;C:\Users\JEUser\.ivy2\cache\com.datastax.cassandra\cassandra-driver-core\jars\cassandra-driver-core-2.0.4.jar;C:\Users\JEUser\.ivy2\cache\com.datastax.spark\spark-cassandra-connector_2.10\jars\spark-cassandra-connector_2.10-1.0.0-rc4.jar;C:\Users\JEUser\.ivy2\cache\com.esotericsoftware.kryo\kryo\bundles\kryo-2.21.jar;C:\Users\JEUser\.ivy2\cache\com.esotericsoftware.minlog\minlog\jars\minlog-1.2.jar;C:\Users\JEUser\.ivy2\cache\com.esotericsoftware.reflectasm\reflectasm\jars\reflectasm-1.07-shaded.jar;C:\Users\JEUser\.ivy2\cache\com.fasterxml.jackson.core\jackson-annotations\bundles\jackson-annotations-2.3.0.jar;C:\Users\JEUser\.ivy2\cache\com.fasterxml.jackson.core\jackson-core\bundles\jackson-core-2.3.0.jar;C:\Users\JEUser\.ivy2\cache\com.fasterxml.jackson.core\jackson-databind\bundles\jackson-databind-2.3.0.jar;C:\Users\JEUser\.ivy2\cache\com.google.code.findbugs\jsr305\jars\jsr305-1.3.9.jar;C:\Users\JEUser\.ivy2\cache\com.google.guava\guava\bundles\guava-15.0.jar;C:\Users\JEUser\.ivy2\cache\com.ning\compress-lzf\bundles\compress-lzf-1.0.0.jar;C:\Users\JEUser\.ivy2\cache\com.thoughtworks.paranamer\paranamer\jars\paranamer-2.6.jar;C:\Users\JEUser\.ivy2\cache\com.twitter\chill-java\jars\chill-java-0.3.6.jar;C:\Users\JEUser\.ivy2\cache\com.twitter\chill_2.10\jars\chill_2.10-0.3.6.jar;C:\Users\JEUser\.ivy2\cache\com.typesafe\config\bundles\config-1.0.2.jar;C:\Users\JEUser\.ivy2\cache\commons-beanutils\commons-beanutils\jars\commons-beanutils-1.7.0.jar;C:\Users\JEUser\.ivy2\cache\commons-beanutils\commons-beanutils-core\jars\commons-beanutils-core-1.8.0.jar;C:\Users\JEUser\.ivy2\cache\commons-codec\commons-codec\jars\commons-codec-1.5.jar;C:\Users\JEUser\.ivy2\cache\commons-collections\commons-collections\jars\commons-collections-3.2.1.jar;C:\Users\JEUser\.ivy2\cache\commons-configuration\commons-configuration\jars\commons-configuration-1.6.jar;C:\Users\JEUser\.ivy2\cache\commons-digester\commons-digester\jars\commons-digester-1.8.jar;C:\Users\JEUser\.ivy2\cache\commons-el\commons-el\jars\commons-el-1.0.jar;C:\Users\JEUser\.ivy2\cache\commons-httpclient\commons-httpclient\jars\commons-httpclient-3.1.jar;C:\Users\JEUser\.ivy2\cache\commons-io\commons-io\jars\commons-io-2.4.jar;C:\Users\JEUser\.ivy2\cache\commons-lang\commons-lang\jars\commons-lang-2.4.jar;C:\Users\JEUser\.ivy2\cache\commons-logging\commons-logging\jars\commons-logging-1.1.1.jar;C:\Users\JEUser\.ivy2\cache\commons-net\commons-net\jars\commons-net-2.2.jar;C:\Users\JEUser\.ivy2\cache\concurrent\concurrent\jars\concurrent-1.3.4.jar;C:\Users\JEUser\.ivy2\cache\hsqldb\hsqldb\jars\hsqldb-1.8.0.10.jar;C:\Users\JEUser\.ivy2\cache\io.netty\netty\bundles\netty-3.9.0.Final.jar;C:\Users\JEUser\.ivy2\cache\io.netty\netty-all\jars\netty-all-4.0.17.Final.jar;C:\Users\JEUser\.ivy2\cache\jline\jline\jars\jline-0.9.94.jar;C:\Users\JEUser\.ivy2\cache\joda-time\joda-time\jars\joda-time-2.3.jar;C:\Users\JEUser\.ivy2\cache\log4j\log4j\bundles\log4j-1.2.17.jar;C:\Users\JEUser\.ivy2\cache\net.java.dev.jets3t\jets3t\jars\jets3t-0.7.1.jar;C:\Users\JEUser\.ivy2\cache\net.sf.py4j\py4j\jars\py4j-0.8.1.jar;C:\Users\JEUser\.ivy2\cache\org.apache.ant\ant\jars\ant-1.9.0.jar;C:\Users\JEUser\.ivy2\cache\org.apache.ant\ant-launcher\jars\ant-launcher-1.9.0.jar;C:\Users\JEUser\.ivy2\cache\org.apache.cassandra\cassandra-clientutil\jars\cassandra-clientutil-2.0.9.jar;C:\Users\JEUser\.ivy2\cache\org.apache.cassandra\cassandra-thrift\jars\cassandra-thrift-2.0.9.jar;C:\Users\JEUser\.ivy2\cache\org.apache.commons\commons-lang3\jars\commons-lang3-3.3.2.jar;C:\Users\JEUser\.ivy2\cache\org.apache.commons\commons-math\jars\commons-math-2.1.jar;C:\Users\JEUser\.ivy2\cache\org.apache.curator\curator-client\bundles\curator-client-2.4.0.jar;C:\Users\JEUser\.ivy2\cache\org.apache.curator\curator-framework\bundles\curator-framework-2.4.0.jar;C:\Users\JEUser\.ivy2\cache\org.apache.curator\curator-recipes\bundles\curator-recipes-2.4.0.jar;C:\Users\JEUser\.ivy2\cache\org.apache.hadoop\hadoop-client\jars\hadoop-client-1.0.4.jar;C:\Users\JEUser\.ivy2\cache\org.apache.hadoop\hadoop-core\jars\hadoop-core-1.0.4.jar;C:\Users\JEUser\.ivy2\cache\org.apache.httpcomponents\httpclient\jars\httpclient-4.2.5.jar;C:\Users\JEUser\.ivy2\cache\org.apache.httpcomponents\httpcore\jars\httpcore-4.2.4.jar;C:\Users\JEUser\.ivy2\cache\org.apache.mesos\mesos\jars\mesos-0.18.1-shaded-protobuf.jar;C:\Users\JEUser\.ivy2\cache\org.apache.spark\spark-core_2.10\jars\spark-core_2.10-1.0.2.jar;C:\Users\JEUser\.ivy2\cache\org.apache.thrift\libthrift\jars\libthrift-0.9.1.jar;C:\Users\JEUser\.ivy2\cache\org.apache.zookeeper\zookeeper\jars\zookeeper-3.4.5.jar;C:\Users\JEUser\.ivy2\cache\org.codehaus.jackson\jackson-core-asl\jars\jackson-core-asl-1.8.8.jar;C:\Users\JEUser\.ivy2\cache\org.codehaus.jackson\jackson-mapper-asl\jars\jackson-mapper-asl-1.8.8.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-continuation\jars\jetty-continuation-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-http\jars\jetty-http-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-io\jars\jetty-io-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-jndi\jars\jetty-jndi-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-plus\jars\jetty-plus-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-security\jars\jetty-security-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-server\jars\jetty-server-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-servlet\jars\jetty-servlet-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-util\jars\jetty-util-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-webapp\jars\jetty-webapp-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty\jetty-xml\jars\jetty-xml-8.1.14.v20131031.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty.orbit\javax.activation\orbits\javax.activation-1.1.0.v201105071233.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty.orbit\javax.mail.glassfish\orbits\javax.mail.glassfish-1.4.1.v201005082020.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty.orbit\javax.servlet\orbits\javax.servlet-3.0.0.v201112011016.jar;C:\Users\JEUser\.ivy2\cache\org.eclipse.jetty.orbit\javax.transaction\orbits\javax.transaction-1.1.1.v201105210645.jar;C:\Users\JEUser\.ivy2\cache\org.joda\joda-convert\jars\joda-convert-1.2.jar;C:\Users\JEUser\.ivy2\cache\org.json4s\json4s-ast_2.10\jars\json4s-ast_2.10-3.2.6.jar;C:\Users\JEUser\.ivy2\cache\org.json4s\json4s-core_2.10\jars\json4s-core_2.10-3.2.6.jar;C:\Users\JEUser\.ivy2\cache\org.json4s\json4s-jackson_2.10\jars\json4s-jackson_2.10-3.2.6.jar;C:\Users\JEUser\.ivy2\cache\org.objenesis\objenesis\jars\objenesis-1.2.jar;C:\Users\JEUser\.sbt\boot\scala-2.10.4\lib\scala-compiler.jar;C:\Users\JEUser\.sbt\boot\scala-2.10.4\lib\scala-reflect.jar;C:\Users\JEUser\.ivy2\cache\org.scala-lang\scalap\jars\scalap-2.10.4.jar;C:\Users\JEUser\.ivy2\cache\org.slf4j\jcl-over-slf4j\jars\jcl-over-slf4j-1.7.5.jar;C:\Users\JEUser\.ivy2\cache\org.slf4j\jul-to-slf4j\jars\jul-to-slf4j-1.7.5.jar;C:\Users\JEUser\.ivy2\cache\org.slf4j\slf4j-api\jars\slf4j-api-1.7.5.jar;C:\Users\JEUser\.ivy2\cache\org.slf4j\slf4j-log4j12\jars\slf4j-log4j12-1.7.5.jar;C:\Users\JEUser\.ivy2\cache\org.spark-project\pyrolite\jars\pyrolite-2.0.1.jar;C:\Users\JEUser\.ivy2\cache\org.spark-project.akka\akka-actor_2.10\jars\akka-actor_2.10-2.2.3-shaded-protobuf.jar;C:\Users\JEUser\.ivy2\cache\org.spark-project.akka\akka-remote_2.10\bundles\akka-remote_2.10-2.2.3-shaded-protobuf.jar;C:\Users\JEUser\.ivy2\cache\org.spark-project.akka\akka-slf4j_2.10\bundles\akka-slf4j_2.10-2.2.3-shaded-protobuf.jar;C:\Users\JEUser\.ivy2\cache\org.spark-project.protobuf\protobuf-java\jars\protobuf-java-2.4.1-shaded.jar;C:\Users\JEUser\.ivy2\cache\org.tachyonproject\tachyon\jars\tachyon-0.4.1-thrift.jar;C:\Users\JEUser\.ivy2\cache\org.uncommons.maths\uncommons-maths\jars\uncommons-maths-1.2.2a.jar;C:\Users\JEUser\.ivy2\cache\org.xerial.snappy\snappy-java\bundles\snappy-java-1.0.5.jar;C:\Users\JEUser\.ivy2\cache\oro\oro\jars\oro-2.0.8.jar;C:\Users\JEUser\.ivy2\cache\xmlenc\xmlenc\jars\xmlenc-0.52.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\spark-cassandra-connector-java_2.10-1.0.0-SNAPSHOT.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\netty-3.9.0.Final.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\spark-cassandra-connector_2.10-1.0.0-SNAPSHOT.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\sbt-assembly-0.11.2.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\cassandra-driver-dse-2.0.2.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\spark-core_2.10-0.9.1.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\metrics-core-3.0.2.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\fastutil-6.5.15.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\snappy-java-1.0.5.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\guava-15.0.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\slf4j-api-1.7.5.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\slf4j-log4j12-1.7.6.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\libthrift-0.9.1.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\joda-time-2.4.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\log4j-1.2.17.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\cassandra-driver-core-2.0.2.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\apache-cassandra-thrift-2.0.8.jar;C:\repository\trunk\Scala_210_wspace\Seasonality_v6\lib\apache-cassandra-clientutil-2.0.8.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 13.1.4\lib\idea_rt.jar" com.intellij.rt.execution.application.AppMain test
+    SLF4J: Class path contains multiple SLF4J bindings.
+    SLF4J: Found binding in [jar:file:/C:/Users/JEUser/.ivy2/cache/org.slf4j/slf4j-log4j12/jars/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    SLF4J: Found binding in [jar:file:/C:/repository/trunk/Scala_210_wspace/Seasonality_v6/lib/slf4j-log4j12-1.7.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+    SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+    14/08/27 13:23:10 INFO spark.SecurityManager: Changing view acls to: JEUser
+    14/08/27 13:23:10 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(JEUser)
+    14/08/27 13:23:10 INFO slf4j.Slf4jLogger: Slf4jLogger started
+    14/08/27 13:23:10 INFO Remoting: Starting remoting
+    14/08/27 13:23:10 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://spark@JEMAC17:49565]
+    14/08/27 13:23:10 INFO Remoting: Remoting now listens on addresses: [akka.tcp://spark@JEMAC17:49565]
+    14/08/27 13:23:10 INFO spark.SparkEnv: Registering MapOutputTracker
+    14/08/27 13:23:10 INFO spark.SparkEnv: Registering BlockManagerMaster
+    14/08/27 13:23:10 INFO storage.DiskBlockManager: Created local directory at C:\Users\JEUser\AppData\Local\Temp\spark-local-20140827132310-b588
+    14/08/27 13:23:10 INFO storage.MemoryStore: MemoryStore started with capacity 1080.6 MB.
+    14/08/27 13:23:10 INFO network.ConnectionManager: Bound socket to port 49568 with id = ConnectionManagerId(JEMAC17,49568)
+    14/08/27 13:23:10 INFO storage.BlockManagerMaster: Trying to register BlockManager
+    14/08/27 13:23:10 INFO storage.BlockManagerInfo: Registering block manager JEMAC17:49568 with 1080.6 MB RAM
+    14/08/27 13:23:10 INFO storage.BlockManagerMaster: Registered BlockManager
+    14/08/27 13:23:10 INFO spark.HttpServer: Starting HTTP Server
+    14/08/27 13:23:10 INFO server.Server: jetty-8.1.14.v20131031
+    14/08/27 13:23:10 INFO server.AbstractConnector: Started SocketConnector@0.0.0.0:49569
+    14/08/27 13:23:10 INFO broadcast.HttpBroadcast: Broadcast server started at http://169.254.179.207:49569
+    14/08/27 13:23:10 INFO spark.HttpFileServer: HTTP File server directory is C:\Users\JEUser\AppData\Local\Temp\spark-d0f66cca-8480-4932-85a6-691ee93c4fbd
+    14/08/27 13:23:10 INFO spark.HttpServer: Starting HTTP Server
+    14/08/27 13:23:10 INFO server.Server: jetty-8.1.14.v20131031
+    14/08/27 13:23:10 INFO server.AbstractConnector: Started SocketConnector@0.0.0.0:49570
+    14/08/27 13:23:11 INFO server.Server: jetty-8.1.14.v20131031
+    14/08/27 13:23:11 INFO server.AbstractConnector: Started SelectChannelConnector@0.0.0.0:4040
+    14/08/27 13:23:11 INFO ui.SparkUI: Started SparkUI at http://JEMAC17:4040
+    14/08/27 13:23:20 INFO client.AppClient$ClientActor: Connecting to master spark://54.183.137.105:7077...
+    Got past the setup.
+    Got past setting the variables.
+    14/08/27 13:23:20 WARN core.FrameCompressor: Cannot find LZ4 class, you should make sure the LZ4 library is in the classpath if you intend to use it. LZ4 compression will not be available for the protocol.
+    14/08/27 13:23:21 WARN core.ControlConnection: Found host with 0.0.0.0 as rpc_address, using listen_address (/172.31.7.123) to contact it instead. If this is incorrect you should avoid the use of 0.0.0.0 server side.
+    14/08/27 13:23:21 WARN core.ControlConnection: Found host with 0.0.0.0 as rpc_address, using listen_address (/172.31.7.119) to contact it instead. If this is incorrect you should avoid the use of 0.0.0.0 server side.
+    14/08/27 13:23:21 WARN core.ControlConnection: Found host with 0.0.0.0 as rpc_address, using listen_address (/172.31.7.120) to contact it instead. If this is incorrect you should avoid the use of 0.0.0.0 server side.
+    14/08/27 13:23:21 WARN core.ControlConnection: Found host with 0.0.0.0 as rpc_address, using listen_address (/172.31.7.121) to contact it instead. If this is incorrect you should avoid the use of 0.0.0.0 server side.
+    14/08/27 13:23:21 WARN core.ControlConnection: Found host with 0.0.0.0 as rpc_address, using listen_address (/172.31.7.122) to contact it instead. If this is incorrect you should avoid the use of 0.0.0.0 server side.
+    14/08/27 13:23:21 INFO core.Cluster: New Cassandra host /172.31.7.122:9042 added
+    14/08/27 13:23:21 INFO core.Cluster: New Cassandra host /172.31.7.123:9042 added
+    14/08/27 13:23:21 INFO core.Cluster: New Cassandra host /54.183.197.59:9042 added
+    14/08/27 13:23:21 INFO core.Cluster: New Cassandra host /172.31.7.120:9042 added
+    14/08/27 13:23:21 INFO core.Cluster: New Cassandra host /172.31.7.121:9042 added
+    14/08/27 13:23:21 INFO core.Cluster: New Cassandra host /172.31.7.119:9042 added
+    14/08/27 13:23:21 INFO cql.CassandraConnector: Connected to Cassandra cluster: jeDev
+    14/08/27 13:23:26 ERROR core.Session: Error creating pool to /172.31.7.123:9042
+    com.datastax.driver.core.TransportException: [/172.31.7.123:9042] Cannot connect
+        at com.datastax.driver.core.Connection.&lt;init&gt;(Connection.java:104)
+        at com.datastax.driver.core.PooledConnection.&lt;init&gt;(PooledConnection.java:28)
+        at com.datastax.driver.core.Connection$Factory.open(Connection.java:458)
+        at com.datastax.driver.core.HostConnectionPool.&lt;init&gt;(HostConnectionPool.java:85)
+    14/08/27 13:23:26 ERROR core.Session: Error creating pool to /172.31.7.122:9042
+    com.datastax.driver.core.TransportException: [/172.31.7.122:9042] Cannot connect
+        at com.datastax.driver.core.Connection.&lt;init&gt;(Connection.java:104)
+        at com.datastax.driver.core.PooledConnection.&lt;init&gt;(PooledConnection.java:28)
+        at com.datastax.driver.core.Connection$Factory.open(Connection.java:458)
+        at com.datastax.driver.core.HostConnectionPool.&lt;init&gt;(HostConnectionPool.java:85)
+        at com.datastax.driver.core.SessionManager.replacePool(SessionManager.java:241)
+        at com.datastax.driver.core.SessionManager.access$400(SessionManager.java:42)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:273)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:265)
+    14/08/27 13:23:27 ERROR core.Session: Error creating pool to /172.31.7.120:9042
+    com.datastax.driver.core.TransportException: [/172.31.7.120:9042] Cannot connect
+        at com.datastax.driver.core.Connection.&lt;init&gt;(Connection.java:104)
+        at com.datastax.driver.core.PooledConnection.&lt;init&gt;(PooledConnection.java:28)
+        at com.datastax.driver.core.Connection$Factory.open(Connection.java:458)
+        at com.datastax.driver.core.HostConnectionPool.&lt;init&gt;(HostConnectionPool.java:85)
+        at com.datastax.driver.core.SessionManager.replacePool(SessionManager.java:241)
+        at com.datastax.driver.core.SessionManager.access$400(SessionManager.java:42)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:273)
+    14/08/27 13:23:36 ERROR core.Session: Error creating pool to /172.31.7.120:9042
+    com.datastax.driver.core.TransportException: [/172.31.7.120:9042] Cannot connect
+        at com.datastax.driver.core.Connection.&lt;init&gt;(Connection.java:104)
+        at com.datastax.driver.core.PooledConnection.&lt;init&gt;(PooledConnection.java:28)
+        at com.datastax.driver.core.Connection$Factory.open(Connection.java:458)
+        at com.datastax.driver.core.HostConnectionPool.&lt;init&gt;(HostConnectionPool.java:85)
+        at com.datastax.driver.core.SessionManager.replacePool(SessionManager.java:241)
+        at com.datastax.driver.core.SessionManager.access$400(SessionManager.java:42)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:273)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:265)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+    14/08/27 13:23:40 INFO client.AppClient$ClientActor: Connecting to master spark://54.183.137.105:7077...
+    14/08/27 13:23:41 ERROR core.Session: Error creating pool to /172.31.7.121:9042
+    com.datastax.driver.core.TransportException: [/172.31.7.121:9042] Cannot connect
+        at com.datastax.driver.core.Connection.&lt;init&gt;(Connection.java:104)
+        at com.datastax.driver.core.PooledConnection.&lt;init&gt;(PooledConnection.java:28)
+        at com.datastax.driver.core.Connection$Factory.open(Connection.java:458)
+        at com.datastax.driver.core.HostConnectionPool.&lt;init&gt;(HostConnectionPool.java:85)
+        at com.datastax.driver.core.SessionManager.replacePool(SessionManager.java:241)
+        at com.datastax.driver.core.SessionManager.access$400(SessionManager.java:42)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:273)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:265)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+    14/08/27 13:23:47 ERROR core.Session: Error creating pool to /172.31.7.119:9042
+    com.datastax.driver.core.TransportException: [/172.31.7.119:9042] Cannot connect
+        at com.datastax.driver.core.Connection.&lt;init&gt;(Connection.java:104)
+        at com.datastax.driver.core.PooledConnection.&lt;init&gt;(PooledConnection.java:28)
+        at com.datastax.driver.core.Connection$Factory.open(Connection.java:458)
+        at com.datastax.driver.core.HostConnectionPool.&lt;init&gt;(HostConnectionPool.java:85)
+        at com.datastax.driver.core.SessionManager.replacePool(SessionManager.java:241)
+        at com.datastax.driver.core.SessionManager.access$400(SessionManager.java:42)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:273)
+        at com.datastax.driver.core.SessionManager$3.call(SessionManager.java:265)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+    Exception in thread "main" com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+        at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:65)
+        at com.datastax.driver.core.DefaultResultSetFuture.extractCauseFromExecutionException(DefaultResultSetFuture.java:256)
+        at com.datastax.driver.core.DefaultResultSetFuture.getUninterruptibly(DefaultResultSetFuture.java:172)
+        at com.datastax.driver.core.AbstractSession.execute(AbstractSession.java:52)
+        at com.datastax.driver.core.AbstractSession.execute(AbstractSession.java:36)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at com.datastax.spark.connector.cql.SessionProxy.invoke(SessionProxy.scala:33)
+        at com.sun.proxy.$Proxy6.execute(Unknown Source)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at com.datastax.spark.connector.cql.SessionProxy.invoke(SessionProxy.scala:33)
+        at com.sun.proxy.$Proxy6.execute(Unknown Source)
+        at com.datastax.spark.connector.rdd.CassandraRDD$$anonfun$cassandraPartitionerClassName$1.apply(CassandraRDD.scala:265)
+        at com.datastax.spark.connector.rdd.CassandraRDD$$anonfun$cassandraPartitionerClassName$1.apply(CassandraRDD.scala:264)
+        at com.datastax.spark.connector.cql.CassandraConnector$$anonfun$withSessionDo$1.apply(CassandraConnector.scala:98)
+        at com.datastax.spark.connector.cql.CassandraConnector$$anonfun$withSessionDo$1.apply(CassandraConnector.scala:97)
+        at com.datastax.spark.connector.util.IOUtils$.closeAfterUse(IOUtils.scala:16)
+        at com.datastax.spark.connector.cql.CassandraConnector.withSessionDo(CassandraConnector.scala:97)
+        at com.datastax.spark.connector.rdd.CassandraRDD.cassandraPartitionerClassName$lzycompute(CassandraRDD.scala:263)
+        at com.datastax.spark.connector.rdd.CassandraRDD.cassandraPartitionerClassName(CassandraRDD.scala:262)
+        at com.datastax.spark.connector.rdd.CassandraRDD.getPartitions(CassandraRDD.scala:272)
+        at org.apache.spark.rdd.RDD$$anonfun$partitions$2.apply(RDD.scala:204)
+        at org.apache.spark.rdd.RDD$$anonfun$partitions$2.apply(RDD.scala:202)
+        at scala.Option.getOrElse(Option.scala:120)
+        at org.apache.spark.rdd.RDD.partitions(RDD.scala:202)
+        at org.apache.spark.SparkContext.runJob(SparkContext.scala:1097)
+        at org.apache.spark.rdd.RDD.count(RDD.scala:861)
+        at test$.main(test.scala:26)
+        at test.main(test.scala)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+    Caused by: com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+        at com.datastax.driver.core.RequestHandler.sendRequest(RequestHandler.java:103)
+        at com.datastax.driver.core.SessionManager.execute(SessionManager.java:446)
+        at com.datastax.driver.core.SessionManager.executeQuery(SessionManager.java:482)
+        at com.datastax.driver.core.SessionManager.executeAsync(SessionManager.java:90)
+        ... 36 more
+    14/08/27 13:23:48 INFO cql.CassandraConnector: Disconnected from Cassandra cluster: jeDev
+    14/08/27 13:24:00 INFO client.AppClient$ClientActor: Connecting to master spark://54.183.137.105:7077...
+
+    Process finished with exit code 1
+</code></pre>
+
+<p>What I need is a direction to look into.  My assumptions are threefold:
+1.  I am running this from my laptop, does it need to run on the spark server directly?
+2.  Do I have a jar conflict?
+3.  Something more sinister, like maybe I am hitting an unknown bug?</p>
+
+<p>Any help is greatly desired?</p>
+
+<p>Thanks,</p>
+
+<p>Eric</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/cassandra" class="post-tag" title="show questions tagged &#39;cassandra&#39;" rel="tag">cassandra</a> <a href="/questions/tagged/apache-spark" class="post-tag" title="show questions tagged &#39;apache-spark&#39;" rel="tag">apache-spark</a> <a href="/questions/tagged/cassandra-2.0" class="post-tag" title="show questions tagged &#39;cassandra-2.0&#39;" rel="tag">cassandra-2.0</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/25537515" title="short permalink to this question" class="short-link" id="link-post-25537515">share</a><span class="lsep">|</span><a href="/posts/25537515/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/25537515/revisions" title="show all edits to this post">edited <span title="2014-09-25 16:10:12Z" class="relativetime">Sep 25 '14 at 16:10</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/9965/brianc"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d2a3e9017efa2d8f0212315e590dd6a7?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/9965/brianc">BrianC</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">5,271</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="26 bronze badges"><span class="badge3"></span><span class="badgecount">26</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2014-08-27 21:49:00Z" class="relativetime">Aug 27 '14 at 21:49</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1687144/user1687144"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/b1eb8faed2264419b3e9cee178738e30?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1687144/user1687144">user1687144</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">11</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25537515" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-41138880" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">From the log it appears that Spark has tried to connect with several of your Cassandra nodes (like 172.31.7.122:9042), but could not connect with any of them (&quot;NoHostAvailableException&quot;). From the laptop on which you&#39;re running this, are you sure you can reach port 9042 on those Cassandra hosts?</span>
+                    &ndash;&nbsp;<a href="/users/9965/brianc"
+                       title="5271 reputation"
+                       class="comment-user">BrianC</a>
+                <span class="comment-date" dir="ltr"><span title="2014-10-07 05:15:05Z" class="relativetime-clean">Oct 7 '14 at 5:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-41247762" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Unfortunately that was one of the first things that I checked.  Do you have the Spark-Cassandra-Connector working?</span>
+                    &ndash;&nbsp;<a href="/users/1687144/user1687144"
+                       title="11 reputation"
+                       class="comment-user owner">user1687144</a>
+                <span class="comment-date" dir="ltr"><span title="2014-10-09 21:22:23Z" class="relativetime-clean">Oct 9 '14 at 21:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25537515" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers" class="no-answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+						</h2>
+						<div style="display:none;">
+							<div id="tabs">
+        <a href="/questions/25537515/need-help-getting-spark-cassandra-connector-to-work?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">
+            active</a>
+        <a href="/questions/25537515/need-help-getting-spark-cassandra-connector-to-work?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">
+            oldest</a>
+        <a class="youarehere" href="/questions/25537515/need-help-getting-spark-cassandra-connector-to-work?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+											<h2 class="bottom-notice bottom-share-links" style="padding-top: 8px; margin-bottom: -8px;">
+								Know someone who can answer? 
+								Share a link to this <a href="/q/25537515">question</a> via <a href="mailto:?subject=Stack%20Overflow%20Question&amp;body=Need%20help%20getting%20spark-cassandra-connector%20to%20work%0Ahttp%3a%2f%2fstackoverflow.com%2fq%2f25537515%3fsem%3d2">email</a>, <a href="https://plus.google.com/share?url=http%3a%2f%2fstackoverflow.com%2fq%2f25537515%3fsgp%3d2">Google+</a>, <a href="http://twitter.com/share?url=http%3a%2f%2fstackoverflow.com%2fq%2f25537515%3fstw%3d2">Twitter</a>, or <a href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fstackoverflow.com%2fq%2f25537515%3fsfb%3d2">Facebook</a>.
+							</h2>
+					<a name='new-answer'></a>
+						<form id="post-form" action="/questions/25537515/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="25537515" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.options.snippets.enabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="feb94ac237bf4560673eb2216871336d">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f25537515%2fneed-help-getting-spark-cassandra-connector-to-work%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                                    
+                                var $window = $(window),
+                                    onScroll = function(e) {
+                                        var $elem = $('.new-login-left'),
+                                            docViewTop = $window.scrollTop(),
+                                            docViewBottom = docViewTop + $window.height(),
+                                            elemTop = $elem.offset().top,
+                                            elemBottom = elemTop + $elem.height();							
+                                        if ((docViewTop < elemTop) && (docViewBottom > elemBottom))  {
+                                            StackExchange.using('gps', function() { StackExchange.gps.track('embedded_signup_form.view', { location: 'question_page' }); });
+                                            $window.unbind('scroll', onScroll);
+                                        }
+                                    };
+                                $window.on('scroll', onScroll);
+                                    
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f25537515%2fneed-help-getting-spark-cassandra-connector-to-work%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+							Browse other questions tagged <a href="/questions/tagged/cassandra" class="post-tag" title="show questions tagged &#39;cassandra&#39;" rel="tag">cassandra</a> <a href="/questions/tagged/apache-spark" class="post-tag" title="show questions tagged &#39;apache-spark&#39;" rel="tag">apache-spark</a> <a href="/questions/tagged/cassandra-2.0" class="post-tag" title="show questions tagged &#39;cassandra-2.0&#39;" rel="tag">cassandra-2.0</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-08-27 21:49:00Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>884 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer">
+        
+    <div class="bulletin-item-type"><a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://meta.stackoverflow.com/questions/314186/stack-overflow-annual-survey-2016?so" class="question-hyperlink">Take the Stack Overflow Developer Survey</a>
+        <div>ends <span title="2016-01-21 01:00:00Z" class="relativetime">in 9 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1068337700",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1068337700">
+            </div>
+        <div id="hireme">
+            <script>
+;var _extends=Object.assign||function(n){for(var i,r,t=1;t<arguments.length;t++){i=arguments[t];for(r in i)Object.prototype.hasOwnProperty.call(i,r)&&(n[r]=i[r])}return n};(function(n){function f(){return(new Date).getTime()}function rt(n,t){return n.split(/\&/g).reduce(function(n,t){var i=t.split("=");return n[v(i[0])]=v(i[1]),n},t||{})}function ut(n,t){return Object.keys(n).filter(function(n){return t.indexOf(n)!==-1}).map(function(t){return u(t)+"="+u(n[t])}).join("&")}function y(n){return i.querySelectorAll(n)}function r(n){return i.querySelector(n)}function p(n,t,r){var u=i.createElement("script"),e="onreadystatechange",o="onload",f="readyState",s=!1;u.async=!0;u.src=n;typeof t=="function"&&(u[o]=u[e]=function(){s||u[f]&&u[f]!=="loaded"&&u[f]!=="complete"||(s=!0,typeof t=="function"&&t(u),u[o]=u[e]=null,r&&u.parentNode.removeChild(u))});nt.appendChild(u)}function w(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;tt.appendChild(t)}function ft(){return[].map.call(y(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}function et(){var n=t.StackExchange,i="options",r="user";return n&&n[i]&&n[i][r]&&n[i][r].accountId}function ot(n){var t,i;return n=rt(s.hash?s.hash.substr(1):"",n||{}),t=n.ac||n.accountId||et(),t&&(n.ac=t),n.tags||(i=ft(),i&&(n.tags=i)),n}function b(n){return n.innerHTML.replace(/\s+$/g,"")}function st(n,t,i,u){var c=r(n);if(c===null)return function(){};var h=null,s=null,l=f(),a=function a(){b(c)?(o(h),u(!1,f()-l)):s=e(a,t)};return s=e(a,t),i&&(h=e(function(){o(s);u(!0,f()-l)},i)),function(){o(s);o(h)}}function ht(){var t="careers1",i="careers3",u=!d()||r("#careersadsdoublehigh"),f=u?1:2,n=[f+"=hireme"];return r("#"+t)&&n.push("5="+t),r("#"+i)&&n.push("6="+i),n.join("&")}function k(n,i){var r=ot(_extends({},g,{zones:ht()})),u,e;n&&(r.azt=1);i&&(r.lw=i);typeof t.innerWidth=="number"&&(r.bw=t.innerWidth);u=["zones","ip","ac","eng","prov","tags","theme","at","remote","seed","lw","azt","sysadmin","bw","nocpm"];e=l+"?"+ut(r,u);c=f();p(e)}function ct(n){function h(){u.forEach(w);e.forEach(function(n){lt(n,i[n],s,o)});typeof t.clc_after_load=="function"&&t.clc_after_load()}var i=n.cr,r=n.h,u=n.st,e=Object.keys(i),o=c?f()-c:0,s="//"+r+"/ct";h()}function lt(n,t,i,f){var h=t.cl,c=t.cn,o=t.an,l=t.utm,s=(h||[]).join(" "),e=r("#"+n);e&&(s&&(e.className+=" "+s),e.innerHTML=c.replace("&pt=0","&pt="+(f||0)),e.onmousedown=function(n){for(var t=n.target,r,f,s;t.tagName!=="A"&&t!==e;)t=t.parentNode;t!==e&&(r=[],o&&r.push("an="+o),f=[].filter.call(t.attributes,function(n){return/^data-/.test(n.name)}),f.length>0&&f.forEach(function(n){var t=n.name.replace(/^data-/,"");r.push(u(t)+"="+u(n.value))}),r.push("utm="+u(it+l)),s="",r.length>0&&(s="?"+r.join("&")),t.href=i+s)})}function d(){return y(h).length>0}function at(n){var t=i.createElement("a");return t.href=n,t.host}function vt(){var t,n;d()?(n=st(h,20,t,function(n,t){k(n,t)}),e(function(){var u=r(h),t;b(u)||(u.parentNode.removeChild(u),typeof n=="function"&&n(),t=i.createElement("img"),t.src="//"+at(l)+"/to.gif",t.style.display="none",i.body.appendChild(t))},2e3)):k()}var l=n.u,a=n.o,g=a===undefined?{}:a,t=window,s=t.location,u=t.encodeURIComponent,v=t.decodeURIComponent,i=t.document,nt=i.body,tt=i.getElementsByTagName("head")[0],e=t.setTimeout,o=t.clearTimeout,it="&utm_source="+s.hostname+"&utm_medium=ad&utm_campaign=",h="#sidebar [id^=adzerk].everyonelovesstackoverflow",c=0;t.clc={init:ct,load:vt,ls:p,as:w}}).call(null, {"u":"//clc.stackoverflow.com/p.js"});var allowedHosts=["stackoverflow.com","serverfault.com"];(allowedHosts[0]==="*"||allowedHosts.indexOf(location.hostname)!==-1)&&window.clc.load();            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/20920776" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/20920776/create-an-rdd-using-spark-hadoop-api-to-access-cassandra-db" class="question-hyperlink">create an RDD using Spark hadoop API to access Cassandra DB</a>
+</div>
+<div class="spacer">
+<a href="/q/27753935" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/27753935/best-approach-to-cassandra-spark-for-continuous-queries" class="question-hyperlink">Best approach to Cassandra (+ Spark?) for Continuous Queries?</a>
+</div>
+<div class="spacer">
+<a href="/q/27937452" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/27937452/spark-cassandra-connector-error" class="question-hyperlink">Spark Cassandra Connector Error</a>
+</div>
+<div class="spacer">
+<a href="/q/28583091" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/28583091/fail-to-open-thrift-connection-to-cassandra-node-via-spark-cassandra-connector" class="question-hyperlink">Fail to open thrift connection to Cassandra node via spark-cassandra-connector</a>
+</div>
+<div class="spacer">
+<a href="/q/29087090" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/29087090/connecting-to-cassandra-with-spark" class="question-hyperlink">Connecting to Cassandra with Spark</a>
+</div>
+<div class="spacer">
+<a href="/q/29094124" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/29094124/cassandra-data-aggregation-by-spark" class="question-hyperlink">Cassandra data aggregation by Spark</a>
+</div>
+<div class="spacer">
+<a href="/q/29844171" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/29844171/cassandra-and-apache-spark-db-design-to-achieve-datewise-filter" class="question-hyperlink">Cassandra and apache spark db design to achieve datewise filter</a>
+</div>
+<div class="spacer">
+<a href="/q/30395712" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/30395712/spark-cassandra-how-a-join-is-performed" class="question-hyperlink">Spark-Cassandra : How a join is performed?</a>
+</div>
+<div class="spacer">
+<a href="/q/31553159" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/31553159/how-work-gets-distributed-in-spark" class="question-hyperlink">How work gets distributed in Spark</a>
+</div>
+<div class="spacer">
+<a href="/q/33378189" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/33378189/cassandra-and-spark" class="question-hyperlink">Cassandra and Spark</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251463/how-can-i-play-a-snes-through-a-vga-monitor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I play a SNES through a VGA monitor?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/40989/help-for-the-first-time-keyboard-player-in-a-band" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Help for the first time keyboard player in a band
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/33066/why-are-monasteries-so-remote" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are monasteries so remote?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/69208/choose-the-powerball-numbers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Choose The Powerball Numbers!
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-photo" title="Photography Stack Exchange"></div><a href="http://photo.stackexchange.com/questions/72677/could-a-universal-exposure-setting-be-practically-possible" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:61 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Could a &quot;universal exposure&quot; setting be practically possible?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61383/why-has-the-time-spent-studying-declined-so-sharply-in-the-united-states-over-th" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why has the time spent studying declined so sharply in the United States over the the past few decades?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/24555/what-actually-happens-when-there-is-not-enough-oil-in-a-car-engine" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What actually happens when there is not enough oil in a car engine?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-japanese" title="Japanese Language Stack Exchange"></div><a href="http://japanese.stackexchange.com/questions/30365/particle-between-city-and-prefecture" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:257 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Particle between city and prefecture?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299164/is-english-the-only-language-that-always-capitalizes-i" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is English the only language that always capitalizes &quot;I&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/57931/are-lottery-tickets-ever-a-wise-investment-provided-the-jackpot-is-large-enough" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are lottery tickets ever a wise investment provided the jackpot is large enough?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114475/what-was-c-3po-talking-about-when-he-said-that-s-funny-the-damage-doesn-t-loo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What was C-3PO talking about when he said, “That’s funny, the damage doesn’t look as bad from out here.”
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-philosophy" title="Philosophy Stack Exchange"></div><a href="http://philosophy.stackexchange.com/questions/31432/if-the-bible-contains-circular-reasoning-does-it-discredit-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:265 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If the Bible contains circular reasoning, does it discredit it?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/114412/why-does-binary-exist" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does Binary exist?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/299005/what-is-worse-than-mediocre" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is worse than &quot;mediocre&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-magento" title="Magento Stack Exchange"></div><a href="http://magento.stackexchange.com/questions/96752/injecting-dependencies-into-a-magento-2-crud-abstract-model" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:479 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Injecting Dependencies into a Magento 2 CRUD/Abstract Model
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/61474/is-it-safe-to-post-ones-research-on-web-sites-like-math-overflow-for-peer-revi" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it safe to post one&#39;s research on web sites like Math Overflow for &quot;peer review&quot; before submitting to a journal?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/78507/now-were-only-a-nip-and-tuck-away" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Now we&#39;re only a nip and tuck away
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/34732641/calling-list-has-side-effect" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Calling list() has side-effect?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1605183/if-squaring-a-number-means-multiplying-that-number-with-itself-then-shouldnt-ta" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If squaring a number means multiplying that number with itself then shouldn&#39;t taking square root of a number mean to divide a number by itself?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/251478/how-important-is-it-to-upgrade-ship-weapons-in-mass-effect-2" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How important is it to upgrade ship weapons in Mass Effect 2?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/103834/how-to-repeat-a-matrix-on-its-side" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to repeat a matrix on it&#39;s side?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/104924/radio-options-appearing-all-in-one-line" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Radio options appearing all in one line
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/190252/sample-distribution-vs-the-distribution-of-the-sample-statistic" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Sample distribution vs the distribution of the sample statistic
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/110172/why-would-security-cover-things-like-natural-disasters" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why would security cover things like natural disasters?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/25537515" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/25537515/ivc/1fe6');});
+</script>
+<noscript>
+    <div><img src="/posts/25537515/ivc/1fe6" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2016 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.1.11.3159
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () {
+        ados_setKeywords('cassandra,apache-spark,cassandra-2.0');; ados_load();
+    });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|cassandra|apache-spark|cassandra-2.0|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    </body>
+</html>
